@@ -4,6 +4,8 @@ import SpellContainer from "../presentational/spellContainer";
 import AddSpellButton from "./addSpellButton"
 import {connect} from "react-redux";
 import {searchSpell, changeSearchedSpellText} from "../../actions/spellActions"
+// import Radium from 'radium';
+// import styles from '../../styles.js';
 
 //Search container.
 class SearchContainer extends React.Component{
@@ -18,9 +20,13 @@ class SearchContainer extends React.Component{
         this.props.dispatch(searchSpell(this.state.currentText));
     }
 
+    handleClick(event){
+      this.props.dispatch(addSpell(this.props.currentSpell));
+    }
+
     render () {
         return (
-        <div>
+        <div id = 'spell-list-div'>
             <input value = {this.state.currentText} onChange = {this.handleChange} />
             {this.props.currentSpell && <SpellContainer currentSpell = {this.props.currentSpell}/>}
             {this.props.currentSpell && <AddSpellButton currentSpell = {this.props.currentSpell}/>}
@@ -28,6 +34,9 @@ class SearchContainer extends React.Component{
         );
     }
 }
+//SearchContainer = Radium(SearchContainer);
+
+
 
 function mapStateToProps(state, ownProps){
 	return {

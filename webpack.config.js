@@ -6,10 +6,6 @@ module.exports = {
         path: Path.resolve("./public"),
         filename: "bundle.js"
     },
-//    devServer: {
-//        contentBase: "public"
-//    },
-// Using babel separately so don't need this.
     module: {
         loaders: [
             {

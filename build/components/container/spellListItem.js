@@ -10,13 +10,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
+var _spellContainer = require('../presentational/spellContainer');
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _spellActions = require('../../actions/spellActions');
+var _spellContainer2 = _interopRequireDefault(_spellContainer);
 
 var _reactRedux = require('react-redux');
+
+var _spellActions = require('../../actions/spellActions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,41 +26,45 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AddSpellButton = function (_React$Component) {
-  _inherits(AddSpellButton, _React$Component);
+// import Radium from 'radium';
+// import styles from '../../styles';
 
-  function AddSpellButton(props) {
-    _classCallCheck(this, AddSpellButton);
 
-    var _this = _possibleConstructorReturn(this, (AddSpellButton.__proto__ || Object.getPrototypeOf(AddSpellButton)).call(this, props));
+var SpellListItem = function (_React$Component) {
+  _inherits(SpellListItem, _React$Component);
+
+  function SpellListItem(props) {
+    _classCallCheck(this, SpellListItem);
+
+    var _this = _possibleConstructorReturn(this, (SpellListItem.__proto__ || Object.getPrototypeOf(SpellListItem)).call(this, props));
 
     _this.handleClick = _this.handleClick.bind(_this);
     return _this;
   }
 
-  _createClass(AddSpellButton, [{
+  _createClass(SpellListItem, [{
     key: 'handleClick',
     value: function handleClick(event) {
-      this.props.dispatch((0, _spellActions.addSpell)(this.props.currentSpell));
+      this.props.dispatch((0, _spellActions.removeSpell)(this.props.spellIndex));
     }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'button',
-        { onClick: this.handleClick },
-        'Add Spell'
+        'div',
+        null,
+        _react2.default.createElement(_spellContainer2.default, { currentSpell: this.props.spell }),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.handleClick },
+          'Remove Spell'
+        )
       );
     }
   }]);
 
-  return AddSpellButton;
+  return SpellListItem;
 }(_react2.default.Component);
+//SpellListItem = Radium(SpellListItem);
 
-function mapStateToProps(state, ownProps) {
-  return {
-    currentSpell: state.spells.currentSpell
-  };
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddSpellButton);
+exports.default = (0, _reactRedux.connect)(null)(SpellListItem);

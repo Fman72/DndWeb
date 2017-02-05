@@ -6,4 +6,8 @@ function addSpell(newSpell){
 	return {type: "ADD_SPELL", newSpell: newSpell};
 }
 
-export {searchSpell, addSpell};
+function removeSpell(spellIndex){
+	return {type: "REMOVE_SPELL", spellIndex: spellIndex};
+}
+
+export {searchSpell, addSpell, removeSpell};

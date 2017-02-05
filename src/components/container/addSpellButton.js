@@ -11,7 +11,6 @@ class AddSpellButton extends React.Component{
   }
 
   handleClick(event){
-    console.log("Running");
     this.props.dispatch(addSpell(this.props.currentSpell));
   }
 

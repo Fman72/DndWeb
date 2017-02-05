@@ -4,15 +4,12 @@ import SpellSearcher from "./spellSearcher";
 import ReactDOMServer from "react-dom/server";
 import AppRouter from "./router";
 
-import configureStore from './store/configureStore';
+import {store} from './store/configureStore';
 import {Provider} from 'react-redux';
-
 
 import {RouterContext, createRoutes, match} from "react-router";
 
 var router = Express.Router();
-
-const store = configureStore({spellList: []});
 
 const routes = createRoutes(AppRouter());
 
@@ -27,7 +24,7 @@ router.get("/spell", (req, res) => {
             	<Provider store = {store}>
             		<RouterContext {...renderProps}/>
 				      </Provider>);
-            res.send(content);
+            res.send('<script>console.log("Running");window.__INITIAL_STORE__ = ' + JSON.stringify(store) + '; </script>' + content);
         }
         else{
             res.status(404).send("Not Found");

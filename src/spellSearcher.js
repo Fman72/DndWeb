@@ -7,7 +7,6 @@ let searchSpell = function(spellName){
     let fuse = new Fuse(jsonSpellData, options);
     let results = fuse.search(spellName);
     if(results.length < 1){
-        console.log("Spell not found.");
         return false;
     }
     else{

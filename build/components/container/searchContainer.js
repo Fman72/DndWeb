@@ -34,6 +34,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import Radium from 'radium';
+// import styles from '../../styles.js';
+
 //Search container.
 var SearchContainer = function (_React$Component) {
     _inherits(SearchContainer, _React$Component);
@@ -55,11 +58,16 @@ var SearchContainer = function (_React$Component) {
             this.props.dispatch((0, _spellActions.searchSpell)(this.state.currentText));
         }
     }, {
+        key: "handleClick",
+        value: function handleClick(event) {
+            this.props.dispatch(addSpell(this.props.currentSpell));
+        }
+    }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                null,
+                { id: "spell-list-div" },
                 _react2.default.createElement("input", { value: this.state.currentText, onChange: this.handleChange }),
                 this.props.currentSpell && _react2.default.createElement(_spellContainer2.default, { currentSpell: this.props.currentSpell }),
                 this.props.currentSpell && _react2.default.createElement(_addSpellButton2.default, { currentSpell: this.props.currentSpell })
@@ -69,6 +77,8 @@ var SearchContainer = function (_React$Component) {
 
     return SearchContainer;
 }(_react2.default.Component);
+//SearchContainer = Radium(SearchContainer);
+
 
 function mapStateToProps(state, ownProps) {
     return {

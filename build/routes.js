@@ -26,8 +26,6 @@ var _router2 = _interopRequireDefault(_router);
 
 var _configureStore = require("./store/configureStore");
 
-var _configureStore2 = _interopRequireDefault(_configureStore);
-
 var _reactRedux = require("react-redux");
 
 var _reactRouter = require("react-router");
@@ -35,8 +33,6 @@ var _reactRouter = require("react-router");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
-
-var store = (0, _configureStore2.default)({ spellList: [] });
 
 var routes = (0, _reactRouter.createRoutes)((0, _router2.default)());
 
@@ -48,10 +44,10 @@ router.get("/spell", function (req, res) {
         } else if (renderProps) {
             var content = _server2.default.renderToString(_react2.default.createElement(
                 _reactRedux.Provider,
-                { store: store },
+                { store: _configureStore.store },
                 _react2.default.createElement(_reactRouter.RouterContext, renderProps)
             ));
-            res.send(content);
+            res.send('<script>console.log("Running");window.__INITIAL_STORE__ = ' + JSON.stringify(_configureStore.store) + '; </script>' + content);
         } else {
             res.status(404).send("Not Found");
         }

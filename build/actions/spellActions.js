@@ -11,5 +11,10 @@ function addSpell(newSpell) {
 	return { type: "ADD_SPELL", newSpell: newSpell };
 }
 
+function removeSpell(spellIndex) {
+	return { type: "REMOVE_SPELL", spellIndex: spellIndex };
+}
+
 exports.searchSpell = searchSpell;
 exports.addSpell = addSpell;
+exports.removeSpell = removeSpell;

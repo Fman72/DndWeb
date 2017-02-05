@@ -14,13 +14,15 @@ var _router2 = _interopRequireDefault(_router);
 
 var _configureStore = require("./store/configureStore");
 
-var _configureStore2 = _interopRequireDefault(_configureStore);
-
 var _reactRedux = require("react-redux");
+
+var _redux = require("redux");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _configureStore2.default)({ spellList: [] });
+var initialStore = window.__INITIAL_STORE__;
+
+var store = (0, _configureStore.configureStore)(initialStore);
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,

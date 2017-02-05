@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.default = configureStore;
+exports.configureStore = exports.store = undefined;
 
 var _redux = require('redux');
 
@@ -20,3 +20,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function configureStore(initialState) {
 	return (0, _redux.createStore)(_index2.default, initialState, (0, _redux.applyMiddleware)((0, _reduxImmutableStateInvariant2.default)()));
 };
+
+var store = configureStore();
+
+exports.store = store;
+exports.configureStore = configureStore;

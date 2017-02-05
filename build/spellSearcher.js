@@ -20,7 +20,6 @@ var searchSpell = function searchSpell(spellName) {
     var fuse = new _fuse2.default(_dndSpellList2.default, options);
     var results = fuse.search(spellName);
     if (results.length < 1) {
-        console.log("Spell not found.");
         return false;
     } else {
         var topSpell = results[0];

@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _spellContainer = require('../presentational/spellContainer');
+var _spellListItem = require('./spellListItem');
 
-var _spellContainer2 = _interopRequireDefault(_spellContainer);
+var _spellListItem2 = _interopRequireDefault(_spellListItem);
 
 var _reactRedux = require('react-redux');
 
@@ -37,14 +37,14 @@ var SpellList = function (_React$Component) {
     key: 'render',
     value: function render() {
       if (this.props.spellList) {
-        var spellContainers = [];
+        var spellListItems = [];
         for (var i = 0; i < this.props.spellList.length; i++) {
-          spellContainers.push(_react2.default.createElement(_spellContainer2.default, { currentSpell: this.props.spellList[i] }));
+          spellListItems.push(_react2.default.createElement(_spellListItem2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
         }
         return _react2.default.createElement(
           'div',
-          null,
-          spellContainers
+          { id: 'spell-list' },
+          spellListItems
         );
       }
       return null;

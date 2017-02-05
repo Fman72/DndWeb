@@ -1,5 +1,5 @@
 import React from 'react';
-import SpellContainer from '../presentational/spellContainer';
+import SpellListItem from './spellListItem';
 import {connect} from "react-redux";
 
 
@@ -12,11 +12,13 @@ class SpellList extends React.Component
 
   render() {
     if(this.props.spellList){
-      let spellContainers = [];
+      let spellListItems = [];
       for(let i = 0; i < this.props.spellList.length; i++){
-        spellContainers.push(<SpellContainer currentSpell = {this.props.spellList[i]}></SpellContainer>);
+        spellListItems.push(<SpellListItem spellIndex = {i} key = {this.props.spellList[i].name} spell = {this.props.spellList[i]}></SpellListItem>);
       }
-      return <div>{spellContainers}</div>;
+      return (<div id = 'spell-list'>
+                {spellListItems}
+             </div>);
     }
     return null;
   }

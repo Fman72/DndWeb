@@ -14,9 +14,15 @@ function spells(state = {spellList: []}, action)
 			}
 			break;
 		case "ADD_SPELL":
-        let newSpellList = [...state.spellList, action.newSpell];
+			if(state.spellList.map(spell => spell.name).indexOf(action.newSpell.name) < 0){
+	      let newSpellList = [...state.spellList, action.newSpell];
 				return Object.assign({}, state, {spellList: newSpellList});
-			return;
+			}
+			return state;
+			break;
+		case "REMOVE_SPELL":
+			let trimmedSpellList = [...state.spellList.slice(0, action.spellIndex), ...state.spellList.slice(action.spellIndex + 1)];
+			return Object.assign({}, state, {spellList: trimmedSpellList});
 			break;
 		default:
 			return state;
