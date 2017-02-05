@@ -10,9 +10,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _spellContainer = require('../presentational/spellContainer');
+var _spellDiv = require('../presentational/spellDiv');
 
-var _spellContainer2 = _interopRequireDefault(_spellContainer);
+var _spellDiv2 = _interopRequireDefault(_spellDiv);
+
+var _minimizedSpellDiv = require('../presentational/minimizedSpellDiv');
+
+var _minimizedSpellDiv2 = _interopRequireDefault(_minimizedSpellDiv);
 
 var _reactRedux = require('react-redux');
 
@@ -39,6 +43,8 @@ var SpellListItem = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (SpellListItem.__proto__ || Object.getPrototypeOf(SpellListItem)).call(this, props));
 
     _this.handleClick = _this.handleClick.bind(_this);
+    _this.handleDoubleClick = _this.handleDoubleClick.bind(_this);
+    _this.state = { minimized: false };
     return _this;
   }
 
@@ -48,18 +54,27 @@ var SpellListItem = function (_React$Component) {
       this.props.dispatch((0, _spellActions.removeSpell)(this.props.spellIndex));
     }
   }, {
+    key: 'handleDoubleClick',
+    value: function handleDoubleClick() {
+      this.setState({ minimized: !this.state.minimized });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_spellContainer2.default, { currentSpell: this.props.spell }),
-        _react2.default.createElement(
-          'button',
-          { onClick: this.handleClick },
-          'Remove Spell'
-        )
-      );
+      if (!this.state.minimized) {
+        return _react2.default.createElement(
+          'div',
+          { onDoubleClick: this.handleDoubleClick },
+          _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.spell }),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.handleClick },
+            'Remove Spell'
+          )
+        );
+      } else {
+        return _react2.default.createElement(_minimizedSpellDiv2.default, { handleDoubleClick: this.handleDoubleClick, name: this.props.spell.name });
+      }
     }
   }]);
 

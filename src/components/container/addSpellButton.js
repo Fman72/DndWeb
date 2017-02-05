@@ -16,7 +16,7 @@ class AddSpellButton extends React.Component{
 
   render() {
     return (
-      <button onClick = {this.handleClick}>Add Spell</button>
+      <button id = "add-spell-button" onClick = {this.handleClick}>Add Spell</button>
     );
   }
 }

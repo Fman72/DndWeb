@@ -1,5 +1,6 @@
 import React from 'react';
-import SpellContainer from '../presentational/spellContainer';
+import SpellDiv from '../presentational/spellDiv';
+import MinimizedSpellDiv from '../presentational/minimizedSpellDiv';
 import {connect} from 'react-redux';
 import {removeSpell} from '../../actions/spellActions';
 // import Radium from 'radium';
@@ -11,19 +12,32 @@ class SpellListItem extends React.Component{
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleDoubleClick = this.handleDoubleClick.bind(this);
+    this.state = {minimized: false};
   }
 
   handleClick(event){
     this.props.dispatch(removeSpell(this.props.spellIndex));
   }
 
+  handleDoubleClick(){
+    this.setState({minimized: !(this.state.minimized)});
+  }
+
   render() {
-    return (
-      <div>
-        <SpellContainer currentSpell = {this.props.spell}/>
-        <button onClick = {this.handleClick}>Remove Spell</button>
-      </div>
-    );
+    if(!this.state.minimized){
+      return (
+        <div onDoubleClick = {this.handleDoubleClick}>
+            <SpellDiv currentSpell = {this.props.spell}/>
+            <button onClick = {this.handleClick}>Remove Spell</button>
+        </div>
+      );
+    }
+    else{
+      return (
+        <MinimizedSpellDiv handleDoubleClick = {this.handleDoubleClick} name = {this.props.spell.name} />
+      );
+    }
   }
 }
 //SpellListItem = Radium(SpellListItem);

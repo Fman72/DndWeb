@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-				value: true
+           value: true
 });
 
 var _react = require("react");
@@ -16,21 +16,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //App container object.
 function AppRoot(props) {
-				return _react2.default.createElement(
-								"div",
-								null,
-								_react2.default.createElement(
-												"h1",
-												null,
-												"Welcome to the DND App"
-								),
-								_react2.default.createElement(
-												"div",
-												{ id: "container-div" },
-												props.children
-								),
-								_react2.default.createElement("script", { src: "bundle.js" })
-				);
+           return _react2.default.createElement(
+                      "div",
+                      { className: "container-fluid" },
+                      _react2.default.createElement(
+                                 "div",
+                                 { className: "row" },
+                                 _react2.default.createElement(
+                                            "h1",
+                                            { className: "col-xs-12" },
+                                            "DND 5e Spell List"
+                                 )
+                      ),
+                      _react2.default.createElement(
+                                 "div",
+                                 { className: "row" },
+                                 props.children
+                      ),
+                      _react2.default.createElement("script", { src: "bundle.js" })
+           );
 };
 
 exports.default = AppRoot;

@@ -14,9 +14,9 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _spellContainer = require("../presentational/spellContainer");
+var _spellDiv = require("../presentational/spellDiv");
 
-var _spellContainer2 = _interopRequireDefault(_spellContainer);
+var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
 var _addSpellButton = require("./addSpellButton");
 
@@ -67,9 +67,9 @@ var SearchContainer = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                { id: "spell-list-div" },
+                { id: "search-container", className: "col-xs-12 col-sm-3" },
                 _react2.default.createElement("input", { value: this.state.currentText, onChange: this.handleChange }),
-                this.props.currentSpell && _react2.default.createElement(_spellContainer2.default, { currentSpell: this.props.currentSpell }),
+                this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.currentSpell }),
                 this.props.currentSpell && _react2.default.createElement(_addSpellButton2.default, { currentSpell: this.props.currentSpell })
             );
         }

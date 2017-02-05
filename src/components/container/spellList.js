@@ -16,7 +16,7 @@ class SpellList extends React.Component
       for(let i = 0; i < this.props.spellList.length; i++){
         spellListItems.push(<SpellListItem spellIndex = {i} key = {this.props.spellList[i].name} spell = {this.props.spellList[i]}></SpellListItem>);
       }
-      return (<div id = 'spell-list'>
+      return (<div id = 'spell-list' className = "col-xs-12 col-sm-9">
                 {spellListItems}
              </div>);
     }

@@ -3,12 +3,18 @@ import React from "react";
 //Displays data
 function DataRow(props){
       return (
-          <span>
-                <span>{props.name}: </span><span>{props.value}</span>
-                <br/>
-          </span>
+          <span className = {(props.name + "-cell").toLowerCase()}><b>{props.name}</b>: {props.value} {props.addBreak && <br/>}</span>
       );
 };
 
+DataRow.propTypes = {
+  addBreak: React.PropTypes.bool,
+  name: React.PropTypes.string.isRequired,
+  value: React.PropTypes.string.isRequired
+};
+
+DataRow.defaultProps = {
+  addBreak: false
+}
 
 export default DataRow;

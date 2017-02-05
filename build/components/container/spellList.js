@@ -43,7 +43,7 @@ var SpellList = function (_React$Component) {
         }
         return _react2.default.createElement(
           'div',
-          { id: 'spell-list' },
+          { id: 'spell-list', className: 'col-xs-12 col-sm-9' },
           spellListItems
         );
       }

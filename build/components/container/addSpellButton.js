@@ -48,7 +48,7 @@ var AddSpellButton = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'button',
-        { onClick: this.handleClick },
+        { id: 'add-spell-button', onClick: this.handleClick },
         'Add Spell'
       );
     }

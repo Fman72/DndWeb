@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SpellContainer from "../presentational/spellContainer";
+import SpellDiv from "../presentational/spellDiv";
 import AddSpellButton from "./addSpellButton"
 import {connect} from "react-redux";
 import {searchSpell, changeSearchedSpellText} from "../../actions/spellActions"
@@ -26,9 +26,9 @@ class SearchContainer extends React.Component{
 
     render () {
         return (
-        <div id = 'spell-list-div'>
+        <div id = 'search-container' className = "col-xs-12 col-sm-3">
             <input value = {this.state.currentText} onChange = {this.handleChange} />
-            {this.props.currentSpell && <SpellContainer currentSpell = {this.props.currentSpell}/>}
+            {this.props.currentSpell && <SpellDiv currentSpell = {this.props.currentSpell}/>}
             {this.props.currentSpell && <AddSpellButton currentSpell = {this.props.currentSpell}/>}
         </div>
         );

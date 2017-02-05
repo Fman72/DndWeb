@@ -24,7 +24,7 @@ router.get("/spell", (req, res) => {
             	<Provider store = {store}>
             		<RouterContext {...renderProps}/>
 				      </Provider>);
-            res.send('<script>console.log("Running");window.__INITIAL_STORE__ = ' + JSON.stringify(store) + '; </script>' + content);
+            res.send('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></script><link rel = "stylesheet" type = "text/css" href = "styles/style.css"/><script>console.log("Running");window.__INITIAL_STORE__ = ' + JSON.stringify(store) + '; </script>' + content);
         }
         else{
             res.status(404).send("Not Found");

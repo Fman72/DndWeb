@@ -15,7 +15,7 @@ var _dataRow2 = _interopRequireDefault(_dataRow);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //Contains a spell. Will eventually be able to click attributes to expand them so will need state.
-function SpellContainer(props) {
+function SpellDiv(props) {
   return _react2.default.createElement(
     "div",
     null,
@@ -33,7 +33,7 @@ function SpellContainer(props) {
   );
 }
 
-SpellContainer.propTypes = {
+SpellDiv.propTypes = {
   currentSpell: _react2.default.PropTypes.shape({
     name: _react2.default.PropTypes.string.isRequired,
     description: _react2.default.PropTypes.string.isRequired,
@@ -49,4 +49,4 @@ SpellContainer.propTypes = {
   })
 };
 
-exports.default = SpellContainer;
+exports.default = SpellDiv;

@@ -1,0 +1,16 @@
+body: {
+  background-color: red
+}
+
+#add-spell-button{
+  position: fixed;
+  bottom: 10px;
+}
+
+#search-container span{
+  display: block;
+}
+
+.description-cell{
+  display: block;
+}
