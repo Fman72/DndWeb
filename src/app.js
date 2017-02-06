@@ -21,6 +21,6 @@ app.use(Routes);
 
 app.use(Express.static("public"))
 
-app.listen(8080, "0.0.0.0", () => {
+app.listen(3000, () => {
     console.log("Running on localhost:8080");
 });
