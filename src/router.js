@@ -2,7 +2,7 @@ import React from "react";
 import {Router, browserHistory, Route, IndexRoute} from "react-router";
 
 import AppRoot from "./components/presentational/appRoot";
-import SpellPage from "./components/container/SpellPage";
+import SpellPage from "./components/container/spellPage";
 
 var AppRouter = () => {
     return(
