@@ -67,7 +67,7 @@ var SearchContainer = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                { id: "search-container", className: "col-xs-12 col-sm-3" },
+                { id: "search-container", className: "col-xs-12 col-md-3" },
                 _react2.default.createElement("input", { value: this.state.currentText, onChange: this.handleChange }),
                 this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.currentSpell }),
                 this.props.currentSpell && _react2.default.createElement(_addSpellButton2.default, { currentSpell: this.props.currentSpell })

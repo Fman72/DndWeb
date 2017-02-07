@@ -36085,7 +36085,7 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return _react2.default.createElement("div", { id: "search-container", className: "col-xs-12 col-sm-3" }, _react2.default.createElement("input", { value: this.state.currentText, onChange: this.handleChange }), this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.currentSpell }), this.props.currentSpell && _react2.default.createElement(_addSpellButton2.default, { currentSpell: this.props.currentSpell }));
+	            return _react2.default.createElement("div", { id: "search-container", className: "col-xs-12 col-md-3" }, _react2.default.createElement("input", { value: this.state.currentText, onChange: this.handleChange }), this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.currentSpell }), this.props.currentSpell && _react2.default.createElement(_addSpellButton2.default, { currentSpell: this.props.currentSpell }));
 	        }
 	    }]);
 
@@ -36369,7 +36369,7 @@
 	        for (var i = 0; i < this.props.spellList.length; i++) {
 	          spellListItems.push(_react2.default.createElement(_spellListItem2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
 	        }
-	        return _react2.default.createElement('div', { id: 'spell-list', className: 'col-xs-12 col-sm-9' }, spellListItems);
+	        return _react2.default.createElement('div', { id: 'spell-list', className: 'col-xs-12 col-md-9' }, spellListItems);
 	      }
 	      return null;
 	    }

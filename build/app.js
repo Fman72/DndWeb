@@ -30,6 +30,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = (0, _express2.default)();
 
+var port = process.env.PORT ? process.env.PORT : 8080;
+
 app.use(_bodyParser2.default.urlencoded({ extended: false }));
 
 app.use(_bodyParser2.default.json());
@@ -38,6 +40,6 @@ app.use(_routes2.default);
 
 app.use(_express2.default.static("public"));
 
-app.listen(8080, "0.0.0.0", function () {
-    console.log("Running on localhost:8080");
+app.listen(port, "0.0.0.0", function () {
+    console.log("Running on port: " + port);
 });
