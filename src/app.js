@@ -21,6 +21,6 @@ app.use(Routes);
 
 app.use(Express.static("public"))
 
-app.listen(env.process.port, () => {
-    console.log("Running on " + env.process.port);
+app.listen(process.env.port, () => {
+    console.log("Running on " + process.env.port);
 });
