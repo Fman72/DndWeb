@@ -38,6 +38,6 @@ app.use(_routes2.default);
 
 app.use(_express2.default.static("public"));
 
-app.listen(process.env.port, function () {
-    console.log("Running on " + process.env.port);
+app.listen(process.env.PORT, function () {
+    console.log("Running on " + process.env.PORT);
 });
