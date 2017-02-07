@@ -24,7 +24,7 @@ function AppRoot(props) {
                                  { className: "row" },
                                  _react2.default.createElement(
                                             "h1",
-                                            { className: "col-xs-12" },
+                                            { id: "page-title", className: "col-xs-12" },
                                             "DND 5e Spell List"
                                  )
                       ),

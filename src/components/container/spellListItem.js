@@ -11,31 +11,31 @@ class SpellListItem extends React.Component{
 
   constructor(props){
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleDoubleClick = this.handleDoubleClick.bind(this);
+    this.removeSpell = this.removeSpell.bind(this);
+    this.toggleMinimization = this.toggleMinimization.bind(this);
     this.state = {minimized: false};
   }
 
-  handleClick(event){
+  removeSpell(event){
     this.props.dispatch(removeSpell(this.props.spellIndex));
   }
 
-  handleDoubleClick(){
+  toggleMinimization(){
     this.setState({minimized: !(this.state.minimized)});
   }
 
   render() {
     if(!this.state.minimized){
       return (
-        <div onDoubleClick = {this.handleDoubleClick}>
+        <div onDoubleClick = {this.toggleMinimization}>
             <SpellDiv currentSpell = {this.props.spell}/>
-            <button onClick = {this.handleClick}>Remove Spell</button>
+            <button onClick = {this.removeSpell}>Remove Spell</button>
         </div>
       );
     }
     else{
       return (
-        <MinimizedSpellDiv handleDoubleClick = {this.handleDoubleClick} name = {this.props.spell.name} />
+        <MinimizedSpellDiv onCrossClick = {this.removeSpell} handleDoubleClick = {this.toggleMinimization} name = {this.props.spell.name} />
       );
     }
   }
