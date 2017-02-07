@@ -21,6 +21,6 @@ app.use(Routes);
 
 app.use(Express.static("public"))
 
-app.listen(3000, () => {
-    console.log("Running on localhost:8080");
+app.listen(env.process.port, () => {
+    console.log("Running on " + env.process.port);
 });

@@ -38,6 +38,6 @@ app.use(_routes2.default);
 
 app.use(_express2.default.static("public"));
 
-app.listen(8080, "0.0.0.0", function () {
-    console.log("Running on localhost:8080");
+app.listen(env.process.port, function () {
+    console.log("Running on " + env.process.port);
 });
