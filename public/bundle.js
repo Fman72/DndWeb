@@ -26604,6 +26604,7 @@
 
 	//App container object.
 	function AppRoot(props) {
+<<<<<<< HEAD
 	           return _react2.default.createElement(
 	                      "div",
 	                      { className: "container-fluid" },
@@ -26623,6 +26624,9 @@
 	                      ),
 	                      _react2.default.createElement("script", { src: "bundle.js" })
 	           );
+=======
+	           return _react2.default.createElement("div", { className: "container-fluid" }, _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("h1", { id: "page-title", className: "col-xs-12" }, "DND 5e Spell List")), _react2.default.createElement("div", { className: "row" }, props.children), _react2.default.createElement("script", { src: "bundle.js" }));
+>>>>>>> ea689be... Big styling improvements, added remove functionality to minimized spell div
 	};
 
 	exports.default = AppRoot;
@@ -36392,26 +36396,27 @@
 
 	    var _this = _possibleConstructorReturn(this, (SpellListItem.__proto__ || Object.getPrototypeOf(SpellListItem)).call(this, props));
 
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    _this.handleDoubleClick = _this.handleDoubleClick.bind(_this);
+	    _this.removeSpell = _this.removeSpell.bind(_this);
+	    _this.toggleMinimization = _this.toggleMinimization.bind(_this);
 	    _this.state = { minimized: false };
 	    return _this;
 	  }
 
 	  _createClass(SpellListItem, [{
-	    key: 'handleClick',
-	    value: function handleClick(event) {
+	    key: 'removeSpell',
+	    value: function removeSpell(event) {
 	      this.props.dispatch((0, _spellActions.removeSpell)(this.props.spellIndex));
 	    }
 	  }, {
-	    key: 'handleDoubleClick',
-	    value: function handleDoubleClick() {
+	    key: 'toggleMinimization',
+	    value: function toggleMinimization() {
 	      this.setState({ minimized: !this.state.minimized });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      if (!this.state.minimized) {
+<<<<<<< HEAD
 	        return _react2.default.createElement(
 	          'div',
 	          { onDoubleClick: this.handleDoubleClick },
@@ -36422,8 +36427,11 @@
 	            'Remove Spell'
 	          )
 	        );
+=======
+	        return _react2.default.createElement('div', { onDoubleClick: this.toggleMinimization }, _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.spell }), _react2.default.createElement('button', { onClick: this.removeSpell }, 'Remove Spell'));
+>>>>>>> ea689be... Big styling improvements, added remove functionality to minimized spell div
 	      } else {
-	        return _react2.default.createElement(_minimizedSpellDiv2.default, { handleDoubleClick: this.handleDoubleClick, name: this.props.spell.name });
+	        return _react2.default.createElement(_minimizedSpellDiv2.default, { onCrossClick: this.removeSpell, handleDoubleClick: this.toggleMinimization, name: this.props.spell.name });
 	      }
 	    }
 	  }]);
@@ -36438,7 +36446,7 @@
 /* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -36451,6 +36459,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var MinimizedSpellDiv = function MinimizedSpellDiv(props) {
+<<<<<<< HEAD
 	  return _react2.default.createElement(
 	    'div',
 	    { onDoubleClick: props.handleDoubleClick },
@@ -36460,6 +36469,9 @@
 	      props.name
 	    )
 	  );
+=======
+	  return _react2.default.createElement("div", { className: "minimized-spell-div", onDoubleClick: props.handleDoubleClick }, _react2.default.createElement("span", null, props.name), " ", _react2.default.createElement("input", { type: "image", onClick: props.onCrossClick, src: "images/cross.svg" }));
+>>>>>>> ea689be... Big styling improvements, added remove functionality to minimized spell div
 	};
 
 	MinimizedSpellDiv.propTypes = {

@@ -42,20 +42,20 @@ var SpellListItem = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (SpellListItem.__proto__ || Object.getPrototypeOf(SpellListItem)).call(this, props));
 
-    _this.handleClick = _this.handleClick.bind(_this);
-    _this.handleDoubleClick = _this.handleDoubleClick.bind(_this);
+    _this.removeSpell = _this.removeSpell.bind(_this);
+    _this.toggleMinimization = _this.toggleMinimization.bind(_this);
     _this.state = { minimized: false };
     return _this;
   }
 
   _createClass(SpellListItem, [{
-    key: 'handleClick',
-    value: function handleClick(event) {
+    key: 'removeSpell',
+    value: function removeSpell(event) {
       this.props.dispatch((0, _spellActions.removeSpell)(this.props.spellIndex));
     }
   }, {
-    key: 'handleDoubleClick',
-    value: function handleDoubleClick() {
+    key: 'toggleMinimization',
+    value: function toggleMinimization() {
       this.setState({ minimized: !this.state.minimized });
     }
   }, {
@@ -64,16 +64,16 @@ var SpellListItem = function (_React$Component) {
       if (!this.state.minimized) {
         return _react2.default.createElement(
           'div',
-          { onDoubleClick: this.handleDoubleClick },
+          { onDoubleClick: this.toggleMinimization },
           _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.spell }),
           _react2.default.createElement(
             'button',
-            { onClick: this.handleClick },
+            { onClick: this.removeSpell },
             'Remove Spell'
           )
         );
       } else {
-        return _react2.default.createElement(_minimizedSpellDiv2.default, { handleDoubleClick: this.handleDoubleClick, name: this.props.spell.name });
+        return _react2.default.createElement(_minimizedSpellDiv2.default, { onCrossClick: this.removeSpell, handleDoubleClick: this.toggleMinimization, name: this.props.spell.name });
       }
     }
   }]);

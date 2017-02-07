@@ -1,3 +1,11 @@
+:root{
+  --main-color: #f1e7cd;
+  --tint-one: #142a4c;
+  --tint-two: #901a19;
+  --minimized-spell-div-height: 35px;
+  --minimized-spell-div-button-edge: 2px;
+}
+
 body: {
   background-color: red
 }
@@ -16,14 +24,43 @@ body: {
 }
 
 body{
-  background-color: #f1e7cd;
-  color: #142a4c;
+  background-color: var(--main-color);
+  color: var(--tint-one);
 }
 
 button {
-    background-color: #901a19;
-    color: #f1e7cd;
-    border-color: #142a4c;
-    border-radius: 10px;
-    border: 0px solid #000000;
+    background-color: var(--tint-two);
+    color: var(--main-color);
+    border-color: var(--tint-two);
+    border-style: none;
+}
+
+#page-title{
+  background-color: var(--tint-one);
+  color: var(--main-color);
+}
+
+input[type="image"]{
+  background-color: var(--tint-two);
+}
+
+.minimized-spell-div{
+  background-color: var(--tint-one);
+  color: var(--main-color);
+  height: var(--minimized-spell-div-height);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.minimized-spell-div>input[type="image"]{
+  position: absolute;
+  right: var(--minimized-spell-div-button-edge);
+  height: calc(100% - var(--minimized-spell-div-button-edge) - var(--minimized-spell-div-button-edge));
+
+}
+
+.minimized-spell-div>span{
+  font-size: 1.7rem;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 let MinimizedSpellDiv = (props) =>{
   return (
-    <div onDoubleClick = {props.handleDoubleClick}><span>{props.name}</span></div>
+    <div className = "minimized-spell-div" onDoubleClick = {props.handleDoubleClick}><span>{props.name}</span> <input type = "image" onClick = {props.onCrossClick} src= 'images/cross.svg'/></div>
   );
 }
 
