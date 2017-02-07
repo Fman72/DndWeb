@@ -26,7 +26,7 @@ class SearchContainer extends React.Component{
 
     render () {
         return (
-        <div id = 'search-container' className = "col-xs-12 col-sm-3">
+        <div id = 'search-container' className = "col-xs-12 col-md-3">
             <input value = {this.state.currentText} onChange = {this.handleChange} />
             {this.props.currentSpell && <SpellDiv currentSpell = {this.props.currentSpell}/>}
             {this.props.currentSpell && <AddSpellButton currentSpell = {this.props.currentSpell}/>}
