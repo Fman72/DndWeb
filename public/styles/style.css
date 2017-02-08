@@ -19,7 +19,8 @@ body: {
 }
 
 #search-container input[type="text"]{
-  width: 85%;
+  width: 75%;
+  min-width: 140px;
 }
 
 .description-cell{
