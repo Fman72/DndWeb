@@ -26,6 +26,10 @@ var _reactRedux = require("react-redux");
 
 var _spellActions = require("../../actions/spellActions");
 
+var _plusImageButton = require("../presentational/plusImageButton");
+
+var _plusImageButton2 = _interopRequireDefault(_plusImageButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33,9 +37,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import Radium from 'radium';
-// import styles from '../../styles.js';
 
 //Search container.
 var SearchContainer = function (_React$Component) {
@@ -47,6 +48,7 @@ var SearchContainer = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (SearchContainer.__proto__ || Object.getPrototypeOf(SearchContainer)).call(this, props));
 
         _this.handleChange = _this.handleChange.bind(_this);
+        _this.addSpell = _this.addSpell.bind(_this);
         _this.state = { currentText: "" };
         return _this;
     }
@@ -58,19 +60,19 @@ var SearchContainer = function (_React$Component) {
             this.props.dispatch((0, _spellActions.searchSpell)(this.state.currentText));
         }
     }, {
-        key: "handleClick",
-        value: function handleClick(event) {
-            this.props.dispatch(addSpell(this.props.currentSpell));
+        key: "addSpell",
+        value: function addSpell(event) {
+            this.props.dispatch((0, _spellActions.addSpell)(this.props.currentSpell));
         }
     }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                { id: "search-container", className: "col-xs-12 col-md-3" },
-                _react2.default.createElement("input", { value: this.state.currentText, onChange: this.handleChange }),
-                this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { currentSpell: this.props.currentSpell }),
-                this.props.currentSpell && _react2.default.createElement(_addSpellButton2.default, { currentSpell: this.props.currentSpell })
+                { id: "search-container", className: "col-xs-12 col-sm-3" },
+                _react2.default.createElement("input", { type: "text", value: this.state.currentText, onChange: this.handleChange }),
+                this.props.currentSpell && _react2.default.createElement(_plusImageButton2.default, { onPlusClick: this.addSpell }),
+                this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell })
             );
         }
     }]);

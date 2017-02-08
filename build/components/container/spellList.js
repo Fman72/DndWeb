@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _spellListItem = require('./spellListItem');
+var _spellListItemContainer = require('./spellListItemContainer');
 
-var _spellListItem2 = _interopRequireDefault(_spellListItem);
+var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
 var _reactRedux = require('react-redux');
 
@@ -39,11 +39,11 @@ var SpellList = function (_React$Component) {
       if (this.props.spellList) {
         var spellListItems = [];
         for (var i = 0; i < this.props.spellList.length; i++) {
-          spellListItems.push(_react2.default.createElement(_spellListItem2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
+          spellListItems.push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
         }
         return _react2.default.createElement(
           'div',
-          { id: 'spell-list', className: 'col-xs-12 col-md-9' },
+          { id: 'spell-list', className: 'col-xs-12 col-sm-9' },
           spellListItems
         );
       }

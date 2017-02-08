@@ -2,21 +2,24 @@
   --main-color: #f1e7cd;
   --tint-one: #142a4c;
   --tint-two: #901a19;
-  --minimized-spell-div-height: 35px;
-  --minimized-spell-div-button-edge: 2px;
+  --minimized-list-item-height: 30px;
+  --minimized-list-item-button-edge: 2px;
 }
 
 body: {
   background-color: red
 }
 
-#add-spell-button{
-  position: fixed;
-  bottom: 10px;
+.plus-image-button{
+  vertical-align: top;
 }
 
 #search-container span{
   display: block;
+}
+
+#search-container input[type="text"]{
+  width: 85%;
 }
 
 .description-cell{
@@ -44,23 +47,23 @@ input[type="image"]{
   background-color: var(--tint-two);
 }
 
-.minimized-spell-div{
+.minimized-list-item{
   background-color: var(--tint-one);
   color: var(--main-color);
-  height: var(--minimized-spell-div-height);
-  margin-bottom: 5px;
+  height: var(--minimized-list-item-height);
   display: flex;
   align-items: center;
   position: relative;
+  margin-bottom: 5px;
 }
 
-.minimized-spell-div>input[type="image"]{
+.minimized-list-item>input[type="image"]{
   position: absolute;
-  right: var(--minimized-spell-div-button-edge);
-  height: calc(100% - var(--minimized-spell-div-button-edge) - var(--minimized-spell-div-button-edge));
-
+  right: var(--minimized-list-item-button-edge);
+  height: calc(100% - var(--minimized-list-item-button-edge) - var(--minimized-list-item-button-edge));
 }
 
-.minimized-spell-div>span{
+.minimized-list-item>span{
   font-size: 1.7rem;
+  margin-left: 3px;
 }

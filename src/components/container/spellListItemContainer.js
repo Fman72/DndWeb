@@ -1,13 +1,14 @@
 import React from 'react';
 import SpellDiv from '../presentational/spellDiv';
-import MinimizedSpellDiv from '../presentational/minimizedSpellDiv';
+import SpellListItemHeader from '../presentational/spellListItemHeader';
 import {connect} from 'react-redux';
 import {removeSpell} from '../../actions/spellActions';
+import SpellListItem from '../presentational/spellListItem';
 // import Radium from 'radium';
 // import styles from '../../styles';
 
 
-class SpellListItem extends React.Component{
+class SpellListItemContainer extends React.Component{
 
   constructor(props){
     super(props);
@@ -27,19 +28,16 @@ class SpellListItem extends React.Component{
   render() {
     if(!this.state.minimized){
       return (
-        <div onDoubleClick = {this.toggleMinimization}>
-            <SpellDiv currentSpell = {this.props.spell}/>
-            <button onClick = {this.removeSpell}>Remove Spell</button>
-        </div>
+        <SpellListItem onCrossClick = {this.removeSpell} handleDoubleClick = {this.toggleMinimization} spell = {this.props.spell} />
       );
     }
     else{
       return (
-        <MinimizedSpellDiv onCrossClick = {this.removeSpell} handleDoubleClick = {this.toggleMinimization} name = {this.props.spell.name} />
+        <SpellListItemHeader onCrossClick = {this.removeSpell} handleDoubleClick = {this.toggleMinimization} name = {this.props.spell.name} />
       );
     }
   }
 }
 //SpellListItem = Radium(SpellListItem);
 
-export default connect(null)(SpellListItem)
+export default connect(null)(SpellListItemContainer)

@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import SpellDiv from "../presentational/spellDiv";
 import AddSpellButton from "./addSpellButton"
 import {connect} from "react-redux";
-import {searchSpell, changeSearchedSpellText} from "../../actions/spellActions"
-// import Radium from 'radium';
-// import styles from '../../styles.js';
+import {addSpell, searchSpell, changeSearchedSpellText} from "../../actions/spellActions"
+import PlusImageButton from '../presentational/plusImageButton';
 
 //Search container.
 class SearchContainer extends React.Component{
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.addSpell = this.addSpell.bind(this);
         this.state = {currentText: ""};
     }
 
@@ -20,16 +20,16 @@ class SearchContainer extends React.Component{
         this.props.dispatch(searchSpell(this.state.currentText));
     }
 
-    handleClick(event){
+    addSpell(event){
       this.props.dispatch(addSpell(this.props.currentSpell));
     }
 
     render () {
         return (
-        <div id = 'search-container' className = "col-xs-12 col-md-3">
-            <input value = {this.state.currentText} onChange = {this.handleChange} />
-            {this.props.currentSpell && <SpellDiv currentSpell = {this.props.currentSpell}/>}
-            {this.props.currentSpell && <AddSpellButton currentSpell = {this.props.currentSpell}/>}
+        <div id = 'search-container' className = "col-xs-12 col-sm-3">
+            <input type = "text" value = {this.state.currentText} onChange = {this.handleChange} />
+            {this.props.currentSpell && <PlusImageButton onPlusClick = {this.addSpell}/>}
+            {this.props.currentSpell && <SpellDiv spell = {this.props.currentSpell}/>}
         </div>
         );
     }
