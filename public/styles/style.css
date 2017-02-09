@@ -68,3 +68,8 @@ input[type="image"]{
   font-size: 1.7rem;
   margin-left: 3px;
 }
+
+#spell-list{
+  height: calc();
+  overflow-y: scroll;
+}

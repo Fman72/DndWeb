@@ -49,6 +49,7 @@ var SearchContainer = function (_React$Component) {
 
         _this.handleChange = _this.handleChange.bind(_this);
         _this.addSpell = _this.addSpell.bind(_this);
+        _this.addSpellOnEnter = _this.addSpellOnEnter.bind(_this);
         _this.state = { currentText: "" };
         return _this;
     }
@@ -65,12 +66,20 @@ var SearchContainer = function (_React$Component) {
             this.props.dispatch((0, _spellActions.addSpell)(this.props.currentSpell));
         }
     }, {
+        key: "addSpellOnEnter",
+        value: function addSpellOnEnter(event) {
+            var keycode = event.keyCode ? event.keyCode : event.which;
+            if (keycode === 13) {
+                this.addSpell();
+            }
+        }
+    }, {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
                 "div",
                 { id: "search-container", className: "col-xs-12 col-sm-3" },
-                _react2.default.createElement("input", { type: "text", value: this.state.currentText, onChange: this.handleChange }),
+                _react2.default.createElement("input", { type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }),
                 this.props.currentSpell && _react2.default.createElement(_plusImageButton2.default, { onPlusClick: this.addSpell }),
                 this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell })
             );
