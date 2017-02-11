@@ -3,14 +3,15 @@
 
  <g>
   <title>background</title>
-  <rect fill="none" id="canvas_background" height="39" width="39" y="-1" x="-1"/>
-  <g display="none" id="canvasGrid">
-   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" id="svg_2"/>
+  <rect x="-1" y="-1" width="6.19026" height="6.19026" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_2" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
   </g>
  </g>
  <g>
   <title>Layer 1</title>
-  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="29.756851" x2="19.690604" y1="13.182347" x1="3.652009" fill-opacity="null" stroke-opacity="null" stroke-width="4" stroke="#f1e7cd" fill="none"/>
-  <line transform="rotate(90 25.4833927154541,21.33148574829102) " stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="29.61873" x2="33.502691" y1="13.044226" x1="17.464096" fill-opacity="null" stroke-opacity="null" stroke-width="4" stroke="#f1e7cd" fill="none"/>
+  <line fill="none" stroke="#f1e7cd" stroke-width="8" stroke-opacity="null" fill-opacity="null" x1="3.473118" y1="13.182347" x2="19.511713" y2="29.756851" id="svg_1" stroke-linejoin="undefined" stroke-linecap="undefined"/>
+  <line fill="none" stroke="#f1e7cd" stroke-width="8" stroke-opacity="null" fill-opacity="null" x1="17.285205" y1="13.044226" x2="33.3238" y2="29.61873" id="svg_3" stroke-linejoin="undefined" stroke-linecap="undefined" transform="rotate(90 25.304502487182617,21.331478118896488) "/>
+  <rect transform="rotate(45 17.1583194732666,28.249544143676754) " id="svg_4" height="0.626118" width="3.13059" y="27.936491" x="15.593024" fill-opacity="null" stroke-opacity="null" stroke-width="6" stroke="#f1e7cd" fill="none"/>
  </g>
 </svg>
