@@ -19,14 +19,13 @@ var _imageButton2 = _interopRequireDefault(_imageButton);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SpellListItemHeader = function SpellListItemHeader(props) {
-  var style = void 0;
-  console.log("Beofre if");
+  var style = {};
   if (props.isMinimized) {
-    var _style = {
+    style = {
       transform: "rotate(180deg)"
     };
-    console.log(_style.transform);
   }
+  console.log(JSON.stringify(style));
 
   return _react2.default.createElement(
     'div',
@@ -36,7 +35,7 @@ var SpellListItemHeader = function SpellListItemHeader(props) {
       null,
       props.name
     ),
-    _react2.default.createElement(_imageButton2.default, { style: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }),
+    _react2.default.createElement(_imageButton2.default, { css: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }),
     _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'images/cross.svg' })
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 let ImageButton = (props) =>{
   return(
-    <input style = {props.style} className = "image-button" type = "image" onClick = {props.handleClick} src= {props.imageSrc}/>
+    <input style = {props.css} className = "image-button" type = "image" onClick = {props.handleClick} src= {props.imageSrc}/>
   );
 }
 

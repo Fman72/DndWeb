@@ -3,19 +3,18 @@ import CrossImageButton from './crossImageButton';
 import ImageButton from './imageButton';
 
 let SpellListItemHeader = (props) =>{
-  let style;
-  console.log("Beofre if");
+  let style = {};
   if(props.isMinimized){
-    let style = {
+    style = {
       transform: "rotate(180deg)"
-    };
-    console.log(style.transform);
+    }
   }
+  console.log(JSON.stringify(style));
 
   return (
     <div className = "minimized-list-item" onDoubleClick = {props.toggleMinimization}>
       <span>{props.name}</span>
-      <ImageButton style = {style} handleClick = {props.toggleMinimization} imageSrc = "images/down_arrow.svg"/>
+      <ImageButton css = {style} handleClick = {props.toggleMinimization} imageSrc = "images/down_arrow.svg"/>
       <ImageButton handleClick = {props.removeSpell} imageSrc = "images/cross.svg"/>
     </div>
   );

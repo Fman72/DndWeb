@@ -36557,16 +36557,15 @@
 	}
 
 	var SpellListItemHeader = function SpellListItemHeader(props) {
-	  var style = void 0;
-	  console.log("Beofre if");
+	  var style = {};
 	  if (props.isMinimized) {
-	    var _style = {
+	    style = {
 	      transform: "rotate(180deg)"
 	    };
-	    console.log(_style.transform);
 	  }
+	  console.log(JSON.stringify(style));
 
-	  return _react2.default.createElement('div', { className: 'minimized-list-item', onDoubleClick: props.toggleMinimization }, _react2.default.createElement('span', null, props.name), _react2.default.createElement(_imageButton2.default, { style: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }), _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'images/cross.svg' }));
+	  return _react2.default.createElement('div', { className: 'minimized-list-item', onDoubleClick: props.toggleMinimization }, _react2.default.createElement('span', null, props.name), _react2.default.createElement(_imageButton2.default, { css: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }), _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'images/cross.svg' }));
 	};
 
 	SpellListItemHeader.propTypes = {
@@ -36618,7 +36617,7 @@
 	}
 
 	var ImageButton = function ImageButton(props) {
-	  return _react2.default.createElement("input", { style: props.style, className: "image-button", type: "image", onClick: props.handleClick, src: props.imageSrc });
+	  return _react2.default.createElement("input", { style: props.css, className: "image-button", type: "image", onClick: props.handleClick, src: props.imageSrc });
 	};
 
 	exports.default = ImageButton;
