@@ -54,19 +54,19 @@ input[type="image"]{
   height: var(--minimized-list-item-height);
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: flex-end;
   margin-bottom: 5px;
 }
 
 .minimized-list-item>input[type="image"]{
-  position: absolute;
-  right: var(--minimized-list-item-button-edge);
   height: calc(100% - var(--minimized-list-item-button-edge) - var(--minimized-list-item-button-edge));
+  margin: 2px;
 }
 
 .minimized-list-item>span{
   font-size: 1.7rem;
-  margin-left: 3px;
+  margin-right: auto;
+  margin-left: 10px;
 }
 
 #spell-list{

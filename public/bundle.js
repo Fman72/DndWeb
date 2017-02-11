@@ -36459,7 +36459,7 @@
 
 	var _spellActions = __webpack_require__(286);
 
-	var _spellListItem = __webpack_require__(292);
+	var _spellListItem = __webpack_require__(293);
 
 	var _spellListItem2 = _interopRequireDefault(_spellListItem);
 
@@ -36517,9 +36517,9 @@
 	    key: 'render',
 	    value: function render() {
 	      if (!this.state.minimized) {
-	        return _react2.default.createElement(_spellListItem2.default, { onCrossClick: this.removeSpell, handleDoubleClick: this.toggleMinimization, spell: this.props.spell });
+	        return _react2.default.createElement(_spellListItem2.default, { removeSpell: this.removeSpell, toggleMinimization: this.toggleMinimization, spell: this.props.spell });
 	      } else {
-	        return _react2.default.createElement(_spellListItemHeader2.default, { onCrossClick: this.removeSpell, handleDoubleClick: this.toggleMinimization, name: this.props.spell.name });
+	        return _react2.default.createElement(_spellListItemHeader2.default, { isMinimized: true, toggleMinimization: this.toggleMinimization, removeSpell: this.removeSpell, name: this.props.spell.name });
 	      }
 	    }
 	  }]);
@@ -36548,12 +36548,25 @@
 
 	var _crossImageButton2 = _interopRequireDefault(_crossImageButton);
 
+	var _imageButton = __webpack_require__(292);
+
+	var _imageButton2 = _interopRequireDefault(_imageButton);
+
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	var SpellListItemHeader = function SpellListItemHeader(props) {
-	  return _react2.default.createElement('div', { className: 'minimized-list-item', onDoubleClick: props.handleDoubleClick }, _react2.default.createElement('span', null, props.name), _react2.default.createElement(_crossImageButton2.default, { onCrossClick: props.onCrossClick }));
+	  var style = void 0;
+	  console.log("Beofre if");
+	  if (props.isMinimized) {
+	    var _style = {
+	      transform: "rotate(180deg)"
+	    };
+	    console.log(_style.transform);
+	  }
+
+	  return _react2.default.createElement('div', { className: 'minimized-list-item', onDoubleClick: props.toggleMinimization }, _react2.default.createElement('span', null, props.name), _react2.default.createElement(_imageButton2.default, { style: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }), _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'images/cross.svg' }));
 	};
 
 	SpellListItemHeader.propTypes = {
@@ -36566,7 +36579,7 @@
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -36581,13 +36594,37 @@
 	}
 
 	var CrossImageButton = function CrossImageButton(props) {
-	  return _react2.default.createElement('input', { type: 'image', onClick: props.onCrossClick, src: 'images/cross.svg' });
+	  return _react2.default.createElement("input", { className: "cross-image-button", type: "image", onClick: props.onCrossClick, src: "images/cross.svg" });
 	};
 
 	exports.default = CrossImageButton;
 
 /***/ },
 /* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	var ImageButton = function ImageButton(props) {
+	  return _react2.default.createElement("input", { style: props.style, className: "image-button", type: "image", onClick: props.handleClick, src: props.imageSrc });
+	};
+
+	exports.default = ImageButton;
+
+/***/ },
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36617,7 +36654,7 @@
 	}
 
 	var SpellListItem = function SpellListItem(props) {
-	  return _react2.default.createElement('div', { className: 'spell-list-item', onDoubleClick: props.handleDoubleClick }, _react2.default.createElement(_spellListItemHeader2.default, { onCrossClick: props.onCrossClick, name: props.spell.name }), _react2.default.createElement(_spellDiv2.default, { spell: props.spell }));
+	  return _react2.default.createElement('div', { className: 'spell-list-item', onDoubleClick: props.handleDoubleClick }, _react2.default.createElement(_spellListItemHeader2.default, { removeSpell: props.removeSpell, toggleMinimization: props.toggleMinimization, name: props.spell.name }), _react2.default.createElement(_spellDiv2.default, { spell: props.spell }));
 	};
 
 	exports.default = SpellListItem;

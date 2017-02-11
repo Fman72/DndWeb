@@ -6,7 +6,7 @@ import SpellListItemHeader from './spellListItemHeader';
 let SpellListItem = (props) =>{
   return(
     <div className = 'spell-list-item' onDoubleClick = {props.handleDoubleClick}>
-        <SpellListItemHeader onCrossClick = {props.onCrossClick} name = {props.spell.name}/>
+        <SpellListItemHeader removeSpell = {props.removeSpell} toggleMinimization = {props.toggleMinimization} name = {props.spell.name}/>
         <SpellDiv spell = {props.spell}/>
     </div>
   );

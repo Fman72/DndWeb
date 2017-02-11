@@ -8,7 +8,7 @@
     "start": "node build/app.js",
     "buildstart": "npm run build && npm run start"
   },
-  "author": "",
+  "author": "Fraser Kearns",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",

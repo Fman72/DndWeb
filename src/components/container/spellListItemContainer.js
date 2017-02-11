@@ -28,12 +28,12 @@ class SpellListItemContainer extends React.Component{
   render() {
     if(!this.state.minimized){
       return (
-        <SpellListItem onCrossClick = {this.removeSpell} handleDoubleClick = {this.toggleMinimization} spell = {this.props.spell} />
+        <SpellListItem removeSpell = {this.removeSpell} toggleMinimization = {this.toggleMinimization} spell = {this.props.spell} />
       );
     }
     else{
       return (
-        <SpellListItemHeader onCrossClick = {this.removeSpell} handleDoubleClick = {this.toggleMinimization} name = {this.props.spell.name} />
+        <SpellListItemHeader isMinimized = {true} toggleMinimization = {this.toggleMinimization} removeSpell = {this.removeSpell} name = {this.props.spell.name} />
       );
     }
   }

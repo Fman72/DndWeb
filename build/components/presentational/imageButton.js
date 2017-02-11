@@ -10,8 +10,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CrossImageButton = function CrossImageButton(props) {
-  return _react2.default.createElement("input", { className: "cross-image-button", type: "image", onClick: props.onCrossClick, src: "images/cross.svg" });
+var ImageButton = function ImageButton(props) {
+  return _react2.default.createElement("input", { style: props.style, className: "image-button", type: "image", onClick: props.handleClick, src: props.imageSrc });
 };
 
-exports.default = CrossImageButton;
+exports.default = ImageButton;

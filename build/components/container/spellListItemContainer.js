@@ -66,9 +66,9 @@ var SpellListItemContainer = function (_React$Component) {
     key: 'render',
     value: function render() {
       if (!this.state.minimized) {
-        return _react2.default.createElement(_spellListItem2.default, { onCrossClick: this.removeSpell, handleDoubleClick: this.toggleMinimization, spell: this.props.spell });
+        return _react2.default.createElement(_spellListItem2.default, { removeSpell: this.removeSpell, toggleMinimization: this.toggleMinimization, spell: this.props.spell });
       } else {
-        return _react2.default.createElement(_spellListItemHeader2.default, { onCrossClick: this.removeSpell, handleDoubleClick: this.toggleMinimization, name: this.props.spell.name });
+        return _react2.default.createElement(_spellListItemHeader2.default, { isMinimized: true, toggleMinimization: this.toggleMinimization, removeSpell: this.removeSpell, name: this.props.spell.name });
       }
     }
   }]);
