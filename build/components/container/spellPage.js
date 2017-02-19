@@ -20,6 +20,10 @@ var _spellList2 = _interopRequireDefault(_spellList);
 
 var _reactRedux = require('react-redux');
 
+var _FilterSettingsModalContainer = require('./FilterSettingsModalContainer.js');
+
+var _FilterSettingsModalContainer2 = _interopRequireDefault(_FilterSettingsModalContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44,7 +48,8 @@ var SpellPage = function (_React$Component) {
         'div',
         { id: 'spell-page-div' },
         _react2.default.createElement(_searchContainer2.default, null),
-        _react2.default.createElement(_spellList2.default, null)
+        _react2.default.createElement(_spellList2.default, null),
+        _react2.default.createElement(_FilterSettingsModalContainer2.default, null)
       );
     }
   }]);

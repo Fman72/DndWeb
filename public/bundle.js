@@ -21526,7 +21526,7 @@
 
 	var _appRoot2 = _interopRequireDefault(_appRoot);
 
-	var _spellPage = __webpack_require__(281);
+	var _spellPage = __webpack_require__(282);
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
@@ -26596,7 +26596,7 @@
 
 	//App container object.
 	function AppRoot(props) {
-	           return _react2.default.createElement("div", { className: "container-fluid" }, _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("h1", { id: "page-title", className: "col-xs-12" }, "DND 5e Spell List")), _react2.default.createElement("div", { className: "row" }, props.children), _react2.default.createElement("script", { src: "bundle.js" }));
+	           return _react2.default.createElement("div", { className: "container-fluid" }, _react2.default.createElement("div", { className: "row" }, _react2.default.createElement("h1", { id: "page-title", className: "col-xs-12" }, "DND 5e Spell List", _react2.default.createElement("button", { "data-toggle": "modal", "data-target": "#filter-settings-modal-container" }, "Test"))), _react2.default.createElement("div", { className: "row" }, props.children), _react2.default.createElement("script", { src: "bundle.js" }));
 	};
 
 	exports.default = AppRoot;
@@ -28731,7 +28731,7 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _reduxImmutableStateInvariant = __webpack_require__(277);
+	var _reduxImmutableStateInvariant = __webpack_require__(278);
 
 	var _reduxImmutableStateInvariant2 = _interopRequireDefault(_reduxImmutableStateInvariant);
 
@@ -28764,12 +28764,17 @@
 
 	var _spellReducer2 = _interopRequireDefault(_spellReducer);
 
+	var _filterReducer = __webpack_require__(277);
+
+	var _filterReducer2 = _interopRequireDefault(_filterReducer);
+
 	function _interopRequireDefault(obj) {
 		return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	var rootReducer = (0, _redux.combineReducers)({
-		spells: _spellReducer2.default
+		spells: _spellReducer2.default,
+		filters: _filterReducer2.default
 	});
 
 	exports.default = rootReducer;
@@ -35716,6 +35721,46 @@
 
 /***/ },
 /* 277 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	function _defineProperty(obj, key, value) {
+		if (key in obj) {
+			Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+		} else {
+			obj[key] = value;
+		}return obj;
+	}
+
+	function filters() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { filters: {} };
+		var action = arguments[1];
+
+		switch (action.type) {
+			case "ADD_FILTER":
+				var newFilters = Object.assign({}, state.filters, _defineProperty({}, action.filterName, 1));
+				console.log(newFilters);
+				return Object.assign({}, state, { filters: newFilters });
+				break;
+			case "REMOVE_FILTER":
+				var removedFilters = Object.assign({}, state.filters, _defineProperty({}, action.filterName, 0));
+				console.log(removedFilters);
+				return Object.assign({}, state, { filters: newFilters });
+				break;
+			default:
+				return state;
+		}
+	}
+
+	exports.default = filters;
+
+/***/ },
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35731,15 +35776,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _jsonStringifySafe = __webpack_require__(278);
+	var _jsonStringifySafe = __webpack_require__(279);
 
 	var _jsonStringifySafe2 = _interopRequireDefault(_jsonStringifySafe);
 
-	var _isImmutable = __webpack_require__(279);
+	var _isImmutable = __webpack_require__(280);
 
 	var _isImmutable2 = _interopRequireDefault(_isImmutable);
 
-	var _trackForMutations = __webpack_require__(280);
+	var _trackForMutations = __webpack_require__(281);
 
 	var _trackForMutations2 = _interopRequireDefault(_trackForMutations);
 
@@ -35787,7 +35832,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports) {
 
 	exports = module.exports = stringify
@@ -35820,7 +35865,7 @@
 
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35837,7 +35882,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35908,7 +35953,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35933,15 +35978,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _searchContainer = __webpack_require__(282);
+	var _searchContainer = __webpack_require__(283);
 
 	var _searchContainer2 = _interopRequireDefault(_searchContainer);
 
-	var _spellList = __webpack_require__(288);
+	var _spellList = __webpack_require__(289);
 
 	var _spellList2 = _interopRequireDefault(_spellList);
 
 	var _reactRedux = __webpack_require__(235);
+
+	var _FilterSettingsModalContainer = __webpack_require__(295);
+
+	var _FilterSettingsModalContainer2 = _interopRequireDefault(_FilterSettingsModalContainer);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -35977,7 +36026,7 @@
 	  _createClass(SpellPage, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', { id: 'spell-page-div' }, _react2.default.createElement(_searchContainer2.default, null), _react2.default.createElement(_spellList2.default, null));
+	      return _react2.default.createElement('div', { id: 'spell-page-div' }, _react2.default.createElement(_searchContainer2.default, null), _react2.default.createElement(_spellList2.default, null), _react2.default.createElement(_FilterSettingsModalContainer2.default, null));
 	    }
 	  }]);
 
@@ -35991,7 +36040,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellPage);
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36020,19 +36069,19 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _spellDiv = __webpack_require__(283);
+	var _spellDiv = __webpack_require__(284);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _addSpellButton = __webpack_require__(285);
+	var _addSpellButton = __webpack_require__(286);
 
 	var _addSpellButton2 = _interopRequireDefault(_addSpellButton);
 
 	var _reactRedux = __webpack_require__(235);
 
-	var _spellActions = __webpack_require__(286);
+	var _spellActions = __webpack_require__(287);
 
-	var _plusImageButton = __webpack_require__(287);
+	var _plusImageButton = __webpack_require__(288);
 
 	var _plusImageButton2 = _interopRequireDefault(_plusImageButton);
 
@@ -36114,7 +36163,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SearchContainer);
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36127,7 +36176,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _dataRow = __webpack_require__(284);
+	var _dataRow = __webpack_require__(285);
 
 	var _dataRow2 = _interopRequireDefault(_dataRow);
 
@@ -36137,13 +36186,14 @@
 
 	//Contains a spell. Will eventually be able to click attributes to expand them so will need state.
 	function SpellDiv(props) {
-	  return _react2.default.createElement("div", null, _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }), _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }), _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }), _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }), _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }), _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }), _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }), _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }), _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }), _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }), _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual }));
+	  console.log(JSON.stringify(props.filters));
+	  return _react2.default.createElement("div", null, _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }), !props.filters.desc && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }), !props.filters.level && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }), !props.filters.class && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }), !props.filters.range && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }), !props.filters.casting_time && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }), !props.filters.duration && _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }), !props.filters.concentration && _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }), !props.filters.school && _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }), !props.filters.components && _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }), !props.filters.ritual && _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual }));
 	}
 
 	SpellDiv.propTypes = {
 	  spell: _react2.default.PropTypes.shape({
 	    name: _react2.default.PropTypes.string.isRequired,
-	    description: _react2.default.PropTypes.string.isRequired,
+	    description: _react2.default.PropTypes.string,
 	    range: _react2.default.PropTypes.string,
 	    components: _react2.default.PropTypes.string,
 	    ritual: _react2.default.PropTypes.string,
@@ -36156,10 +36206,14 @@
 	  })
 	};
 
+	SpellDiv.defaultProps = {
+	  filters: {}
+	};
+
 	exports.default = SpellDiv;
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36178,7 +36232,7 @@
 
 	//Displays data
 	function DataRow(props) {
-	  return _react2.default.createElement("span", { className: (props.name + "-cell").toLowerCase() }, _react2.default.createElement("b", null, props.name), ": ", props.value, " ", props.addBreak && _react2.default.createElement("br", null));
+	  return props.name && props.value && _react2.default.createElement("span", { className: (props.name + "-cell").toLowerCase() }, _react2.default.createElement("b", null, props.name), ": ", props.value, " ", props.addBreak && _react2.default.createElement("br", null));
 	};
 
 	DataRow.propTypes = {
@@ -36194,7 +36248,7 @@
 	exports.default = DataRow;
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36223,7 +36277,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _spellActions = __webpack_require__(286);
+	var _spellActions = __webpack_require__(287);
 
 	var _reactRedux = __webpack_require__(235);
 
@@ -36285,7 +36339,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddSpellButton);
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36310,7 +36364,7 @@
 	exports.removeSpell = removeSpell;
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36334,7 +36388,7 @@
 	exports.default = PlusImageButton;
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36359,7 +36413,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemContainer = __webpack_require__(289);
+	var _spellListItemContainer = __webpack_require__(290);
 
 	var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
@@ -36422,7 +36476,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellList);
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36447,19 +36501,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellDiv = __webpack_require__(283);
+	var _spellDiv = __webpack_require__(284);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _spellListItemHeader = __webpack_require__(290);
+	var _spellListItemHeader = __webpack_require__(291);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
 	var _reactRedux = __webpack_require__(235);
 
-	var _spellActions = __webpack_require__(286);
+	var _spellActions = __webpack_require__(287);
 
-	var _spellListItem = __webpack_require__(293);
+	var _spellListItem = __webpack_require__(294);
 
 	var _spellListItem2 = _interopRequireDefault(_spellListItem);
 
@@ -36517,7 +36571,7 @@
 	    key: 'render',
 	    value: function render() {
 	      if (!this.state.minimized) {
-	        return _react2.default.createElement(_spellListItem2.default, { removeSpell: this.removeSpell, toggleMinimization: this.toggleMinimization, spell: this.props.spell });
+	        return _react2.default.createElement(_spellListItem2.default, { removeSpell: this.removeSpell, toggleMinimization: this.toggleMinimization, spell: this.props.spell, filters: this.props.filters });
 	      } else {
 	        return _react2.default.createElement(_spellListItemHeader2.default, { isMinimized: true, toggleMinimization: this.toggleMinimization, removeSpell: this.removeSpell, name: this.props.spell.name });
 	      }
@@ -36526,12 +36580,17 @@
 
 	  return SpellListItemContainer;
 	}(_react2.default.Component);
-	//SpellListItem = Radium(SpellListItem);
 
-	exports.default = (0, _reactRedux.connect)(null)(SpellListItemContainer);
+	function mapStateToProps(state, ownProps) {
+	  return {
+	    filters: state.filters.filters
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellListItemContainer);
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36544,11 +36603,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _crossImageButton = __webpack_require__(291);
+	var _crossImageButton = __webpack_require__(292);
 
 	var _crossImageButton2 = _interopRequireDefault(_crossImageButton);
 
-	var _imageButton = __webpack_require__(292);
+	var _imageButton = __webpack_require__(293);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
@@ -36563,7 +36622,6 @@
 	      transform: "rotate(180deg)"
 	    };
 	  }
-	  console.log(JSON.stringify(style));
 
 	  return _react2.default.createElement('div', { className: 'minimized-list-item', onDoubleClick: props.toggleMinimization }, _react2.default.createElement('span', null, props.name), _react2.default.createElement(_imageButton2.default, { css: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }), _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'images/cross.svg' }));
 	};
@@ -36575,7 +36633,7 @@
 	exports.default = SpellListItemHeader;
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36599,7 +36657,7 @@
 	exports.default = CrossImageButton;
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36623,7 +36681,7 @@
 	exports.default = ImageButton;
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36636,15 +36694,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellDiv = __webpack_require__(283);
+	var _spellDiv = __webpack_require__(284);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _crossImageButton = __webpack_require__(291);
+	var _crossImageButton = __webpack_require__(292);
 
 	var _crossImageButton2 = _interopRequireDefault(_crossImageButton);
 
-	var _spellListItemHeader = __webpack_require__(290);
+	var _spellListItemHeader = __webpack_require__(291);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -36653,10 +36711,149 @@
 	}
 
 	var SpellListItem = function SpellListItem(props) {
-	  return _react2.default.createElement('div', { className: 'spell-list-item', onDoubleClick: props.handleDoubleClick }, _react2.default.createElement(_spellListItemHeader2.default, { removeSpell: props.removeSpell, toggleMinimization: props.toggleMinimization, name: props.spell.name }), _react2.default.createElement(_spellDiv2.default, { spell: props.spell }));
+	  return _react2.default.createElement('div', { className: 'spell-list-item', onDoubleClick: props.handleDoubleClick }, _react2.default.createElement(_spellListItemHeader2.default, { removeSpell: props.removeSpell, toggleMinimization: props.toggleMinimization, name: props.spell.name }), _react2.default.createElement(_spellDiv2.default, { spell: props.spell, filters: props.filters }));
 	};
 
 	exports.default = SpellListItem;
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(235);
+
+	var _filterActions = __webpack_require__(296);
+
+	var _filterToggleItem = __webpack_require__(297);
+
+	var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+
+	var FilterSettingsModalContainer = function (_React$Component) {
+	  _inherits(FilterSettingsModalContainer, _React$Component);
+
+	  function FilterSettingsModalContainer(props) {
+	    _classCallCheck(this, FilterSettingsModalContainer);
+
+	    var _this = _possibleConstructorReturn(this, (FilterSettingsModalContainer.__proto__ || Object.getPrototypeOf(FilterSettingsModalContainer)).call(this, props));
+
+	    _this.toggleFilter = _this.toggleFilter.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(FilterSettingsModalContainer, [{
+	    key: 'toggleFilter',
+	    value: function toggleFilter(event) {
+	      if (event.target.checked) {
+	        this.props.dispatch((0, _filterActions.addFilter)(event.target.value));
+	      } else {
+	        this.props.dispatch((0, _filterActions.removeFilter)(event.target.value));
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('div', { className: 'modal', id: 'filter-settings-modal-container' }, _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'desc', name: 'Description' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'level', name: 'Level' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'class', name: 'Class' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'range', name: 'Range' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'casting_time', name: 'Casting Time' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'duration', name: 'Duration' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'concentration', name: 'Concentration' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'school', name: 'School' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'components', name: 'Components' }), _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'ritual', name: 'Ritual' }));
+	    }
+	  }]);
+
+	  return FilterSettingsModalContainer;
+	}(_react2.default.Component);
+
+	function mapStateToProps(state, ownProps) {
+	  return {
+	    filters: state.filters
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(FilterSettingsModalContainer);
+
+/***/ },
+/* 296 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	function addFilter(filterName) {
+		return { type: "ADD_FILTER", filterName: filterName };
+	}
+
+	function removeFilter(filterName) {
+		return { type: "REMOVE_FILTER", filterName: filterName };
+	}
+
+	exports.addFilter = addFilter;
+	exports.removeFilter = removeFilter;
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function FilterToggleItem(props) {
+	  return _react2.default.createElement("div", null, _react2.default.createElement("input", { onClick: props.toggleFilter, type: "checkbox", value: props.value }), props.name);
+	}
+
+	exports.default = FilterToggleItem;
 
 /***/ }
 /******/ ]);

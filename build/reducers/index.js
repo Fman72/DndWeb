@@ -10,10 +10,15 @@ var _spellReducer = require('./spellReducer');
 
 var _spellReducer2 = _interopRequireDefault(_spellReducer);
 
+var _filterReducer = require('./filterReducer');
+
+var _filterReducer2 = _interopRequireDefault(_filterReducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
-	spells: _spellReducer2.default
+	spells: _spellReducer2.default,
+	filters: _filterReducer2.default
 });
 
 exports.default = rootReducer;

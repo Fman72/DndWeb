@@ -25,7 +25,6 @@ var SpellListItemHeader = function SpellListItemHeader(props) {
       transform: "rotate(180deg)"
     };
   }
-  console.log(JSON.stringify(style));
 
   return _react2.default.createElement(
     'div',

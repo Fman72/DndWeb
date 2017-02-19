@@ -3,7 +3,7 @@ import React from "react";
 //Displays data
 function DataRow(props){
       return (
-          <span className = {(props.name + "-cell").toLowerCase()}><b>{props.name}</b>: {props.value} {props.addBreak && <br/>}</span>
+          (props.name && props.value && <span className = {(props.name + "-cell").toLowerCase()}><b>{props.name}</b>: {props.value} {props.addBreak && <br/>}</span>)
       );
 };
 

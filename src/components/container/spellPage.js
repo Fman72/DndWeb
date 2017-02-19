@@ -2,6 +2,7 @@ import React from 'react';
 import SearchContainer from './searchContainer';
 import SpellList from './spellList';
 import {connect} from "react-redux";
+import FilterSettingsModalContainer from './FilterSettingsModalContainer.js';
 
 
 
@@ -17,6 +18,7 @@ class SpellPage extends React.Component
       <div id = "spell-page-div">
         <SearchContainer/>
         <SpellList/>
+        <FilterSettingsModalContainer/>
       </div>
     );
   }

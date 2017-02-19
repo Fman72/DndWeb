@@ -7,7 +7,10 @@ function AppRoot(props){
     return (
 	        <div className = "container-fluid">
             <div className = "row">
-	            <h1 id = "page-title" className = "col-xs-12">DND 5e Spell List</h1>
+	            <h1 id = "page-title" className = "col-xs-12">
+                DND 5e Spell List
+                <button data-toggle = "modal" data-target = "#filter-settings-modal-container">Test</button>
+              </h1>
             </div>
             <div className = "row">
               {props.children}

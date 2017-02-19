@@ -9,8 +9,7 @@ let SpellListItemHeader = (props) =>{
       transform: "rotate(180deg)"
     }
   }
-  console.log(JSON.stringify(style));
-
+  
   return (
     <div className = "minimized-list-item" onDoubleClick = {props.toggleMinimization}>
       <span>{props.name}</span>

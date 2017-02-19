@@ -25,7 +25,12 @@ function AppRoot(props) {
                                  _react2.default.createElement(
                                             "h1",
                                             { id: "page-title", className: "col-xs-12" },
-                                            "DND 5e Spell List"
+                                            "DND 5e Spell List",
+                                            _react2.default.createElement(
+                                                       "button",
+                                                       { "data-toggle": "modal", "data-target": "#filter-settings-modal-container" },
+                                                       "Test"
+                                            )
                                  )
                       ),
                       _react2.default.createElement(

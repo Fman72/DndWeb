@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //Displays data
 function DataRow(props) {
-  return _react2.default.createElement(
+  return props.name && props.value && _react2.default.createElement(
     "span",
     { className: (props.name + "-cell").toLowerCase() },
     _react2.default.createElement(

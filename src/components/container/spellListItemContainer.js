@@ -28,7 +28,7 @@ class SpellListItemContainer extends React.Component{
   render() {
     if(!this.state.minimized){
       return (
-        <SpellListItem removeSpell = {this.removeSpell} toggleMinimization = {this.toggleMinimization} spell = {this.props.spell} />
+        <SpellListItem removeSpell = {this.removeSpell} toggleMinimization = {this.toggleMinimization} spell = {this.props.spell} filters = {this.props.filters}/>
       );
     }
     else{
@@ -38,6 +38,11 @@ class SpellListItemContainer extends React.Component{
     }
   }
 }
-//SpellListItem = Radium(SpellListItem);
 
-export default connect(null)(SpellListItemContainer)
+function mapStateToProps(state, ownProps){
+  return {
+    filters: state.filters.filters
+  };
+}
+
+export default connect(mapStateToProps)(SpellListItemContainer)

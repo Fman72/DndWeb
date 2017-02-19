@@ -66,7 +66,7 @@ var SpellListItemContainer = function (_React$Component) {
     key: 'render',
     value: function render() {
       if (!this.state.minimized) {
-        return _react2.default.createElement(_spellListItem2.default, { removeSpell: this.removeSpell, toggleMinimization: this.toggleMinimization, spell: this.props.spell });
+        return _react2.default.createElement(_spellListItem2.default, { removeSpell: this.removeSpell, toggleMinimization: this.toggleMinimization, spell: this.props.spell, filters: this.props.filters });
       } else {
         return _react2.default.createElement(_spellListItemHeader2.default, { isMinimized: true, toggleMinimization: this.toggleMinimization, removeSpell: this.removeSpell, name: this.props.spell.name });
       }
@@ -75,6 +75,11 @@ var SpellListItemContainer = function (_React$Component) {
 
   return SpellListItemContainer;
 }(_react2.default.Component);
-//SpellListItem = Radium(SpellListItem);
 
-exports.default = (0, _reactRedux.connect)(null)(SpellListItemContainer);
+function mapStateToProps(state, ownProps) {
+  return {
+    filters: state.filters.filters
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellListItemContainer);
