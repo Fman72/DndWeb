@@ -42,13 +42,15 @@ button {
 #page-title{
   background-color: var(--tint-one);
   color: var(--main-color);
+  display: inline;
+  margin-bottom: 5px;
 }
 
 input[type="image"]{
   background-color: var(--tint-two);
 }
 
-.minimized-list-item{
+.list-item-header{
   background-color: var(--tint-one);
   color: var(--main-color);
   height: var(--minimized-list-item-height);
@@ -58,12 +60,12 @@ input[type="image"]{
   margin-bottom: 5px;
 }
 
-.minimized-list-item>input[type="image"]{
+.list-item-header>input[type="image"]{
   height: calc(100% - var(--minimized-list-item-button-edge) - var(--minimized-list-item-button-edge));
   margin: 2px;
 }
 
-.minimized-list-item>span{
+.list-item-header>span{
   font-size: 1.7rem;
   margin-right: auto;
   margin-left: 10px;
@@ -72,4 +74,8 @@ input[type="image"]{
 #spell-list{
   height: calc();
   overflow-y: scroll;
+}
+
+#filter-settings-button{
+  float: left;
 }

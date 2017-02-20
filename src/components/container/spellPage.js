@@ -2,7 +2,9 @@ import React from 'react';
 import SearchContainer from './searchContainer';
 import SpellList from './spellList';
 import {connect} from "react-redux";
-import FilterSettingsModalContainer from './FilterSettingsModalContainer.js';
+import {Grid, Row} from 'react-bootstrap';
+import SpellPageHeaderContainer from './spellPageHeaderContainer';
+import FilterSettingsModalContainer from './filterSettingsModalContainer'
 
 
 
@@ -15,11 +17,15 @@ class SpellPage extends React.Component
   render()
   {
     return (
-      <div id = "spell-page-div">
-        <SearchContainer/>
-        <SpellList/>
+      <Grid fluid>
+        <SpellPageHeaderContainer/>
         <FilterSettingsModalContainer/>
-      </div>
+        <Row id = "spell-page-div">
+          <SearchContainer/>
+          <SpellList/>
+        </Row>
+        <script src="bundle.js"></script>
+      </Grid>
     );
   }
 

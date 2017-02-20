@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,17 +6,31 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require('react-redux');
+var _reactDom = require("react-dom");
 
-var _filterActions = require('../../actions/filterActions');
+var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _filterToggleItem = require('../presentational/filterToggleItem');
+var _reactRedux = require("react-redux");
+
+var _filterActions = require("../../actions/filterActions");
+
+var _filterToggleItem = require("../presentational/filterToggleItem");
 
 var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _imageButton = require("../presentational/imageButton");
+
+var _imageButton2 = _interopRequireDefault(_imageButton);
+
+var _filterSettingsModal = require("../presentational/filterSettingsModal");
+
+var _filterSettingsModal2 = _interopRequireDefault(_filterSettingsModal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,11 +49,12 @@ var FilterSettingsModalContainer = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (FilterSettingsModalContainer.__proto__ || Object.getPrototypeOf(FilterSettingsModalContainer)).call(this, props));
 
     _this.toggleFilter = _this.toggleFilter.bind(_this);
+    _this.showModal = _this.showModal.bind(_this);
     return _this;
   }
 
   _createClass(FilterSettingsModalContainer, [{
-    key: 'toggleFilter',
+    key: "toggleFilter",
     value: function toggleFilter(event) {
       if (event.target.checked) {
         this.props.dispatch((0, _filterActions.addFilter)(event.target.value));
@@ -48,21 +63,17 @@ var FilterSettingsModalContainer = function (_React$Component) {
       }
     }
   }, {
-    key: 'render',
+    key: "showModal",
+    value: function showModal(event) {
+      _reactDom2.default.render(_react2.default.createElement(_filterSettingsModal2.default, { toggleFilter: this.toggleFilter, filterState: this.props.filters }), document.getElementById("modal-mount-node"));
+    }
+  }, {
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        { className: 'modal', id: 'filter-settings-modal-container' },
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'desc', name: 'Description' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'level', name: 'Level' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'class', name: 'Class' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'range', name: 'Range' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'casting_time', name: 'Casting Time' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'duration', name: 'Duration' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'concentration', name: 'Concentration' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'school', name: 'School' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'components', name: 'Components' }),
-        _react2.default.createElement(_filterToggleItem2.default, { toggleFilter: this.toggleFilter, value: 'ritual', name: 'Ritual' })
+        "div",
+        { id: "modal-mount-node" },
+        _react2.default.createElement(_imageButton2.default, { id: "filter-settings-button", imageSrc: "images/cross.svg", handleClick: this.showModal })
       );
     }
   }]);

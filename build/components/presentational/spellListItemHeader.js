@@ -28,7 +28,7 @@ var SpellListItemHeader = function SpellListItemHeader(props) {
 
   return _react2.default.createElement(
     'div',
-    { className: 'minimized-list-item', onDoubleClick: props.toggleMinimization },
+    { className: 'list-item-header', onDoubleClick: props.toggleMinimization },
     _react2.default.createElement(
       'span',
       null,

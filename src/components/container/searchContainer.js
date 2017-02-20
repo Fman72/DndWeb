@@ -5,6 +5,7 @@ import AddSpellButton from "./addSpellButton"
 import {connect} from "react-redux";
 import {addSpell, searchSpell, changeSearchedSpellText} from "../../actions/spellActions"
 import PlusImageButton from '../presentational/plusImageButton';
+import {Col} from 'react-bootstrap';
 
 //Search container.
 class SearchContainer extends React.Component{
@@ -19,6 +20,7 @@ class SearchContainer extends React.Component{
     handleChange(event){
         this.setState({currentText: event.target.value});
         this.props.dispatch(searchSpell(this.state.currentText));
+        console.log("Change");
     }
 
     addSpell(event){
@@ -34,11 +36,11 @@ class SearchContainer extends React.Component{
 
     render () {
         return (
-        <div id = 'search-container' className = "col-xs-12 col-sm-3">
+        <Col id = 'search-container' xs = {12} sm = {3}>
             <input type = "text" onKeyUp = {this.addSpellOnEnter} value = {this.state.currentText} onChange = {this.handleChange} />
             {this.props.currentSpell && <PlusImageButton onPlusClick = {this.addSpell}/>}
             {this.props.currentSpell && <SpellDiv spell = {this.props.currentSpell}/>}
-        </div>
+        </Col>
         );
     }
 }

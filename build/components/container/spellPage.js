@@ -20,9 +20,15 @@ var _spellList2 = _interopRequireDefault(_spellList);
 
 var _reactRedux = require('react-redux');
 
-var _FilterSettingsModalContainer = require('./FilterSettingsModalContainer.js');
+var _reactBootstrap = require('react-bootstrap');
 
-var _FilterSettingsModalContainer2 = _interopRequireDefault(_FilterSettingsModalContainer);
+var _spellPageHeaderContainer = require('./spellPageHeaderContainer');
+
+var _spellPageHeaderContainer2 = _interopRequireDefault(_spellPageHeaderContainer);
+
+var _filterSettingsModalContainer = require('./filterSettingsModalContainer');
+
+var _filterSettingsModalContainer2 = _interopRequireDefault(_filterSettingsModalContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,11 +51,17 @@ var SpellPage = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        { id: 'spell-page-div' },
-        _react2.default.createElement(_searchContainer2.default, null),
-        _react2.default.createElement(_spellList2.default, null),
-        _react2.default.createElement(_FilterSettingsModalContainer2.default, null)
+        _reactBootstrap.Grid,
+        { fluid: true },
+        _react2.default.createElement(_spellPageHeaderContainer2.default, null),
+        _react2.default.createElement(_filterSettingsModalContainer2.default, null),
+        _react2.default.createElement(
+          _reactBootstrap.Row,
+          { id: 'spell-page-div' },
+          _react2.default.createElement(_searchContainer2.default, null),
+          _react2.default.createElement(_spellList2.default, null)
+        ),
+        _react2.default.createElement('script', { src: 'bundle.js' })
       );
     }
   }]);

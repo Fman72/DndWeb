@@ -9,9 +9,9 @@ let SpellListItemHeader = (props) =>{
       transform: "rotate(180deg)"
     }
   }
-  
+
   return (
-    <div className = "minimized-list-item" onDoubleClick = {props.toggleMinimization}>
+    <div className = "list-item-header" onDoubleClick = {props.toggleMinimization}>
       <span>{props.name}</span>
       <ImageButton css = {style} handleClick = {props.toggleMinimization} imageSrc = "images/down_arrow.svg"/>
       <ImageButton handleClick = {props.removeSpell} imageSrc = "images/cross.svg"/>

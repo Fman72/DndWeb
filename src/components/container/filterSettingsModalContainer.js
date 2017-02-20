@@ -1,13 +1,18 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import {connect} from 'react-redux';
 import {addFilter, removeFilter} from '../../actions/filterActions';
 import FilterToggleItem from '../presentational/filterToggleItem';
+import {Modal} from 'react-bootstrap';
+import ImageButton from '../presentational/imageButton';
+import FilterSettingsModal from '../presentational/filterSettingsModal';
 
 class FilterSettingsModalContainer extends React.Component{
 
     constructor(props){
       super(props);
       this.toggleFilter = this.toggleFilter.bind(this);
+      this.showModal = this.showModal.bind(this);
     }
 
     toggleFilter(event){
@@ -19,19 +24,14 @@ class FilterSettingsModalContainer extends React.Component{
       }
     }
 
+    showModal(event){
+      ReactDOM.render(<FilterSettingsModal toggleFilter = {this.toggleFilter} filterState = {this.props.filters}/>, document.getElementById("modal-mount-node"));
+    }
+
     render() {
       return (
-        <div className = "modal" id = "filter-settings-modal-container">
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "desc" name = "Description"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "level" name = "Level"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "class" name = "Class"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "range" name = "Range"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "casting_time" name = "Casting Time"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "duration" name = "Duration"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "concentration" name = "Concentration"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "school" name = "School"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "components" name = "Components"/>
-          <FilterToggleItem toggleFilter = {this.toggleFilter} value = "ritual" name = "Ritual"/>
+        <div id = "modal-mount-node">
+          <ImageButton id = "filter-settings-button" imageSrc = {"images/cross.svg"} handleClick = {this.showModal}/>
         </div>
       );
     }

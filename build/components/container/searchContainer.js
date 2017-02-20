@@ -30,6 +30,8 @@ var _plusImageButton = require("../presentational/plusImageButton");
 
 var _plusImageButton2 = _interopRequireDefault(_plusImageButton);
 
+var _reactBootstrap = require("react-bootstrap");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59,6 +61,7 @@ var SearchContainer = function (_React$Component) {
         value: function handleChange(event) {
             this.setState({ currentText: event.target.value });
             this.props.dispatch((0, _spellActions.searchSpell)(this.state.currentText));
+            console.log("Change");
         }
     }, {
         key: "addSpell",
@@ -77,8 +80,8 @@ var SearchContainer = function (_React$Component) {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { id: "search-container", className: "col-xs-12 col-sm-3" },
+                _reactBootstrap.Col,
+                { id: "search-container", xs: 12, sm: 3 },
                 _react2.default.createElement("input", { type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }),
                 this.props.currentSpell && _react2.default.createElement(_plusImageButton2.default, { onPlusClick: this.addSpell }),
                 this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell })
