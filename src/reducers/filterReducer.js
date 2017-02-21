@@ -1,15 +1,25 @@
-function filters(state = {filters: {}}, action)
+function filters(state = {filters: {desc:true,
+																		level:true,
+																		class:true,
+																		range:true,
+																		casting_time:true,
+																		duration:true,
+																		concentration:true,
+																		school:true,
+																		components:true,
+																		ritual:true}},
+																		action)
 {
 	switch (action.type){
 		case "ADD_FILTER":
-        let newFilters = Object.assign({}, state.filters, {[action.filterName]: 1});
-        console.log(newFilters);
-				return Object.assign({}, state, {filters: newFilters});
+        let addedFilters = Object.assign({}, state.filters, {[action.filterName]: true});
+        console.log("Filter state " + JSON.stringify(addedFilters));
+				return Object.assign({}, state, {filters: addedFilters});
 			break;
 		case "REMOVE_FILTER":
-        let removedFilters = Object.assign({}, state.filters, {[action.filterName]: 0});
-        console.log(removedFilters);
-        return Object.assign({}, state, {filters: newFilters});
+        let removedFilters = Object.assign({}, state.filters, {[action.filterName]: false});
+        console.log("Filter state " + JSON.stringify(removedFilters));
+        return Object.assign({}, state, {filters: removedFilters});
 			break;
 		default:
 			return state;

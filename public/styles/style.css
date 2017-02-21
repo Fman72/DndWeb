@@ -18,6 +18,11 @@ body: {
   display: block;
 }
 
+#search-input{
+  display: flex;
+  align-items: center;
+}
+
 #search-container input[type="text"]{
   width: 75%;
   min-width: 140px;
@@ -42,8 +47,14 @@ button {
 #page-title{
   background-color: var(--tint-one);
   color: var(--main-color);
-  display: inline;
+  display: flex;
+  align-items: center;
   margin-bottom: 5px;
+  justify-content: flex-end;
+}
+
+#page-title input[type="image"]{
+  margin-left: auto;
 }
 
 input[type="image"]{

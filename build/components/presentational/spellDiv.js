@@ -21,16 +21,16 @@ function SpellDiv(props) {
     "div",
     null,
     _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }),
-    !props.filters.desc && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }),
-    !props.filters.level && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }),
-    !props.filters.class && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }),
-    !props.filters.range && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }),
-    !props.filters.casting_time && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }),
-    !props.filters.duration && _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }),
-    !props.filters.concentration && _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }),
-    !props.filters.school && _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }),
-    !props.filters.components && _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }),
-    !props.filters.ritual && _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual })
+    (!props.filters || props.filters.desc) && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }),
+    (!props.filters || props.filters.level) && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }),
+    (!props.filters || props.filters.class) && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }),
+    (!props.filters || props.filters.range) && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }),
+    (!props.filters || props.filters.casting_time) && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }),
+    (!props.filters || props.filters.duration) && _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }),
+    (!props.filters || props.filters.concentration) && _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }),
+    (!props.filters || props.filters.school) && _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }),
+    (!props.filters || props.filters.components) && _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }),
+    (!props.filters || props.filters.ritual) && _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual })
   );
 }
 
@@ -50,8 +50,6 @@ SpellDiv.propTypes = {
   })
 };
 
-SpellDiv.defaultProps = {
-  filters: {}
-};
+SpellDiv.defaultProps = {};
 
 exports.default = SpellDiv;

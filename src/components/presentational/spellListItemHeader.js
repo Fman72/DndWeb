@@ -13,8 +13,8 @@ let SpellListItemHeader = (props) =>{
   return (
     <div className = "list-item-header" onDoubleClick = {props.toggleMinimization}>
       <span>{props.name}</span>
-      <ImageButton css = {style} handleClick = {props.toggleMinimization} imageSrc = "images/down_arrow.svg"/>
-      <ImageButton handleClick = {props.removeSpell} imageSrc = "images/cross.svg"/>
+      <ImageButton css = {style} handleClick = {props.toggleMinimization} imageSrc = "down_arrow"/>
+      <ImageButton handleClick = {props.removeSpell} imageSrc = "cross"/>
     </div>
   );
 }

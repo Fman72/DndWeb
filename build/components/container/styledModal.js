@@ -10,13 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
+var _filterToggleItem = require('../presentational/filterToggleItem');
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _filterSettingsModalContainer = require('./filterSettingsModalContainer');
-
-var _filterSettingsModalContainer2 = _interopRequireDefault(_filterSettingsModalContainer);
+var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
 
 var _reactBootstrap = require('react-bootstrap');
 
@@ -26,8 +22,6 @@ var _imageButton2 = _interopRequireDefault(_imageButton);
 
 var _reactRedux = require('react-redux');
 
-var _modalActions = require('../../actions/modalActions');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36,44 +30,46 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SpellPageHeaderContainer = function (_React$Component) {
-  _inherits(SpellPageHeaderContainer, _React$Component);
+var StyledModal = function (_React$Component) {
+  _inherits(StyledModal, _React$Component);
 
-  function SpellPageHeaderContainer(props) {
-    _classCallCheck(this, SpellPageHeaderContainer);
+  function StyledModal(props) {
+    _classCallCheck(this, StyledModal);
 
-    var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
-
-    _this.showFilterSettingsModal = _this.showFilterSettingsModal.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (StyledModal.__proto__ || Object.getPrototypeOf(StyledModal)).call(this, props));
   }
 
-  _createClass(SpellPageHeaderContainer, [{
-    key: 'showFilterSettingsModal',
-    value: function showFilterSettingsModal() {
-      this.props.dispatch((0, _modalActions.showModal)("filterSettingsModal"));
-    }
-  }, {
+  _createClass(StyledModal, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactBootstrap.Row,
-        null,
+        _reactBootstrap.Modal,
+        { show: this.props.show, onHide: this.props.handleHide },
         _react2.default.createElement(
-          _reactBootstrap.Col,
-          { id: 'page-title', xs: 12 },
+          _reactBootstrap.Modal.Header,
+          { closeButton: true },
           _react2.default.createElement(
-            'h1',
-            { style: { display: "inline", marginRight: "auto" } },
-            'DND 5e Spell List'
+            _reactBootstrap.Modal.Title,
+            null,
+            this.props.modalTitle
           ),
-          _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal })
+          this.props.headerContent
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Modal.Body,
+          null,
+          this.props.bodyContent
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Modal.Footer,
+          null,
+          this.props.footerContent
         )
       );
     }
   }]);
 
-  return SpellPageHeaderContainer;
+  return StyledModal;
 }(_react2.default.Component);
 
-exports.default = (0, _reactRedux.connect)(null)(SpellPageHeaderContainer);
+exports.default = (0, _reactRedux.connect)(null)(StyledModal);

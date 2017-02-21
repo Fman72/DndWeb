@@ -18,10 +18,6 @@ var _spellDiv = require("../presentational/spellDiv");
 
 var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-var _addSpellButton = require("./addSpellButton");
-
-var _addSpellButton2 = _interopRequireDefault(_addSpellButton);
-
 var _reactRedux = require("react-redux");
 
 var _spellActions = require("../../actions/spellActions");
@@ -31,6 +27,10 @@ var _plusImageButton = require("../presentational/plusImageButton");
 var _plusImageButton2 = _interopRequireDefault(_plusImageButton);
 
 var _reactBootstrap = require("react-bootstrap");
+
+var _imageButton = require("../presentational/imageButton");
+
+var _imageButton2 = _interopRequireDefault(_imageButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -82,8 +82,12 @@ var SearchContainer = function (_React$Component) {
             return _react2.default.createElement(
                 _reactBootstrap.Col,
                 { id: "search-container", xs: 12, sm: 3 },
-                _react2.default.createElement("input", { type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }),
-                this.props.currentSpell && _react2.default.createElement(_plusImageButton2.default, { onPlusClick: this.addSpell }),
+                _react2.default.createElement(
+                    "div",
+                    { id: "search-input" },
+                    _react2.default.createElement("input", { type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }),
+                    this.props.currentSpell && _react2.default.createElement(_imageButton2.default, { imageSrc: "plus", handleClick: this.addSpell })
+                ),
                 this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell })
             );
         }

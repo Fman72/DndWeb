@@ -26,14 +26,14 @@ function spells() {
 			if (state.spellList.map(function (spell) {
 				return spell.name;
 			}).indexOf(action.newSpell.name) < 0) {
-				var newSpellList = [].concat(_toConsumableArray(state.spellList), [action.newSpell]);
-				return Object.assign({}, state, { spellList: newSpellList });
+				var addedSpellList = [].concat(_toConsumableArray(state.spellList), [action.newSpell]);
+				return Object.assign({}, state, { spellList: addedSpellList });
 			}
 			return state;
-			break;
+			break;t;
 		case "REMOVE_SPELL":
-			var trimmedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
-			return Object.assign({}, state, { spellList: trimmedSpellList });
+			var removedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
+			return Object.assign({}, state, { spellList: removedSpellList });
 			break;
 		default:
 			return state;

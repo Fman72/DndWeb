@@ -6,16 +6,16 @@ function SpellDiv(props){
       console.log(JSON.stringify(props.filters));
         return (<div>
             <DataRow name = "Name" value = {props.spell.name}/>
-            {!props.filters.desc && <DataRow name = "Description" value = {props.spell.desc}/>}
-            {!props.filters.level && <DataRow name = "Level" value = {props.spell.level}/>}
-            {!props.filters.class && <DataRow name = "Class" value = {props.spell.class}/>}
-            {!props.filters.range && <DataRow name = "Range" value = {props.spell.range}/>}
-            {!props.filters.casting_time && <DataRow name = "Casting Time" value = {props.spell.casting_time}/>}
-            {!props.filters.duration && <DataRow name = "Duration" value = {props.spell.duration}/>}
-            {!props.filters.concentration && <DataRow name = "Concentration" value = {props.spell.concentration}/>}
-            {!props.filters.school && <DataRow name = "School" value = {props.spell.school}/>}
-            {!props.filters.components && <DataRow name = "Components" value = {props.spell.components}/>}
-            {!props.filters.ritual && <DataRow name = "Ritual" value = {props.spell.ritual}/>}
+            {(!props.filters || props.filters.desc) && <DataRow name = "Description" value = {props.spell.desc}/>}
+            {(!props.filters || props.filters.level) && <DataRow name = "Level" value = {props.spell.level}/>}
+            {(!props.filters || props.filters.class) && <DataRow name = "Class" value = {props.spell.class}/>}
+            {(!props.filters || props.filters.range) && <DataRow name = "Range" value = {props.spell.range}/>}
+            {(!props.filters || props.filters.casting_time) && <DataRow name = "Casting Time" value = {props.spell.casting_time}/>}
+            {(!props.filters || props.filters.duration) && <DataRow name = "Duration" value = {props.spell.duration}/>}
+            {(!props.filters || props.filters.concentration) && <DataRow name = "Concentration" value = {props.spell.concentration}/>}
+            {(!props.filters || props.filters.school) && <DataRow name = "School" value = {props.spell.school}/>}
+            {(!props.filters || props.filters.components) && <DataRow name = "Components" value = {props.spell.components}/>}
+            {(!props.filters || props.filters.ritual) && <DataRow name = "Ritual" value = {props.spell.ritual}/>}
         </div>);
 }
 
@@ -36,7 +36,6 @@ SpellDiv.propTypes = {
 }
 
 SpellDiv.defaultProps = {
-  filters: {}
 };
 
 export default SpellDiv;

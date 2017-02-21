@@ -21526,7 +21526,7 @@
 
 	var _appRoot2 = _interopRequireDefault(_appRoot);
 
-	var _spellPage = __webpack_require__(282);
+	var _spellPage = __webpack_require__(283);
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
@@ -28731,7 +28731,7 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _reduxImmutableStateInvariant = __webpack_require__(278);
+	var _reduxImmutableStateInvariant = __webpack_require__(279);
 
 	var _reduxImmutableStateInvariant2 = _interopRequireDefault(_reduxImmutableStateInvariant);
 
@@ -28768,13 +28768,18 @@
 
 	var _filterReducer2 = _interopRequireDefault(_filterReducer);
 
+	var _modalReducer = __webpack_require__(278);
+
+	var _modalReducer2 = _interopRequireDefault(_modalReducer);
+
 	function _interopRequireDefault(obj) {
 		return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	var rootReducer = (0, _redux.combineReducers)({
 		spells: _spellReducer2.default,
-		filters: _filterReducer2.default
+		filters: _filterReducer2.default,
+		modals: _modalReducer2.default
 	});
 
 	exports.default = rootReducer;
@@ -28819,14 +28824,14 @@
 				if (state.spellList.map(function (spell) {
 					return spell.name;
 				}).indexOf(action.newSpell.name) < 0) {
-					var newSpellList = [].concat(_toConsumableArray(state.spellList), [action.newSpell]);
-					return Object.assign({}, state, { spellList: newSpellList });
+					var addedSpellList = [].concat(_toConsumableArray(state.spellList), [action.newSpell]);
+					return Object.assign({}, state, { spellList: addedSpellList });
 				}
 				return state;
-				break;
+				break;t;
 			case "REMOVE_SPELL":
-				var trimmedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
-				return Object.assign({}, state, { spellList: trimmedSpellList });
+				var removedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
+				return Object.assign({}, state, { spellList: removedSpellList });
 				break;
 			default:
 				return state;
@@ -35738,19 +35743,28 @@
 	}
 
 	function filters() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { filters: {} };
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { filters: { desc: true,
+				level: true,
+				class: true,
+				range: true,
+				casting_time: true,
+				duration: true,
+				concentration: true,
+				school: true,
+				components: true,
+				ritual: true } };
 		var action = arguments[1];
 
 		switch (action.type) {
 			case "ADD_FILTER":
-				var newFilters = Object.assign({}, state.filters, _defineProperty({}, action.filterName, 1));
-				console.log(newFilters);
-				return Object.assign({}, state, { filters: newFilters });
+				var addedFilters = Object.assign({}, state.filters, _defineProperty({}, action.filterName, true));
+				console.log("Filter state " + JSON.stringify(addedFilters));
+				return Object.assign({}, state, { filters: addedFilters });
 				break;
 			case "REMOVE_FILTER":
-				var removedFilters = Object.assign({}, state.filters, _defineProperty({}, action.filterName, 0));
-				console.log(removedFilters);
-				return Object.assign({}, state, { filters: newFilters });
+				var removedFilters = Object.assign({}, state.filters, _defineProperty({}, action.filterName, false));
+				console.log("Filter state " + JSON.stringify(removedFilters));
+				return Object.assign({}, state, { filters: removedFilters });
 				break;
 			default:
 				return state;
@@ -35761,6 +35775,46 @@
 
 /***/ },
 /* 278 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	function _defineProperty(obj, key, value) {
+		if (key in obj) {
+			Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+		} else {
+			obj[key] = value;
+		}return obj;
+	}
+
+	function filters() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { modals: {} };
+		var action = arguments[1];
+
+		switch (action.type) {
+			case "SHOW_MODAL":
+				var shownModalState = Object.assign({}, state.modals, _defineProperty({}, action.modalName, true));
+				console.log("Modal state " + JSON.stringify(shownModalState));
+				return Object.assign({}, state, shownModalState);
+				break;
+			case "HIDE_MODAL":
+				var hiddenModalState = Object.assign({}, state.modals, _defineProperty({}, action.modalName, false));
+				console.log("Modal state " + JSON.stringify(hiddenModalState));
+				return Object.assign({}, state, hiddenModalState);
+				break;
+			default:
+				return state;
+		}
+	}
+
+	exports.default = filters;
+
+/***/ },
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35776,15 +35830,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _jsonStringifySafe = __webpack_require__(279);
+	var _jsonStringifySafe = __webpack_require__(280);
 
 	var _jsonStringifySafe2 = _interopRequireDefault(_jsonStringifySafe);
 
-	var _isImmutable = __webpack_require__(280);
+	var _isImmutable = __webpack_require__(281);
 
 	var _isImmutable2 = _interopRequireDefault(_isImmutable);
 
-	var _trackForMutations = __webpack_require__(281);
+	var _trackForMutations = __webpack_require__(282);
 
 	var _trackForMutations2 = _interopRequireDefault(_trackForMutations);
 
@@ -35832,7 +35886,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports) {
 
 	exports = module.exports = stringify
@@ -35865,7 +35919,7 @@
 
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -35882,7 +35936,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -35953,7 +36007,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35978,11 +36032,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _searchContainer = __webpack_require__(283);
+	var _searchContainer = __webpack_require__(284);
 
 	var _searchContainer2 = _interopRequireDefault(_searchContainer);
 
-	var _spellList = __webpack_require__(554);
+	var _spellList = __webpack_require__(555);
 
 	var _spellList2 = _interopRequireDefault(_spellList);
 
@@ -36046,7 +36100,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellPage);
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36075,13 +36129,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _spellDiv = __webpack_require__(284);
+	var _spellDiv = __webpack_require__(285);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
-
-	var _addSpellButton = __webpack_require__(286);
-
-	var _addSpellButton2 = _interopRequireDefault(_addSpellButton);
 
 	var _reactRedux = __webpack_require__(235);
 
@@ -36092,6 +36142,10 @@
 	var _plusImageButton2 = _interopRequireDefault(_plusImageButton);
 
 	var _reactBootstrap = __webpack_require__(289);
+
+	var _imageButton = __webpack_require__(554);
+
+	var _imageButton2 = _interopRequireDefault(_imageButton);
 
 	function _interopRequireDefault(obj) {
 	    return obj && obj.__esModule ? obj : { default: obj };
@@ -36154,7 +36208,7 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return _react2.default.createElement(_reactBootstrap.Col, { id: "search-container", xs: 12, sm: 3 }, _react2.default.createElement("input", { type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }), this.props.currentSpell && _react2.default.createElement(_plusImageButton2.default, { onPlusClick: this.addSpell }), this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell }));
+	            return _react2.default.createElement(_reactBootstrap.Col, { id: "search-container", xs: 12, sm: 3 }, _react2.default.createElement("div", { id: "search-input" }, _react2.default.createElement("input", { type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }), this.props.currentSpell && _react2.default.createElement(_imageButton2.default, { imageSrc: "plus", handleClick: this.addSpell })), this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell }));
 	        }
 	    }]);
 
@@ -36172,7 +36226,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SearchContainer);
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36185,7 +36239,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _dataRow = __webpack_require__(285);
+	var _dataRow = __webpack_require__(286);
 
 	var _dataRow2 = _interopRequireDefault(_dataRow);
 
@@ -36196,7 +36250,7 @@
 	//Contains a spell. Will eventually be able to click attributes to expand them so will need state.
 	function SpellDiv(props) {
 	  console.log(JSON.stringify(props.filters));
-	  return _react2.default.createElement("div", null, _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }), !props.filters.desc && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }), !props.filters.level && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }), !props.filters.class && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }), !props.filters.range && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }), !props.filters.casting_time && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }), !props.filters.duration && _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }), !props.filters.concentration && _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }), !props.filters.school && _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }), !props.filters.components && _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }), !props.filters.ritual && _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual }));
+	  return _react2.default.createElement("div", null, _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }), (!props.filters || props.filters.desc) && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }), (!props.filters || props.filters.level) && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }), (!props.filters || props.filters.class) && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }), (!props.filters || props.filters.range) && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }), (!props.filters || props.filters.casting_time) && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }), (!props.filters || props.filters.duration) && _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }), (!props.filters || props.filters.concentration) && _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }), (!props.filters || props.filters.school) && _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }), (!props.filters || props.filters.components) && _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }), (!props.filters || props.filters.ritual) && _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual }));
 	}
 
 	SpellDiv.propTypes = {
@@ -36215,14 +36269,12 @@
 	  })
 	};
 
-	SpellDiv.defaultProps = {
-	  filters: {}
-	};
+	SpellDiv.defaultProps = {};
 
 	exports.default = SpellDiv;
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36255,97 +36307,6 @@
 	};
 
 	exports.default = DataRow;
-
-/***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () {
-	  function defineProperties(target, props) {
-	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	    }
-	  }return function (Constructor, protoProps, staticProps) {
-	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	  };
-	}();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(32);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _spellActions = __webpack_require__(287);
-
-	var _reactRedux = __webpack_require__(235);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	function _classCallCheck(instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError("Cannot call a class as a function");
-	  }
-	}
-
-	function _possibleConstructorReturn(self, call) {
-	  if (!self) {
-	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
-
-	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== "function" && superClass !== null) {
-	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
-
-	var AddSpellButton = function (_React$Component) {
-	  _inherits(AddSpellButton, _React$Component);
-
-	  function AddSpellButton(props) {
-	    _classCallCheck(this, AddSpellButton);
-
-	    var _this = _possibleConstructorReturn(this, (AddSpellButton.__proto__ || Object.getPrototypeOf(AddSpellButton)).call(this, props));
-
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(AddSpellButton, [{
-	    key: 'handleClick',
-	    value: function handleClick(event) {
-	      this.props.dispatch((0, _spellActions.addSpell)(this.props.currentSpell));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement('button', { id: 'add-spell-button', onClick: this.handleClick }, 'Add Spell');
-	    }
-	  }]);
-
-	  return AddSpellButton;
-	}(_react2.default.Component);
-
-	function mapStateToProps(state, ownProps) {
-	  return {
-	    currentSpell: state.spells.currentSpell
-	  };
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AddSpellButton);
 
 /***/ },
 /* 287 */
@@ -55695,6 +55656,30 @@
 /* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	var ImageButton = function ImageButton(props) {
+	  return _react2.default.createElement("input", { style: props.css, className: "image-button", type: "image", onClick: props.handleClick, src: "images/" + props.imageSrc + ".svg" });
+	};
+
+	exports.default = ImageButton;
+
+/***/ },
+/* 555 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -55717,7 +55702,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemContainer = __webpack_require__(555);
+	var _spellListItemContainer = __webpack_require__(556);
 
 	var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
@@ -55782,7 +55767,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellList);
 
 /***/ },
-/* 555 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55807,11 +55792,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellDiv = __webpack_require__(284);
+	var _spellDiv = __webpack_require__(285);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _spellListItemHeader = __webpack_require__(556);
+	var _spellListItemHeader = __webpack_require__(557);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -55896,7 +55881,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellListItemContainer);
 
 /***/ },
-/* 556 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55909,11 +55894,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _crossImageButton = __webpack_require__(557);
+	var _crossImageButton = __webpack_require__(558);
 
 	var _crossImageButton2 = _interopRequireDefault(_crossImageButton);
 
-	var _imageButton = __webpack_require__(558);
+	var _imageButton = __webpack_require__(554);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
@@ -55929,7 +55914,7 @@
 	    };
 	  }
 
-	  return _react2.default.createElement('div', { className: 'list-item-header', onDoubleClick: props.toggleMinimization }, _react2.default.createElement('span', null, props.name), _react2.default.createElement(_imageButton2.default, { css: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }), _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'images/cross.svg' }));
+	  return _react2.default.createElement('div', { className: 'list-item-header', onDoubleClick: props.toggleMinimization }, _react2.default.createElement('span', null, props.name), _react2.default.createElement(_imageButton2.default, { css: style, handleClick: props.toggleMinimization, imageSrc: 'down_arrow' }), _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'cross' }));
 	};
 
 	SpellListItemHeader.propTypes = {
@@ -55939,7 +55924,7 @@
 	exports.default = SpellListItemHeader;
 
 /***/ },
-/* 557 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55963,30 +55948,6 @@
 	exports.default = CrossImageButton;
 
 /***/ },
-/* 558 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	var ImageButton = function ImageButton(props) {
-	  return _react2.default.createElement("input", { style: props.css, className: "image-button", type: "image", onClick: props.handleClick, src: props.imageSrc });
-	};
-
-	exports.default = ImageButton;
-
-/***/ },
 /* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -56000,15 +55961,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellDiv = __webpack_require__(284);
+	var _spellDiv = __webpack_require__(285);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _crossImageButton = __webpack_require__(557);
+	var _crossImageButton = __webpack_require__(558);
 
 	var _crossImageButton2 = _interopRequireDefault(_crossImageButton);
 
-	var _spellListItemHeader = __webpack_require__(556);
+	var _spellListItemHeader = __webpack_require__(557);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -56058,11 +56019,13 @@
 
 	var _reactBootstrap = __webpack_require__(289);
 
-	var _imageButton = __webpack_require__(558);
+	var _imageButton = __webpack_require__(554);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
 	var _reactRedux = __webpack_require__(235);
+
+	var _modalActions = __webpack_require__(565);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -56092,13 +56055,21 @@
 	  function SpellPageHeaderContainer(props) {
 	    _classCallCheck(this, SpellPageHeaderContainer);
 
-	    return _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
+
+	    _this.showFilterSettingsModal = _this.showFilterSettingsModal.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(SpellPageHeaderContainer, [{
+	    key: 'showFilterSettingsModal',
+	    value: function showFilterSettingsModal() {
+	      this.props.dispatch((0, _modalActions.showModal)("filterSettingsModal"));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_reactBootstrap.Row, null, _react2.default.createElement(_reactBootstrap.Col, { id: 'page-title', xs: 12 }, _react2.default.createElement('h1', { style: { display: "inline" } }, 'DND 5e Spell List')));
+	      return _react2.default.createElement(_reactBootstrap.Row, null, _react2.default.createElement(_reactBootstrap.Col, { id: 'page-title', xs: 12 }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto" } }, 'DND 5e Spell List'), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal })));
 	    }
 	  }]);
 
@@ -56147,13 +56118,15 @@
 
 	var _reactBootstrap = __webpack_require__(289);
 
-	var _imageButton = __webpack_require__(558);
+	var _imageButton = __webpack_require__(554);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
-	var _filterSettingsModal = __webpack_require__(564);
+	var _styledModal = __webpack_require__(564);
 
-	var _filterSettingsModal2 = _interopRequireDefault(_filterSettingsModal);
+	var _styledModal2 = _interopRequireDefault(_styledModal);
+
+	var _modalActions = __webpack_require__(565);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -56186,28 +56159,32 @@
 	    var _this = _possibleConstructorReturn(this, (FilterSettingsModalContainer.__proto__ || Object.getPrototypeOf(FilterSettingsModalContainer)).call(this, props));
 
 	    _this.toggleFilter = _this.toggleFilter.bind(_this);
-	    _this.showModal = _this.showModal.bind(_this);
+	    _this.onHide = _this.onHide.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(FilterSettingsModalContainer, [{
 	    key: "toggleFilter",
 	    value: function toggleFilter(event) {
+	      console.log(event.target.checked);
 	      if (event.target.checked) {
 	        this.props.dispatch((0, _filterActions.addFilter)(event.target.value));
+	        console.log("Added " + event.target.value);
 	      } else {
 	        this.props.dispatch((0, _filterActions.removeFilter)(event.target.value));
 	      }
 	    }
 	  }, {
-	    key: "showModal",
-	    value: function showModal(event) {
-	      _reactDom2.default.render(_react2.default.createElement(_filterSettingsModal2.default, { toggleFilter: this.toggleFilter, filterState: this.props.filters }), document.getElementById("modal-mount-node"));
+	    key: "onHide",
+	    value: function onHide() {
+	      this.props.dispatch((0, _modalActions.hideModal)("filterSettingsModal"));
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement("div", { id: "modal-mount-node" }, _react2.default.createElement(_imageButton2.default, { id: "filter-settings-button", imageSrc: "images/cross.svg", handleClick: this.showModal }));
+	      var modalTitle = "Filter Settings";
+	      var bodyContent = _react2.default.createElement("div", null, _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["desc"], toggleFilter: this.toggleFilter, value: "desc", name: "Description" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["level"], toggleFilter: this.toggleFilter, value: "level", name: "Level" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["class"], toggleFilter: this.toggleFilter, value: "class", name: "Class" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["range"], toggleFilter: this.toggleFilter, value: "range", name: "Range" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["casting_time"], toggleFilter: this.toggleFilter, value: "casting_time", name: "Casting Time" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["duration"], toggleFilter: this.toggleFilter, value: "duration", name: "Duration" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["concentration"], toggleFilter: this.toggleFilter, value: "concentration", name: "Concentration" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["school"], toggleFilter: this.toggleFilter, value: "school", name: "School" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["components"], toggleFilter: this.toggleFilter, value: "components", name: "Components" }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["ritual"], toggleFilter: this.toggleFilter, value: "ritual", name: "Ritual" }));
+	      return _react2.default.createElement(_styledModal2.default, { handleHide: this.onHide, show: this.props.modals.filterSettingsModal, modalTitle: modalTitle, bodyContent: bodyContent });
 	    }
 	  }]);
 
@@ -56216,7 +56193,8 @@
 
 	function mapStateToProps(state, ownProps) {
 	  return {
-	    filters: state.filters
+	    filters: state.filters.filters,
+	    modals: state.modals
 	  };
 	}
 
@@ -56261,11 +56239,7 @@
 	}
 
 	function FilterToggleItem(props) {
-	  var checkValue = "";
-	  if (props.checked) {
-	    checkValue = "checked";
-	  }
-	  return _react2.default.createElement("div", null, _react2.default.createElement("input", { onClick: props.toggleFilter, type: "checkbox", value: props.value, checked: checkValue }), props.name);
+	  return _react2.default.createElement("div", null, _react2.default.createElement("input", { onChange: props.toggleFilter, type: "checkbox", value: props.value, checked: props.isChecked }), props.name);
 	}
 
 	exports.default = FilterToggleItem;
@@ -56276,9 +56250,21 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
 
 	var _react = __webpack_require__(1);
 
@@ -56290,19 +56276,74 @@
 
 	var _reactBootstrap = __webpack_require__(289);
 
-	var _imageButton = __webpack_require__(558);
+	var _imageButton = __webpack_require__(554);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
+
+	var _reactRedux = __webpack_require__(235);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
-	var FilterSettingsModal = function FilterSettingsModal(props) {
-	  return _react2.default.createElement(_reactBootstrap.Modal, null, _react2.default.createElement(_reactBootstrap.Modal.Dialog, null, _react2.default.createElement(_reactBootstrap.Modal.Header, null, _react2.default.createElement(_reactBootstrap.Modal.Title, null, 'Filter Settings')), _react2.default.createElement(_reactBootstrap.Modal.Body, null, _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["desc"], toggleFilter: props.toggleFilter, value: 'desc', name: 'Description' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["level"], toggleFilter: props.toggleFilter, value: 'level', name: 'Level' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["class"], toggleFilter: props.toggleFilter, value: 'class', name: 'Class' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["range"], toggleFilter: props.toggleFilter, value: 'range', name: 'Range' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["casting_time"], toggleFilter: props.toggleFilter, value: 'casting_time', name: 'Casting Time' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["duration"], toggleFilter: props.toggleFilter, value: 'duration', name: 'Duration' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["concentration"], toggleFilter: props.toggleFilter, value: 'concentration', name: 'Concentration' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["school"], toggleFilter: props.toggleFilter, value: 'school', name: 'School' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["components"], toggleFilter: props.toggleFilter, value: 'components', name: 'Components' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: props.filterState["ritual"], toggleFilter: props.toggleFilter, value: 'ritual', name: 'Ritual' })), _react2.default.createElement(_reactBootstrap.Modal.Footer, null, _react2.default.createElement(_imageButton2.default, { imageSrc: "images/cross.svg" }))));
-	};
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
 
-	exports.default = FilterSettingsModal;
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+
+	var StyledModal = function (_React$Component) {
+	  _inherits(StyledModal, _React$Component);
+
+	  function StyledModal(props) {
+	    _classCallCheck(this, StyledModal);
+
+	    return _possibleConstructorReturn(this, (StyledModal.__proto__ || Object.getPrototypeOf(StyledModal)).call(this, props));
+	  }
+
+	  _createClass(StyledModal, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_reactBootstrap.Modal, { show: this.props.show, onHide: this.props.handleHide }, _react2.default.createElement(_reactBootstrap.Modal.Header, { closeButton: true }, _react2.default.createElement(_reactBootstrap.Modal.Title, null, this.props.modalTitle), this.props.headerContent), _react2.default.createElement(_reactBootstrap.Modal.Body, null, this.props.bodyContent), _react2.default.createElement(_reactBootstrap.Modal.Footer, null, this.props.footerContent));
+	    }
+	  }]);
+
+	  return StyledModal;
+	}(_react2.default.Component);
+
+	exports.default = (0, _reactRedux.connect)(null)(StyledModal);
+
+/***/ },
+/* 565 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	function showModal(modalName) {
+		return { type: "SHOW_MODAL", modalName: modalName };
+	}
+
+	function hideModal(modalName) {
+		return { type: "HIDE_MODAL", modalName: modalName };
+	}
+
+	exports.showModal = showModal;
+	exports.hideModal = hideModal;
 
 /***/ }
 /******/ ]);

@@ -34,8 +34,8 @@ var SpellListItemHeader = function SpellListItemHeader(props) {
       null,
       props.name
     ),
-    _react2.default.createElement(_imageButton2.default, { css: style, handleClick: props.toggleMinimization, imageSrc: 'images/down_arrow.svg' }),
-    _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'images/cross.svg' })
+    _react2.default.createElement(_imageButton2.default, { css: style, handleClick: props.toggleMinimization, imageSrc: 'down_arrow' }),
+    _react2.default.createElement(_imageButton2.default, { handleClick: props.removeSpell, imageSrc: 'cross' })
   );
 };
 

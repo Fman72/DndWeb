@@ -4,7 +4,8 @@ module.exports = {
     entry: "./build/index.js",
     output: {
         path: Path.resolve("./public"),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        sourceMapFilename: "bundle.map"
     },
     module: {
         loaders: [

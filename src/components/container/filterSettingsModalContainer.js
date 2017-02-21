@@ -5,41 +5,56 @@ import {addFilter, removeFilter} from '../../actions/filterActions';
 import FilterToggleItem from '../presentational/filterToggleItem';
 import {Modal} from 'react-bootstrap';
 import ImageButton from '../presentational/imageButton';
-import FilterSettingsModal from '../presentational/filterSettingsModal';
+import StyledModal from './styledModal';
+import {showModal, hideModal} from '../../actions/modalActions';
 
 class FilterSettingsModalContainer extends React.Component{
 
     constructor(props){
       super(props);
       this.toggleFilter = this.toggleFilter.bind(this);
-      this.showModal = this.showModal.bind(this);
+      this.onHide = this.onHide.bind(this);
     }
 
     toggleFilter(event){
+      console.log(event.target.checked);
       if(event.target.checked){
         this.props.dispatch(addFilter(event.target.value));
+        console.log("Added " + event.target.value);
       }
       else{
         this.props.dispatch(removeFilter(event.target.value));
       }
     }
 
-    showModal(event){
-      ReactDOM.render(<FilterSettingsModal toggleFilter = {this.toggleFilter} filterState = {this.props.filters}/>, document.getElementById("modal-mount-node"));
+    onHide(){
+      this.props.dispatch(hideModal("filterSettingsModal"));
     }
 
     render() {
-      return (
-        <div id = "modal-mount-node">
-          <ImageButton id = "filter-settings-button" imageSrc = {"images/cross.svg"} handleClick = {this.showModal}/>
-        </div>
-      );
+      let modalTitle = "Filter Settings";
+      let bodyContent = (
+        <div>
+          <FilterToggleItem isChecked = {this.props.filters["desc"]} toggleFilter = {this.toggleFilter} value = "desc" name = "Description"/>
+          <FilterToggleItem isChecked = {this.props.filters["level"]} toggleFilter = {this.toggleFilter} value = "level" name = "Level"/>
+          <FilterToggleItem isChecked = {this.props.filters["class"]} toggleFilter = {this.toggleFilter} value = "class" name = "Class"/>
+          <FilterToggleItem isChecked = {this.props.filters["range"]} toggleFilter = {this.toggleFilter} value = "range" name = "Range"/>
+          <FilterToggleItem isChecked = {this.props.filters["casting_time"]} toggleFilter = {this.toggleFilter} value = "casting_time" name = "Casting Time"/>
+          <FilterToggleItem isChecked = {this.props.filters["duration"]} toggleFilter = {this.toggleFilter} value = "duration" name = "Duration"/>
+          <FilterToggleItem isChecked = {this.props.filters["concentration"]} toggleFilter = {this.toggleFilter} value = "concentration" name = "Concentration"/>
+          <FilterToggleItem isChecked = {this.props.filters["school"]} toggleFilter = {this.toggleFilter} value = "school" name = "School"/>
+          <FilterToggleItem isChecked = {this.props.filters["components"]} toggleFilter = {this.toggleFilter} value = "components" name = "Components"/>
+          <FilterToggleItem isChecked = {this.props.filters["ritual"]} toggleFilter = {this.toggleFilter} value = "ritual" name = "Ritual"/>
+        </div>);
+      return (<StyledModal handleHide = {this.onHide} show = {this.props.modals.filterSettingsModal} modalTitle = {modalTitle} bodyContent = {bodyContent}/>);
     }
+
 }
 
 function mapStateToProps(state, ownProps){
 	return {
-    filters: state.filters
+    filters: state.filters.filters,
+    modals: state.modals
 	}
 }
 

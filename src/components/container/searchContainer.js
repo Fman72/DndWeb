@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SpellDiv from "../presentational/spellDiv";
-import AddSpellButton from "./addSpellButton"
 import {connect} from "react-redux";
 import {addSpell, searchSpell, changeSearchedSpellText} from "../../actions/spellActions"
 import PlusImageButton from '../presentational/plusImageButton';
 import {Col} from 'react-bootstrap';
+import ImageButton from '../presentational/imageButton';
 
 //Search container.
 class SearchContainer extends React.Component{
@@ -37,8 +37,10 @@ class SearchContainer extends React.Component{
     render () {
         return (
         <Col id = 'search-container' xs = {12} sm = {3}>
-            <input type = "text" onKeyUp = {this.addSpellOnEnter} value = {this.state.currentText} onChange = {this.handleChange} />
-            {this.props.currentSpell && <PlusImageButton onPlusClick = {this.addSpell}/>}
+           <div id = 'search-input'>
+              <input type = "text" onKeyUp = {this.addSpellOnEnter} value = {this.state.currentText} onChange = {this.handleChange} />
+              {this.props.currentSpell && <ImageButton imageSrc = {"plus"} handleClick = {this.addSpell}/>}
+            </div>
             {this.props.currentSpell && <SpellDiv spell = {this.props.currentSpell}/>}
         </Col>
         );
