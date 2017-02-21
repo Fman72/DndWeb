@@ -4,8 +4,6 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import {extractWordAtPosition, removeCommandWord} from "./util.js";
-import {searchSpell} from "./spellSearcher.js"
 import Express from "express";
 import Routes from "./routes";
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import SpellDiv from '../presentational/spellDiv';
 import SpellListItemHeader from '../presentational/spellListItemHeader';
 import {connect} from 'react-redux';
 import {removeSpell} from '../../actions/spellActions';
@@ -33,7 +32,7 @@ class SpellListItemContainer extends React.Component{
     }
     else{
       return (
-        <SpellListItemHeader isMinimized = {true} toggleMinimization = {this.toggleMinimization} removeSpell = {this.removeSpell} name = {this.props.spell.name} />
+        <SpellListItemHeader isArrowRotated = {true} toggleMinimization = {this.toggleMinimization} removeSpell = {this.removeSpell} name = {this.props.spell.name} />
       );
     }
   }

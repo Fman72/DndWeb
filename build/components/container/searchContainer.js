@@ -22,10 +22,6 @@ var _reactRedux = require("react-redux");
 
 var _spellActions = require("../../actions/spellActions");
 
-var _plusImageButton = require("../presentational/plusImageButton");
-
-var _plusImageButton2 = _interopRequireDefault(_plusImageButton);
-
 var _reactBootstrap = require("react-bootstrap");
 
 var _imageButton = require("../presentational/imageButton");

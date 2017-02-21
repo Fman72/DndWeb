@@ -8,10 +8,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _crossImageButton = require('./crossImageButton');
-
-var _crossImageButton2 = _interopRequireDefault(_crossImageButton);
-
 var _imageButton = require('./imageButton');
 
 var _imageButton2 = _interopRequireDefault(_imageButton);
@@ -20,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var SpellListItemHeader = function SpellListItemHeader(props) {
   var style = {};
-  if (props.isMinimized) {
+  if (props.isArrowRotated) {
     style = {
       transform: "rotate(180deg)"
     };

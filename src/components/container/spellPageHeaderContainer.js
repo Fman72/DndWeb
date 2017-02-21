@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import FilterSettingsModalContainer from './filterSettingsModalContainer';
 import {Col, Row} from 'react-bootstrap';
 import ImageButton from '../presentational/imageButton';
 import {connect} from 'react-redux';

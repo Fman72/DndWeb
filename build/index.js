@@ -16,8 +16,6 @@ var _configureStore = require("./store/configureStore");
 
 var _reactRedux = require("react-redux");
 
-var _redux = require("redux");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialStore = window.__INITIAL_STORE__;

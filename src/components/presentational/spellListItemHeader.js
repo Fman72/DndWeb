@@ -1,10 +1,9 @@
 import React from 'react';
-import CrossImageButton from './crossImageButton';
 import ImageButton from './imageButton';
 
 let SpellListItemHeader = (props) =>{
   let style = {};
-  if(props.isMinimized){
+  if(props.isArrowRotated){
     style = {
       transform: "rotate(180deg)"
     }

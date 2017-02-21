@@ -50,6 +50,4 @@ SpellDiv.propTypes = {
   })
 };
 
-SpellDiv.defaultProps = {};
-
 exports.default = SpellDiv;

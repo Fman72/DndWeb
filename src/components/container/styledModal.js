@@ -1,7 +1,5 @@
 import React from 'react';
-import FilterToggleItem from "../presentational/filterToggleItem";
 import {Modal} from 'react-bootstrap';
-import ImageButton from '../presentational/imageButton';
 import {connect} from 'react-redux';
 
 class StyledModal extends React.Component {
@@ -13,7 +11,7 @@ class StyledModal extends React.Component {
   render(){
     return (
       <Modal show = {this.props.show} onHide = {this.props.handleHide}>
-          <Modal.Header closeButton> 
+          <Modal.Header closeButton>
             <Modal.Title>{this.props.modalTitle}</Modal.Title>
               {this.props.headerContent}
           </Modal.Header>

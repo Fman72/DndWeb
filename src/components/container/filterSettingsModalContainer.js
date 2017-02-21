@@ -1,12 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import {connect} from 'react-redux';
 import {addFilter, removeFilter} from '../../actions/filterActions';
 import FilterToggleItem from '../presentational/filterToggleItem';
-import {Modal} from 'react-bootstrap';
-import ImageButton from '../presentational/imageButton';
 import StyledModal from './styledModal';
-import {showModal, hideModal} from '../../actions/modalActions';
+import {hideModal} from '../../actions/modalActions';
 
 class FilterSettingsModalContainer extends React.Component{
 

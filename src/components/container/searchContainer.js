@@ -2,8 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SpellDiv from "../presentational/spellDiv";
 import {connect} from "react-redux";
-import {addSpell, searchSpell, changeSearchedSpellText} from "../../actions/spellActions"
-import PlusImageButton from '../presentational/plusImageButton';
+import {addSpell, searchSpell} from "../../actions/spellActions"
 import {Col} from 'react-bootstrap';
 import ImageButton from '../presentational/imageButton';
 

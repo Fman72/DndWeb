@@ -10,10 +10,6 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _util = require("./util.js");
-
-var _spellSearcher = require("./spellSearcher.js");
-
 var _express = require("express");
 
 var _express2 = _interopRequireDefault(_express);

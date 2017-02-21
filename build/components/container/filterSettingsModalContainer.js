@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,33 +6,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require("react-dom");
+var _reactRedux = require('react-redux');
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var _filterActions = require('../../actions/filterActions');
 
-var _reactRedux = require("react-redux");
-
-var _filterActions = require("../../actions/filterActions");
-
-var _filterToggleItem = require("../presentational/filterToggleItem");
+var _filterToggleItem = require('../presentational/filterToggleItem');
 
 var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
 
-var _reactBootstrap = require("react-bootstrap");
-
-var _imageButton = require("../presentational/imageButton");
-
-var _imageButton2 = _interopRequireDefault(_imageButton);
-
-var _styledModal = require("./styledModal");
+var _styledModal = require('./styledModal');
 
 var _styledModal2 = _interopRequireDefault(_styledModal);
 
-var _modalActions = require("../../actions/modalActions");
+var _modalActions = require('../../actions/modalActions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56,7 +46,7 @@ var FilterSettingsModalContainer = function (_React$Component) {
   }
 
   _createClass(FilterSettingsModalContainer, [{
-    key: "toggleFilter",
+    key: 'toggleFilter',
     value: function toggleFilter(event) {
       console.log(event.target.checked);
       if (event.target.checked) {
@@ -67,27 +57,27 @@ var FilterSettingsModalContainer = function (_React$Component) {
       }
     }
   }, {
-    key: "onHide",
+    key: 'onHide',
     value: function onHide() {
       this.props.dispatch((0, _modalActions.hideModal)("filterSettingsModal"));
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       var modalTitle = "Filter Settings";
       var bodyContent = _react2.default.createElement(
-        "div",
+        'div',
         null,
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["desc"], toggleFilter: this.toggleFilter, value: "desc", name: "Description" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["level"], toggleFilter: this.toggleFilter, value: "level", name: "Level" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["class"], toggleFilter: this.toggleFilter, value: "class", name: "Class" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["range"], toggleFilter: this.toggleFilter, value: "range", name: "Range" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["casting_time"], toggleFilter: this.toggleFilter, value: "casting_time", name: "Casting Time" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["duration"], toggleFilter: this.toggleFilter, value: "duration", name: "Duration" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["concentration"], toggleFilter: this.toggleFilter, value: "concentration", name: "Concentration" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["school"], toggleFilter: this.toggleFilter, value: "school", name: "School" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["components"], toggleFilter: this.toggleFilter, value: "components", name: "Components" }),
-        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["ritual"], toggleFilter: this.toggleFilter, value: "ritual", name: "Ritual" })
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["desc"], toggleFilter: this.toggleFilter, value: 'desc', name: 'Description' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["level"], toggleFilter: this.toggleFilter, value: 'level', name: 'Level' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["class"], toggleFilter: this.toggleFilter, value: 'class', name: 'Class' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["range"], toggleFilter: this.toggleFilter, value: 'range', name: 'Range' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["casting_time"], toggleFilter: this.toggleFilter, value: 'casting_time', name: 'Casting Time' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["duration"], toggleFilter: this.toggleFilter, value: 'duration', name: 'Duration' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["concentration"], toggleFilter: this.toggleFilter, value: 'concentration', name: 'Concentration' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["school"], toggleFilter: this.toggleFilter, value: 'school', name: 'School' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["components"], toggleFilter: this.toggleFilter, value: 'components', name: 'Components' }),
+        _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["ritual"], toggleFilter: this.toggleFilter, value: 'ritual', name: 'Ritual' })
       );
       return _react2.default.createElement(_styledModal2.default, { handleHide: this.onHide, show: this.props.modals.filterSettingsModal, modalTitle: modalTitle, bodyContent: bodyContent });
     }

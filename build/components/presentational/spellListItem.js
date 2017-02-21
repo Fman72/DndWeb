@@ -12,10 +12,6 @@ var _spellDiv = require('./spellDiv');
 
 var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-var _crossImageButton = require('./crossImageButton');
-
-var _crossImageButton2 = _interopRequireDefault(_crossImageButton);
-
 var _spellListItemHeader = require('./spellListItemHeader');
 
 var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);

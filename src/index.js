@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import AppRouter from "./router";
 import {configureStore} from "./store/configureStore";
 import {Provider} from "react-redux";
-import {createStore} from "redux";
 
 const initialStore = window.__INITIAL_STORE__;
 

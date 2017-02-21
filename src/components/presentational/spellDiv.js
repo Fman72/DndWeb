@@ -35,7 +35,4 @@ SpellDiv.propTypes = {
   })
 }
 
-SpellDiv.defaultProps = {
-};
-
 export default SpellDiv;

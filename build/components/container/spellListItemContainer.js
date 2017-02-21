@@ -10,10 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _spellDiv = require('../presentational/spellDiv');
-
-var _spellDiv2 = _interopRequireDefault(_spellDiv);
-
 var _spellListItemHeader = require('../presentational/spellListItemHeader');
 
 var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
@@ -68,7 +64,7 @@ var SpellListItemContainer = function (_React$Component) {
       if (!this.state.minimized) {
         return _react2.default.createElement(_spellListItem2.default, { removeSpell: this.removeSpell, toggleMinimization: this.toggleMinimization, spell: this.props.spell, filters: this.props.filters });
       } else {
-        return _react2.default.createElement(_spellListItemHeader2.default, { isMinimized: true, toggleMinimization: this.toggleMinimization, removeSpell: this.removeSpell, name: this.props.spell.name });
+        return _react2.default.createElement(_spellListItemHeader2.default, { isArrowRotated: true, toggleMinimization: this.toggleMinimization, removeSpell: this.removeSpell, name: this.props.spell.name });
       }
     }
   }]);

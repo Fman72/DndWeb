@@ -10,15 +10,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _filterToggleItem = require('../presentational/filterToggleItem');
-
-var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
-
 var _reactBootstrap = require('react-bootstrap');
-
-var _imageButton = require('../presentational/imageButton');
-
-var _imageButton2 = _interopRequireDefault(_imageButton);
 
 var _reactRedux = require('react-redux');
 

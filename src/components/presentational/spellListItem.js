@@ -1,6 +1,5 @@
 import React from 'react';
 import SpellDiv from './spellDiv';
-import CrossImageButton from './crossImageButton';
 import SpellListItemHeader from './spellListItemHeader';
 
 let SpellListItem = (props) =>{

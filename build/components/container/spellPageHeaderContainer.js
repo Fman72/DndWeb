@@ -10,14 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _filterSettingsModalContainer = require('./filterSettingsModalContainer');
-
-var _filterSettingsModalContainer2 = _interopRequireDefault(_filterSettingsModalContainer);
-
 var _reactBootstrap = require('react-bootstrap');
 
 var _imageButton = require('../presentational/imageButton');
