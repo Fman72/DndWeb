@@ -1,6 +1,5 @@
 import React from "react";
 import Express from "express";
-import SpellSearcher from "./spellSearcher";
 import ReactDOMServer from "react-dom/server";
 import AppRouter from "./router";
 

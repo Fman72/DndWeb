@@ -12,10 +12,6 @@ var _express = require("express");
 
 var _express2 = _interopRequireDefault(_express);
 
-var _spellSearcher = require("./spellSearcher");
-
-var _spellSearcher2 = _interopRequireDefault(_spellSearcher);
-
 var _server = require("react-dom/server");
 
 var _server2 = _interopRequireDefault(_server);
