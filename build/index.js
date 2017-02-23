@@ -26,4 +26,4 @@ _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
   { store: store },
   _react2.default.createElement(_router2.default, null)
-), document.body);
+), document.getElementById('page-wrapper'));

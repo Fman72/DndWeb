@@ -8,4 +8,4 @@ const initialStore = window.__INITIAL_STORE__;
 
 const store = configureStore(initialStore);
 
-ReactDOM.render(<Provider store = {store}><AppRouter/></Provider>, document.body);
+ReactDOM.render(<Provider store = {store}><AppRouter/></Provider>, document.getElementById('page-wrapper'));

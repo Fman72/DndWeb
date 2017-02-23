@@ -34,6 +34,24 @@ var unmanagedMarkup = '<meta name="viewport" content="width=device-width, initia
 
 var routes = (0, _reactRouter.createRoutes)((0, _router2.default)());
 
+router.get("/start", function (req, res) {
+    (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
+        if (error) {
+            console.log(error.message);
+            res.status(500).send(error.message);
+        } else if (renderProps) {
+            var content = _server2.default.renderToString(_react2.default.createElement(
+                _reactRedux.Provider,
+                { store: _configureStore.store },
+                _react2.default.createElement(_reactRouter.RouterContext, renderProps)
+            ));
+            res.send(unmanagedMarkup + ("<div id = 'page-wrapper'>" + content + "</div>"));
+        } else {
+            res.status(404).send("Not Found");
+        }
+    });
+});
+
 router.get("/spell", function (req, res) {
     (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
         if (error) {
@@ -45,7 +63,7 @@ router.get("/spell", function (req, res) {
                 { store: _configureStore.store },
                 _react2.default.createElement(_reactRouter.RouterContext, renderProps)
             ));
-            res.send(unmanagedMarkup + content);
+            res.send(unmanagedMarkup + ("<div id = 'page-wrapper'>" + content + "</div>"));
         } else {
             res.status(404).send("Not Found");
         }

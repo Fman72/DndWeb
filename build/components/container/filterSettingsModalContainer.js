@@ -18,7 +18,7 @@ var _filterToggleItem = require('../presentational/filterToggleItem');
 
 var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
 
-var _styledModal = require('./styledModal');
+var _styledModal = require('../presentational/styledModal');
 
 var _styledModal2 = _interopRequireDefault(_styledModal);
 

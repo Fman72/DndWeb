@@ -11,8 +11,6 @@ let searchSpell = function(spellName){
     }
     else{
         let topSpell = results[0];
-        let cleanedDesc = topSpell.desc.replace("<p>", "").replace("</p>", "");
-        topSpell.desc = cleanedDesc;
         console.log(topSpell.name);
         return topSpell;
     }

@@ -90,3 +90,38 @@ input[type="image"]{
 #filter-settings-button{
   float: left;
 }
+
+/*Start Page*/
+
+#start-input {
+    width: 100%;
+    max-width: 230px;
+    font-size: 30px;
+}
+
+.styled-input{
+  background-color: rgba(0, 0, 0, 0);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: var(--tint-one);
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+}
+
+.styled-input:focus{
+  outline: none;
+}
+
+#start-div{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+}

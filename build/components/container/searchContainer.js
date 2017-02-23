@@ -81,7 +81,7 @@ var SearchContainer = function (_React$Component) {
                 _react2.default.createElement(
                     "div",
                     { id: "search-input" },
-                    _react2.default.createElement("input", { type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }),
+                    _react2.default.createElement("input", { className: "styled-input", type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }),
                     this.props.currentSpell && _react2.default.createElement(_imageButton2.default, { imageSrc: "plus", handleClick: this.addSpell })
                 ),
                 this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell })

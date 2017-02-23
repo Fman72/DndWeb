@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from 'react-redux';
 import {addFilter, removeFilter} from '../../actions/filterActions';
 import FilterToggleItem from '../presentational/filterToggleItem';
-import StyledModal from './styledModal';
+import StyledModal from '../presentational/styledModal';
 import {hideModal} from '../../actions/modalActions';
 
 class FilterSettingsModalContainer extends React.Component{

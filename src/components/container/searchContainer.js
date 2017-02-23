@@ -37,7 +37,7 @@ class SearchContainer extends React.Component{
         return (
         <Col id = 'search-container' xs = {12} sm = {3}>
            <div id = 'search-input'>
-              <input type = "text" onKeyUp = {this.addSpellOnEnter} value = {this.state.currentText} onChange = {this.handleChange} />
+              <input className = "styled-input" type = "text" onKeyUp = {this.addSpellOnEnter} value = {this.state.currentText} onChange = {this.handleChange} />
               {this.props.currentSpell && <ImageButton imageSrc = {"plus"} handleClick = {this.addSpell}/>}
             </div>
             {this.props.currentSpell && <SpellDiv spell = {this.props.currentSpell}/>}

@@ -23,8 +23,6 @@ var searchSpell = function searchSpell(spellName) {
         return false;
     } else {
         var topSpell = results[0];
-        var cleanedDesc = topSpell.desc.replace("<p>", "").replace("</p>", "");
-        topSpell.desc = cleanedDesc;
         console.log(topSpell.name);
         return topSpell;
     }
