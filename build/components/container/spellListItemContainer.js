@@ -74,7 +74,7 @@ var SpellListItemContainer = function (_React$Component) {
 
 function mapStateToProps(state, ownProps) {
   return {
-    filters: state.filters.filters
+    filters: state.filters
   };
 }
 

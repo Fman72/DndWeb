@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function filters() {
+function modals() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { modals: {} };
 	var action = arguments[1];
 
@@ -26,4 +26,4 @@ function filters() {
 	}
 }
 
-exports.default = filters;
+exports.default = modals;

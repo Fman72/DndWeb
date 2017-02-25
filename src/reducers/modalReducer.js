@@ -1,4 +1,4 @@
-function filters(state = {modals: {}}, action)
+function modals(state = {modals: {}}, action)
 {
 	switch (action.type){
 		case "SHOW_MODAL":
@@ -16,4 +16,4 @@ function filters(state = {modals: {}}, action)
 	}
 }
 
-export default filters;
+export default modals;

@@ -1,11 +1,12 @@
 import React from "react";
+import {Grid} from 'react-bootstrap';
 
 //App container object.
 function AppRoot(props){
     return (
-        <div>
+        <Grid>
           {props.children}
-        </div>
+        </Grid>
     );
 };
 

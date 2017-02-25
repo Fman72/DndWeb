@@ -10,4 +10,8 @@ function removeSpell(spellIndex){
 	return {type: "REMOVE_SPELL", spellIndex: spellIndex};
 }
 
-export {searchSpell, addSpell, removeSpell};
+function storeSpellBook(user){
+	return {type: "STORE_SPELL_BOOK", user: user};
+}
+
+export {searchSpell, addSpell, removeSpell, storeSpellBook};

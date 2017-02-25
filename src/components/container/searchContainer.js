@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import SpellDiv from "../presentational/spellDiv";
 import {connect} from "react-redux";
 import {addSpell, searchSpell} from "../../actions/spellActions"
-import {Col} from 'react-bootstrap';
 import ImageButton from '../presentational/imageButton';
 
 //Search container.
@@ -35,13 +34,13 @@ class SearchContainer extends React.Component{
 
     render () {
         return (
-        <Col id = 'search-container' xs = {12} sm = {3}>
+        <div>
            <div id = 'search-input'>
               <input className = "styled-input" type = "text" onKeyUp = {this.addSpellOnEnter} value = {this.state.currentText} onChange = {this.handleChange} />
               {this.props.currentSpell && <ImageButton imageSrc = {"plus"} handleClick = {this.addSpell}/>}
             </div>
             {this.props.currentSpell && <SpellDiv spell = {this.props.currentSpell}/>}
-        </Col>
+        </div>
         );
     }
 }

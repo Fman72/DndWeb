@@ -32,15 +32,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var SpellPage = function SpellPage(props) {
   return _react2.default.createElement(
-    _reactBootstrap.Grid,
-    { fluid: true },
-    _react2.default.createElement(_spellPageHeaderContainer2.default, null),
+    'div',
+    null,
+    _react2.default.createElement(
+      _reactBootstrap.Row,
+      null,
+      _react2.default.createElement(
+        _reactBootstrap.Col,
+        { className: 'title-background', xs: 12 },
+        _react2.default.createElement(_spellPageHeaderContainer2.default, null)
+      )
+    ),
     _react2.default.createElement(_filterSettingsModalContainer2.default, null),
     _react2.default.createElement(
       _reactBootstrap.Row,
       { id: 'spell-page-div' },
-      _react2.default.createElement(_searchContainer2.default, null),
-      _react2.default.createElement(_spellList2.default, null)
+      _react2.default.createElement(
+        _reactBootstrap.Col,
+        { id: 'search-container', xs: 12, sm: 3 },
+        _react2.default.createElement(_searchContainer2.default, null)
+      ),
+      _react2.default.createElement(
+        _reactBootstrap.Col,
+        { id: 'spell-list', xs: 12, sm: 9 },
+        _react2.default.createElement(_spellList2.default, null)
+      )
     ),
     _react2.default.createElement('script', { src: 'bundle.js' })
   );

@@ -49,12 +49,16 @@ button {
   color: var(--main-color);
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
   justify-content: flex-end;
 }
 
 #page-title input[type="image"]{
   margin-left: auto;
+}
+
+.title-background{
+  background-color: var(--tint-one);
+  margin-bottom: 5px;
 }
 
 input[type="image"]{
@@ -118,10 +122,14 @@ input[type="image"]{
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 100%;
   justify-content: center;
+}
+
+.scroll-div{
+  -webkit-transition: top 2.5s;
+  transition: top 2.5s;
+  -moz-transition: top 2.5s;
+  position: relative;
+  top: 0px;
 }

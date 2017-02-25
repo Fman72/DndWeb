@@ -15,6 +15,11 @@ function removeSpell(spellIndex) {
 	return { type: "REMOVE_SPELL", spellIndex: spellIndex };
 }
 
+function storeSpellBook(user) {
+	return { type: "STORE_SPELL_BOOK", user: user };
+}
+
 exports.searchSpell = searchSpell;
 exports.addSpell = addSpell;
 exports.removeSpell = removeSpell;
+exports.storeSpellBook = storeSpellBook;

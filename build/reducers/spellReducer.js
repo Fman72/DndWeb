@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _spellSearcher = require("../spellSearcher");
 
+var _databaseConvenienceFunctions = require("../databaseConvenienceFunctions");
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 //Handles SEARCH_SPELL action by finding the correct spell.
@@ -30,11 +32,14 @@ function spells() {
 				return Object.assign({}, state, { spellList: addedSpellList });
 			}
 			return state;
-			break;t;
+			break;
 		case "REMOVE_SPELL":
 			var removedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
 			return Object.assign({}, state, { spellList: removedSpellList });
 			break;
+		case "STORE_SPELL_BOOK":
+			(0, _databaseConvenienceFunctions.storeSpellBook)(state.spellList, action.user);
+			return state;
 		default:
 			return state;
 	}

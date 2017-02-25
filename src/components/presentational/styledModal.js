@@ -5,7 +5,9 @@ let StyledModal = (props) => {
     return (
       <Modal show = {props.show} onHide = {props.handleHide}>
           <Modal.Header closeButton>
-            <Modal.Title>{props.modalTitle}</Modal.Title>
+            <Modal.Title>
+              {props.modalTitle}
+            </Modal.Title>
               {props.headerContent}
           </Modal.Header>
           <Modal.Body>

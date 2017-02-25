@@ -16,8 +16,6 @@ var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
 var _reactRedux = require('react-redux');
 
-var _reactBootstrap = require('react-bootstrap');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44,8 +42,8 @@ var SpellList = function (_React$Component) {
           spellListItems.push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
         }
         return _react2.default.createElement(
-          _reactBootstrap.Col,
-          { id: 'spell-list', xs: 12, sm: 9 },
+          'div',
+          null,
           spellListItems
         );
       }

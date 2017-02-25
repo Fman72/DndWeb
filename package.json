@@ -11,6 +11,7 @@
   "author": "Fraser Kearns",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.20.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "fuse.js": "^2.6.1",

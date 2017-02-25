@@ -22,8 +22,6 @@ var _reactRedux = require("react-redux");
 
 var _spellActions = require("../../actions/spellActions");
 
-var _reactBootstrap = require("react-bootstrap");
-
 var _imageButton = require("../presentational/imageButton");
 
 var _imageButton2 = _interopRequireDefault(_imageButton);
@@ -76,8 +74,8 @@ var SearchContainer = function (_React$Component) {
         key: "render",
         value: function render() {
             return _react2.default.createElement(
-                _reactBootstrap.Col,
-                { id: "search-container", xs: 12, sm: 3 },
+                "div",
+                null,
                 _react2.default.createElement(
                     "div",
                     { id: "search-input" },

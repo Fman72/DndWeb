@@ -18,9 +18,9 @@ var _spellPage = require("./components/presentational/spellPage");
 
 var _spellPage2 = _interopRequireDefault(_spellPage);
 
-var _startPage = require("./components/presentational/startPage");
+var _StartPageContainer = require("./components/container/StartPageContainer");
 
-var _startPage2 = _interopRequireDefault(_startPage);
+var _StartPageContainer2 = _interopRequireDefault(_StartPageContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32,7 +32,7 @@ var AppRouter = function AppRouter() {
 												_reactRouter.Route,
 												{ path: "/", component: _appRoot2.default },
 												_react2.default.createElement(_reactRouter.Route, { path: "spell", component: _spellPage2.default }),
-												_react2.default.createElement(_reactRouter.Route, { path: "start", component: _startPage2.default })
+												_react2.default.createElement(_reactRouter.Route, { path: "start", component: _StartPageContainer2.default })
 								)
 				);
 };

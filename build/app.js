@@ -18,6 +18,10 @@ var _routes = require("./routes");
 
 var _routes2 = _interopRequireDefault(_routes);
 
+var _databaseRoutes = require("./databaseRoutes");
+
+var _databaseRoutes2 = _interopRequireDefault(_databaseRoutes);
+
 var _bodyParser = require("body-parser");
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
@@ -33,6 +37,8 @@ app.use(_bodyParser2.default.urlencoded({ extended: false }));
 app.use(_bodyParser2.default.json());
 
 app.use(_routes2.default);
+
+app.use(_databaseRoutes2.default);
 
 app.use(_express2.default.static("public"));
 

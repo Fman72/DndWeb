@@ -88,7 +88,7 @@ var FilterSettingsModalContainer = function (_React$Component) {
 
 function mapStateToProps(state, ownProps) {
   return {
-    filters: state.filters.filters,
+    filters: state.filters,
     modals: state.modals
   };
 }

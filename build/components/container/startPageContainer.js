@@ -10,15 +10,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _imageButton = require('../presentational/imageButton');
+var _startPage = require('../presentational/startPage.js');
 
-var _imageButton2 = _interopRequireDefault(_imageButton);
+var _startPage2 = _interopRequireDefault(_startPage);
 
 var _reactRedux = require('react-redux');
 
-var _modalActions = require('../../actions/modalActions');
-
-var _spellActions = require('../../actions/spellActions');
+var _userActions = require('../../actions/userActions.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28,54 +26,42 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SpellPageHeaderContainer = function (_React$Component) {
-  _inherits(SpellPageHeaderContainer, _React$Component);
+var StartPageContainer = function (_React$Component) {
+  _inherits(StartPageContainer, _React$Component);
 
-  function SpellPageHeaderContainer(props) {
-    _classCallCheck(this, SpellPageHeaderContainer);
+  function StartPageContainer(props) {
+    _classCallCheck(this, StartPageContainer);
 
-    var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (StartPageContainer.__proto__ || Object.getPrototypeOf(StartPageContainer)).call(this, props));
 
-    _this.showFilterSettingsModal = _this.showFilterSettingsModal.bind(_this);
-    _this.storeSpellBook = _this.storeSpellBook.bind(_this);
+    _this.scrollUp = _this.scrollUp.bind(_this);
+    _this.getRef = _this.getRef.bind(_this);
+    _this.state = {};
     return _this;
   }
 
-  _createClass(SpellPageHeaderContainer, [{
-    key: 'showFilterSettingsModal',
-    value: function showFilterSettingsModal() {
-      this.props.dispatch((0, _modalActions.showModal)("filterSettingsModal"));
+  _createClass(StartPageContainer, [{
+    key: 'scrollUp',
+    value: function scrollUp(event) {
+      var keycode = event.keyCode ? event.keyCode : event.which;
+      if (keycode === 13 && event.target.value != "") {
+        this.setState({ scrollHeight: -this.domNode.clientHeight });
+        this.props.dispatch((0, _userActions.setUser)(event.target.value));
+      }
     }
   }, {
-    key: 'storeSpellBook',
-    value: function storeSpellBook() {
-      this.props.dispatch((0, _spellActions.storeSpellBook)(this.props.user.username));
+    key: 'getRef',
+    value: function getRef(domNode) {
+      this.domNode = domNode;
     }
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { id: 'page-title' },
-        _react2.default.createElement(
-          'h1',
-          { style: { display: "inline", marginRight: "auto" } },
-          'Welcome to the DND 5e Spell List ',
-          this.props.user.username
-        ),
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.storeSpellBook }),
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal })
-      );
+      return _react2.default.createElement(_startPage2.default, { scrollHeight: this.state.scrollHeight, getRef: this.getRef, handleKeyDown: this.scrollUp });
     }
   }]);
 
-  return SpellPageHeaderContainer;
+  return StartPageContainer;
 }(_react2.default.Component);
 
-function mapStateToProps(state, ownProps) {
-  return {
-    user: state.user
-  };
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellPageHeaderContainer);
+exports.default = (0, _reactRedux.connect)(null)(StartPageContainer);
