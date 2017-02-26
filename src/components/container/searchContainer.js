@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SpellDiv from "../presentational/spellDiv";
 import {connect} from "react-redux";
-import {addSpell, searchSpell} from "../../actions/spellActions"
+import {attemptAddSpell, searchSpell} from "../../actions/spellActions"
 import ImageButton from '../presentational/imageButton';
 
 //Search container.
@@ -22,7 +22,7 @@ class SearchContainer extends React.Component{
     }
 
     addSpell(event){
-      this.props.dispatch(addSpell(this.props.currentSpell));
+      this.props.dispatch(attemptAddSpell(this.props.currentSpell));
     }
 
     addSpellOnEnter(event){

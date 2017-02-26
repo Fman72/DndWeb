@@ -9,19 +9,23 @@ let ajaxPost = (url, data) => {
         if (request.status === 200) {
             resolve(request.response);
         } else {
-            reject(new Error(request.statusText));
+            reject(request.statusText);
         }
     };
     request.onerror = function() {
-       reject(new Error("Network error"));
+       reject("Network error");
     };
 
     request.send(JSON.stringify(data));
   });
 }
 
-let storeSpellBook = (spellBook, user) => {
-  return ajaxPost("/storeSpellBook", {spellBook: spellBook, user: user});
+let storeSpellList = (spellList, user) => {
+  return ajaxPost("/storeSpellList", {spellList: spellList, user: user});
 }
 
-export {ajaxPost, storeSpellBook};
+let retrieveSpellList = (user) => {
+  return ajaxPost("/retrieveSpellList", {user: user});
+}
+
+export {ajaxPost, storeSpellList, retrieveSpellList};

@@ -37,7 +37,7 @@ var SpellPageHeaderContainer = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
 
     _this.showFilterSettingsModal = _this.showFilterSettingsModal.bind(_this);
-    _this.storeSpellBook = _this.storeSpellBook.bind(_this);
+    _this.storeSpellList = _this.storeSpellList.bind(_this);
     return _this;
   }
 
@@ -47,9 +47,9 @@ var SpellPageHeaderContainer = function (_React$Component) {
       this.props.dispatch((0, _modalActions.showModal)("filterSettingsModal"));
     }
   }, {
-    key: 'storeSpellBook',
-    value: function storeSpellBook() {
-      this.props.dispatch((0, _spellActions.storeSpellBook)(this.props.user.username));
+    key: 'storeSpellList',
+    value: function storeSpellList() {
+      this.props.dispatch((0, _spellActions.attemptStoreSpellList)(this.props.spells.spellList, this.props.user.username));
     }
   }, {
     key: 'render',
@@ -63,7 +63,7 @@ var SpellPageHeaderContainer = function (_React$Component) {
           'Welcome to the DND 5e Spell List ',
           this.props.user.username
         ),
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.storeSpellBook }),
+        _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.storeSpellList }),
         _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal })
       );
     }
@@ -74,7 +74,8 @@ var SpellPageHeaderContainer = function (_React$Component) {
 
 function mapStateToProps(state, ownProps) {
   return {
-    user: state.user
+    user: state.user,
+    spells: state.spells
   };
 }
 

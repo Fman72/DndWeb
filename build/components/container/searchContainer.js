@@ -60,7 +60,7 @@ var SearchContainer = function (_React$Component) {
     }, {
         key: "addSpell",
         value: function addSpell(event) {
-            this.props.dispatch((0, _spellActions.addSpell)(this.props.currentSpell));
+            this.props.dispatch((0, _spellActions.attemptAddSpell)(this.props.currentSpell));
         }
     }, {
         key: "addSpellOnEnter",

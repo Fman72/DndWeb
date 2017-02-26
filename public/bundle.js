@@ -58,7 +58,7 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _configureStore = __webpack_require__(556);
+	var _configureStore = __webpack_require__(557);
 
 	var _reactRedux = __webpack_require__(501);
 
@@ -21528,7 +21528,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _StartPageContainer = __webpack_require__(552);
+	var _StartPageContainer = __webpack_require__(553);
 
 	var _StartPageContainer2 = _interopRequireDefault(_StartPageContainer);
 
@@ -45918,15 +45918,15 @@
 
 	var _spellPageHeaderContainer2 = _interopRequireDefault(_spellPageHeaderContainer);
 
-	var _filterSettingsModalContainer = __webpack_require__(541);
+	var _filterSettingsModalContainer = __webpack_require__(542);
 
 	var _filterSettingsModalContainer2 = _interopRequireDefault(_filterSettingsModalContainer);
 
-	var _searchContainer = __webpack_require__(545);
+	var _searchContainer = __webpack_require__(546);
 
 	var _searchContainer2 = _interopRequireDefault(_searchContainer);
 
-	var _spellList = __webpack_require__(548);
+	var _spellList = __webpack_require__(549);
 
 	var _spellList2 = _interopRequireDefault(_spellList);
 
@@ -48120,7 +48120,7 @@
 	    var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
 
 	    _this.showFilterSettingsModal = _this.showFilterSettingsModal.bind(_this);
-	    _this.storeSpellBook = _this.storeSpellBook.bind(_this);
+	    _this.storeSpellList = _this.storeSpellList.bind(_this);
 	    return _this;
 	  }
 
@@ -48130,14 +48130,14 @@
 	      this.props.dispatch((0, _modalActions.showModal)("filterSettingsModal"));
 	    }
 	  }, {
-	    key: 'storeSpellBook',
-	    value: function storeSpellBook() {
-	      this.props.dispatch((0, _spellActions.storeSpellBook)(this.props.user.username));
+	    key: 'storeSpellList',
+	    value: function storeSpellList() {
+	      this.props.dispatch((0, _spellActions.attemptStoreSpellList)(this.props.spells.spellList, this.props.user.username));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto" } }, 'Welcome to the DND 5e Spell List ', this.props.user.username), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.storeSpellBook }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal }));
+	      return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto" } }, 'Welcome to the DND 5e Spell List ', this.props.user.username), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.storeSpellList }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal }));
 	    }
 	  }]);
 
@@ -48146,7 +48146,8 @@
 
 	function mapStateToProps(state, ownProps) {
 	  return {
-	    user: state.user
+	    user: state.user,
+	    spells: state.spells
 	  };
 	}
 
@@ -48198,36 +48199,142 @@
 
 /***/ },
 /* 540 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
+	exports.requestRetrieveSpellList = exports.recieveRetrieveSpellList = exports.attemptRetrieveSpellList = exports.attemptStoreSpellList = exports.removeSpell = exports.attemptAddSpell = exports.searchSpell = undefined;
+
+	var _databaseConvenienceFunctions = __webpack_require__(541);
+
 	function searchSpell(spellName) {
-		return { type: "SEARCH_SPELL", spellName: spellName };
+	  return { type: "SEARCH_SPELL", spellName: spellName };
+	}
+
+	function attemptAddSpell(newSpell) {
+	  return function (dispatch, getState) {
+	    var spellList = getState().spells.spellList;
+
+	    if (spellList.map(function (spell) {
+	      return spell.name;
+	    }).indexOf(newSpell.name) < 0) {
+	      dispatch(addSpell(newSpell));
+	    }
+	  };
 	}
 
 	function addSpell(newSpell) {
-		return { type: "ADD_SPELL", newSpell: newSpell };
+	  return { type: "ADD_SPELL", newSpell: newSpell };
 	}
 
 	function removeSpell(spellIndex) {
-		return { type: "REMOVE_SPELL", spellIndex: spellIndex };
+	  return { type: "REMOVE_SPELL", spellIndex: spellIndex };
 	}
 
-	function storeSpellBook(user) {
-		return { type: "STORE_SPELL_BOOK", user: user };
+	function requestRetrieveSpellList(user) {
+	  return { type: "REQUEST_RETRIEVE_SPELL_LIST", user: user };
+	}
+
+	function recieveRetrieveSpellList(user, spellList) {
+	  return { type: "RECIEVE_RETRIEVE_SPELL_LIST", user: user, spellList: spellList };
+	}
+
+	function requestStoreSpellList(user) {
+	  return { type: "REQUEST_STORE_SPELL_LIST", user: user };
+	}
+
+	function recieveStoreSpellList(user) {
+	  return { type: "RECIEVE_STORE_SPELL_LIST", user: user };
+	}
+
+	function attemptStoreSpellList(spellList, user) {
+	  return function (dispatch, getState) {
+	    dispatch(requestStoreSpellList(user));
+	    (0, _databaseConvenienceFunctions.storeSpellList)(spellList, user).then(function (response) {
+	      dispatch(recieveStoreSpellList(user));
+	      console.log(response);
+	    }).catch(function (response) {
+	      console.log(response);
+	    });
+	  };
+	}
+
+	function attemptRetrieveSpellList(user) {
+	  if (user) {
+	    return function (dispatch, getState) {
+	      dispatch(requestRetrieveSpellList(user));
+	      (0, _databaseConvenienceFunctions.retrieveSpellList)(user).then(function (response) {
+	        var spellList = JSON.parse(response).Item.spellList;
+
+	        dispatch(recieveRetrieveSpellList(user, spellList));
+	        console.log(response);
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    };
+	  } else {
+	    console.log("No user");
+	  }
 	}
 
 	exports.searchSpell = searchSpell;
-	exports.addSpell = addSpell;
+	exports.attemptAddSpell = attemptAddSpell;
 	exports.removeSpell = removeSpell;
-	exports.storeSpellBook = storeSpellBook;
+	exports.attemptStoreSpellList = attemptStoreSpellList;
+	exports.attemptRetrieveSpellList = attemptRetrieveSpellList;
+	exports.recieveRetrieveSpellList = recieveRetrieveSpellList;
+	exports.requestRetrieveSpellList = requestRetrieveSpellList;
 
 /***/ },
 /* 541 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.retrieveSpellList = exports.storeSpellList = exports.ajaxPost = undefined;
+
+	var _redux = __webpack_require__(510);
+
+	var ajaxPost = function ajaxPost(url, data) {
+	  return new Promise(function (resolve, reject) {
+	    var request = new XMLHttpRequest();
+	    request.open("POST", url);
+	    request.setRequestHeader("Content-Type", "application/json");
+	    request.onload = function () {
+	      if (request.status === 200) {
+	        resolve(request.response);
+	      } else {
+	        reject(request.statusText);
+	      }
+	    };
+	    request.onerror = function () {
+	      reject("Network error");
+	    };
+
+	    request.send(JSON.stringify(data));
+	  });
+	};
+
+	var storeSpellList = function storeSpellList(spellList, user) {
+	  return ajaxPost("/storeSpellList", { spellList: spellList, user: user });
+	};
+
+	var retrieveSpellList = function retrieveSpellList(user) {
+	  return ajaxPost("/retrieveSpellList", { user: user });
+	};
+
+	exports.ajaxPost = ajaxPost;
+	exports.storeSpellList = storeSpellList;
+	exports.retrieveSpellList = retrieveSpellList;
+
+/***/ },
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48254,13 +48361,13 @@
 
 	var _reactRedux = __webpack_require__(501);
 
-	var _filterActions = __webpack_require__(542);
+	var _filterActions = __webpack_require__(543);
 
-	var _filterToggleItem = __webpack_require__(543);
+	var _filterToggleItem = __webpack_require__(544);
 
 	var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
 
-	var _styledModal = __webpack_require__(544);
+	var _styledModal = __webpack_require__(545);
 
 	var _styledModal2 = _interopRequireDefault(_styledModal);
 
@@ -48339,7 +48446,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(FilterSettingsModalContainer);
 
 /***/ },
-/* 542 */
+/* 543 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -48359,7 +48466,7 @@
 	exports.removeFilter = removeFilter;
 
 /***/ },
-/* 543 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48383,7 +48490,7 @@
 	exports.default = FilterToggleItem;
 
 /***/ },
-/* 544 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48409,7 +48516,7 @@
 	exports.default = StyledModal;
 
 /***/ },
-/* 545 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48438,7 +48545,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _spellDiv = __webpack_require__(546);
+	var _spellDiv = __webpack_require__(547);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
@@ -48498,7 +48605,7 @@
 	    }, {
 	        key: "addSpell",
 	        value: function addSpell(event) {
-	            this.props.dispatch((0, _spellActions.addSpell)(this.props.currentSpell));
+	            this.props.dispatch((0, _spellActions.attemptAddSpell)(this.props.currentSpell));
 	        }
 	    }, {
 	        key: "addSpellOnEnter",
@@ -48529,7 +48636,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SearchContainer);
 
 /***/ },
-/* 546 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48542,7 +48649,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _dataRow = __webpack_require__(547);
+	var _dataRow = __webpack_require__(548);
 
 	var _dataRow2 = _interopRequireDefault(_dataRow);
 
@@ -48575,7 +48682,7 @@
 	exports.default = SpellDiv;
 
 /***/ },
-/* 547 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48610,7 +48717,7 @@
 	exports.default = DataRow;
 
 /***/ },
-/* 548 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48635,7 +48742,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemContainer = __webpack_require__(549);
+	var _spellListItemContainer = __webpack_require__(550);
 
 	var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
@@ -48698,7 +48805,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellList);
 
 /***/ },
-/* 549 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48723,7 +48830,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemHeader = __webpack_require__(550);
+	var _spellListItemHeader = __webpack_require__(551);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -48731,7 +48838,7 @@
 
 	var _spellActions = __webpack_require__(540);
 
-	var _spellListItem = __webpack_require__(551);
+	var _spellListItem = __webpack_require__(552);
 
 	var _spellListItem2 = _interopRequireDefault(_spellListItem);
 
@@ -48808,7 +48915,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellListItemContainer);
 
 /***/ },
-/* 550 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48847,7 +48954,7 @@
 	exports.default = SpellListItemHeader;
 
 /***/ },
-/* 551 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48860,11 +48967,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellDiv = __webpack_require__(546);
+	var _spellDiv = __webpack_require__(547);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _spellListItemHeader = __webpack_require__(550);
+	var _spellListItemHeader = __webpack_require__(551);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -48879,7 +48986,7 @@
 	exports.default = SpellListItem;
 
 /***/ },
-/* 552 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48904,13 +49011,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _startPage = __webpack_require__(553);
+	var _startPage = __webpack_require__(554);
 
 	var _startPage2 = _interopRequireDefault(_startPage);
 
 	var _reactRedux = __webpack_require__(501);
 
-	var _userActions = __webpack_require__(555);
+	var _userActions = __webpack_require__(556);
+
+	var _spellActions = __webpack_require__(540);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -48952,9 +49061,10 @@
 	    key: 'scrollUp',
 	    value: function scrollUp(event) {
 	      var keycode = event.keyCode ? event.keyCode : event.which;
-	      if (keycode === 13 && event.target.value != "") {
+	      if (keycode === 13 && event.target.value) {
 	        this.setState({ scrollHeight: -this.domNode.clientHeight });
 	        this.props.dispatch((0, _userActions.setUser)(event.target.value));
+	        this.props.dispatch((0, _spellActions.attemptRetrieveSpellList)(event.target.value));
 	      }
 	    }
 	  }, {
@@ -48975,7 +49085,7 @@
 	exports.default = (0, _reactRedux.connect)(null)(StartPageContainer);
 
 /***/ },
-/* 553 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48994,7 +49104,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _scrollDiv = __webpack_require__(554);
+	var _scrollDiv = __webpack_require__(555);
 
 	var _scrollDiv2 = _interopRequireDefault(_scrollDiv);
 
@@ -49010,7 +49120,7 @@
 	exports.default = StartPage;
 
 /***/ },
-/* 554 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49041,7 +49151,7 @@
 	exports.default = ScrollDiv;
 
 /***/ },
-/* 555 */
+/* 556 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -49056,7 +49166,7 @@
 	exports.setUser = setUser;
 
 /***/ },
-/* 556 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49068,7 +49178,7 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _index = __webpack_require__(557);
+	var _index = __webpack_require__(558);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -49076,12 +49186,16 @@
 
 	var _reduxImmutableStateInvariant2 = _interopRequireDefault(_reduxImmutableStateInvariant);
 
+	var _reduxThunk = __webpack_require__(570);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
 	function _interopRequireDefault(obj) {
 		return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function configureStore(initialState) {
-		return (0, _redux.createStore)(_index2.default, initialState, (0, _redux.applyMiddleware)((0, _reduxImmutableStateInvariant2.default)()));
+		return (0, _redux.createStore)(_index2.default, initialState, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxImmutableStateInvariant2.default)()));
 	};
 
 	var store = configureStore();
@@ -49090,7 +49204,7 @@
 	exports.configureStore = configureStore;
 
 /***/ },
-/* 557 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49101,7 +49215,7 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _spellReducer = __webpack_require__(558);
+	var _spellReducer = __webpack_require__(559);
 
 	var _spellReducer2 = _interopRequireDefault(_spellReducer);
 
@@ -49131,7 +49245,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 558 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49140,9 +49254,7 @@
 		value: true
 	});
 
-	var _spellSearcher = __webpack_require__(559);
-
-	var _databaseConvenienceFunctions = __webpack_require__(562);
+	var _spellSearcher = __webpack_require__(560);
 
 	function _toConsumableArray(arr) {
 		if (Array.isArray(arr)) {
@@ -49169,21 +49281,18 @@
 				}
 				break;
 			case "ADD_SPELL":
-				if (state.spellList.map(function (spell) {
-					return spell.name;
-				}).indexOf(action.newSpell.name) < 0) {
-					var addedSpellList = [].concat(_toConsumableArray(state.spellList), [action.newSpell]);
-					return Object.assign({}, state, { spellList: addedSpellList });
-				}
+				var addedSpellList = [].concat(_toConsumableArray(state.spellList), [action.newSpell]);
+				return Object.assign({}, state, { spellList: addedSpellList });
 				return state;
 				break;
 			case "REMOVE_SPELL":
 				var removedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
 				return Object.assign({}, state, { spellList: removedSpellList });
 				break;
-			case "STORE_SPELL_BOOK":
-				(0, _databaseConvenienceFunctions.storeSpellBook)(state.spellList, action.user);
-				return state;
+			case "REQUEST_RETRIEVE_SPELL_LIST":
+				return Object.assign({}, state, { isFetchingSpellList: true });
+			case "RECIEVE_RETRIEVE_SPELL_LIST":
+				return Object.assign({}, state, { isFetchingSpellList: false, spellList: action.spellList });
 			default:
 				return state;
 		}
@@ -49192,7 +49301,7 @@
 	exports.default = spells;
 
 /***/ },
-/* 559 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49202,11 +49311,11 @@
 	});
 	exports.searchSpell = undefined;
 
-	var _dndSpellList = __webpack_require__(560);
+	var _dndSpellList = __webpack_require__(561);
 
 	var _dndSpellList2 = _interopRequireDefault(_dndSpellList);
 
-	var _fuse = __webpack_require__(561);
+	var _fuse = __webpack_require__(562);
 
 	var _fuse2 = _interopRequireDefault(_fuse);
 
@@ -49230,7 +49339,7 @@
 	exports.searchSpell = searchSpell;
 
 /***/ },
-/* 560 */
+/* 561 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -55240,7 +55349,7 @@
 	exports.default = jsonSpellData;
 
 /***/ },
-/* 561 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56074,46 +56183,6 @@
 
 
 /***/ },
-/* 562 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.storeSpellBook = exports.ajaxPost = undefined;
-
-	var _redux = __webpack_require__(510);
-
-	var ajaxPost = function ajaxPost(url, data) {
-	  return new Promise(function (resolve, reject) {
-	    var request = new XMLHttpRequest();
-	    request.open("POST", url);
-	    request.setRequestHeader("Content-Type", "application/json");
-	    request.onload = function () {
-	      if (request.status === 200) {
-	        resolve(request.response);
-	      } else {
-	        reject(new Error(request.statusText));
-	      }
-	    };
-	    request.onerror = function () {
-	      reject(new Error("Network error"));
-	    };
-
-	    request.send(JSON.stringify(data));
-	  });
-	};
-
-	var storeSpellBook = function storeSpellBook(spellBook, user) {
-	  return ajaxPost("/storeSpellBook", { spellBook: spellBook, user: user });
-	};
-
-	exports.ajaxPost = ajaxPost;
-	exports.storeSpellBook = storeSpellBook;
-
-/***/ },
 /* 563 */
 /***/ function(module, exports) {
 
@@ -56418,6 +56487,34 @@
 	  return { wasMutated: false };
 	}
 	module.exports = exports["default"];
+
+/***/ },
+/* 570 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch,
+	        getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
+
+	        return next(action);
+	      };
+	    };
+	  };
+	}
+
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+
+	exports['default'] = thunk;
 
 /***/ }
 /******/ ]);

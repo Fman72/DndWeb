@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.storeSpellBook = exports.ajaxPost = undefined;
+exports.retrieveSpellList = exports.storeSpellList = exports.ajaxPost = undefined;
 
 var _redux = require("redux");
 
@@ -16,20 +16,25 @@ var ajaxPost = function ajaxPost(url, data) {
       if (request.status === 200) {
         resolve(request.response);
       } else {
-        reject(new Error(request.statusText));
+        reject(request.statusText);
       }
     };
     request.onerror = function () {
-      reject(new Error("Network error"));
+      reject("Network error");
     };
 
     request.send(JSON.stringify(data));
   });
 };
 
-var storeSpellBook = function storeSpellBook(spellBook, user) {
-  return ajaxPost("/storeSpellBook", { spellBook: spellBook, user: user });
+var storeSpellList = function storeSpellList(spellList, user) {
+  return ajaxPost("/storeSpellList", { spellList: spellList, user: user });
+};
+
+var retrieveSpellList = function retrieveSpellList(user) {
+  return ajaxPost("/retrieveSpellList", { user: user });
 };
 
 exports.ajaxPost = ajaxPost;
-exports.storeSpellBook = storeSpellBook;
+exports.storeSpellList = storeSpellList;
+exports.retrieveSpellList = retrieveSpellList;

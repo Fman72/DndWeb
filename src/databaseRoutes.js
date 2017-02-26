@@ -6,13 +6,12 @@ let documentClient = new AWSSDK.DynamoDB.DocumentClient();
 //documentClient.setEndpoint('http://127.0.0.1:8000');
 let databaseRouter = Express.Router();
 
-databaseRouter.post('/storeSpellBook', (req, res) => {
-  console.log(JSON.stringify(req.body));
+databaseRouter.post('/storeSpellList', (req, res) => {
   let params = {
-    TableName: "SpellBook",
+    TableName: "SpellList",
     Item: {
       user: req.body.user,
-      spellBook: req.body.spellBook
+      spellList: req.body.spellList
     }
   };
   documentClient.put(params, (err, data) => {
@@ -20,14 +19,14 @@ databaseRouter.post('/storeSpellBook', (req, res) => {
       console.log(err);
     }
     else{
-      console.log('DynamoDB response data: ' + data);
+      res.send("Saved your spells g");
     }
   });
 });
 
-databaseRouter.post('/retrieveSpellBook', (req, res) => {
+databaseRouter.post('/retrieveSpellList', (req, res) => {
   let params = {
-    TableName: "SpellBook",
+    TableName: "SpellList",
     Key: {
       user: req.body.user
     }
@@ -37,7 +36,7 @@ databaseRouter.post('/retrieveSpellBook', (req, res) => {
       console.log(err);
     }
     else{
-      console.log(data);
+      res.send(data);
     }
   });
 });

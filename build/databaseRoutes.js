@@ -19,27 +19,26 @@ var documentClient = new _awsSdk2.default.DynamoDB.DocumentClient();
 //documentClient.setEndpoint('http://127.0.0.1:8000');
 var databaseRouter = _express2.default.Router();
 
-databaseRouter.post('/storeSpellBook', function (req, res) {
-  console.log(JSON.stringify(req.body));
+databaseRouter.post('/storeSpellList', function (req, res) {
   var params = {
-    TableName: "SpellBook",
+    TableName: "SpellList",
     Item: {
       user: req.body.user,
-      spellBook: req.body.spellBook
+      spellList: req.body.spellList
     }
   };
   documentClient.put(params, function (err, data) {
     if (err) {
       console.log(err);
     } else {
-      console.log('DynamoDB response data: ' + data);
+      res.send("Saved your spells g");
     }
   });
 });
 
-databaseRouter.post('/retrieveSpellBook', function (req, res) {
+databaseRouter.post('/retrieveSpellList', function (req, res) {
   var params = {
-    TableName: "SpellBook",
+    TableName: "SpellList",
     Key: {
       user: req.body.user
     }
@@ -48,7 +47,7 @@ databaseRouter.post('/retrieveSpellBook', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log(data);
+      res.send(data);
     }
   });
 });
