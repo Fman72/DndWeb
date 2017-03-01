@@ -15,8 +15,11 @@ var _awsSdk2 = _interopRequireDefault(_awsSdk);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (process.env.AWS_ACCESS_KEY_ID) {
+  console.log("LIVE ENV DETECTED");
+  console.log("Access Key ID:" + process.env.AWS_ACCESS_KEY_ID);
   _awsSdk2.default.config.update({ region: 'ap-southeast-2', endpoint: process.env.DYNAMODB_ENDPOINT, accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY });
 } else {
+  console.log("LOCAL ENV DETECTED");
   _awsSdk2.default.config.update({ region: 'ap-southeast-2', endpoint: 'http://localhost:8000' });
 }
 var documentClient = new _awsSdk2.default.DynamoDB.DocumentClient();
