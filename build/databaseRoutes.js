@@ -14,7 +14,7 @@ var _awsSdk2 = _interopRequireDefault(_awsSdk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_awsSdk2.default.config.update({ region: 'ap-southeast-2', endpoint: 'http://localhost:8000' });
+_awsSdk2.default.config.update({ region: 'ap-southeast-2', endpoint: process.env.DYNAMODB_ENDPOINT, accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY });
 var documentClient = new _awsSdk2.default.DynamoDB.DocumentClient();
 //documentClient.setEndpoint('http://127.0.0.1:8000');
 var databaseRouter = _express2.default.Router();

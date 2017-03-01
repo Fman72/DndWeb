@@ -31,10 +31,18 @@ function spells() {
 			var removedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
 			return Object.assign({}, state, { spellList: removedSpellList });
 			break;
+		case "REQUEST_STORE_SPELL_LIST":
+			return Object.assign({}, state, { isStoringSpellList: true });
+			break;
+		case "RECIEVE_STORE_SPELL_LIST":
+			return Object.assign({}, state, { isStoringSpellList: false });
+			break;
 		case "REQUEST_RETRIEVE_SPELL_LIST":
 			return Object.assign({}, state, { isFetchingSpellList: true });
+			break;
 		case "RECIEVE_RETRIEVE_SPELL_LIST":
 			return Object.assign({}, state, { isFetchingSpellList: false, spellList: action.spellList });
+			break;
 		default:
 			return state;
 	}

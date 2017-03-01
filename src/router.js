@@ -3,7 +3,7 @@ import {Router, browserHistory, Route} from "react-router";
 
 import AppRoot from "./components/presentational/appRoot";
 import SpellPage from "./components/presentational/spellPage";
-import StartPageContainer from './components/container/StartPageContainer';
+import StartPageContainer from './components/container/startPageContainer';
 
 var AppRouter = () => {
     return(

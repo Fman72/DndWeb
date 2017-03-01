@@ -54,6 +54,10 @@ var SpellPageHeaderContainer = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var storeButtonImageSrc = "";
+      if (this.props.spells.isStoringSpellList) {
+        storeButtonImageSrc = "loading.gif";
+      }
       return _react2.default.createElement(
         'div',
         { id: 'page-title' },

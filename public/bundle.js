@@ -48137,6 +48137,10 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var storeButtonImageSrc = "";
+	      if (this.props.spells.isStoringSpellList) {
+	        storeButtonImageSrc = "loading.gif";
+	      }
 	      return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto" } }, 'Welcome to the DND 5e Spell List ', this.props.user.username), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.storeSpellList }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal }));
 	    }
 	  }]);
@@ -49292,10 +49296,18 @@
 				var removedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));
 				return Object.assign({}, state, { spellList: removedSpellList });
 				break;
+			case "REQUEST_STORE_SPELL_LIST":
+				return Object.assign({}, state, { isStoringSpellList: true });
+				break;
+			case "RECIEVE_STORE_SPELL_LIST":
+				return Object.assign({}, state, { isStoringSpellList: false });
+				break;
 			case "REQUEST_RETRIEVE_SPELL_LIST":
 				return Object.assign({}, state, { isFetchingSpellList: true });
+				break;
 			case "RECIEVE_RETRIEVE_SPELL_LIST":
 				return Object.assign({}, state, { isFetchingSpellList: false, spellList: action.spellList });
+				break;
 			default:
 				return state;
 		}
