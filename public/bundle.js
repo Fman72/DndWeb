@@ -21528,16 +21528,16 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _StartPageContainer = __webpack_require__(553);
+	var _startPageContainer = __webpack_require__(553);
 
-	var _StartPageContainer2 = _interopRequireDefault(_StartPageContainer);
+	var _startPageContainer2 = _interopRequireDefault(_startPageContainer);
 
 	function _interopRequireDefault(obj) {
 					return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	var AppRouter = function AppRouter() {
-					return _react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory }, _react2.default.createElement(_reactRouter.Route, { path: "/", component: _appRoot2.default }, _react2.default.createElement(_reactRouter.Route, { path: "spell", component: _spellPage2.default }), _react2.default.createElement(_reactRouter.Route, { path: "start", component: _StartPageContainer2.default })));
+					return _react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory }, _react2.default.createElement(_reactRouter.Route, { path: "/", component: _appRoot2.default }, _react2.default.createElement(_reactRouter.Route, { path: "spell", component: _spellPage2.default }), _react2.default.createElement(_reactRouter.Route, { path: "start", component: _startPageContainer2.default })));
 	};
 
 	exports.default = AppRouter;
