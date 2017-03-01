@@ -20,13 +20,17 @@ class SpellList extends React.Component
                 {spellListItems}
               </div>);
     }
+    else if(this.props.isFetchingSpellList){
+      return (<img id = "loading-image" height = "50" width = "50" src = "images/loading.gif"/>);
+    }
     return null;
   }
 }
 
 function mapStateToProps(state, ownProps){
   return {
-    spellList: state.spells.spellList
+    spellList: state.spells.spellList,
+    isFetchingSpellList: state.spells.isFetchingSpellList
   };
 }
 

@@ -133,3 +133,8 @@ input[type="image"]{
   position: relative;
   top: 0px;
 }
+
+#loading-image{
+  display: block;
+  margin: auto;
+}

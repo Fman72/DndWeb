@@ -1,7 +1,8 @@
 import Express from 'express';
 import AWSSDK from 'aws-sdk';
 
-AWSSDK.config.update({region: 'ap-southeast-2', endpoint: 'http://localhost:8000'});
+
+AWSSDK.config.update({region: 'ap-southeast-2', endpoint: process.env.DYNAMO_DB_ENDPOINT accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
 let documentClient = new AWSSDK.DynamoDB.DocumentClient();
 //documentClient.setEndpoint('http://127.0.0.1:8000');
 let databaseRouter = Express.Router();

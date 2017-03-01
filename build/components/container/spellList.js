@@ -46,6 +46,8 @@ var SpellList = function (_React$Component) {
           null,
           spellListItems
         );
+      } else if (this.props.isFetchingSpellList) {
+        return _react2.default.createElement('img', { id: 'loading-image', height: '50', width: '50', src: 'images/loading.gif' });
       }
       return null;
     }
@@ -56,7 +58,8 @@ var SpellList = function (_React$Component) {
 
 function mapStateToProps(state, ownProps) {
   return {
-    spellList: state.spells.spellList
+    spellList: state.spells.spellList,
+    isFetchingSpellList: state.spells.isFetchingSpellList
   };
 }
 

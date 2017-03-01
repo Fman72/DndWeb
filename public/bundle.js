@@ -48788,6 +48788,8 @@
 	          spellListItems.push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
 	        }
 	        return _react2.default.createElement('div', null, spellListItems);
+	      } else if (this.props.isFetchingSpellList) {
+	        return _react2.default.createElement('img', { id: 'loading-image', height: '50', width: '50', src: 'images/loading.gif' });
 	      }
 	      return null;
 	    }
@@ -48798,7 +48800,8 @@
 
 	function mapStateToProps(state, ownProps) {
 	  return {
-	    spellList: state.spells.spellList
+	    spellList: state.spells.spellList,
+	    isFetchingSpellList: state.spells.isFetchingSpellList
 	  };
 	}
 
