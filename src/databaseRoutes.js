@@ -2,10 +2,9 @@ import Express from 'express';
 import AWSSDK from 'aws-sdk';
 
 
-if(process.env.AWS_ACCESS_KEY_ID){
+if(process.env.DYNAMODB_ENDPOINT){
   console.log("LIVE ENV DETECTED");
-  console.log("Access Key ID:" + process.env.AWS_ACCESS_KEY_ID);
-  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: process.env.DYNAMODB_ENDPOINT, accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
+  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: process.env.DYNAMODB_ENDPOINT}); //, accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
 }
 else{
   console.log("LOCAL ENV DETECTED");
