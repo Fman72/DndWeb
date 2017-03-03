@@ -53,7 +53,8 @@ button {
 }
 
 #page-title input[type="image"]{
-  margin-left: auto;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .title-background{
@@ -137,4 +138,9 @@ input[type="image"]{
 #loading-image{
   display: block;
   margin: auto;
+}
+
+.boostrap-row-margin-override{
+  margin-right: 0px;
+  margin-left: 0px;
 }

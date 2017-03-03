@@ -46,7 +46,7 @@ var SpellPage = function SpellPage(props) {
     _react2.default.createElement(_filterSettingsModalContainer2.default, null),
     _react2.default.createElement(
       _reactBootstrap.Row,
-      { id: 'spell-page-div' },
+      { id: 'spell-page-div', className: 'boostrap-row-margin-override' },
       _react2.default.createElement(
         _reactBootstrap.Col,
         { id: 'search-container', xs: 12, sm: 3 },

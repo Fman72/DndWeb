@@ -16,7 +16,7 @@ let SpellPage = (props) => {
           </Col>
         </Row>
         <FilterSettingsModalContainer/>
-        <Row id = "spell-page-div">
+        <Row id = "spell-page-div" className = "boostrap-row-margin-override">
           <Col id = 'search-container' xs = {12} sm = {3}>
             <SearchContainer/>
           </Col>

@@ -26,8 +26,8 @@ class SpellPageHeaderContainer extends React.Component{
     }
     return (
       <div id = "page-title">
-          <h1 style = {{display: "inline", marginRight: "auto"}}>Welcome to the DND 5e Spell List {this.props.user.username}</h1>
-          <ImageButton imageSrc = {"cog"} handleClick = {this.storeSpellList}/>
+          <h1 style = {{display: "inline", marginRight: "auto", marginLeft: "15px"}}>Welcome to the DND 5e Spell List {this.props.user.username}</h1>
+          <ImageButton imageSrc = {"base_arrow"} handleClick = {this.storeSpellList}/>
           <ImageButton imageSrc = {"cog"} handleClick = {this.showFilterSettingsModal}/>
       </div>
     );

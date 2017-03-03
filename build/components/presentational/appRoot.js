@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function AppRoot(props) {
     return _react2.default.createElement(
         _reactBootstrap.Grid,
-        null,
+        { fluid: true },
         props.children
     );
 };

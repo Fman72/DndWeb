@@ -4,7 +4,7 @@ import {Grid} from 'react-bootstrap';
 //App container object.
 function AppRoot(props){
     return (
-        <Grid>
+        <Grid fluid>
           {props.children}
         </Grid>
     );

@@ -63,11 +63,11 @@ var SpellPageHeaderContainer = function (_React$Component) {
         { id: 'page-title' },
         _react2.default.createElement(
           'h1',
-          { style: { display: "inline", marginRight: "auto" } },
+          { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } },
           'Welcome to the DND 5e Spell List ',
           this.props.user.username
         ),
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.storeSpellList }),
+        _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }),
         _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal })
       );
     }
