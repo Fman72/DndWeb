@@ -19,7 +19,7 @@ if (process.env.DYNAMODB_ENDPOINT) {
   _awsSdk2.default.config.update({ region: 'ap-southeast-2', endpoint: process.env.DYNAMODB_ENDPOINT }); //, accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
 } else {
   console.log("LOCAL ENV DETECTED");
-  _awsSdk2.default.config.update({ region: 'ap-southeast-2', endpoint: 'http://localhost:8000', httpOptions: { timeout: 15000 } });
+  _awsSdk2.default.config.update({ region: 'ap-southeast-2', endpoint: 'http://localhost:8000', maxRetries: 2 });
 }
 var documentClient = new _awsSdk2.default.DynamoDB.DocumentClient();
 //documentClient.setEndpoint('http://127.0.0.1:8000');
@@ -35,7 +35,7 @@ databaseRouter.post('/storeSpellList', function (req, res) {
   };
   documentClient.put(params, function (err, data) {
     if (err) {
-      console.log(err);
+      res.sendStatus(500);
     } else {
       res.send("Saved your spells g");
     }
@@ -50,8 +50,9 @@ databaseRouter.post('/retrieveSpellList', function (req, res) {
     }
   };
   documentClient.get(params, function (err, data) {
+    console.log(JSON.stringify(err));
     if (err) {
-      console.log(err);
+      res.sendStatus(500);
     } else {
       res.send(data);
     }

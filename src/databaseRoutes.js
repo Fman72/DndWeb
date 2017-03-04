@@ -8,7 +8,7 @@ if(process.env.DYNAMODB_ENDPOINT){
 }
 else{
   console.log("LOCAL ENV DETECTED");
-  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: 'http://localhost:8000', httpOptions: {timeout: 15000}});
+  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: 'http://localhost:8000', maxRetries: 2});
 }
 let documentClient = new AWSSDK.DynamoDB.DocumentClient();
 //documentClient.setEndpoint('http://127.0.0.1:8000');
@@ -24,7 +24,7 @@ databaseRouter.post('/storeSpellList', (req, res) => {
   };
   documentClient.put(params, (err, data) => {
     if(err){
-      console.log(err);
+      res.sendStatus(500);
     }
     else{
       res.send("Saved your spells g");
@@ -40,8 +40,9 @@ databaseRouter.post('/retrieveSpellList', (req, res) => {
     }
   };
   documentClient.get(params, (err, data) => {
+    console.log(JSON.stringify(err));
     if(err){
-      console.log(err);
+      res.sendStatus(500);
     }
     else{
       res.send(data);

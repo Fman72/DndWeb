@@ -44,7 +44,6 @@ function spells() {
 			return Object.assign({}, state, { isFetchingSpellList: false, spellList: action.spellList });
 			break;
 		case "ERROR_RETRIEVE_SPELL_LIST":
-			console.log("ERROR IN REDUCER");
 			return Object.assign({}, state, { isFetchingSpellList: false });
 			break;
 		default:

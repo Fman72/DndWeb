@@ -60,16 +60,21 @@ function attemptRetrieveSpellList(user) {
 	if (user){
     return ((dispatch, getState) => {
         dispatch(requestRetrieveSpellList(user));
+				console.log("Sent request");
         retrieveSpellList(user)
             .then((response) => {
 								let {spellList} = JSON.parse(response).Item;
                 dispatch(recieveRetrieveSpellList(user, spellList));
                 console.log(response);
-            })
-            .catch((response) => {
+            },
+            (response) => {
 								console.log("ERROR ACCESSING DB");
 								dispatch(errorRetrieveSpellList());
-            });
+            })
+						.catch((reason) =>{
+								console.log(`ERROR RESOLVING PROMISE: ${reason}`);
+								dispatch(errorRetrieveSpellList());
+						});
     });
 	}
 	else{

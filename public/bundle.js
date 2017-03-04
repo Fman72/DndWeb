@@ -48276,13 +48276,17 @@
 		if (user) {
 			return function (dispatch, getState) {
 				dispatch(requestRetrieveSpellList(user));
+				console.log("Sent request");
 				(0, _databaseConvenienceFunctions.retrieveSpellList)(user).then(function (response) {
 					var spellList = JSON.parse(response).Item.spellList;
 
 					dispatch(recieveRetrieveSpellList(user, spellList));
 					console.log(response);
-				}).catch(function (response) {
+				}, function (response) {
 					console.log("ERROR ACCESSING DB");
+					dispatch(errorRetrieveSpellList());
+				}).catch(function (reason) {
+					console.log("ERROR RESOLVING PROMISE: " + reason);
 					dispatch(errorRetrieveSpellList());
 				});
 			};
@@ -49592,7 +49596,6 @@
 				return Object.assign({}, state, { isFetchingSpellList: false, spellList: action.spellList });
 				break;
 			case "ERROR_RETRIEVE_SPELL_LIST":
-				console.log("ERROR IN REDUCER");
 				return Object.assign({}, state, { isFetchingSpellList: false });
 				break;
 			default:
