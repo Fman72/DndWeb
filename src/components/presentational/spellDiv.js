@@ -7,7 +7,7 @@ function SpellDiv(props){
         return (<div>
             <DataRow name = "Name" value = {props.spell.name}/>
             {(!props.filters || props.filters.desc) && <DataRow name = "Description" value = {props.spell.desc}/>}
-            {(!props.filters || props.filters.level) && <DataRow name = "Level" value = {props.spell.level}/>}
+            {(!props.filters || props.filters.level) && <DataRow name = "Level" value = {props.spell.level == 0 ? "Cantrip" : (props.spell.level)}/>}
             {(!props.filters || props.filters.class) && <DataRow name = "Class" value = {props.spell.class}/>}
             {(!props.filters || props.filters.range) && <DataRow name = "Range" value = {props.spell.range}/>}
             {(!props.filters || props.filters.casting_time) && <DataRow name = "Casting Time" value = {props.spell.casting_time}/>}
@@ -29,7 +29,10 @@ SpellDiv.propTypes = {
     duration: React.PropTypes.string,
     concentration: React.PropTypes.string,
     casting_time: React.PropTypes.string,
-    level: React.PropTypes.string,
+    level: React.PropTypes.oneOfType([
+     React.PropTypes.string,
+     React.PropTypes.number,
+    ]),
     school: React.PropTypes.string,
     class: React.PropTypes.string
   })

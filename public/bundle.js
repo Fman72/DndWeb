@@ -58,7 +58,7 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _configureStore = __webpack_require__(557);
+	var _configureStore = __webpack_require__(558);
 
 	var _reactRedux = __webpack_require__(501);
 
@@ -21528,7 +21528,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _startPageContainer = __webpack_require__(553);
+	var _startPageContainer = __webpack_require__(554);
 
 	var _startPageContainer2 = _interopRequireDefault(_startPageContainer);
 
@@ -48664,7 +48664,7 @@
 	//Contains a spell. Will eventually be able to click attributes to expand them so will need state.
 	function SpellDiv(props) {
 	  console.log(JSON.stringify(props.filters));
-	  return _react2.default.createElement("div", null, _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }), (!props.filters || props.filters.desc) && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }), (!props.filters || props.filters.level) && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }), (!props.filters || props.filters.class) && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }), (!props.filters || props.filters.range) && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }), (!props.filters || props.filters.casting_time) && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }), (!props.filters || props.filters.duration) && _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }), (!props.filters || props.filters.concentration) && _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }), (!props.filters || props.filters.school) && _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }), (!props.filters || props.filters.components) && _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }), (!props.filters || props.filters.ritual) && _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual }));
+	  return _react2.default.createElement("div", null, _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }), (!props.filters || props.filters.desc) && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }), (!props.filters || props.filters.level) && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level == 0 ? "Cantrip" : props.spell.level }), (!props.filters || props.filters.class) && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }), (!props.filters || props.filters.range) && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }), (!props.filters || props.filters.casting_time) && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }), (!props.filters || props.filters.duration) && _react2.default.createElement(_dataRow2.default, { name: "Duration", value: props.spell.duration }), (!props.filters || props.filters.concentration) && _react2.default.createElement(_dataRow2.default, { name: "Concentration", value: props.spell.concentration }), (!props.filters || props.filters.school) && _react2.default.createElement(_dataRow2.default, { name: "School", value: props.spell.school }), (!props.filters || props.filters.components) && _react2.default.createElement(_dataRow2.default, { name: "Components", value: props.spell.components }), (!props.filters || props.filters.ritual) && _react2.default.createElement(_dataRow2.default, { name: "Ritual", value: props.spell.ritual }));
 	}
 
 	SpellDiv.propTypes = {
@@ -48677,7 +48677,7 @@
 	    duration: _react2.default.PropTypes.string,
 	    concentration: _react2.default.PropTypes.string,
 	    casting_time: _react2.default.PropTypes.string,
-	    level: _react2.default.PropTypes.string,
+	    level: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
 	    school: _react2.default.PropTypes.string,
 	    class: _react2.default.PropTypes.string
 	  })
@@ -48711,7 +48711,7 @@
 	DataRow.propTypes = {
 	  addBreak: _react2.default.PropTypes.bool,
 	  name: _react2.default.PropTypes.string.isRequired,
-	  value: _react2.default.PropTypes.string.isRequired
+	  value: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]).isRequired
 	};
 
 	DataRow.defaultProps = {
@@ -48750,6 +48750,10 @@
 
 	var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
+	var _SpellListLevelItemGroup = __webpack_require__(553);
+
+	var _SpellListLevelItemGroup2 = _interopRequireDefault(_SpellListLevelItemGroup);
+
 	var _reactRedux = __webpack_require__(501);
 
 	function _interopRequireDefault(obj) {
@@ -48787,11 +48791,20 @@
 	    key: 'render',
 	    value: function render() {
 	      if (this.props.spellList) {
-	        var spellListItems = [];
+	        var spellListItemsGroupedByLevel = [[], [], [], [], [], [], [], [], [], []]; //Is this retarded??
 	        for (var i = 0; i < this.props.spellList.length; i++) {
-	          spellListItems.push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
+	          //Add spell.
+	          spellListItemsGroupedByLevel[this.props.spellList[i].level].push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
 	        }
-	        return _react2.default.createElement('div', null, spellListItems);
+	        var spellListLevelItemGroups = [];
+
+	        for (var _i = 0; _i < spellListItemsGroupedByLevel.length; _i++) {
+	          //If spells at this level.
+	          if (spellListItemsGroupedByLevel[_i]) {
+	            spellListLevelItemGroups.push(_react2.default.createElement(_SpellListLevelItemGroup2.default, { key: _i, level: _i }, spellListItemsGroupedByLevel[_i]));
+	          }
+	        }
+	        return _react2.default.createElement('div', null, spellListLevelItemGroups);
 	      } else if (this.props.isFetchingSpellList) {
 	        return _react2.default.createElement('img', { id: 'loading-image', height: '50', width: '50', src: 'images/loading.gif' });
 	      }
@@ -48996,6 +49009,39 @@
 /* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	var SpellListLevelItemGroup = function SpellListLevelItemGroup(props) {
+	  if (props.children && props.children.length != 0) {
+	    var title = "";
+	    if (props.level == 0) {
+	      title = "Cantrips";
+	    } else {
+	      title = "Level " + props.level;
+	    }
+	    return _react2.default.createElement("div", null, _react2.default.createElement("h3", { className: "spell-level-header" }, title), props.children);
+	  }
+	  return null;
+	};
+
+	exports.default = SpellListLevelItemGroup;
+
+/***/ },
+/* 554 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -49018,13 +49064,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _startPage = __webpack_require__(554);
+	var _startPage = __webpack_require__(555);
 
 	var _startPage2 = _interopRequireDefault(_startPage);
 
 	var _reactRedux = __webpack_require__(501);
 
-	var _userActions = __webpack_require__(556);
+	var _userActions = __webpack_require__(557);
 
 	var _spellActions = __webpack_require__(540);
 
@@ -49092,7 +49138,7 @@
 	exports.default = (0, _reactRedux.connect)(null)(StartPageContainer);
 
 /***/ },
-/* 554 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49111,7 +49157,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _scrollDiv = __webpack_require__(555);
+	var _scrollDiv = __webpack_require__(556);
 
 	var _scrollDiv2 = _interopRequireDefault(_scrollDiv);
 
@@ -49127,7 +49173,7 @@
 	exports.default = StartPage;
 
 /***/ },
-/* 555 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49158,7 +49204,7 @@
 	exports.default = ScrollDiv;
 
 /***/ },
-/* 556 */
+/* 557 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -49173,7 +49219,7 @@
 	exports.setUser = setUser;
 
 /***/ },
-/* 557 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49185,15 +49231,15 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _index = __webpack_require__(558);
+	var _index = __webpack_require__(559);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _reduxImmutableStateInvariant = __webpack_require__(566);
+	var _reduxImmutableStateInvariant = __webpack_require__(567);
 
 	var _reduxImmutableStateInvariant2 = _interopRequireDefault(_reduxImmutableStateInvariant);
 
-	var _reduxThunk = __webpack_require__(570);
+	var _reduxThunk = __webpack_require__(571);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
@@ -49211,7 +49257,7 @@
 	exports.configureStore = configureStore;
 
 /***/ },
-/* 558 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49222,19 +49268,19 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _spellReducer = __webpack_require__(559);
+	var _spellReducer = __webpack_require__(560);
 
 	var _spellReducer2 = _interopRequireDefault(_spellReducer);
 
-	var _filterReducer = __webpack_require__(563);
+	var _filterReducer = __webpack_require__(564);
 
 	var _filterReducer2 = _interopRequireDefault(_filterReducer);
 
-	var _userReducer = __webpack_require__(564);
+	var _userReducer = __webpack_require__(565);
 
 	var _userReducer2 = _interopRequireDefault(_userReducer);
 
-	var _modalReducer = __webpack_require__(565);
+	var _modalReducer = __webpack_require__(566);
 
 	var _modalReducer2 = _interopRequireDefault(_modalReducer);
 
@@ -49252,7 +49298,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 559 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49261,7 +49307,7 @@
 		value: true
 	});
 
-	var _spellSearcher = __webpack_require__(560);
+	var _spellSearcher = __webpack_require__(561);
 
 	function _toConsumableArray(arr) {
 		if (Array.isArray(arr)) {
@@ -49316,7 +49362,7 @@
 	exports.default = spells;
 
 /***/ },
-/* 560 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49326,11 +49372,11 @@
 	});
 	exports.searchSpell = undefined;
 
-	var _dndSpellList = __webpack_require__(561);
+	var _dndSpellList = __webpack_require__(562);
 
 	var _dndSpellList2 = _interopRequireDefault(_dndSpellList);
 
-	var _fuse = __webpack_require__(562);
+	var _fuse = __webpack_require__(563);
 
 	var _fuse2 = _interopRequireDefault(_fuse);
 
@@ -49354,7 +49400,7 @@
 	exports.searchSpell = searchSpell;
 
 /***/ },
-/* 561 */
+/* 562 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -49373,7 +49419,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Necromancy",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -49387,7 +49433,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Druid, Ranger, Wizard"
 	}, {
@@ -49400,7 +49446,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -49415,7 +49461,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -49430,7 +49476,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin"
 	}, {
@@ -49444,7 +49490,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Ranger, Ritual Caster, Wizard"
 	}, {
@@ -49457,7 +49503,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -49472,7 +49518,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Druid, Ranger",
 	  "archetype": "Cleric: Nature",
@@ -49489,7 +49535,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Enchantment",
 	  "class": "Bard, Druid, Ranger, Ritual Caster"
 	}, {
@@ -49502,7 +49548,7 @@
 	  "duration": "Up to 24 hours",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -49517,7 +49563,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Necromancy",
 	  "class": "Cleric, Wizard"
 	}, {
@@ -49531,7 +49577,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -49544,7 +49590,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Abjuration",
 	  "class": "Druid"
 	}, {
@@ -49558,7 +49604,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Abjuration",
 	  "class": "Cleric, Wizard"
 	}, {
@@ -49572,7 +49618,7 @@
 	  "duration": "10 days",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Enchantment",
 	  "class": "Druid, Wizard"
 	}, {
@@ -49586,7 +49632,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Divination",
 	  "class": "Cleric, Wizard",
 	  "archetype": "Cleric: Knowledge",
@@ -49601,7 +49647,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -49615,7 +49661,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Abjuration",
 	  "class": "Wizard"
 	}, {
@@ -49630,7 +49676,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Warlock"
 	}, {
@@ -49644,7 +49690,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Warlock"
 	}, {
@@ -49658,7 +49704,7 @@
 	  "duration": "Special",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Necromancy",
 	  "class": "Cleric, Warlock, Wizard"
 	}, {
@@ -49672,7 +49718,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Divination",
 	  "class": "Cleric, Ritual Caster",
 	  "domains": "Knowledge"
@@ -49686,7 +49732,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Abjuration",
 	  "class": "Paladin"
 	}, {
@@ -49699,7 +49745,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Abjuration",
 	  "class": "Paladin"
 	}, {
@@ -49712,7 +49758,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Paladin"
 	}, {
@@ -49726,7 +49772,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "8 hours",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Bard, Druid"
 	}, {
@@ -49741,7 +49787,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Paladin",
 	  "archetype": "Paladin: Vengeance",
@@ -49756,7 +49802,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Abjuration",
 	  "class": "Paladin"
 	}, {
@@ -49771,7 +49817,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin, Sorcerer, Warlock, Wizard",
 	  "oaths": "Vengeance"
@@ -49786,7 +49832,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Ranger",
 	  "archetype": "Cleric: Nature",
@@ -49802,7 +49848,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin",
 	  "archetype": "Paladin: Devotion",
@@ -49819,7 +49865,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Druid, Ranger, Wizard"
 	}, {
@@ -49832,7 +49878,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Divination",
 	  "class": "Druid, Ranger, Ritual Caster"
 	}, {
@@ -49846,7 +49892,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Necromancy",
 	  "class": "Bard, Cleric, Wizard"
 	}, {
@@ -49861,7 +49907,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -49874,7 +49920,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Evocation",
 	  "class": "Cleric"
 	}, {
@@ -49887,7 +49933,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Abjuration",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -49902,7 +49948,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Cleric, Paladin",
 	  "domains": "Life"
@@ -49917,7 +49963,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Necromancy",
 	  "class": "Druid, Sorcerer, Warlock, Wizard",
 	  "circles": "Desert"
@@ -49931,7 +49977,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Paladin"
 	}, {
@@ -49945,7 +49991,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Necromancy",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Warlock: Fiend",
@@ -49960,7 +50006,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Trickery<br/> Warlock: Archfey",
@@ -49976,7 +50022,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Illusion",
 	  "class": "Druid, Sorcerer, Wizard",
 	  "archetype": "Druid: Desert",
@@ -49992,7 +50038,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -50006,7 +50052,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50020,7 +50066,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Paladin"
 	}, {
@@ -50034,7 +50080,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -50051,7 +50097,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid",
 	  "archetype": "Cleric: Tempest",
@@ -50067,7 +50113,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Warlock",
 	  "archetype": "Warlock: Archfey",
@@ -50083,7 +50129,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -50098,7 +50144,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -50112,7 +50158,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Trickery",
@@ -50127,7 +50173,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Necromancy",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50142,7 +50188,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -50157,7 +50203,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Necromancy",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50170,7 +50216,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Abjuration",
 	  "class": "Paladin"
 	}, {
@@ -50184,7 +50230,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "10 minutes",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Warlock: Great Old One",
@@ -50200,7 +50246,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Necromancy",
 	  "class": "Wizard"
 	}, {
@@ -50215,7 +50261,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Conjuration",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -50229,7 +50275,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Druid, Sorcerer, Wizard",
 	  "archetype": "Druid: Underdark",
@@ -50246,7 +50292,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Illusion",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -50260,7 +50306,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Cleric, Paladin, Warlock",
 	  "archetype": "Warlock: Fiend",
@@ -50277,7 +50323,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Divination",
 	  "class": "Cleric, Paladin, Ritual Caster",
 	  "archetype": "Paladin: Devotion",
@@ -50292,7 +50338,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Divination",
 	  "class": "Druid, Paladin, Ranger, Ritual Caster",
 	  "archetype": "Paladin: Ancients",
@@ -50308,7 +50354,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Paladin"
 	}, {
@@ -50322,7 +50368,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Bard, Ritual Caster, Sorcerer, Warlock, Wizard"
 	}, {
@@ -50335,7 +50381,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Enchantment",
 	  "class": "Bard"
 	}, {
@@ -50350,7 +50396,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Wizard",
 	  "archetype": "Druid: Arctic",
@@ -50367,7 +50413,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Druid, Sorcerer, Wizard",
 	  "archetype": "Cleric: Knowledge",
@@ -50383,7 +50429,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Druid, Ranger"
 	}, {
@@ -50396,7 +50442,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50410,7 +50456,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Ranger"
 	}, {
@@ -50424,7 +50470,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 minute",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Conjuration",
 	  "class": "Cleric"
 	}, {
@@ -50439,7 +50485,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Druid, Wizard",
 	  "circles": "Coast"
@@ -50454,7 +50500,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50468,7 +50514,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 minute",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Druid, Warlock"
 	}, {
@@ -50483,7 +50529,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50497,7 +50543,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 minute",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Druid, Wizard"
 	}, {
@@ -50511,7 +50557,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50525,7 +50571,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Ranger"
 	}, {
@@ -50539,7 +50585,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50554,7 +50600,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Druid, Ranger"
 	}, {
@@ -50567,7 +50613,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Divination",
 	  "class": "Ritual Caster, Warlock, Wizard"
 	}, {
@@ -50580,7 +50626,7 @@
 	  "duration": "7 days",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Necromancy",
 	  "class": "Cleric, Druid"
 	}, {
@@ -50594,7 +50640,7 @@
 	  "duration": "10 days",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -50608,7 +50654,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Cleric, Wizard"
 	}, {
@@ -50621,7 +50667,7 @@
 	  "duration": "Instantaneous/1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -50635,7 +50681,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Wizard"
 	}, {
@@ -50649,7 +50695,7 @@
 	  "duration": "Up to 8 hours",
 	  "concentration": "yes",
 	  "casting_time": "10 minutes",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Wizard",
 	  "domains": "Tempest",
@@ -50664,7 +50710,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -50679,7 +50725,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Ranger"
 	}, {
@@ -50693,7 +50739,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 reaction",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -50706,7 +50752,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Conjuration",
 	  "class": "Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -50719,7 +50765,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid, Paladin",
 	  "archetype": "Druid: Desert",
@@ -50736,7 +50782,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid"
 	}, {
@@ -50751,7 +50797,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Necromancy",
 	  "class": "Cleric, Warlock, Wizard"
 	}, {
@@ -50766,7 +50812,7 @@
 	  "duration": "Special",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Illusion",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -50779,7 +50825,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Enchantment",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -50792,7 +50838,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Cleric, Paladin",
 	  "archetype": "Cleric: War",
@@ -50808,7 +50854,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger",
 	  "domains": "Life"
@@ -50823,7 +50869,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -50837,7 +50883,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Druid: Swamp",
@@ -50853,7 +50899,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Druid, Ranger, Sorcerer, Wizard"
 	}, {
@@ -50866,7 +50912,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid, Paladin, Ranger, Sorcerer",
 	  "domains": "Light",
@@ -50881,7 +50927,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin",
 	  "domains": "Life"
@@ -50897,7 +50943,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -50910,7 +50956,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Conjuration",
 	  "class": "Warlock, Wizard"
 	}, {
@@ -50923,7 +50969,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Cleric, Paladin",
 	  "archetype": "Cleric: Tempest",
@@ -50938,7 +50984,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Cleric, Paladin"
 	}, {
@@ -50951,7 +50997,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger, Ritual Caster, Sorcerer, Wizard"
 	}, {
@@ -50965,7 +51011,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Cleric, Druid, Paladin, Ranger, Ritual Caster"
 	}, {
@@ -50979,7 +51025,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Divination",
 	  "class": "Bard, Sorcerer, Warlock, Wizard",
 	  "archetype": "Warlock: Great Old One",
@@ -50994,7 +51040,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Bard, Cleric, Paladin, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Trickery<br/> Paladin: Vengeance",
@@ -51010,7 +51056,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Illusion",
 	  "class": "Bard, Cleric, Sorcerer, Wizard",
 	  "archetype": "Cleric: Trickery",
@@ -51027,7 +51073,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -51041,7 +51087,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin"
 	}, {
@@ -51055,7 +51101,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Druid, Paladin, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Trickery",
@@ -51072,7 +51118,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Bard, Warlock",
 	  "archetype": "Warlock: Great Old One",
@@ -51088,7 +51134,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Divination",
 	  "class": "Cleric, Druid, Ritual Caster",
 	  "archetype": "Druid: Forest, Grassland",
@@ -51103,7 +51149,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Cleric, Paladin",
 	  "archetype": "Cleric: War",
@@ -51118,7 +51164,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Evocation",
 	  "class": "Cleric"
 	}, {
@@ -51132,7 +51178,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Enchantment",
 	  "class": "Cleric, Druid, Sorcerer, Warlock",
 	  "archetype": "Cleric: Nature<br/> Warlock: Archfey, Great Old One",
@@ -51149,7 +51195,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Ritual Caster, Wizard"
 	}, {
@@ -51163,7 +51209,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Enchantment",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -51177,7 +51223,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Trickery<br/> Warlock: Archfey, Great Old One",
@@ -51194,7 +51240,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Illusion",
 	  "class": "Bard, Druid, Warlock, Wizard",
 	  "archetype": "Druid: Grassland",
@@ -51209,7 +51255,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -51224,7 +51270,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Conjuration",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -51238,7 +51284,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Bard, Druid, Sorcerer, Wizard"
 	}, {
@@ -51251,7 +51297,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -51265,7 +51311,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid, Sorcerer"
 	}, {
@@ -51278,7 +51324,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Warlock"
 	}, {
@@ -51292,7 +51338,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Transmutation",
 	  "class": "Druid, Warlock, Wizard"
 	}, {
@@ -51306,7 +51352,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Paladin"
 	}, {
@@ -51321,7 +51367,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Bard, Cleric, Druid, Sorcerer"
 	}, {
@@ -51335,7 +51381,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -51349,7 +51395,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Paladin, Ranger",
 	  "archetype": "Paladin: Ancients",
@@ -51364,7 +51410,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Druid"
 	}, {
@@ -51377,7 +51423,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Enchantment",
 	  "class": "Bard, Warlock"
 	}, {
@@ -51392,7 +51438,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -51406,7 +51452,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Transmutation",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard"
 	}, {
@@ -51420,7 +51466,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Warlock, Wizard",
 	  "archetype": "Warlock: Great Old One",
@@ -51435,7 +51481,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -51448,7 +51494,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Necromancy",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -51461,7 +51507,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Transmutation",
 	  "class": "Wizard"
 	}, {
@@ -51474,7 +51520,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Bard, Cleric, Druid, Warlock",
 	  "archetype": "Cleric: Light<br/> Warlock: Archfey",
@@ -51492,7 +51538,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Necromancy",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -51506,7 +51552,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -51520,7 +51566,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 reaction",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -51534,7 +51580,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Enchantment",
 	  "class": "Bard, Druid, Warlock, Wizard"
 	}, {
@@ -51548,7 +51594,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Necromancy",
 	  "class": "Bard, Cleric, Druid, Ritual Caster, Wizard"
 	}, {
@@ -51562,7 +51608,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Ritual Caster, Wizard"
 	}, {
@@ -51575,7 +51621,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Conjuration",
 	  "class": "Paladin"
 	}, {
@@ -51589,7 +51635,7 @@
 	  "duration": "Up to 24 hours",
 	  "concentration": "yes",
 	  "casting_time": "1 minute",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Druid"
 	}, {
@@ -51602,7 +51648,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Divination",
 	  "class": "Cleric, Druid, Ranger"
 	}, {
@@ -51615,7 +51661,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Necromancy",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -51630,7 +51676,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -51646,7 +51692,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -51660,7 +51706,7 @@
 	  "duration": "10 minutes",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Evocation",
 	  "class": "Warlock, Wizard",
 	  "archetype": "Warlock: Fiend",
@@ -51675,7 +51721,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid, Sorcerer"
 	}, {
@@ -51689,7 +51735,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Druid, Ranger, Sorcerer, Wizard"
 	}, {
@@ -51704,7 +51750,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Druid"
 	}, {
@@ -51719,7 +51765,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Cleric, Paladin, Warlock",
 	  "archetype": "Paladin: Devotion<br/> Warlock: Fiend",
@@ -51738,7 +51784,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid, Wizard",
 	  "archetype": "Cleric: Light",
@@ -51754,7 +51800,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Warlock, Wizard"
 	}, {
@@ -51769,7 +51815,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -51783,7 +51829,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid, Ranger, Sorcerer, Wizard",
 	  "archetype": "Cleric: Tempest",
@@ -51799,7 +51845,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Abjuration",
 	  "class": "Cleric, Ritual Caster"
 	}, {
@@ -51813,7 +51859,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Evocation",
 	  "class": "Bard, Warlock, Wizard"
 	}, {
@@ -51827,7 +51873,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Divination",
 	  "class": "Bard, Druid, Warlock, Wizard"
 	}, {
@@ -51841,7 +51887,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger",
 	  "archetype": "Paladin: Devotion",
@@ -51859,7 +51905,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Enchantment",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -51872,7 +51918,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -51886,7 +51932,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Druid: Underdark",
@@ -51902,7 +51948,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Conjuration",
 	  "class": "Cleric, Sorcerer, Wizard"
 	}, {
@@ -51916,7 +51962,7 @@
 	  "duration": "30 days",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Druid, Paladin, Wizard"
 	}, {
@@ -51930,7 +51976,7 @@
 	  "duration": "10 days",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Necromancy",
 	  "class": "Cleric, Ritual Caster, Wizard"
 	}, {
@@ -51943,7 +51989,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -51956,7 +52002,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Transmutation",
 	  "class": "Bard, Warlock"
 	}, {
@@ -51971,7 +52017,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Abjuration",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -51986,7 +52032,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Wizard"
 	}, {
@@ -52000,7 +52046,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Druid, Ranger"
 	}, {
@@ -52013,7 +52059,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid, Ranger",
 	  "archetype": "Cleric: Nature",
@@ -52029,7 +52075,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Wizard"
 	}, {
@@ -52042,7 +52088,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Illusion",
 	  "class": "Bard, Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Druid: Underdark<br/> Warlock: Archfey",
@@ -52059,7 +52105,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Druid"
 	}, {
@@ -52073,7 +52119,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -52086,7 +52132,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Cleric, Paladin",
 	  "archetype": "Paladin: Devotion",
@@ -52103,7 +52149,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Abjuration",
 	  "class": "Bard, Wizard"
 	}, {
@@ -52116,7 +52162,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Divination",
 	  "class": "Cleric, Druid"
 	}, {
@@ -52130,7 +52176,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Cleric"
 	}, {
@@ -52143,7 +52189,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -52157,7 +52203,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid, Sorcerer, Wizard",
 	  "archetype": "Cleric: Tempest",
@@ -52173,7 +52219,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Ranger"
 	}, {
@@ -52187,7 +52233,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "24 hours",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Cleric, Warlock",
 	  "archetype": "Warlock: Fiend",
@@ -52203,7 +52249,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Illusion",
 	  "class": "Bard, Druid, Warlock, Wizard",
 	  "circles": "Desert"
@@ -52217,7 +52263,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Necromancy",
 	  "class": "Cleric"
 	}, {
@@ -52231,7 +52277,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Druid, Paladin, Sorcerer, Wizard",
 	  "archetype": "Druid: Grassland<br/> Paladin: Vengeance",
@@ -52248,7 +52294,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid"
 	}, {
@@ -52262,7 +52308,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Bard, Cleric, Druid"
 	}, {
@@ -52277,7 +52323,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Bard, Druid"
 	}, {
@@ -52291,7 +52337,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 reaction",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Warlock"
 	}, {
@@ -52305,7 +52351,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid"
 	}, {
@@ -52318,7 +52364,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Bard, Paladin"
 	}, {
@@ -52333,7 +52379,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Warlock"
 	}, {
@@ -52348,7 +52394,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Paladin, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: War<br/> Paladin: Vengeance",
@@ -52366,7 +52412,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Druid, Paladin, Sorcerer, Warlock, Wizard",
 	  "archetype": "Paladin: Vengeance",
@@ -52383,7 +52429,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Abjuration",
 	  "class": "Cleric"
 	}, {
@@ -52397,7 +52443,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Warlock"
 	}, {
@@ -52411,7 +52457,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Paladin, Ranger",
 	  "archetype": "Paladin: Vengeance",
@@ -52427,7 +52473,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -52442,7 +52488,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -52457,7 +52503,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid, Paladin, Sorcerer, Wizard",
 	  "archetype": "Cleric: Tempest<br/> Paladin: Ancients",
@@ -52475,7 +52521,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Ritual Caster, Wizard",
 	  "archetype": "Cleric: Knowledge",
@@ -52491,7 +52537,7 @@
 	  "duration": "10 days",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Illusion",
 	  "class": "Bard, Ritual Caster, Warlock, Wizard"
 	}, {
@@ -52504,7 +52550,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -52518,7 +52564,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Abjuration",
 	  "class": "Warlock, Wizard"
 	}, {
@@ -52531,7 +52577,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -52545,7 +52591,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Necromancy",
 	  "class": "Cleric"
 	}, {
@@ -52560,7 +52606,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid, Sorcerer",
 	  "domains": "Nature, Tempest",
@@ -52575,7 +52621,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -52588,7 +52634,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -52601,7 +52647,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -52614,7 +52660,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -52629,7 +52675,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Illusion",
 	  "class": "Bard, Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Druid: Grassland",
@@ -52645,7 +52691,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Druid, Ranger, Sorcerer, Wizard"
 	}, {
@@ -52658,7 +52704,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -52672,7 +52718,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Wizard",
 	  "domains": "Knowledge"
@@ -52687,7 +52733,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Wizard"
 	}, {
@@ -52701,7 +52747,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Bard, Ritual Caster, Wizard"
 	}, {
@@ -52714,7 +52760,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger",
 	  "domains": "Life",
@@ -52730,7 +52776,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -52744,7 +52790,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Bard, Cleric, Sorcerer, Wizard"
 	}, {
@@ -52758,7 +52804,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Ranger"
 	}, {
@@ -52773,7 +52819,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Wizard",
 	  "archetype": "Druid: Mountain",
@@ -52788,7 +52834,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -52802,7 +52848,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Divination",
 	  "class": "Bard, Druid, Ranger, Ritual Caster"
 	}, {
@@ -52816,7 +52862,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger, Wizard",
 	  "circles": "Swamp"
@@ -52831,7 +52877,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger, Wizard"
 	}, {
@@ -52846,7 +52892,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Bard, Druid, Ranger, Wizard"
 	}, {
@@ -52860,7 +52906,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Druid"
 	}, {
@@ -52874,7 +52920,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -52887,7 +52933,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Conjuration",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -52902,7 +52948,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin, Warlock, Wizard"
 	}, {
@@ -52916,7 +52962,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Necromancy",
 	  "class": "Wizard"
 	}, {
@@ -52930,7 +52976,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -52944,7 +52990,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Illusion",
 	  "class": "Bard, Ritual Caster, Wizard"
 	}, {
@@ -52957,7 +53003,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid, Warlock"
 	}, {
@@ -52971,7 +53017,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Cleric, Paladin, Wizard",
 	  "archetype": "Cleric: War",
@@ -52988,7 +53034,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53002,7 +53048,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Bard, Cleric, Druid",
 	  "domains": "Life"
@@ -53016,7 +53062,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Conjuration",
 	  "class": "Cleric"
 	}, {
@@ -53030,7 +53076,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Cleric"
 	}, {
@@ -53045,7 +53091,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Enchantment",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53059,7 +53105,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -53072,7 +53118,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Conjuration",
 	  "class": "Wizard"
 	}, {
@@ -53085,7 +53131,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Ritual Caster",
 	  "archetype": "Druid: Mountain",
@@ -53102,7 +53148,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Druid, Wizard",
 	  "archetype": "Druid: Swamp",
@@ -53119,7 +53165,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -53133,7 +53179,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Cleric, Bard, Druid, Sorcerer, Wizard"
 	}, {
@@ -53147,7 +53193,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -53160,7 +53206,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -53173,7 +53219,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Abjuration",
 	  "class": "Bard, Wizard"
 	}, {
@@ -53187,7 +53233,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53200,7 +53246,7 @@
 	  "duration": "10 days",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Illusion",
 	  "class": "Bard, Druid, Wizard"
 	}, {
@@ -53213,7 +53259,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Illusion",
 	  "class": "Cleric, Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Trickery<br/> Druid: Coast",
@@ -53229,7 +53275,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Illusion",
 	  "class": "Bard, Wizard"
 	}, {
@@ -53242,7 +53288,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Conjuration",
 	  "class": "Druid, Paladin, Sorcerer, Warlock, Wizard",
 	  "archetype": "Druid: Coast<br/> Paladin: Ancients, Vengeance",
@@ -53259,7 +53305,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Wizard",
 	  "archetype": "Cleric: Trickery",
@@ -53274,7 +53320,7 @@
 	  "duration": "Instantaneous/1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -53289,7 +53335,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Druid, Paladin",
 	  "archetype": "Paladin: Ancients",
@@ -53305,7 +53351,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Wizard"
 	}, {
@@ -53319,7 +53365,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Conjuration",
 	  "class": "Bard, Wizard"
 	}, {
@@ -53334,7 +53380,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Abjuration",
 	  "class": "Wizard"
 	}, {
@@ -53348,7 +53394,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Evocation",
 	  "class": "Bard, Wizard"
 	}, {
@@ -53362,7 +53408,7 @@
 	  "duration": "Up to 2 hours",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -53376,7 +53422,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Ranger, Wizard",
 	  "archetype": "Cleric: Knowledge",
@@ -53392,7 +53438,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Illusion",
 	  "class": "Wizard"
 	}, {
@@ -53407,7 +53453,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -53421,7 +53467,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -53434,7 +53480,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Enchantment",
 	  "class": "Bard, Wizard"
 	}, {
@@ -53448,7 +53494,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Abjuration",
 	  "class": "Cleric, Druid, Ranger",
 	  "archetype": "Cleric: Trickery",
@@ -53465,7 +53511,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Druid, Wizard",
 	  "archetype": "Druid: Mountain",
@@ -53481,7 +53527,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53495,7 +53541,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Warlock, Wizard",
 	  "archetype": "Warlock: Archfey, Great Old One",
@@ -53511,7 +53557,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Illusion",
 	  "class": "Wizard"
 	}, {
@@ -53524,7 +53570,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Illusion",
 	  "class": "Ritual Caster, Wizard"
 	}, {
@@ -53537,7 +53583,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Cleric"
 	}, {
@@ -53552,7 +53598,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Druid, Wizard"
 	}, {
@@ -53566,7 +53612,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Conjuration",
 	  "class": "Cleric, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53579,7 +53625,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger, Warlock",
 	  "archetype": "Cleric: Nature<br/> Paladin: Ancients<br/> Warlock: Archfey",
@@ -53597,7 +53643,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -53611,7 +53657,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Transmutation",
 	  "class": "Bard, Cleric, Druid, Sorcerer, Wizard",
 	  "archetype": "Cleric: Trickery",
@@ -53626,7 +53672,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Evocation",
 	  "class": "Bard"
 	}, {
@@ -53639,7 +53685,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Enchantment",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53652,7 +53698,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Enchantment",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53666,7 +53712,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "10 minutes",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Cleric"
 	}, {
@@ -53679,7 +53725,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -53692,7 +53738,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Abjuration",
 	  "class": "Druid"
 	}, {
@@ -53705,7 +53751,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -53718,7 +53764,7 @@
 	  "duration": "10 minutes",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Abjuration",
 	  "class": "Wizard"
 	}, {
@@ -53731,7 +53777,7 @@
 	  "duration": "10 minutes",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Conjuration",
 	  "class": "Druid"
 	}, {
@@ -53745,7 +53791,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Illusion",
 	  "class": "Bard, Wizard"
 	}, {
@@ -53759,7 +53805,7 @@
 	  "duration": "Up to 24 hours",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Illusion",
 	  "class": "Bard, Wizard"
 	}, {
@@ -53772,7 +53818,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Cleric, Druid, Paladin, Ranger, Sorcerer, Wizard",
 	  "archetype": "Paladin: Ancients, Vengeance",
@@ -53789,7 +53835,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin, Warlock, Wizard",
 	  "oaths": "Devotion"
@@ -53803,7 +53849,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Abjuration",
 	  "class": "Cleric, Druid, Paladin, Ranger"
 	}, {
@@ -53816,7 +53862,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Paladin, Ritual Caster"
 	}, {
@@ -53829,7 +53875,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -53843,7 +53889,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Necromancy",
 	  "class": "Bard, Cleric, Paladin",
 	  "domains": "Life"
@@ -53858,7 +53904,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Divination",
 	  "class": "Ritual Caster, Wizard"
 	}, {
@@ -53871,7 +53917,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Necromancy",
 	  "class": "Warlock, Wizard"
 	}, {
@@ -53884,7 +53930,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -53898,7 +53944,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Necromancy",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -53912,7 +53958,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Transmutation",
 	  "class": "Bard, Cleric, Druid"
 	}, {
@@ -53926,7 +53972,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -53939,7 +53985,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin, Warlock, Wizard"
 	}, {
@@ -53953,7 +53999,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Abjuration",
 	  "class": "Cleric, Druid"
 	}, {
@@ -53967,7 +54013,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Necromancy",
 	  "class": "Bard, Cleric"
 	}, {
@@ -53981,7 +54027,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -53995,7 +54041,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Cleric, Paladin",
 	  "domains": "Life"
@@ -54010,7 +54056,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Wizard"
 	}, {
@@ -54023,7 +54069,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Cleric"
 	}, {
@@ -54037,7 +54083,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin",
 	  "archetype": "Paladin: Devotion",
@@ -54053,7 +54099,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -54070,7 +54116,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "10 minutes",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Druid, Paladin, Warlock, Wizard",
 	  "archetype": "Paladin: Vengeance",
@@ -54088,7 +54134,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Paladin"
 	}, {
@@ -54102,7 +54148,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Divination",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -54115,7 +54161,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Warlock, Wizard",
 	  "archetype": "Warlock: Archfey",
@@ -54131,7 +54177,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Bard, Cleric, Warlock, Wizard",
 	  "archetype": "Warlock: Great Old One",
@@ -54147,7 +54193,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Transmutation",
 	  "class": "Wizard"
 	}, {
@@ -54160,7 +54206,7 @@
 	  "duration": "Instantaneous/1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -54174,7 +54220,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Transmutation",
 	  "class": "Druid, Wizard"
 	}, {
@@ -54189,7 +54235,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Tempest",
@@ -54204,7 +54250,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 reaction",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -54218,7 +54264,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Abjuration",
 	  "class": "Cleric, Paladin",
 	  "domains": "War"
@@ -54233,7 +54279,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -54246,7 +54292,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -54259,7 +54305,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Illusion",
 	  "class": "Bard, Cleric, Druid, Ranger, Ritual Caster",
 	  "archetype": "Druid: Desert",
@@ -54275,7 +54321,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Illusion",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -54289,7 +54335,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "12 hours",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Illusion",
 	  "class": "Wizard"
 	}, {
@@ -54302,7 +54348,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Bard, Druid, Ritual Caster, Wizard"
 	}, {
@@ -54317,7 +54363,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Bard, Sorcerer, Warlock, Wizard",
 	  "archetype": "Warlock: Archfey",
@@ -54333,7 +54379,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid, Sorcerer, Wizard",
 	  "archetype": "Cleric: Tempest",
@@ -54350,7 +54396,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Wizard",
 	  "archetype": "Druid: Arctic",
@@ -54367,7 +54413,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -54380,7 +54426,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Necromancy",
 	  "class": "Cleric"
 	}, {
@@ -54393,7 +54439,7 @@
 	  "duration": "10 minutes",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Druid, Paladin, Ranger, Ritual Caster",
 	  "archetype": "Cleric: Nature<br/> Paladin: Ancients",
@@ -54410,7 +54456,7 @@
 	  "duration": "10 minutes",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Necromancy",
 	  "class": "Bard, Cleric",
 	  "domains": "Knowledge"
@@ -54424,7 +54470,7 @@
 	  "duration": "10 minutes",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Bard, Druid, Ranger"
 	}, {
@@ -54438,7 +54484,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Druid: Forest, Mountain, Underdark",
@@ -54454,7 +54500,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Ranger",
 	  "archetype": "Cleric: Nature",
@@ -54472,7 +54518,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Cleric",
 	  "domains": "War"
@@ -54487,7 +54533,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 bonus action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Cleric",
 	  "domains": "Life, War"
@@ -54501,7 +54547,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Evocation",
 	  "class": "Paladin"
 	}, {
@@ -54515,7 +54561,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Bard, Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Druid: Swamp, Underdark<br/> Warlock: Fiend",
@@ -54532,7 +54578,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Wizard",
 	  "circles": "Mountain, Underdark"
@@ -54547,7 +54593,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Abjuration",
 	  "class": "Cleric, Druid, Paladin, Ranger, Sorcerer, Wizard",
 	  "archetype": "Cleric: War<br/> Paladin: Ancients",
@@ -54564,7 +54610,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Conjuration",
 	  "class": "Druid"
 	}, {
@@ -54578,7 +54624,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -54592,7 +54638,7 @@
 	  "duration": "Up to 8 hours",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Knowledge",
@@ -54608,7 +54654,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -54622,7 +54668,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -54636,7 +54682,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Ranger"
 	}, {
@@ -54649,7 +54695,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -54663,7 +54709,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Abjuration",
 	  "class": "Bard, Cleric, Wizard"
 	}, {
@@ -54677,7 +54723,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Enchantment",
 	  "class": "Bard, Warlock, Wizard",
 	  "archetype": "Warlock: Great Old One",
@@ -54692,7 +54738,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Warlock, Wizard",
 	  "archetype": "Warlock: Great Old One",
@@ -54708,7 +54754,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -54721,7 +54767,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Conjuration",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -54735,7 +54781,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Bard, Sorcerer, Wizard"
 	}, {
@@ -54749,7 +54795,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Ritual Caster, Wizard"
 	}, {
@@ -54762,7 +54808,7 @@
 	  "duration": "1 minute",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Cleric"
 	}, {
@@ -54776,7 +54822,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -54789,7 +54835,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Paladin"
 	}, {
@@ -54802,7 +54848,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Evocation",
 	  "class": "Bard, Druid, Sorcerer, Warlock, Wizard"
 	}, {
@@ -54816,7 +54862,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Bard, Cleric, Druid, Sorcerer, Wizard",
 	  "archetype": "Cleric: Tempest",
@@ -54832,7 +54878,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Conjuration",
 	  "class": "Druid, Wizard"
 	}, {
@@ -54845,7 +54891,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Transmutation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -54859,7 +54905,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard"
 	}, {
@@ -54873,7 +54919,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Transmutation",
 	  "class": "Druid, Wizard"
 	}, {
@@ -54886,7 +54932,7 @@
 	  "duration": "1 round",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Druid"
 	}, {
@@ -54899,7 +54945,7 @@
 	  "duration": "Until dispelled",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Conjuration",
 	  "class": "Wizard"
 	}, {
@@ -54912,7 +54958,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Conjuration",
 	  "class": "Cleric, Druid, Paladin, Ranger",
 	  "archetype": "Cleric: Nature<br/> Paladin: Ancients",
@@ -54930,7 +54976,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Transmutation",
 	  "class": "Bard, Warlock, Wizard"
 	}, {
@@ -54944,7 +54990,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 hour",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Necromancy",
 	  "class": "Cleric, Druid"
 	}, {
@@ -54958,7 +55004,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Divination",
 	  "class": "Bard, Cleric, Sorcerer, Warlock, Wizard"
 	}, {
@@ -54971,7 +55017,7 @@
 	  "duration": "Up to 1 round",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Divination",
 	  "class": "Bard, Sorcerer, Warlock, Wizard"
 	}, {
@@ -54984,7 +55030,7 @@
 	  "duration": "Up to 6 rounds",
 	  "concentration": "yes",
 	  "casting_time": "1 minute",
-	  "level": "8th-level",
+	  "level": 8,
 	  "school": "Conjuration",
 	  "class": "Druid"
 	}, {
@@ -54998,7 +55044,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Conjuration",
 	  "class": "Bard, Ritual Caster, Warlock, Wizard"
 	}, {
@@ -55012,7 +55058,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Necromancy",
 	  "class": "Warlock, Wizard"
 	}, {
@@ -55025,7 +55071,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "Cantrip",
+	  "level": 0,
 	  "school": "Enchantment",
 	  "class": "Bard"
 	}, {
@@ -55040,7 +55086,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -55055,7 +55101,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid, Sorcerer, Warlock, Wizard",
 	  "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -55072,7 +55118,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -55087,7 +55133,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -55101,7 +55147,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Wizard"
 	}, {
@@ -55115,7 +55161,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "5th-level",
+	  "level": 5,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Wizard",
 	  "circles": "Desert, Mountain"
@@ -55131,7 +55177,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Druid"
 	}, {
@@ -55145,7 +55191,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -55159,7 +55205,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Abjuration",
 	  "class": "Cleric"
 	}, {
@@ -55172,7 +55218,7 @@
 	  "duration": "Up to 10 minutes",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Evocation",
 	  "class": "Bard, Druid, Sorcerer"
 	}, {
@@ -55186,7 +55232,7 @@
 	  "duration": "24 hours",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Druid, Ranger, Ritual Caster, Sorcerer, Wizard",
 	  "circles": "Coast"
@@ -55200,7 +55246,7 @@
 	  "duration": "1 hour",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Transmutation",
 	  "class": "Cleric, Druid, Ranger, Ritual Caster, Sorcerer",
 	  "circles": "Coast, Swamp"
@@ -55215,7 +55261,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "4th-level",
+	  "level": 4,
 	  "school": "Conjuration",
 	  "class": "Druid, Sorcerer, Wizard"
 	}, {
@@ -55229,7 +55275,7 @@
 	  "duration": "Up to 1 hour",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Conjuration",
 	  "class": "Druid, Sorcerer, Wizard",
 	  "archetype": "Druid: Underdark",
@@ -55244,7 +55290,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Illusion",
 	  "class": "Wizard"
 	}, {
@@ -55258,7 +55304,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "7th-level",
+	  "level": 7,
 	  "school": "Evocation",
 	  "class": "Druid, Wizard"
 	}, {
@@ -55272,7 +55318,7 @@
 	  "duration": "8 hours",
 	  "concentration": "no",
 	  "casting_time": "1 minute",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Transmutation",
 	  "class": "Druid"
 	}, {
@@ -55286,7 +55332,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "3rd-level",
+	  "level": 3,
 	  "school": "Evocation",
 	  "class": "Cleric, Druid, Ranger",
 	  "archetype": "Cleric: Nature",
@@ -55301,7 +55347,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "9th-level",
+	  "level": 9,
 	  "school": "Conjuration",
 	  "class": "Sorcerer, Wizard"
 	}, {
@@ -55316,7 +55362,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Sorcerer, Warlock, Wizard"
 	}, {
@@ -55329,7 +55375,7 @@
 	  "duration": "Instantaneous",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "6th-level",
+	  "level": 6,
 	  "school": "Conjuration",
 	  "class": "Cleric"
 	}, {
@@ -55342,7 +55388,7 @@
 	  "duration": "Up to 1 minute",
 	  "concentration": "yes",
 	  "casting_time": "1 bonus action",
-	  "level": "1st-level",
+	  "level": 1,
 	  "school": "Evocation",
 	  "class": "Paladin"
 	}, {
@@ -55355,7 +55401,7 @@
 	  "duration": "10 minutes",
 	  "concentration": "no",
 	  "casting_time": "1 action",
-	  "level": "2nd-level",
+	  "level": 2,
 	  "school": "Enchantment",
 	  "class": "Bard, Cleric, Paladin",
 	  "oaths": "Devotion"
@@ -55364,7 +55410,7 @@
 	exports.default = jsonSpellData;
 
 /***/ },
-/* 562 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56198,7 +56244,7 @@
 
 
 /***/ },
-/* 563 */
+/* 564 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56247,7 +56293,7 @@
 	exports.default = filters;
 
 /***/ },
-/* 564 */
+/* 565 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56271,7 +56317,7 @@
 	exports.default = user;
 
 /***/ },
-/* 565 */
+/* 566 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56311,7 +56357,7 @@
 	exports.default = modals;
 
 /***/ },
-/* 566 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56327,15 +56373,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _jsonStringifySafe = __webpack_require__(567);
+	var _jsonStringifySafe = __webpack_require__(568);
 
 	var _jsonStringifySafe2 = _interopRequireDefault(_jsonStringifySafe);
 
-	var _isImmutable = __webpack_require__(568);
+	var _isImmutable = __webpack_require__(569);
 
 	var _isImmutable2 = _interopRequireDefault(_isImmutable);
 
-	var _trackForMutations = __webpack_require__(569);
+	var _trackForMutations = __webpack_require__(570);
 
 	var _trackForMutations2 = _interopRequireDefault(_trackForMutations);
 
@@ -56383,7 +56429,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 567 */
+/* 568 */
 /***/ function(module, exports) {
 
 	exports = module.exports = stringify
@@ -56416,7 +56462,7 @@
 
 
 /***/ },
-/* 568 */
+/* 569 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56433,7 +56479,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 569 */
+/* 570 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56504,7 +56550,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 570 */
+/* 571 */
 /***/ function(module, exports) {
 
 	'use strict';

@@ -30,7 +30,7 @@ function DataRow(props) {
 DataRow.propTypes = {
   addBreak: _react2.default.PropTypes.bool,
   name: _react2.default.PropTypes.string.isRequired,
-  value: _react2.default.PropTypes.string.isRequired
+  value: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]).isRequired
 };
 
 DataRow.defaultProps = {

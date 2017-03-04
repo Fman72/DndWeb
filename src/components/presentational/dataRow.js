@@ -10,7 +10,10 @@ function DataRow(props){
 DataRow.propTypes = {
   addBreak: React.PropTypes.bool,
   name: React.PropTypes.string.isRequired,
-  value: React.PropTypes.string.isRequired
+  value: React.PropTypes.oneOfType([
+   React.PropTypes.string,
+   React.PropTypes.number,
+ ]).isRequired
 };
 
 DataRow.defaultProps = {

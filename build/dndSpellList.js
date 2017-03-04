@@ -14,7 +14,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Necromancy",
   "class": "Sorcerer, Wizard"
 }, {
@@ -28,7 +28,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Druid, Ranger, Wizard"
 }, {
@@ -41,7 +41,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Conjuration",
   "class": "Sorcerer, Wizard"
 }, {
@@ -56,7 +56,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -71,7 +71,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Abjuration",
   "class": "Cleric, Paladin"
 }, {
@@ -85,7 +85,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Ranger, Ritual Caster, Wizard"
 }, {
@@ -98,7 +98,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -113,7 +113,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Bard, Cleric, Druid, Ranger",
   "archetype": "Cleric: Nature",
@@ -130,7 +130,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Enchantment",
   "class": "Bard, Druid, Ranger, Ritual Caster"
 }, {
@@ -143,7 +143,7 @@ var jsonSpellData = [{
   "duration": "Up to 24 hours",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -158,7 +158,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Necromancy",
   "class": "Cleric, Wizard"
 }, {
@@ -172,7 +172,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -185,7 +185,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Abjuration",
   "class": "Druid"
 }, {
@@ -199,7 +199,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Abjuration",
   "class": "Cleric, Wizard"
 }, {
@@ -213,7 +213,7 @@ var jsonSpellData = [{
   "duration": "10 days",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "8th-level",
+  "level": 8,
   "school": "Enchantment",
   "class": "Druid, Wizard"
 }, {
@@ -227,7 +227,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Divination",
   "class": "Cleric, Wizard",
   "archetype": "Cleric: Knowledge",
@@ -242,7 +242,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -256,7 +256,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Abjuration",
   "class": "Wizard"
 }, {
@@ -271,7 +271,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Warlock"
 }, {
@@ -285,7 +285,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Warlock"
 }, {
@@ -299,7 +299,7 @@ var jsonSpellData = [{
   "duration": "Special",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "9th-level",
+  "level": 9,
   "school": "Necromancy",
   "class": "Cleric, Warlock, Wizard"
 }, {
@@ -313,7 +313,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Divination",
   "class": "Cleric, Ritual Caster",
   "domains": "Knowledge"
@@ -327,7 +327,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Abjuration",
   "class": "Paladin"
 }, {
@@ -340,7 +340,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Abjuration",
   "class": "Paladin"
 }, {
@@ -353,7 +353,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Paladin"
 }, {
@@ -367,7 +367,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "8 hours",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Bard, Druid"
 }, {
@@ -382,7 +382,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Bard, Cleric, Paladin",
   "archetype": "Paladin: Vengeance",
@@ -397,7 +397,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Abjuration",
   "class": "Paladin"
 }, {
@@ -412,7 +412,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Abjuration",
   "class": "Cleric, Paladin, Sorcerer, Warlock, Wizard",
   "oaths": "Vengeance"
@@ -427,7 +427,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Cleric, Druid, Ranger",
   "archetype": "Cleric: Nature",
@@ -443,7 +443,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Cleric, Paladin",
   "archetype": "Paladin: Devotion",
@@ -460,7 +460,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Druid, Ranger, Wizard"
 }, {
@@ -473,7 +473,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Divination",
   "class": "Druid, Ranger, Ritual Caster"
 }, {
@@ -487,7 +487,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Necromancy",
   "class": "Bard, Cleric, Wizard"
 }, {
@@ -502,7 +502,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -515,7 +515,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Evocation",
   "class": "Cleric"
 }, {
@@ -528,7 +528,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Abjuration",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -543,7 +543,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Cleric, Paladin",
   "domains": "Life"
@@ -558,7 +558,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Necromancy",
   "class": "Druid, Sorcerer, Warlock, Wizard",
   "circles": "Desert"
@@ -572,7 +572,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Paladin"
 }, {
@@ -586,7 +586,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Necromancy",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Warlock: Fiend",
@@ -601,7 +601,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Trickery<br/> Warlock: Archfey",
@@ -617,7 +617,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Illusion",
   "class": "Druid, Sorcerer, Wizard",
   "archetype": "Druid: Desert",
@@ -633,7 +633,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -647,7 +647,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -661,7 +661,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Paladin"
 }, {
@@ -675,7 +675,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -692,7 +692,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Cleric, Druid",
   "archetype": "Cleric: Tempest",
@@ -708,7 +708,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Enchantment",
   "class": "Bard, Cleric, Warlock",
   "archetype": "Warlock: Archfey",
@@ -724,7 +724,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -739,7 +739,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -753,7 +753,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Bard, Cleric, Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Trickery",
@@ -768,7 +768,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Necromancy",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -783,7 +783,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -798,7 +798,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Necromancy",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -811,7 +811,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Abjuration",
   "class": "Paladin"
 }, {
@@ -825,7 +825,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "10 minutes",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Divination",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Warlock: Great Old One",
@@ -841,7 +841,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "8th-level",
+  "level": 8,
   "school": "Necromancy",
   "class": "Wizard"
 }, {
@@ -856,7 +856,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Conjuration",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -870,7 +870,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Druid, Sorcerer, Wizard",
   "archetype": "Druid: Underdark",
@@ -887,7 +887,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Illusion",
   "class": "Sorcerer, Wizard"
 }, {
@@ -901,7 +901,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Cleric, Paladin, Warlock",
   "archetype": "Warlock: Fiend",
@@ -918,7 +918,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Divination",
   "class": "Cleric, Paladin, Ritual Caster",
   "archetype": "Paladin: Devotion",
@@ -933,7 +933,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Divination",
   "class": "Druid, Paladin, Ranger, Ritual Caster",
   "archetype": "Paladin: Ancients",
@@ -949,7 +949,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Paladin"
 }, {
@@ -963,7 +963,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Bard, Ritual Caster, Sorcerer, Warlock, Wizard"
 }, {
@@ -976,7 +976,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Enchantment",
   "class": "Bard"
 }, {
@@ -991,7 +991,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Wizard",
   "archetype": "Druid: Arctic",
@@ -1008,7 +1008,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Enchantment",
   "class": "Bard, Cleric, Druid, Sorcerer, Wizard",
   "archetype": "Cleric: Knowledge",
@@ -1024,7 +1024,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Druid, Ranger"
 }, {
@@ -1037,7 +1037,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -1051,7 +1051,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Ranger"
 }, {
@@ -1065,7 +1065,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 minute",
-  "level": "7th-level",
+  "level": 7,
   "school": "Conjuration",
   "class": "Cleric"
 }, {
@@ -1080,7 +1080,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Druid, Wizard",
   "circles": "Coast"
@@ -1095,7 +1095,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -1109,7 +1109,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 minute",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Druid, Warlock"
 }, {
@@ -1124,7 +1124,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -1138,7 +1138,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 minute",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Druid, Wizard"
 }, {
@@ -1152,7 +1152,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -1166,7 +1166,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Ranger"
 }, {
@@ -1180,7 +1180,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -1195,7 +1195,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Druid, Ranger"
 }, {
@@ -1208,7 +1208,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Divination",
   "class": "Ritual Caster, Warlock, Wizard"
 }, {
@@ -1221,7 +1221,7 @@ var jsonSpellData = [{
   "duration": "7 days",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Necromancy",
   "class": "Cleric, Druid"
 }, {
@@ -1235,7 +1235,7 @@ var jsonSpellData = [{
   "duration": "10 days",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "6th-level",
+  "level": 6,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -1249,7 +1249,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Cleric, Wizard"
 }, {
@@ -1262,7 +1262,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous/1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -1276,7 +1276,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Transmutation",
   "class": "Cleric, Druid, Wizard"
 }, {
@@ -1290,7 +1290,7 @@ var jsonSpellData = [{
   "duration": "Up to 8 hours",
   "concentration": "yes",
   "casting_time": "10 minutes",
-  "level": "8th-level",
+  "level": 8,
   "school": "Transmutation",
   "class": "Cleric, Druid, Wizard",
   "domains": "Tempest",
@@ -1305,7 +1305,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -1320,7 +1320,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Ranger"
 }, {
@@ -1334,7 +1334,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 reaction",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -1347,7 +1347,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Conjuration",
   "class": "Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -1360,7 +1360,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Cleric, Druid, Paladin",
   "archetype": "Druid: Desert",
@@ -1377,7 +1377,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Cleric, Druid"
 }, {
@@ -1392,7 +1392,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "6th-level",
+  "level": 6,
   "school": "Necromancy",
   "class": "Cleric, Warlock, Wizard"
 }, {
@@ -1407,7 +1407,7 @@ var jsonSpellData = [{
   "duration": "Special",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Illusion",
   "class": "Sorcerer, Wizard"
 }, {
@@ -1420,7 +1420,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Enchantment",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -1433,7 +1433,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Cleric, Paladin",
   "archetype": "Cleric: War",
@@ -1449,7 +1449,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Bard, Cleric, Druid, Paladin, Ranger",
   "domains": "Life"
@@ -1464,7 +1464,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -1478,7 +1478,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Druid: Swamp",
@@ -1494,7 +1494,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Druid, Ranger, Sorcerer, Wizard"
 }, {
@@ -1507,7 +1507,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Cleric, Druid, Paladin, Ranger, Sorcerer",
   "domains": "Light",
@@ -1522,7 +1522,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Abjuration",
   "class": "Cleric, Paladin",
   "domains": "Life"
@@ -1538,7 +1538,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -1551,7 +1551,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Conjuration",
   "class": "Warlock, Wizard"
 }, {
@@ -1564,7 +1564,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Cleric, Paladin",
   "archetype": "Cleric: Tempest",
@@ -1579,7 +1579,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Cleric, Paladin"
 }, {
@@ -1592,7 +1592,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Bard, Cleric, Druid, Paladin, Ranger, Ritual Caster, Sorcerer, Wizard"
 }, {
@@ -1606,7 +1606,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Cleric, Druid, Paladin, Ranger, Ritual Caster"
 }, {
@@ -1620,7 +1620,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Divination",
   "class": "Bard, Sorcerer, Warlock, Wizard",
   "archetype": "Warlock: Great Old One",
@@ -1635,7 +1635,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Bard, Cleric, Paladin, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Trickery<br/> Paladin: Vengeance",
@@ -1651,7 +1651,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Illusion",
   "class": "Bard, Cleric, Sorcerer, Wizard",
   "archetype": "Cleric: Trickery",
@@ -1668,7 +1668,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -1682,7 +1682,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Abjuration",
   "class": "Cleric, Paladin"
 }, {
@@ -1696,7 +1696,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Bard, Cleric, Druid, Paladin, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Trickery",
@@ -1713,7 +1713,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Bard, Warlock",
   "archetype": "Warlock: Great Old One",
@@ -1729,7 +1729,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Divination",
   "class": "Cleric, Druid, Ritual Caster",
   "archetype": "Druid: Forest, Grassland",
@@ -1744,7 +1744,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Cleric, Paladin",
   "archetype": "Cleric: War",
@@ -1759,7 +1759,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Evocation",
   "class": "Cleric"
 }, {
@@ -1773,7 +1773,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Enchantment",
   "class": "Cleric, Druid, Sorcerer, Warlock",
   "archetype": "Cleric: Nature<br/> Warlock: Archfey, Great Old One",
@@ -1790,7 +1790,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Ritual Caster, Wizard"
 }, {
@@ -1804,7 +1804,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Enchantment",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -1818,7 +1818,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Enchantment",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Trickery<br/> Warlock: Archfey, Great Old One",
@@ -1835,7 +1835,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Illusion",
   "class": "Bard, Druid, Warlock, Wizard",
   "archetype": "Druid: Grassland",
@@ -1850,7 +1850,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -1865,7 +1865,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Conjuration",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -1879,7 +1879,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Bard, Druid, Sorcerer, Wizard"
 }, {
@@ -1892,7 +1892,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -1906,7 +1906,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Evocation",
   "class": "Cleric, Druid, Sorcerer"
 }, {
@@ -1919,7 +1919,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Warlock"
 }, {
@@ -1933,7 +1933,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Transmutation",
   "class": "Druid, Warlock, Wizard"
 }, {
@@ -1947,7 +1947,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Paladin"
 }, {
@@ -1962,7 +1962,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Bard, Cleric, Druid, Sorcerer"
 }, {
@@ -1976,7 +1976,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -1990,7 +1990,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Paladin, Ranger",
   "archetype": "Paladin: Ancients",
@@ -2005,7 +2005,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Druid"
 }, {
@@ -2018,7 +2018,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Enchantment",
   "class": "Bard, Warlock"
 }, {
@@ -2033,7 +2033,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -2047,7 +2047,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Transmutation",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard"
 }, {
@@ -2061,7 +2061,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Warlock, Wizard",
   "archetype": "Warlock: Great Old One",
@@ -2076,7 +2076,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -2089,7 +2089,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Necromancy",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -2102,7 +2102,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "4th-level",
+  "level": 4,
   "school": "Transmutation",
   "class": "Wizard"
 }, {
@@ -2115,7 +2115,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Bard, Cleric, Druid, Warlock",
   "archetype": "Cleric: Light<br/> Warlock: Archfey",
@@ -2133,7 +2133,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Necromancy",
   "class": "Sorcerer, Wizard"
 }, {
@@ -2147,7 +2147,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -2161,7 +2161,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 reaction",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -2175,7 +2175,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Enchantment",
   "class": "Bard, Druid, Warlock, Wizard"
 }, {
@@ -2189,7 +2189,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Necromancy",
   "class": "Bard, Cleric, Druid, Ritual Caster, Wizard"
 }, {
@@ -2203,7 +2203,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Ritual Caster, Wizard"
 }, {
@@ -2216,7 +2216,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Conjuration",
   "class": "Paladin"
 }, {
@@ -2230,7 +2230,7 @@ var jsonSpellData = [{
   "duration": "Up to 24 hours",
   "concentration": "yes",
   "casting_time": "1 minute",
-  "level": "6th-level",
+  "level": 6,
   "school": "Divination",
   "class": "Bard, Cleric, Druid"
 }, {
@@ -2243,7 +2243,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Divination",
   "class": "Cleric, Druid, Ranger"
 }, {
@@ -2256,7 +2256,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Necromancy",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -2271,7 +2271,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -2287,7 +2287,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -2301,7 +2301,7 @@ var jsonSpellData = [{
   "duration": "10 minutes",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Evocation",
   "class": "Warlock, Wizard",
   "archetype": "Warlock: Fiend",
@@ -2316,7 +2316,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Evocation",
   "class": "Cleric, Druid, Sorcerer"
 }, {
@@ -2330,7 +2330,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Druid, Ranger, Sorcerer, Wizard"
 }, {
@@ -2345,7 +2345,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Druid"
 }, {
@@ -2360,7 +2360,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Cleric, Paladin, Warlock",
   "archetype": "Paladin: Devotion<br/> Warlock: Fiend",
@@ -2379,7 +2379,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Conjuration",
   "class": "Cleric, Druid, Wizard",
   "archetype": "Cleric: Light",
@@ -2395,7 +2395,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Warlock, Wizard"
 }, {
@@ -2410,7 +2410,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -2424,7 +2424,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Cleric, Druid, Ranger, Sorcerer, Wizard",
   "archetype": "Cleric: Tempest",
@@ -2440,7 +2440,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "6th-level",
+  "level": 6,
   "school": "Abjuration",
   "class": "Cleric, Ritual Caster"
 }, {
@@ -2454,7 +2454,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Evocation",
   "class": "Bard, Warlock, Wizard"
 }, {
@@ -2468,7 +2468,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "9th-level",
+  "level": 9,
   "school": "Divination",
   "class": "Bard, Druid, Warlock, Wizard"
 }, {
@@ -2482,7 +2482,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Abjuration",
   "class": "Bard, Cleric, Druid, Paladin, Ranger",
   "archetype": "Paladin: Devotion",
@@ -2500,7 +2500,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Enchantment",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -2513,7 +2513,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -2527,7 +2527,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Druid: Underdark",
@@ -2543,7 +2543,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Conjuration",
   "class": "Cleric, Sorcerer, Wizard"
 }, {
@@ -2557,7 +2557,7 @@ var jsonSpellData = [{
   "duration": "30 days",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Enchantment",
   "class": "Bard, Cleric, Druid, Paladin, Wizard"
 }, {
@@ -2571,7 +2571,7 @@ var jsonSpellData = [{
   "duration": "10 days",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Necromancy",
   "class": "Cleric, Ritual Caster, Wizard"
 }, {
@@ -2584,7 +2584,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -2597,7 +2597,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Transmutation",
   "class": "Bard, Warlock"
 }, {
@@ -2612,7 +2612,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Abjuration",
   "class": "Sorcerer, Wizard"
 }, {
@@ -2627,7 +2627,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Bard, Cleric, Wizard"
 }, {
@@ -2641,7 +2641,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Druid, Ranger"
 }, {
@@ -2654,7 +2654,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Cleric, Druid, Ranger",
   "archetype": "Cleric: Nature",
@@ -2670,7 +2670,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Wizard"
 }, {
@@ -2683,7 +2683,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Illusion",
   "class": "Bard, Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Druid: Underdark<br/> Warlock: Archfey",
@@ -2700,7 +2700,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Abjuration",
   "class": "Bard, Cleric, Druid"
 }, {
@@ -2714,7 +2714,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -2727,7 +2727,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Cleric, Paladin",
   "archetype": "Paladin: Devotion",
@@ -2744,7 +2744,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "6th-level",
+  "level": 6,
   "school": "Abjuration",
   "class": "Bard, Wizard"
 }, {
@@ -2757,7 +2757,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Divination",
   "class": "Cleric, Druid"
 }, {
@@ -2771,7 +2771,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Cleric"
 }, {
@@ -2784,7 +2784,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -2798,7 +2798,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Cleric, Druid, Sorcerer, Wizard",
   "archetype": "Cleric: Tempest",
@@ -2814,7 +2814,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Ranger"
 }, {
@@ -2828,7 +2828,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "24 hours",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Cleric, Warlock",
   "archetype": "Warlock: Fiend",
@@ -2844,7 +2844,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "4th-level",
+  "level": 4,
   "school": "Illusion",
   "class": "Bard, Druid, Warlock, Wizard",
   "circles": "Desert"
@@ -2858,7 +2858,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Necromancy",
   "class": "Cleric"
 }, {
@@ -2872,7 +2872,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Druid, Paladin, Sorcerer, Wizard",
   "archetype": "Druid: Grassland<br/> Paladin: Vengeance",
@@ -2889,7 +2889,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Evocation",
   "class": "Cleric, Druid"
 }, {
@@ -2903,7 +2903,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Bard, Cleric, Druid"
 }, {
@@ -2918,7 +2918,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Bard, Druid"
 }, {
@@ -2932,7 +2932,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 reaction",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Warlock"
 }, {
@@ -2946,7 +2946,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Cleric, Druid"
 }, {
@@ -2959,7 +2959,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Bard, Paladin"
 }, {
@@ -2974,7 +2974,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Warlock"
 }, {
@@ -2989,7 +2989,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Enchantment",
   "class": "Bard, Cleric, Paladin, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: War<br/> Paladin: Vengeance",
@@ -3007,7 +3007,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Enchantment",
   "class": "Bard, Cleric, Druid, Paladin, Sorcerer, Warlock, Wizard",
   "archetype": "Paladin: Vengeance",
@@ -3024,7 +3024,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Abjuration",
   "class": "Cleric"
 }, {
@@ -3038,7 +3038,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Warlock"
 }, {
@@ -3052,7 +3052,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Paladin, Ranger",
   "archetype": "Paladin: Vengeance",
@@ -3068,7 +3068,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -3083,7 +3083,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -3098,7 +3098,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Evocation",
   "class": "Cleric, Druid, Paladin, Sorcerer, Wizard",
   "archetype": "Cleric: Tempest<br/> Paladin: Ancients",
@@ -3116,7 +3116,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Bard, Cleric, Ritual Caster, Wizard",
   "archetype": "Cleric: Knowledge",
@@ -3132,7 +3132,7 @@ var jsonSpellData = [{
   "duration": "10 days",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "1st-level",
+  "level": 1,
   "school": "Illusion",
   "class": "Bard, Ritual Caster, Warlock, Wizard"
 }, {
@@ -3145,7 +3145,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3159,7 +3159,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "9th-level",
+  "level": 9,
   "school": "Abjuration",
   "class": "Warlock, Wizard"
 }, {
@@ -3172,7 +3172,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Conjuration",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3186,7 +3186,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Necromancy",
   "class": "Cleric"
 }, {
@@ -3201,7 +3201,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Cleric, Druid, Sorcerer",
   "domains": "Nature, Tempest",
@@ -3216,7 +3216,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -3229,7 +3229,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -3242,7 +3242,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -3255,7 +3255,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -3270,7 +3270,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Illusion",
   "class": "Bard, Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Druid: Grassland",
@@ -3286,7 +3286,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Druid, Ranger, Sorcerer, Wizard"
 }, {
@@ -3299,7 +3299,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -3313,7 +3313,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "5th-level",
+  "level": 5,
   "school": "Divination",
   "class": "Bard, Cleric, Wizard",
   "domains": "Knowledge"
@@ -3328,7 +3328,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Wizard"
 }, {
@@ -3342,7 +3342,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Bard, Ritual Caster, Wizard"
 }, {
@@ -3355,7 +3355,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Abjuration",
   "class": "Bard, Cleric, Druid, Paladin, Ranger",
   "domains": "Life",
@@ -3371,7 +3371,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3385,7 +3385,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Bard, Cleric, Sorcerer, Wizard"
 }, {
@@ -3399,7 +3399,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Ranger"
 }, {
@@ -3414,7 +3414,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Wizard",
   "archetype": "Druid: Mountain",
@@ -3429,7 +3429,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -3443,7 +3443,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Divination",
   "class": "Bard, Druid, Ranger, Ritual Caster"
 }, {
@@ -3457,7 +3457,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Divination",
   "class": "Bard, Cleric, Druid, Paladin, Ranger, Wizard",
   "circles": "Swamp"
@@ -3472,7 +3472,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Divination",
   "class": "Bard, Cleric, Druid, Paladin, Ranger, Wizard"
 }, {
@@ -3487,7 +3487,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Bard, Druid, Ranger, Wizard"
 }, {
@@ -3501,7 +3501,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Druid"
 }, {
@@ -3515,7 +3515,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3528,7 +3528,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Conjuration",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -3543,7 +3543,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Cleric, Paladin, Warlock, Wizard"
 }, {
@@ -3557,7 +3557,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "6th-level",
+  "level": 6,
   "school": "Necromancy",
   "class": "Wizard"
 }, {
@@ -3571,7 +3571,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3585,7 +3585,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Illusion",
   "class": "Bard, Ritual Caster, Wizard"
 }, {
@@ -3598,7 +3598,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid, Warlock"
 }, {
@@ -3612,7 +3612,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Cleric, Paladin, Wizard",
   "archetype": "Cleric: War",
@@ -3629,7 +3629,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -3643,7 +3643,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Bard, Cleric, Druid",
   "domains": "Life"
@@ -3657,7 +3657,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Conjuration",
   "class": "Cleric"
 }, {
@@ -3671,7 +3671,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Cleric"
 }, {
@@ -3686,7 +3686,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Enchantment",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -3700,7 +3700,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3713,7 +3713,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Conjuration",
   "class": "Wizard"
 }, {
@@ -3726,7 +3726,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Cleric, Druid, Ritual Caster",
   "archetype": "Druid: Mountain",
@@ -3743,7 +3743,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Druid, Wizard",
   "archetype": "Druid: Swamp",
@@ -3760,7 +3760,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3774,7 +3774,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Cleric, Bard, Druid, Sorcerer, Wizard"
 }, {
@@ -3788,7 +3788,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -3801,7 +3801,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -3814,7 +3814,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Abjuration",
   "class": "Bard, Wizard"
 }, {
@@ -3828,7 +3828,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -3841,7 +3841,7 @@ var jsonSpellData = [{
   "duration": "10 days",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "7th-level",
+  "level": 7,
   "school": "Illusion",
   "class": "Bard, Druid, Wizard"
 }, {
@@ -3854,7 +3854,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Illusion",
   "class": "Cleric, Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Trickery<br/> Druid: Coast",
@@ -3870,7 +3870,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Illusion",
   "class": "Bard, Wizard"
 }, {
@@ -3883,7 +3883,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Conjuration",
   "class": "Druid, Paladin, Sorcerer, Warlock, Wizard",
   "archetype": "Druid: Coast<br/> Paladin: Ancients, Vengeance",
@@ -3900,7 +3900,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Enchantment",
   "class": "Bard, Cleric, Wizard",
   "archetype": "Cleric: Trickery",
@@ -3915,7 +3915,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous/1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -3930,7 +3930,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Druid, Paladin",
   "archetype": "Paladin: Ancients",
@@ -3946,7 +3946,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Wizard"
 }, {
@@ -3960,7 +3960,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "7th-level",
+  "level": 7,
   "school": "Conjuration",
   "class": "Bard, Wizard"
 }, {
@@ -3975,7 +3975,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "4th-level",
+  "level": 4,
   "school": "Abjuration",
   "class": "Wizard"
 }, {
@@ -3989,7 +3989,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Evocation",
   "class": "Bard, Wizard"
 }, {
@@ -4003,7 +4003,7 @@ var jsonSpellData = [{
   "duration": "Up to 2 hours",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -4017,7 +4017,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Bard, Cleric, Ranger, Wizard",
   "archetype": "Cleric: Knowledge",
@@ -4033,7 +4033,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Illusion",
   "class": "Wizard"
 }, {
@@ -4048,7 +4048,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -4062,7 +4062,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -4075,7 +4075,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Enchantment",
   "class": "Bard, Wizard"
 }, {
@@ -4089,7 +4089,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Abjuration",
   "class": "Cleric, Druid, Ranger",
   "archetype": "Cleric: Trickery",
@@ -4106,7 +4106,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Druid, Wizard",
   "archetype": "Druid: Mountain",
@@ -4122,7 +4122,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -4136,7 +4136,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Warlock, Wizard",
   "archetype": "Warlock: Archfey, Great Old One",
@@ -4152,7 +4152,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Illusion",
   "class": "Wizard"
 }, {
@@ -4165,7 +4165,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Illusion",
   "class": "Ritual Caster, Wizard"
 }, {
@@ -4178,7 +4178,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Cleric"
 }, {
@@ -4193,7 +4193,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "5th-level",
+  "level": 5,
   "school": "Abjuration",
   "class": "Bard, Cleric, Druid, Wizard"
 }, {
@@ -4207,7 +4207,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Conjuration",
   "class": "Cleric, Sorcerer, Warlock, Wizard"
 }, {
@@ -4220,7 +4220,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Bard, Cleric, Druid, Paladin, Ranger, Warlock",
   "archetype": "Cleric: Nature<br/> Paladin: Ancients<br/> Warlock: Archfey",
@@ -4238,7 +4238,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -4252,7 +4252,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Transmutation",
   "class": "Bard, Cleric, Druid, Sorcerer, Wizard",
   "archetype": "Cleric: Trickery",
@@ -4267,7 +4267,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Evocation",
   "class": "Bard"
 }, {
@@ -4280,7 +4280,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Enchantment",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -4293,7 +4293,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Enchantment",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -4307,7 +4307,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "10 minutes",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Cleric"
 }, {
@@ -4320,7 +4320,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -4333,7 +4333,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Abjuration",
   "class": "Druid"
 }, {
@@ -4346,7 +4346,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -4359,7 +4359,7 @@ var jsonSpellData = [{
   "duration": "10 minutes",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Abjuration",
   "class": "Wizard"
 }, {
@@ -4372,7 +4372,7 @@ var jsonSpellData = [{
   "duration": "10 minutes",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Conjuration",
   "class": "Druid"
 }, {
@@ -4386,7 +4386,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Illusion",
   "class": "Bard, Wizard"
 }, {
@@ -4400,7 +4400,7 @@ var jsonSpellData = [{
   "duration": "Up to 24 hours",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Illusion",
   "class": "Bard, Wizard"
 }, {
@@ -4413,7 +4413,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Cleric, Druid, Paladin, Ranger, Sorcerer, Wizard",
   "archetype": "Paladin: Ancients, Vengeance",
@@ -4430,7 +4430,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Cleric, Paladin, Warlock, Wizard",
   "oaths": "Devotion"
@@ -4444,7 +4444,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Abjuration",
   "class": "Cleric, Druid, Paladin, Ranger"
 }, {
@@ -4457,7 +4457,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Transmutation",
   "class": "Cleric, Druid, Paladin, Ritual Caster"
 }, {
@@ -4470,7 +4470,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -4484,7 +4484,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "5th-level",
+  "level": 5,
   "school": "Necromancy",
   "class": "Bard, Cleric, Paladin",
   "domains": "Life"
@@ -4499,7 +4499,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Divination",
   "class": "Ritual Caster, Wizard"
 }, {
@@ -4512,7 +4512,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Necromancy",
   "class": "Warlock, Wizard"
 }, {
@@ -4525,7 +4525,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -4539,7 +4539,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Necromancy",
   "class": "Sorcerer, Wizard"
 }, {
@@ -4553,7 +4553,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "7th-level",
+  "level": 7,
   "school": "Transmutation",
   "class": "Bard, Cleric, Druid"
 }, {
@@ -4567,7 +4567,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -4580,7 +4580,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Abjuration",
   "class": "Cleric, Paladin, Warlock, Wizard"
 }, {
@@ -4594,7 +4594,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Abjuration",
   "class": "Cleric, Druid"
 }, {
@@ -4608,7 +4608,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "7th-level",
+  "level": 7,
   "school": "Necromancy",
   "class": "Bard, Cleric"
 }, {
@@ -4622,7 +4622,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -4636,7 +4636,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Cleric, Paladin",
   "domains": "Life"
@@ -4651,7 +4651,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Wizard"
 }, {
@@ -4664,7 +4664,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Cleric"
 }, {
@@ -4678,7 +4678,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Cleric, Paladin",
   "archetype": "Paladin: Devotion",
@@ -4694,7 +4694,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -4711,7 +4711,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "10 minutes",
-  "level": "5th-level",
+  "level": 5,
   "school": "Divination",
   "class": "Bard, Cleric, Druid, Paladin, Warlock, Wizard",
   "archetype": "Paladin: Vengeance",
@@ -4729,7 +4729,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Paladin"
 }, {
@@ -4743,7 +4743,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Divination",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -4756,7 +4756,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Warlock, Wizard",
   "archetype": "Warlock: Archfey",
@@ -4772,7 +4772,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Bard, Cleric, Warlock, Wizard",
   "archetype": "Warlock: Great Old One",
@@ -4788,7 +4788,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Transmutation",
   "class": "Wizard"
 }, {
@@ -4801,7 +4801,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous/1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -4815,7 +4815,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Transmutation",
   "class": "Druid, Wizard"
 }, {
@@ -4830,7 +4830,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Tempest",
@@ -4845,7 +4845,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 reaction",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Sorcerer, Wizard"
 }, {
@@ -4859,7 +4859,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Abjuration",
   "class": "Cleric, Paladin",
   "domains": "War"
@@ -4874,7 +4874,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -4887,7 +4887,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -4900,7 +4900,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Illusion",
   "class": "Bard, Cleric, Druid, Ranger, Ritual Caster",
   "archetype": "Druid: Desert",
@@ -4916,7 +4916,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Illusion",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -4930,7 +4930,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "12 hours",
-  "level": "7th-level",
+  "level": 7,
   "school": "Illusion",
   "class": "Wizard"
 }, {
@@ -4943,7 +4943,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Bard, Druid, Ritual Caster, Wizard"
 }, {
@@ -4958,7 +4958,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Bard, Sorcerer, Warlock, Wizard",
   "archetype": "Warlock: Archfey",
@@ -4974,7 +4974,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Cleric, Druid, Sorcerer, Wizard",
   "archetype": "Cleric: Tempest",
@@ -4991,7 +4991,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Wizard",
   "archetype": "Druid: Arctic",
@@ -5008,7 +5008,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -5021,7 +5021,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Necromancy",
   "class": "Cleric"
 }, {
@@ -5034,7 +5034,7 @@ var jsonSpellData = [{
   "duration": "10 minutes",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Divination",
   "class": "Bard, Cleric, Druid, Paladin, Ranger, Ritual Caster",
   "archetype": "Cleric: Nature<br/> Paladin: Ancients",
@@ -5051,7 +5051,7 @@ var jsonSpellData = [{
   "duration": "10 minutes",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Necromancy",
   "class": "Bard, Cleric",
   "domains": "Knowledge"
@@ -5065,7 +5065,7 @@ var jsonSpellData = [{
   "duration": "10 minutes",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Bard, Druid, Ranger"
 }, {
@@ -5079,7 +5079,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Druid: Forest, Mountain, Underdark",
@@ -5095,7 +5095,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Transmutation",
   "class": "Cleric, Druid, Ranger",
   "archetype": "Cleric: Nature",
@@ -5113,7 +5113,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Cleric",
   "domains": "War"
@@ -5128,7 +5128,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 bonus action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Cleric",
   "domains": "Life, War"
@@ -5142,7 +5142,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Evocation",
   "class": "Paladin"
 }, {
@@ -5156,7 +5156,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Bard, Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Druid: Swamp, Underdark<br/> Warlock: Fiend",
@@ -5173,7 +5173,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Transmutation",
   "class": "Cleric, Druid, Wizard",
   "circles": "Mountain, Underdark"
@@ -5188,7 +5188,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Abjuration",
   "class": "Cleric, Druid, Paladin, Ranger, Sorcerer, Wizard",
   "archetype": "Cleric: War<br/> Paladin: Ancients",
@@ -5205,7 +5205,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Conjuration",
   "class": "Druid"
 }, {
@@ -5219,7 +5219,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -5233,7 +5233,7 @@ var jsonSpellData = [{
   "duration": "Up to 8 hours",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Enchantment",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Knowledge",
@@ -5249,7 +5249,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -5263,7 +5263,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -5277,7 +5277,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Ranger"
 }, {
@@ -5290,7 +5290,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Conjuration",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -5304,7 +5304,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "7th-level",
+  "level": 7,
   "school": "Abjuration",
   "class": "Bard, Cleric, Wizard"
 }, {
@@ -5318,7 +5318,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Enchantment",
   "class": "Bard, Warlock, Wizard",
   "archetype": "Warlock: Great Old One",
@@ -5333,7 +5333,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Sorcerer, Warlock, Wizard",
   "archetype": "Warlock: Great Old One",
@@ -5349,7 +5349,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "8th-level",
+  "level": 8,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -5362,7 +5362,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Conjuration",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -5376,7 +5376,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Bard, Sorcerer, Wizard"
 }, {
@@ -5390,7 +5390,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Ritual Caster, Wizard"
 }, {
@@ -5403,7 +5403,7 @@ var jsonSpellData = [{
   "duration": "1 minute",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Cleric"
 }, {
@@ -5417,7 +5417,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -5430,7 +5430,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Paladin"
 }, {
@@ -5443,7 +5443,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Evocation",
   "class": "Bard, Druid, Sorcerer, Warlock, Wizard"
 }, {
@@ -5457,7 +5457,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Bard, Cleric, Druid, Sorcerer, Wizard",
   "archetype": "Cleric: Tempest",
@@ -5473,7 +5473,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Conjuration",
   "class": "Druid, Wizard"
 }, {
@@ -5486,7 +5486,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Transmutation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -5500,7 +5500,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Divination",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard"
 }, {
@@ -5514,7 +5514,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Transmutation",
   "class": "Druid, Wizard"
 }, {
@@ -5527,7 +5527,7 @@ var jsonSpellData = [{
   "duration": "1 round",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Druid"
 }, {
@@ -5540,7 +5540,7 @@ var jsonSpellData = [{
   "duration": "Until dispelled",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "8th-level",
+  "level": 8,
   "school": "Conjuration",
   "class": "Wizard"
 }, {
@@ -5553,7 +5553,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Conjuration",
   "class": "Cleric, Druid, Paladin, Ranger",
   "archetype": "Cleric: Nature<br/> Paladin: Ancients",
@@ -5571,7 +5571,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Transmutation",
   "class": "Bard, Warlock, Wizard"
 }, {
@@ -5585,7 +5585,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 hour",
-  "level": "9th-level",
+  "level": 9,
   "school": "Necromancy",
   "class": "Cleric, Druid"
 }, {
@@ -5599,7 +5599,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Divination",
   "class": "Bard, Cleric, Sorcerer, Warlock, Wizard"
 }, {
@@ -5612,7 +5612,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 round",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Divination",
   "class": "Bard, Sorcerer, Warlock, Wizard"
 }, {
@@ -5625,7 +5625,7 @@ var jsonSpellData = [{
   "duration": "Up to 6 rounds",
   "concentration": "yes",
   "casting_time": "1 minute",
-  "level": "8th-level",
+  "level": 8,
   "school": "Conjuration",
   "class": "Druid"
 }, {
@@ -5639,7 +5639,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Conjuration",
   "class": "Bard, Ritual Caster, Warlock, Wizard"
 }, {
@@ -5653,7 +5653,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Necromancy",
   "class": "Warlock, Wizard"
 }, {
@@ -5666,7 +5666,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "Cantrip",
+  "level": 0,
   "school": "Enchantment",
   "class": "Bard"
 }, {
@@ -5681,7 +5681,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Evocation",
   "class": "Sorcerer, Wizard"
 }, {
@@ -5696,7 +5696,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Evocation",
   "class": "Cleric, Druid, Sorcerer, Warlock, Wizard",
   "archetype": "Cleric: Light<br/> Warlock: Fiend",
@@ -5713,7 +5713,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -5728,7 +5728,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -5742,7 +5742,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Wizard"
 }, {
@@ -5756,7 +5756,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "5th-level",
+  "level": 5,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Wizard",
   "circles": "Desert, Mountain"
@@ -5772,7 +5772,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Druid"
 }, {
@@ -5786,7 +5786,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -5800,7 +5800,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Abjuration",
   "class": "Cleric"
 }, {
@@ -5813,7 +5813,7 @@ var jsonSpellData = [{
   "duration": "Up to 10 minutes",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Evocation",
   "class": "Bard, Druid, Sorcerer"
 }, {
@@ -5827,7 +5827,7 @@ var jsonSpellData = [{
   "duration": "24 hours",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Druid, Ranger, Ritual Caster, Sorcerer, Wizard",
   "circles": "Coast"
@@ -5841,7 +5841,7 @@ var jsonSpellData = [{
   "duration": "1 hour",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Transmutation",
   "class": "Cleric, Druid, Ranger, Ritual Caster, Sorcerer",
   "circles": "Coast, Swamp"
@@ -5856,7 +5856,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "4th-level",
+  "level": 4,
   "school": "Conjuration",
   "class": "Druid, Sorcerer, Wizard"
 }, {
@@ -5870,7 +5870,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 hour",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Conjuration",
   "class": "Druid, Sorcerer, Wizard",
   "archetype": "Druid: Underdark",
@@ -5885,7 +5885,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Illusion",
   "class": "Wizard"
 }, {
@@ -5899,7 +5899,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "7th-level",
+  "level": 7,
   "school": "Evocation",
   "class": "Druid, Wizard"
 }, {
@@ -5913,7 +5913,7 @@ var jsonSpellData = [{
   "duration": "8 hours",
   "concentration": "no",
   "casting_time": "1 minute",
-  "level": "6th-level",
+  "level": 6,
   "school": "Transmutation",
   "class": "Druid"
 }, {
@@ -5927,7 +5927,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "3rd-level",
+  "level": 3,
   "school": "Evocation",
   "class": "Cleric, Druid, Ranger",
   "archetype": "Cleric: Nature",
@@ -5942,7 +5942,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "9th-level",
+  "level": 9,
   "school": "Conjuration",
   "class": "Sorcerer, Wizard"
 }, {
@@ -5957,7 +5957,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Sorcerer, Warlock, Wizard"
 }, {
@@ -5970,7 +5970,7 @@ var jsonSpellData = [{
   "duration": "Instantaneous",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "6th-level",
+  "level": 6,
   "school": "Conjuration",
   "class": "Cleric"
 }, {
@@ -5983,7 +5983,7 @@ var jsonSpellData = [{
   "duration": "Up to 1 minute",
   "concentration": "yes",
   "casting_time": "1 bonus action",
-  "level": "1st-level",
+  "level": 1,
   "school": "Evocation",
   "class": "Paladin"
 }, {
@@ -5996,7 +5996,7 @@ var jsonSpellData = [{
   "duration": "10 minutes",
   "concentration": "no",
   "casting_time": "1 action",
-  "level": "2nd-level",
+  "level": 2,
   "school": "Enchantment",
   "class": "Bard, Cleric, Paladin",
   "oaths": "Devotion"

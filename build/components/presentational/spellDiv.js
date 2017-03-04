@@ -22,7 +22,7 @@ function SpellDiv(props) {
     null,
     _react2.default.createElement(_dataRow2.default, { name: "Name", value: props.spell.name }),
     (!props.filters || props.filters.desc) && _react2.default.createElement(_dataRow2.default, { name: "Description", value: props.spell.desc }),
-    (!props.filters || props.filters.level) && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level }),
+    (!props.filters || props.filters.level) && _react2.default.createElement(_dataRow2.default, { name: "Level", value: props.spell.level == 0 ? "Cantrip" : props.spell.level }),
     (!props.filters || props.filters.class) && _react2.default.createElement(_dataRow2.default, { name: "Class", value: props.spell.class }),
     (!props.filters || props.filters.range) && _react2.default.createElement(_dataRow2.default, { name: "Range", value: props.spell.range }),
     (!props.filters || props.filters.casting_time) && _react2.default.createElement(_dataRow2.default, { name: "Casting Time", value: props.spell.casting_time }),
@@ -44,7 +44,7 @@ SpellDiv.propTypes = {
     duration: _react2.default.PropTypes.string,
     concentration: _react2.default.PropTypes.string,
     casting_time: _react2.default.PropTypes.string,
-    level: _react2.default.PropTypes.string,
+    level: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
     school: _react2.default.PropTypes.string,
     class: _react2.default.PropTypes.string
   })
