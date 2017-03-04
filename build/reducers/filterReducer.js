@@ -21,14 +21,10 @@ function filters() {
 
 	switch (action.type) {
 		case "ADD_FILTER":
-			var addedFilters = Object.assign({}, state, _defineProperty({}, action.filterName, true));
-			console.log("Filter state " + JSON.stringify(addedFilters));
-			return Object.assign({}, state, addedFilters);
+			return Object.assign({}, state, _defineProperty({}, action.filterName, true));
 			break;
 		case "REMOVE_FILTER":
-			var removedFilters = Object.assign({}, state, _defineProperty({}, action.filterName, false));
-			console.log("Filter state " + JSON.stringify(removedFilters));
-			return Object.assign({}, state, removedFilters);
+			return Object.assign({}, state, _defineProperty({}, action.filterName, false));
 			break;
 		default:
 			return state;

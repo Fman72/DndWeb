@@ -22,14 +22,14 @@ var StyledModal = function StyledModal(props) {
       _react2.default.createElement(
         _reactBootstrap.Modal.Title,
         null,
-        props.modalTitle
+        props.title
       ),
       props.headerContent
     ),
     _react2.default.createElement(
       _reactBootstrap.Modal.Body,
       null,
-      props.bodyContent
+      props.children
     ),
     _react2.default.createElement(
       _reactBootstrap.Modal.Footer,

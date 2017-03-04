@@ -10,17 +10,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _imageButton = require('../presentational/imageButton');
-
-var _imageButton2 = _interopRequireDefault(_imageButton);
-
 var _reactRedux = require('react-redux');
 
-var _modalActions = require('../../actions/modalActions');
+var _controlledToggleItem = require('../presentational/controlledToggleItem');
 
-var _spellActions = require('../../actions/spellActions');
+var _controlledToggleItem2 = _interopRequireDefault(_controlledToggleItem);
 
-var _util = require('../../util');
+var _settingActions = require('../../actions/settingActions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,59 +26,46 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SpellPageHeaderContainer = function (_React$Component) {
-  _inherits(SpellPageHeaderContainer, _React$Component);
+var GeneralSettingsModalContentContainer = function (_React$Component) {
+  _inherits(GeneralSettingsModalContentContainer, _React$Component);
 
-  function SpellPageHeaderContainer(props) {
-    _classCallCheck(this, SpellPageHeaderContainer);
+  function GeneralSettingsModalContentContainer(props) {
+    _classCallCheck(this, GeneralSettingsModalContentContainer);
 
-    var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (GeneralSettingsModalContentContainer.__proto__ || Object.getPrototypeOf(GeneralSettingsModalContentContainer)).call(this, props));
 
-    _this.showSettingsModal = _this.showSettingsModal.bind(_this);
-    _this.storeSpellList = _this.storeSpellList.bind(_this);
+    _this.toggleSetting = _this.toggleSetting.bind(_this);
     return _this;
   }
 
-  _createClass(SpellPageHeaderContainer, [{
-    key: 'showSettingsModal',
-    value: function showSettingsModal() {
-      this.props.dispatch((0, _modalActions.showModal)("settingsModal"));
-    }
-  }, {
-    key: 'storeSpellList',
-    value: function storeSpellList() {
-      this.props.dispatch((0, _spellActions.attemptStoreSpellList)(this.props.spells.spellList, this.props.user.username));
+  _createClass(GeneralSettingsModalContentContainer, [{
+    key: 'toggleSetting',
+    value: function toggleSetting(event) {
+      this.props.dispatch((0, _settingActions.toggleSetting)(event.target.value, event.target.checked));
     }
   }, {
     key: 'render',
     value: function render() {
-      var storeButtonImageSrc = "";
-      if (this.props.spells.isStoringSpellList) {
-        storeButtonImageSrc = "loading.gif";
-      }
       return _react2.default.createElement(
         'div',
-        { id: 'page-title' },
+        null,
         _react2.default.createElement(
-          'h1',
-          { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } },
-          'Welcome to the DND 5e Spell List ',
-          (0, _util.initialCapsString)(this.props.user.username)
+          'h5',
+          null,
+          'General Settings'
         ),
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }),
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showSettingsModal })
+        _react2.default.createElement(_controlledToggleItem2.default, { name: 'Order Spells By Level', value: 'orderSpellsByLevel', isChecked: this.props.settings.orderSpellsByLevel, handleChange: this.toggleSetting })
       );
     }
   }]);
 
-  return SpellPageHeaderContainer;
+  return GeneralSettingsModalContentContainer;
 }(_react2.default.Component);
 
 function mapStateToProps(state, ownProps) {
   return {
-    user: state.user,
-    spells: state.spells
+    settings: state.settings
   };
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellPageHeaderContainer);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(GeneralSettingsModalContentContainer);

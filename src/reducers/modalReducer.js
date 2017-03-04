@@ -1,15 +1,11 @@
-function modals(state = {modals: {}}, action)
+function modals(state = {}, action)
 {
 	switch (action.type){
 		case "SHOW_MODAL":
-        let shownModalState = Object.assign({}, state.modals, {[action.modalName]: true});
-        console.log("Modal state " + JSON.stringify(shownModalState));
-				return Object.assign({}, state, shownModalState);
+				return Object.assign({}, state, {[action.modalName]: true});
 			break;
 		case "HIDE_MODAL":
-        let hiddenModalState = Object.assign({}, state.modals, {[action.modalName]: false});
-        console.log("Modal state " + JSON.stringify(hiddenModalState));
-        return Object.assign({}, state, hiddenModalState);
+        return Object.assign({}, state, {[action.modalName]: false});
 			break;
 		default:
 			return state;

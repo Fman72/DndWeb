@@ -6,12 +6,12 @@ let StyledModal = (props) => {
       <Modal show = {props.show} onHide = {props.handleHide}>
           <Modal.Header closeButton>
             <Modal.Title>
-              {props.modalTitle}
+              {props.title}
             </Modal.Title>
               {props.headerContent}
           </Modal.Header>
           <Modal.Body>
-            {props.bodyContent}
+            {props.children}
           </Modal.Body>
           <Modal.Footer>
             {props.footerContent}

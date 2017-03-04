@@ -58,7 +58,7 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _configureStore = __webpack_require__(559);
+	var _configureStore = __webpack_require__(562);
 
 	var _reactRedux = __webpack_require__(501);
 
@@ -21528,7 +21528,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _startPageContainer = __webpack_require__(555);
+	var _startPageContainer = __webpack_require__(558);
 
 	var _startPageContainer2 = _interopRequireDefault(_startPageContainer);
 
@@ -45918,15 +45918,15 @@
 
 	var _spellPageHeaderContainer2 = _interopRequireDefault(_spellPageHeaderContainer);
 
-	var _filterSettingsModalContainer = __webpack_require__(543);
+	var _settingsModalContainer = __webpack_require__(543);
 
-	var _filterSettingsModalContainer2 = _interopRequireDefault(_filterSettingsModalContainer);
+	var _settingsModalContainer2 = _interopRequireDefault(_settingsModalContainer);
 
-	var _searchContainer = __webpack_require__(547);
+	var _searchContainer = __webpack_require__(550);
 
 	var _searchContainer2 = _interopRequireDefault(_searchContainer);
 
-	var _spellList = __webpack_require__(550);
+	var _spellList = __webpack_require__(553);
 
 	var _spellList2 = _interopRequireDefault(_spellList);
 
@@ -45935,7 +45935,7 @@
 	}
 
 	var SpellPage = function SpellPage(props) {
-	  return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Row, null, _react2.default.createElement(_reactBootstrap.Col, { className: 'title-background', xs: 12 }, _react2.default.createElement(_spellPageHeaderContainer2.default, null))), _react2.default.createElement(_filterSettingsModalContainer2.default, null), _react2.default.createElement(_reactBootstrap.Row, { id: 'spell-page-div', className: 'boostrap-row-margin-override' }, _react2.default.createElement(_reactBootstrap.Col, { id: 'search-container', xs: 12, sm: 3 }, _react2.default.createElement(_searchContainer2.default, null)), _react2.default.createElement(_reactBootstrap.Col, { id: 'spell-list', xs: 12, sm: 9 }, _react2.default.createElement(_spellList2.default, null))), _react2.default.createElement('script', { src: 'bundle.js' }));
+	  return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Row, null, _react2.default.createElement(_reactBootstrap.Col, { className: 'title-background', xs: 12 }, _react2.default.createElement(_spellPageHeaderContainer2.default, null))), _react2.default.createElement(_settingsModalContainer2.default, null), _react2.default.createElement(_reactBootstrap.Row, { id: 'spell-page-div', className: 'boostrap-row-margin-override' }, _react2.default.createElement(_reactBootstrap.Col, { id: 'search-container', xs: 12, sm: 3 }, _react2.default.createElement(_searchContainer2.default, null)), _react2.default.createElement(_reactBootstrap.Col, { id: 'spell-list', xs: 12, sm: 9 }, _react2.default.createElement(_spellList2.default, null))), _react2.default.createElement('script', { src: 'bundle.js' }));
 	};
 
 	exports.default = SpellPage;
@@ -48121,15 +48121,15 @@
 
 	    var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
 
-	    _this.showFilterSettingsModal = _this.showFilterSettingsModal.bind(_this);
+	    _this.showSettingsModal = _this.showSettingsModal.bind(_this);
 	    _this.storeSpellList = _this.storeSpellList.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(SpellPageHeaderContainer, [{
-	    key: 'showFilterSettingsModal',
-	    value: function showFilterSettingsModal() {
-	      this.props.dispatch((0, _modalActions.showModal)("filterSettingsModal"));
+	    key: 'showSettingsModal',
+	    value: function showSettingsModal() {
+	      this.props.dispatch((0, _modalActions.showModal)("settingsModal"));
 	    }
 	  }, {
 	    key: 'storeSpellList',
@@ -48143,7 +48143,7 @@
 	      if (this.props.spells.isStoringSpellList) {
 	        storeButtonImageSrc = "loading.gif";
 	      }
-	      return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } }, 'Welcome to the DND 5e Spell List ', (0, _util.initialCapsString)(this.props.user.username)), _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal }));
+	      return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } }, 'Welcome to the DND 5e Spell List ', (0, _util.initialCapsString)(this.props.user.username)), _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showSettingsModal }));
 	    }
 	  }]);
 
@@ -48210,80 +48210,85 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 	exports.requestRetrieveSpellList = exports.recieveRetrieveSpellList = exports.attemptRetrieveSpellList = exports.attemptStoreSpellList = exports.removeSpell = exports.attemptAddSpell = exports.searchSpell = undefined;
 
 	var _databaseConvenienceFunctions = __webpack_require__(541);
 
 	function searchSpell(spellName) {
-	  return { type: "SEARCH_SPELL", spellName: spellName };
+		return { type: "SEARCH_SPELL", spellName: spellName };
 	}
 
 	function attemptAddSpell(newSpell) {
-	  return function (dispatch, getState) {
-	    var spellList = getState().spells.spellList;
+		return function (dispatch, getState) {
+			var spellList = getState().spells.spellList;
 
-	    if (spellList.map(function (spell) {
-	      return spell.name;
-	    }).indexOf(newSpell.name) < 0) {
-	      dispatch(addSpell(newSpell));
-	    }
-	  };
+			if (spellList.map(function (spell) {
+				return spell.name;
+			}).indexOf(newSpell.name) < 0) {
+				dispatch(addSpell(newSpell));
+			}
+		};
 	}
 
 	function addSpell(newSpell) {
-	  return { type: "ADD_SPELL", newSpell: newSpell };
+		return { type: "ADD_SPELL", newSpell: newSpell };
 	}
 
 	function removeSpell(spellIndex) {
-	  return { type: "REMOVE_SPELL", spellIndex: spellIndex };
+		return { type: "REMOVE_SPELL", spellIndex: spellIndex };
 	}
 
 	function requestRetrieveSpellList(user) {
-	  return { type: "REQUEST_RETRIEVE_SPELL_LIST", user: user };
+		return { type: "REQUEST_RETRIEVE_SPELL_LIST", user: user };
 	}
 
 	function recieveRetrieveSpellList(user, spellList) {
-	  return { type: "RECIEVE_RETRIEVE_SPELL_LIST", user: user, spellList: spellList };
+		return { type: "RECIEVE_RETRIEVE_SPELL_LIST", user: user, spellList: spellList };
+	}
+
+	function errorRetrieveSpellList() {
+		return { type: "ERROR_RETRIEVE_SPELL_LIST" };
 	}
 
 	function requestStoreSpellList(user) {
-	  return { type: "REQUEST_STORE_SPELL_LIST", user: user };
+		return { type: "REQUEST_STORE_SPELL_LIST", user: user };
 	}
 
 	function recieveStoreSpellList(user) {
-	  return { type: "RECIEVE_STORE_SPELL_LIST", user: user };
+		return { type: "RECIEVE_STORE_SPELL_LIST", user: user };
 	}
 
 	function attemptStoreSpellList(spellList, user) {
-	  return function (dispatch, getState) {
-	    dispatch(requestStoreSpellList(user));
-	    (0, _databaseConvenienceFunctions.storeSpellList)(spellList, user).then(function (response) {
-	      dispatch(recieveStoreSpellList(user));
-	      console.log(response);
-	    }).catch(function (response) {
-	      console.log(response);
-	    });
-	  };
+		return function (dispatch, getState) {
+			dispatch(requestStoreSpellList(user));
+			(0, _databaseConvenienceFunctions.storeSpellList)(spellList, user).then(function (response) {
+				dispatch(recieveStoreSpellList(user));
+				console.log(response);
+			}).catch(function (response) {
+				console.log(response);
+			});
+		};
 	}
 
 	function attemptRetrieveSpellList(user) {
-	  if (user) {
-	    return function (dispatch, getState) {
-	      dispatch(requestRetrieveSpellList(user));
-	      (0, _databaseConvenienceFunctions.retrieveSpellList)(user).then(function (response) {
-	        var spellList = JSON.parse(response).Item.spellList;
+		if (user) {
+			return function (dispatch, getState) {
+				dispatch(requestRetrieveSpellList(user));
+				(0, _databaseConvenienceFunctions.retrieveSpellList)(user).then(function (response) {
+					var spellList = JSON.parse(response).Item.spellList;
 
-	        dispatch(recieveRetrieveSpellList(user, spellList));
-	        console.log(response);
-	      }).catch(function (response) {
-	        console.log(response);
-	      });
-	    };
-	  } else {
-	    console.log("No user");
-	  }
+					dispatch(recieveRetrieveSpellList(user, spellList));
+					console.log(response);
+				}).catch(function (response) {
+					console.log("ERROR ACCESSING DB");
+					dispatch(errorRetrieveSpellList());
+				});
+			};
+		} else {
+			console.log("No user");
+		}
 	}
 
 	exports.searchSpell = searchSpell;
@@ -48391,17 +48396,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(501);
+	var _FilterSettingsModalContentContainer = __webpack_require__(544);
 
-	var _filterActions = __webpack_require__(544);
+	var _FilterSettingsModalContentContainer2 = _interopRequireDefault(_FilterSettingsModalContentContainer);
 
-	var _controlledToggleItem = __webpack_require__(545);
+	var _GeneralSettingsModalContentContainer = __webpack_require__(547);
 
-	var _controlledToggleItem2 = _interopRequireDefault(_controlledToggleItem);
+	var _GeneralSettingsModalContentContainer2 = _interopRequireDefault(_GeneralSettingsModalContentContainer);
 
-	var _styledModal = __webpack_require__(546);
+	var _styledModal = __webpack_require__(549);
 
 	var _styledModal2 = _interopRequireDefault(_styledModal);
+
+	var _reactRedux = __webpack_require__(501);
 
 	var _modalActions = __webpack_require__(539);
 
@@ -48427,58 +48434,138 @@
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
-	var FilterSettingsModalContainer = function (_React$Component) {
-	  _inherits(FilterSettingsModalContainer, _React$Component);
+	var SettingsModalContainer = function (_React$Component) {
+	  _inherits(SettingsModalContainer, _React$Component);
 
-	  function FilterSettingsModalContainer(props) {
-	    _classCallCheck(this, FilterSettingsModalContainer);
+	  function SettingsModalContainer(props) {
+	    _classCallCheck(this, SettingsModalContainer);
 
-	    var _this = _possibleConstructorReturn(this, (FilterSettingsModalContainer.__proto__ || Object.getPrototypeOf(FilterSettingsModalContainer)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (SettingsModalContainer.__proto__ || Object.getPrototypeOf(SettingsModalContainer)).call(this, props));
 
-	    _this.toggleFilter = _this.toggleFilter.bind(_this);
 	    _this.onHide = _this.onHide.bind(_this);
 	    return _this;
 	  }
 
-	  _createClass(FilterSettingsModalContainer, [{
+	  _createClass(SettingsModalContainer, [{
+	    key: 'onHide',
+	    value: function onHide() {
+	      this.props.dispatch((0, _modalActions.hideModal)("settingsModal"));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_styledModal2.default, { show: this.props.modals.settingsModal, title: "Settings", handleHide: this.onHide }, _react2.default.createElement(_GeneralSettingsModalContentContainer2.default, null), _react2.default.createElement('hr', null), _react2.default.createElement(_FilterSettingsModalContentContainer2.default, null));
+	    }
+	  }]);
+
+	  return SettingsModalContainer;
+	}(_react2.default.Component);
+
+	function mapStateToProps(state, ownProps) {
+	  return {
+	    modals: state.modals
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SettingsModalContainer);
+
+/***/ },
+/* 544 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(501);
+
+	var _filterActions = __webpack_require__(545);
+
+	var _controlledToggleItem = __webpack_require__(546);
+
+	var _controlledToggleItem2 = _interopRequireDefault(_controlledToggleItem);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+
+	var FilterSettingsModalContentContainer = function (_React$Component) {
+	  _inherits(FilterSettingsModalContentContainer, _React$Component);
+
+	  function FilterSettingsModalContentContainer(props) {
+	    _classCallCheck(this, FilterSettingsModalContentContainer);
+
+	    var _this = _possibleConstructorReturn(this, (FilterSettingsModalContentContainer.__proto__ || Object.getPrototypeOf(FilterSettingsModalContentContainer)).call(this, props));
+
+	    _this.toggleFilter = _this.toggleFilter.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(FilterSettingsModalContentContainer, [{
 	    key: 'toggleFilter',
 	    value: function toggleFilter(event) {
-	      console.log(event.target.checked);
 	      if (event.target.checked) {
 	        this.props.dispatch((0, _filterActions.addFilter)(event.target.value));
-	        console.log("Added " + event.target.value);
 	      } else {
 	        this.props.dispatch((0, _filterActions.removeFilter)(event.target.value));
 	      }
 	    }
 	  }, {
-	    key: 'onHide',
-	    value: function onHide() {
-	      this.props.dispatch((0, _modalActions.hideModal)("filterSettingsModal"));
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var modalTitle = "Filter Settings";
-	      var bodyContent = _react2.default.createElement('div', null, _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["desc"], handleChange: this.toggleFilter, value: 'desc', name: 'Description' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["level"], handleChange: this.toggleFilter, value: 'level', name: 'Level' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["class"], handleChange: this.toggleFilter, value: 'class', name: 'Class' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["range"], handleChange: this.toggleFilter, value: 'range', name: 'Range' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["casting_time"], handleChange: this.toggleFilter, value: 'casting_time', name: 'Casting Time' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["duration"], handleChange: this.toggleFilter, value: 'duration', name: 'Duration' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["concentration"], handleChange: this.toggleFilter, value: 'concentration', name: 'Concentration' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["school"], handleChange: this.toggleFilter, value: 'school', name: 'School' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["components"], handleChange: this.toggleFilter, value: 'components', name: 'Components' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["ritual"], handleChange: this.toggleFilter, value: 'ritual', name: 'Ritual' }));
-	      return _react2.default.createElement(_styledModal2.default, { handleHide: this.onHide, show: this.props.modals.filterSettingsModal, modalTitle: modalTitle, bodyContent: bodyContent });
+	      return _react2.default.createElement('div', null, _react2.default.createElement('h5', null, 'Filters'), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["desc"], handleChange: this.toggleFilter, value: 'desc', name: 'Description' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["level"], handleChange: this.toggleFilter, value: 'level', name: 'Level' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["class"], handleChange: this.toggleFilter, value: 'class', name: 'Class' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["range"], handleChange: this.toggleFilter, value: 'range', name: 'Range' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["casting_time"], handleChange: this.toggleFilter, value: 'casting_time', name: 'Casting Time' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["duration"], handleChange: this.toggleFilter, value: 'duration', name: 'Duration' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["concentration"], handleChange: this.toggleFilter, value: 'concentration', name: 'Concentration' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["school"], handleChange: this.toggleFilter, value: 'school', name: 'School' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["components"], handleChange: this.toggleFilter, value: 'components', name: 'Components' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["ritual"], handleChange: this.toggleFilter, value: 'ritual', name: 'Ritual' }));
 	    }
 	  }]);
 
-	  return FilterSettingsModalContainer;
+	  return FilterSettingsModalContentContainer;
 	}(_react2.default.Component);
 
 	function mapStateToProps(state, ownProps) {
 	  return {
-	    filters: state.filters,
-	    modals: state.modals
+	    filters: state.filters
 	  };
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(FilterSettingsModalContainer);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(FilterSettingsModalContentContainer);
 
 /***/ },
-/* 544 */
+/* 545 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -48498,7 +48585,7 @@
 	exports.removeFilter = removeFilter;
 
 /***/ },
-/* 545 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48522,7 +48609,113 @@
 	exports.default = ControlledToggleItem;
 
 /***/ },
-/* 546 */
+/* 547 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(501);
+
+	var _controlledToggleItem = __webpack_require__(546);
+
+	var _controlledToggleItem2 = _interopRequireDefault(_controlledToggleItem);
+
+	var _settingActions = __webpack_require__(548);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+
+	var GeneralSettingsModalContentContainer = function (_React$Component) {
+	  _inherits(GeneralSettingsModalContentContainer, _React$Component);
+
+	  function GeneralSettingsModalContentContainer(props) {
+	    _classCallCheck(this, GeneralSettingsModalContentContainer);
+
+	    var _this = _possibleConstructorReturn(this, (GeneralSettingsModalContentContainer.__proto__ || Object.getPrototypeOf(GeneralSettingsModalContentContainer)).call(this, props));
+
+	    _this.toggleSetting = _this.toggleSetting.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(GeneralSettingsModalContentContainer, [{
+	    key: 'toggleSetting',
+	    value: function toggleSetting(event) {
+	      this.props.dispatch((0, _settingActions.toggleSetting)(event.target.value, event.target.checked));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('div', null, _react2.default.createElement('h5', null, 'General Settings'), _react2.default.createElement(_controlledToggleItem2.default, { name: 'Order Spells By Level', value: 'orderSpellsByLevel', isChecked: this.props.settings.orderSpellsByLevel, handleChange: this.toggleSetting }));
+	    }
+	  }]);
+
+	  return GeneralSettingsModalContentContainer;
+	}(_react2.default.Component);
+
+	function mapStateToProps(state, ownProps) {
+	  return {
+	    settings: state.settings
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(GeneralSettingsModalContentContainer);
+
+/***/ },
+/* 548 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	function toggleSetting(settingName, settingValue) {
+		return { type: "TOGGLE_SETTING", settingName: settingName, settingValue: settingValue };
+	}
+
+	exports.toggleSetting = toggleSetting;
+
+/***/ },
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48542,13 +48735,13 @@
 	}
 
 	var StyledModal = function StyledModal(props) {
-	  return _react2.default.createElement(_reactBootstrap.Modal, { show: props.show, onHide: props.handleHide }, _react2.default.createElement(_reactBootstrap.Modal.Header, { closeButton: true }, _react2.default.createElement(_reactBootstrap.Modal.Title, null, props.modalTitle), props.headerContent), _react2.default.createElement(_reactBootstrap.Modal.Body, null, props.bodyContent), _react2.default.createElement(_reactBootstrap.Modal.Footer, null, props.footerContent));
+	  return _react2.default.createElement(_reactBootstrap.Modal, { show: props.show, onHide: props.handleHide }, _react2.default.createElement(_reactBootstrap.Modal.Header, { closeButton: true }, _react2.default.createElement(_reactBootstrap.Modal.Title, null, props.title), props.headerContent), _react2.default.createElement(_reactBootstrap.Modal.Body, null, props.children), _react2.default.createElement(_reactBootstrap.Modal.Footer, null, props.footerContent));
 	};
 
 	exports.default = StyledModal;
 
 /***/ },
-/* 547 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48577,7 +48770,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _spellDiv = __webpack_require__(548);
+	var _spellDiv = __webpack_require__(551);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
@@ -48668,7 +48861,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SearchContainer);
 
 /***/ },
-/* 548 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48681,7 +48874,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _dataRow = __webpack_require__(549);
+	var _dataRow = __webpack_require__(552);
 
 	var _dataRow2 = _interopRequireDefault(_dataRow);
 
@@ -48714,7 +48907,7 @@
 	exports.default = SpellDiv;
 
 /***/ },
-/* 549 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48749,7 +48942,7 @@
 	exports.default = DataRow;
 
 /***/ },
-/* 550 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48774,13 +48967,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemContainer = __webpack_require__(551);
+	var _spellListItemContainer = __webpack_require__(554);
 
 	var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
-	var _SpellListLevelItemGroup = __webpack_require__(554);
+	var _spellListLevelItemGroup = __webpack_require__(557);
 
-	var _SpellListLevelItemGroup2 = _interopRequireDefault(_SpellListLevelItemGroup);
+	var _spellListLevelItemGroup2 = _interopRequireDefault(_spellListLevelItemGroup);
 
 	var _reactRedux = __webpack_require__(501);
 
@@ -48818,21 +49011,29 @@
 	  _createClass(SpellList, [{
 	    key: 'render',
 	    value: function render() {
-	      if (this.props.spellList) {
-	        var spellListItemsGroupedByLevel = [[], [], [], [], [], [], [], [], [], []]; //Is this retarded??
-	        for (var i = 0; i < this.props.spellList.length; i++) {
-	          //Add spell.
-	          spellListItemsGroupedByLevel[this.props.spellList[i].level].push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
-	        }
-	        var spellListLevelItemGroups = [];
-
-	        for (var _i = 0; _i < spellListItemsGroupedByLevel.length; _i++) {
-	          //If spells at this level.
-	          if (spellListItemsGroupedByLevel[_i]) {
-	            spellListLevelItemGroups.push(_react2.default.createElement(_SpellListLevelItemGroup2.default, { key: _i, level: _i }, spellListItemsGroupedByLevel[_i]));
+	      if (this.props.spellList.length > 0) {
+	        if (this.props.settings.orderSpellsByLevel) {
+	          var spellListItemsGroupedByLevel = [[], [], [], [], [], [], [], [], [], []]; //Is this retarded??
+	          for (var i = 0; i < this.props.spellList.length; i++) {
+	            //Add spell.
+	            spellListItemsGroupedByLevel[this.props.spellList[i].level].push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
 	          }
+	          var spellListLevelItemGroups = [];
+
+	          for (var _i = 0; _i < spellListItemsGroupedByLevel.length; _i++) {
+	            //If spells at this level.
+	            if (spellListItemsGroupedByLevel[_i]) {
+	              spellListLevelItemGroups.push(_react2.default.createElement(_spellListLevelItemGroup2.default, { key: _i, level: _i }, spellListItemsGroupedByLevel[_i]));
+	            }
+	          }
+	          return _react2.default.createElement('div', null, spellListLevelItemGroups);
+	        } else {
+	          var spellListItems = [];
+	          for (var _i2 = 0; _i2 < this.props.spellList.length; _i2++) {
+	            spellListItems.push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: _i2, key: this.props.spellList[_i2].name, spell: this.props.spellList[_i2] }));
+	          }
+	          return _react2.default.createElement('div', null, spellListItems);
 	        }
-	        return _react2.default.createElement('div', null, spellListLevelItemGroups);
 	      } else if (this.props.isFetchingSpellList) {
 	        return _react2.default.createElement('img', { id: 'loading-image', height: '50', width: '50', src: 'images/loading.gif' });
 	      }
@@ -48846,14 +49047,15 @@
 	function mapStateToProps(state, ownProps) {
 	  return {
 	    spellList: state.spells.spellList,
-	    isFetchingSpellList: state.spells.isFetchingSpellList
+	    isFetchingSpellList: state.spells.isFetchingSpellList,
+	    settings: state.settings
 	  };
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellList);
 
 /***/ },
-/* 551 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48878,7 +49080,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemHeader = __webpack_require__(552);
+	var _spellListItemHeader = __webpack_require__(555);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -48886,7 +49088,7 @@
 
 	var _spellActions = __webpack_require__(540);
 
-	var _spellListItem = __webpack_require__(553);
+	var _spellListItem = __webpack_require__(556);
 
 	var _spellListItem2 = _interopRequireDefault(_spellListItem);
 
@@ -48963,7 +49165,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellListItemContainer);
 
 /***/ },
-/* 552 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49002,7 +49204,7 @@
 	exports.default = SpellListItemHeader;
 
 /***/ },
-/* 553 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49015,11 +49217,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellDiv = __webpack_require__(548);
+	var _spellDiv = __webpack_require__(551);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _spellListItemHeader = __webpack_require__(552);
+	var _spellListItemHeader = __webpack_require__(555);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -49034,7 +49236,7 @@
 	exports.default = SpellListItem;
 
 /***/ },
-/* 554 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49067,7 +49269,7 @@
 	exports.default = SpellListLevelItemGroup;
 
 /***/ },
-/* 555 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49092,13 +49294,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _startPage = __webpack_require__(556);
+	var _startPage = __webpack_require__(559);
 
 	var _startPage2 = _interopRequireDefault(_startPage);
 
 	var _reactRedux = __webpack_require__(501);
 
-	var _userActions = __webpack_require__(558);
+	var _userActions = __webpack_require__(561);
 
 	var _spellActions = __webpack_require__(540);
 
@@ -49168,7 +49370,7 @@
 	exports.default = (0, _reactRedux.connect)(null)(StartPageContainer);
 
 /***/ },
-/* 556 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49187,7 +49389,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _scrollDiv = __webpack_require__(557);
+	var _scrollDiv = __webpack_require__(560);
 
 	var _scrollDiv2 = _interopRequireDefault(_scrollDiv);
 
@@ -49203,7 +49405,7 @@
 	exports.default = StartPage;
 
 /***/ },
-/* 557 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49234,7 +49436,7 @@
 	exports.default = ScrollDiv;
 
 /***/ },
-/* 558 */
+/* 561 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -49249,7 +49451,7 @@
 	exports.setUser = setUser;
 
 /***/ },
-/* 559 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49261,15 +49463,15 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _index = __webpack_require__(560);
+	var _index = __webpack_require__(563);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _reduxImmutableStateInvariant = __webpack_require__(568);
+	var _reduxImmutableStateInvariant = __webpack_require__(572);
 
 	var _reduxImmutableStateInvariant2 = _interopRequireDefault(_reduxImmutableStateInvariant);
 
-	var _reduxThunk = __webpack_require__(572);
+	var _reduxThunk = __webpack_require__(576);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
@@ -49287,7 +49489,7 @@
 	exports.configureStore = configureStore;
 
 /***/ },
-/* 560 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49298,21 +49500,25 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _spellReducer = __webpack_require__(561);
+	var _spellReducer = __webpack_require__(564);
 
 	var _spellReducer2 = _interopRequireDefault(_spellReducer);
 
-	var _filterReducer = __webpack_require__(565);
+	var _filterReducer = __webpack_require__(568);
 
 	var _filterReducer2 = _interopRequireDefault(_filterReducer);
 
-	var _userReducer = __webpack_require__(566);
+	var _userReducer = __webpack_require__(569);
 
 	var _userReducer2 = _interopRequireDefault(_userReducer);
 
-	var _modalReducer = __webpack_require__(567);
+	var _modalReducer = __webpack_require__(570);
 
 	var _modalReducer2 = _interopRequireDefault(_modalReducer);
+
+	var _settingReducer = __webpack_require__(571);
+
+	var _settingReducer2 = _interopRequireDefault(_settingReducer);
 
 	function _interopRequireDefault(obj) {
 		return obj && obj.__esModule ? obj : { default: obj };
@@ -49322,13 +49528,14 @@
 		spells: _spellReducer2.default,
 		filters: _filterReducer2.default,
 		user: _userReducer2.default,
-		modals: _modalReducer2.default
+		modals: _modalReducer2.default,
+		settings: _settingReducer2.default
 	});
 
 	exports.default = rootReducer;
 
 /***/ },
-/* 561 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49337,7 +49544,7 @@
 		value: true
 	});
 
-	var _spellSearcher = __webpack_require__(562);
+	var _spellSearcher = __webpack_require__(565);
 
 	function _toConsumableArray(arr) {
 		if (Array.isArray(arr)) {
@@ -49384,6 +49591,10 @@
 			case "RECIEVE_RETRIEVE_SPELL_LIST":
 				return Object.assign({}, state, { isFetchingSpellList: false, spellList: action.spellList });
 				break;
+			case "ERROR_RETRIEVE_SPELL_LIST":
+				console.log("ERROR IN REDUCER");
+				return Object.assign({}, state, { isFetchingSpellList: false });
+				break;
 			default:
 				return state;
 		}
@@ -49392,7 +49603,7 @@
 	exports.default = spells;
 
 /***/ },
-/* 562 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49402,11 +49613,11 @@
 	});
 	exports.searchSpell = undefined;
 
-	var _dndSpellList = __webpack_require__(563);
+	var _dndSpellList = __webpack_require__(566);
 
 	var _dndSpellList2 = _interopRequireDefault(_dndSpellList);
 
-	var _fuse = __webpack_require__(564);
+	var _fuse = __webpack_require__(567);
 
 	var _fuse2 = _interopRequireDefault(_fuse);
 
@@ -49430,7 +49641,7 @@
 	exports.searchSpell = searchSpell;
 
 /***/ },
-/* 563 */
+/* 566 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -55440,7 +55651,7 @@
 	exports.default = jsonSpellData;
 
 /***/ },
-/* 564 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56274,7 +56485,7 @@
 
 
 /***/ },
-/* 565 */
+/* 568 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56306,14 +56517,10 @@
 
 		switch (action.type) {
 			case "ADD_FILTER":
-				var addedFilters = Object.assign({}, state, _defineProperty({}, action.filterName, true));
-				console.log("Filter state " + JSON.stringify(addedFilters));
-				return Object.assign({}, state, addedFilters);
+				return Object.assign({}, state, _defineProperty({}, action.filterName, true));
 				break;
 			case "REMOVE_FILTER":
-				var removedFilters = Object.assign({}, state, _defineProperty({}, action.filterName, false));
-				console.log("Filter state " + JSON.stringify(removedFilters));
-				return Object.assign({}, state, removedFilters);
+				return Object.assign({}, state, _defineProperty({}, action.filterName, false));
 				break;
 			default:
 				return state;
@@ -56323,7 +56530,7 @@
 	exports.default = filters;
 
 /***/ },
-/* 566 */
+/* 569 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56347,7 +56554,7 @@
 	exports.default = user;
 
 /***/ },
-/* 567 */
+/* 570 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56365,19 +56572,15 @@
 	}
 
 	function modals() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { modals: {} };
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 		var action = arguments[1];
 
 		switch (action.type) {
 			case "SHOW_MODAL":
-				var shownModalState = Object.assign({}, state.modals, _defineProperty({}, action.modalName, true));
-				console.log("Modal state " + JSON.stringify(shownModalState));
-				return Object.assign({}, state, shownModalState);
+				return Object.assign({}, state, _defineProperty({}, action.modalName, true));
 				break;
 			case "HIDE_MODAL":
-				var hiddenModalState = Object.assign({}, state.modals, _defineProperty({}, action.modalName, false));
-				console.log("Modal state " + JSON.stringify(hiddenModalState));
-				return Object.assign({}, state, hiddenModalState);
+				return Object.assign({}, state, _defineProperty({}, action.modalName, false));
 				break;
 			default:
 				return state;
@@ -56387,7 +56590,43 @@
 	exports.default = modals;
 
 /***/ },
-/* 568 */
+/* 571 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	function _defineProperty(obj, key, value) {
+		if (key in obj) {
+			Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+		} else {
+			obj[key] = value;
+		}return obj;
+	}
+
+	function settings() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+			orderSpellsByLevel: true
+		};
+		var action = arguments[1];
+
+		switch (action.type) {
+			case "TOGGLE_SETTING":
+				console.log(JSON.stringify(Object.assign({}, state, _defineProperty({}, action.settingName, action.settingValue))));
+				return Object.assign({}, state, _defineProperty({}, action.settingName, action.settingValue));
+				break;
+			default:
+				return state;
+		}
+	}
+
+	exports.default = settings;
+
+/***/ },
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56403,15 +56642,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _jsonStringifySafe = __webpack_require__(569);
+	var _jsonStringifySafe = __webpack_require__(573);
 
 	var _jsonStringifySafe2 = _interopRequireDefault(_jsonStringifySafe);
 
-	var _isImmutable = __webpack_require__(570);
+	var _isImmutable = __webpack_require__(574);
 
 	var _isImmutable2 = _interopRequireDefault(_isImmutable);
 
-	var _trackForMutations = __webpack_require__(571);
+	var _trackForMutations = __webpack_require__(575);
 
 	var _trackForMutations2 = _interopRequireDefault(_trackForMutations);
 
@@ -56459,7 +56698,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 569 */
+/* 573 */
 /***/ function(module, exports) {
 
 	exports = module.exports = stringify
@@ -56492,7 +56731,7 @@
 
 
 /***/ },
-/* 570 */
+/* 574 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56509,7 +56748,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 571 */
+/* 575 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56580,7 +56819,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 572 */
+/* 576 */
 /***/ function(module, exports) {
 
 	'use strict';

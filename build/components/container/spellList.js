@@ -14,9 +14,9 @@ var _spellListItemContainer = require('./spellListItemContainer');
 
 var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
-var _SpellListLevelItemGroup = require('../presentational/SpellListLevelItemGroup');
+var _spellListLevelItemGroup = require('../presentational/spellListLevelItemGroup');
 
-var _SpellListLevelItemGroup2 = _interopRequireDefault(_SpellListLevelItemGroup);
+var _spellListLevelItemGroup2 = _interopRequireDefault(_spellListLevelItemGroup);
 
 var _reactRedux = require('react-redux');
 
@@ -40,29 +40,41 @@ var SpellList = function (_React$Component) {
   _createClass(SpellList, [{
     key: 'render',
     value: function render() {
-      if (this.props.spellList) {
-        var spellListItemsGroupedByLevel = [[], [], [], [], [], [], [], [], [], []]; //Is this retarded??
-        for (var i = 0; i < this.props.spellList.length; i++) {
-          //Add spell.
-          spellListItemsGroupedByLevel[this.props.spellList[i].level].push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
-        }
-        var spellListLevelItemGroups = [];
-
-        for (var _i = 0; _i < spellListItemsGroupedByLevel.length; _i++) {
-          //If spells at this level.
-          if (spellListItemsGroupedByLevel[_i]) {
-            spellListLevelItemGroups.push(_react2.default.createElement(
-              _SpellListLevelItemGroup2.default,
-              { key: _i, level: _i },
-              spellListItemsGroupedByLevel[_i]
-            ));
+      if (this.props.spellList.length > 0) {
+        if (this.props.settings.orderSpellsByLevel) {
+          var spellListItemsGroupedByLevel = [[], [], [], [], [], [], [], [], [], []]; //Is this retarded??
+          for (var i = 0; i < this.props.spellList.length; i++) {
+            //Add spell.
+            spellListItemsGroupedByLevel[this.props.spellList[i].level].push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: i, key: this.props.spellList[i].name, spell: this.props.spellList[i] }));
           }
+          var spellListLevelItemGroups = [];
+
+          for (var _i = 0; _i < spellListItemsGroupedByLevel.length; _i++) {
+            //If spells at this level.
+            if (spellListItemsGroupedByLevel[_i]) {
+              spellListLevelItemGroups.push(_react2.default.createElement(
+                _spellListLevelItemGroup2.default,
+                { key: _i, level: _i },
+                spellListItemsGroupedByLevel[_i]
+              ));
+            }
+          }
+          return _react2.default.createElement(
+            'div',
+            null,
+            spellListLevelItemGroups
+          );
+        } else {
+          var spellListItems = [];
+          for (var _i2 = 0; _i2 < this.props.spellList.length; _i2++) {
+            spellListItems.push(_react2.default.createElement(_spellListItemContainer2.default, { spellIndex: _i2, key: this.props.spellList[_i2].name, spell: this.props.spellList[_i2] }));
+          }
+          return _react2.default.createElement(
+            'div',
+            null,
+            spellListItems
+          );
         }
-        return _react2.default.createElement(
-          'div',
-          null,
-          spellListLevelItemGroups
-        );
       } else if (this.props.isFetchingSpellList) {
         return _react2.default.createElement('img', { id: 'loading-image', height: '50', width: '50', src: 'images/loading.gif' });
       }
@@ -76,7 +88,8 @@ var SpellList = function (_React$Component) {
 function mapStateToProps(state, ownProps) {
   return {
     spellList: state.spells.spellList,
-    isFetchingSpellList: state.spells.isFetchingSpellList
+    isFetchingSpellList: state.spells.isFetchingSpellList,
+    settings: state.settings
   };
 }
 

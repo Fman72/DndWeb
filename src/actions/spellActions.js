@@ -30,6 +30,10 @@ function recieveRetrieveSpellList(user, spellList){
 	return {type: "RECIEVE_RETRIEVE_SPELL_LIST", user: user, spellList: spellList};
 }
 
+function errorRetrieveSpellList(){
+	return {type: "ERROR_RETRIEVE_SPELL_LIST"};
+}
+
 function requestStoreSpellList(user){
 	return {type: "REQUEST_STORE_SPELL_LIST", user: user};
 }
@@ -63,7 +67,8 @@ function attemptRetrieveSpellList(user) {
                 console.log(response);
             })
             .catch((response) => {
-                console.log(response);
+								console.log("ERROR ACCESSING DB");
+								dispatch(errorRetrieveSpellList());
             });
     });
 	}

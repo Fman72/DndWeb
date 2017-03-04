@@ -8,12 +8,12 @@ import {initialCapsString} from '~/util';
 class SpellPageHeaderContainer extends React.Component{
   constructor(props){
     super(props);
-    this.showFilterSettingsModal = this.showFilterSettingsModal.bind(this);
+    this.showSettingsModal = this.showSettingsModal.bind(this);
     this.storeSpellList = this.storeSpellList.bind(this);
   }
 
-  showFilterSettingsModal(){
-    this.props.dispatch(showModal("filterSettingsModal"));
+  showSettingsModal(){
+    this.props.dispatch(showModal("settingsModal"));
   }
 
   storeSpellList(){
@@ -29,7 +29,7 @@ class SpellPageHeaderContainer extends React.Component{
       <div id = "page-title">
           <h1 style = {{display: "inline", marginRight: "auto", marginLeft: "15px"}}>Welcome to the DND 5e Spell List {initialCapsString(this.props.user.username)}</h1>
           <ImageButton imageSrc = {"base_arrow"} handleClick = {this.storeSpellList}/>
-          <ImageButton imageSrc = {"cog"} handleClick = {this.showFilterSettingsModal}/>
+          <ImageButton imageSrc = {"cog"} handleClick = {this.showSettingsModal}/>
       </div>
     );
   }

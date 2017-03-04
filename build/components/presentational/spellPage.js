@@ -16,9 +16,9 @@ var _spellPageHeaderContainer = require('../container/spellPageHeaderContainer')
 
 var _spellPageHeaderContainer2 = _interopRequireDefault(_spellPageHeaderContainer);
 
-var _filterSettingsModalContainer = require('../container/filterSettingsModalContainer');
+var _settingsModalContainer = require('../container/settingsModalContainer');
 
-var _filterSettingsModalContainer2 = _interopRequireDefault(_filterSettingsModalContainer);
+var _settingsModalContainer2 = _interopRequireDefault(_settingsModalContainer);
 
 var _searchContainer = require('../container/searchContainer');
 
@@ -43,7 +43,7 @@ var SpellPage = function SpellPage(props) {
         _react2.default.createElement(_spellPageHeaderContainer2.default, null)
       )
     ),
-    _react2.default.createElement(_filterSettingsModalContainer2.default, null),
+    _react2.default.createElement(_settingsModalContainer2.default, null),
     _react2.default.createElement(
       _reactBootstrap.Row,
       { id: 'spell-page-div', className: 'boostrap-row-margin-override' },

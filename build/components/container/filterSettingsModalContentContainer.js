@@ -18,12 +18,6 @@ var _controlledToggleItem = require('../presentational/controlledToggleItem');
 
 var _controlledToggleItem2 = _interopRequireDefault(_controlledToggleItem);
 
-var _styledModal = require('../presentational/styledModal');
-
-var _styledModal2 = _interopRequireDefault(_styledModal);
-
-var _modalActions = require('../../actions/modalActions');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32,42 +26,38 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var FilterSettingsModalContainer = function (_React$Component) {
-  _inherits(FilterSettingsModalContainer, _React$Component);
+var FilterSettingsModalContentContainer = function (_React$Component) {
+  _inherits(FilterSettingsModalContentContainer, _React$Component);
 
-  function FilterSettingsModalContainer(props) {
-    _classCallCheck(this, FilterSettingsModalContainer);
+  function FilterSettingsModalContentContainer(props) {
+    _classCallCheck(this, FilterSettingsModalContentContainer);
 
-    var _this = _possibleConstructorReturn(this, (FilterSettingsModalContainer.__proto__ || Object.getPrototypeOf(FilterSettingsModalContainer)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (FilterSettingsModalContentContainer.__proto__ || Object.getPrototypeOf(FilterSettingsModalContentContainer)).call(this, props));
 
     _this.toggleFilter = _this.toggleFilter.bind(_this);
-    _this.onHide = _this.onHide.bind(_this);
     return _this;
   }
 
-  _createClass(FilterSettingsModalContainer, [{
+  _createClass(FilterSettingsModalContentContainer, [{
     key: 'toggleFilter',
     value: function toggleFilter(event) {
-      console.log(event.target.checked);
       if (event.target.checked) {
         this.props.dispatch((0, _filterActions.addFilter)(event.target.value));
-        console.log("Added " + event.target.value);
       } else {
         this.props.dispatch((0, _filterActions.removeFilter)(event.target.value));
       }
     }
   }, {
-    key: 'onHide',
-    value: function onHide() {
-      this.props.dispatch((0, _modalActions.hideModal)("filterSettingsModal"));
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var modalTitle = "Filter Settings";
-      var bodyContent = _react2.default.createElement(
+      return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Filters'
+        ),
         _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["desc"], handleChange: this.toggleFilter, value: 'desc', name: 'Description' }),
         _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["level"], handleChange: this.toggleFilter, value: 'level', name: 'Level' }),
         _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["class"], handleChange: this.toggleFilter, value: 'class', name: 'Class' }),
@@ -79,18 +69,16 @@ var FilterSettingsModalContainer = function (_React$Component) {
         _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["components"], handleChange: this.toggleFilter, value: 'components', name: 'Components' }),
         _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["ritual"], handleChange: this.toggleFilter, value: 'ritual', name: 'Ritual' })
       );
-      return _react2.default.createElement(_styledModal2.default, { handleHide: this.onHide, show: this.props.modals.filterSettingsModal, modalTitle: modalTitle, bodyContent: bodyContent });
     }
   }]);
 
-  return FilterSettingsModalContainer;
+  return FilterSettingsModalContentContainer;
 }(_react2.default.Component);
 
 function mapStateToProps(state, ownProps) {
   return {
-    filters: state.filters,
-    modals: state.modals
+    filters: state.filters
   };
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(FilterSettingsModalContainer);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(FilterSettingsModalContentContainer);

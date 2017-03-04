@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Row, Col} from 'react-bootstrap';
 import SpellPageHeaderContainer from '../container/spellPageHeaderContainer';
-import FilterSettingsModalContainer from '../container/filterSettingsModalContainer'
+import SettingsModalContainer from '../container/settingsModalContainer'
 import SearchContainer from '../container/searchContainer';
 import SpellList from '../container/spellList';
 
@@ -15,7 +15,7 @@ let SpellPage = (props) => {
             <SpellPageHeaderContainer/>
           </Col>
         </Row>
-        <FilterSettingsModalContainer/>
+        <SettingsModalContainer/>
         <Row id = "spell-page-div" className = "boostrap-row-margin-override">
           <Col id = 'search-container' xs = {12} sm = {3}>
             <SearchContainer/>
