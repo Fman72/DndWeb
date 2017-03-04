@@ -8,7 +8,7 @@ if(process.env.DYNAMODB_ENDPOINT){
 }
 else{
   console.log("LOCAL ENV DETECTED");
-  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: 'http://localhost:8000', maxRetries: 2});
+  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: 'http://localhost:8000'});
 }
 let documentClient = new AWSSDK.DynamoDB.DocumentClient();
 //documentClient.setEndpoint('http://127.0.0.1:8000');
