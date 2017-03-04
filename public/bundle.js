@@ -48396,13 +48396,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _FilterSettingsModalContentContainer = __webpack_require__(544);
+	var _filterSettingsModalContentContainer = __webpack_require__(544);
 
-	var _FilterSettingsModalContentContainer2 = _interopRequireDefault(_FilterSettingsModalContentContainer);
+	var _filterSettingsModalContentContainer2 = _interopRequireDefault(_filterSettingsModalContentContainer);
 
-	var _GeneralSettingsModalContentContainer = __webpack_require__(547);
+	var _generalSettingsModalContentContainer = __webpack_require__(547);
 
-	var _GeneralSettingsModalContentContainer2 = _interopRequireDefault(_GeneralSettingsModalContentContainer);
+	var _generalSettingsModalContentContainer2 = _interopRequireDefault(_generalSettingsModalContentContainer);
 
 	var _styledModal = __webpack_require__(549);
 
@@ -48454,7 +48454,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_styledModal2.default, { show: this.props.modals.settingsModal, title: "Settings", handleHide: this.onHide }, _react2.default.createElement(_GeneralSettingsModalContentContainer2.default, null), _react2.default.createElement('hr', null), _react2.default.createElement(_FilterSettingsModalContentContainer2.default, null));
+	      return _react2.default.createElement(_styledModal2.default, { show: this.props.modals.settingsModal, title: "Settings", handleHide: this.onHide }, _react2.default.createElement(_generalSettingsModalContentContainer2.default, null), _react2.default.createElement('hr', null), _react2.default.createElement(_filterSettingsModalContentContainer2.default, null));
 	    }
 	  }]);
 

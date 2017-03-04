@@ -10,13 +10,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FilterSettingsModalContentContainer = require('./FilterSettingsModalContentContainer');
+var _filterSettingsModalContentContainer = require('./filterSettingsModalContentContainer');
 
-var _FilterSettingsModalContentContainer2 = _interopRequireDefault(_FilterSettingsModalContentContainer);
+var _filterSettingsModalContentContainer2 = _interopRequireDefault(_filterSettingsModalContentContainer);
 
-var _GeneralSettingsModalContentContainer = require('./GeneralSettingsModalContentContainer');
+var _generalSettingsModalContentContainer = require('./generalSettingsModalContentContainer');
 
-var _GeneralSettingsModalContentContainer2 = _interopRequireDefault(_GeneralSettingsModalContentContainer);
+var _generalSettingsModalContentContainer2 = _interopRequireDefault(_generalSettingsModalContentContainer);
 
 var _styledModal = require('../presentational/styledModal');
 
@@ -57,9 +57,9 @@ var SettingsModalContainer = function (_React$Component) {
       return _react2.default.createElement(
         _styledModal2.default,
         { show: this.props.modals.settingsModal, title: "Settings", handleHide: this.onHide },
-        _react2.default.createElement(_GeneralSettingsModalContentContainer2.default, null),
+        _react2.default.createElement(_generalSettingsModalContentContainer2.default, null),
         _react2.default.createElement('hr', null),
-        _react2.default.createElement(_FilterSettingsModalContentContainer2.default, null)
+        _react2.default.createElement(_filterSettingsModalContentContainer2.default, null)
       );
     }
   }]);
