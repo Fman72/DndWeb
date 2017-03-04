@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SpellDiv from "../presentational/spellDiv";
 import {connect} from "react-redux";
-import {attemptAddSpell, searchSpell} from "../../actions/spellActions"
+import {attemptAddSpell, searchSpell} from "~/actions/spellActions"
 import ImageButton from '../presentational/imageButton';
 
 //Search container.

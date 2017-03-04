@@ -1,4 +1,4 @@
-import {searchSpell} from "../spellSearcher";
+import {searchSpell} from "~/spellSearcher";
 
 //Handles SEARCH_SPELL action by finding the correct spell.
 function spells(state = {spellList: []}, action)

@@ -3,6 +3,7 @@ import StartPage from '../presentational/startPage.js';
 import {connect} from 'react-redux';
 import {setUser} from '../../actions/userActions.js';
 import {attemptRetrieveSpellList} from '../../actions/spellActions';
+import {normalizeString} from '../../util';
 
 class StartPageContainer extends React.Component{
   constructor(props){
@@ -16,7 +17,7 @@ class StartPageContainer extends React.Component{
     let keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode === 13 && event.target.value){
       this.setState({scrollHeight: -(this.domNode.clientHeight)});
-      this.props.dispatch(setUser(event.target.value));
+      this.props.dispatch(setUser(normalizeString(event.target.value)));
       this.props.dispatch(attemptRetrieveSpellList(event.target.value));
     }
   }

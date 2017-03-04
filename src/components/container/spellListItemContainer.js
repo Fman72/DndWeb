@@ -1,7 +1,7 @@
 import React from 'react';
 import SpellListItemHeader from '../presentational/spellListItemHeader';
 import {connect} from 'react-redux';
-import {removeSpell} from '../../actions/spellActions';
+import {removeSpell} from '~/actions/spellActions';
 import SpellListItem from '../presentational/spellListItem';
 // import Radium from 'radium';
 // import styles from '../../styles';

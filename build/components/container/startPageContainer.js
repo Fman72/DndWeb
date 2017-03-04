@@ -20,6 +20,8 @@ var _userActions = require('../../actions/userActions.js');
 
 var _spellActions = require('../../actions/spellActions');
 
+var _util = require('../../util');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48,7 +50,7 @@ var StartPageContainer = function (_React$Component) {
       var keycode = event.keyCode ? event.keyCode : event.which;
       if (keycode === 13 && event.target.value) {
         this.setState({ scrollHeight: -this.domNode.clientHeight });
-        this.props.dispatch((0, _userActions.setUser)(event.target.value));
+        this.props.dispatch((0, _userActions.setUser)((0, _util.normalizeString)(event.target.value)));
         this.props.dispatch((0, _spellActions.attemptRetrieveSpellList)(event.target.value));
       }
     }

@@ -11,9 +11,6 @@ class SpellList extends React.Component
 
   }
 
-
-
-
   render() {
     if(this.props.spellList){
       let spellListItemsGroupedByLevel = [[], [], [], [], [], [], [], [], [], []]; //Is this retarded??

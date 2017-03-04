@@ -20,6 +20,8 @@ var _modalActions = require('../../actions/modalActions');
 
 var _spellActions = require('../../actions/spellActions');
 
+var _util = require('../../util');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65,7 +67,7 @@ var SpellPageHeaderContainer = function (_React$Component) {
           'h1',
           { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } },
           'Welcome to the DND 5e Spell List ',
-          this.props.user.username
+          (0, _util.initialCapsString)(this.props.user.username)
         ),
         _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }),
         _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal })

@@ -58,7 +58,7 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _configureStore = __webpack_require__(558);
+	var _configureStore = __webpack_require__(559);
 
 	var _reactRedux = __webpack_require__(501);
 
@@ -21528,7 +21528,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _startPageContainer = __webpack_require__(554);
+	var _startPageContainer = __webpack_require__(555);
 
 	var _startPageContainer2 = _interopRequireDefault(_startPageContainer);
 
@@ -45918,15 +45918,15 @@
 
 	var _spellPageHeaderContainer2 = _interopRequireDefault(_spellPageHeaderContainer);
 
-	var _filterSettingsModalContainer = __webpack_require__(542);
+	var _filterSettingsModalContainer = __webpack_require__(543);
 
 	var _filterSettingsModalContainer2 = _interopRequireDefault(_filterSettingsModalContainer);
 
-	var _searchContainer = __webpack_require__(546);
+	var _searchContainer = __webpack_require__(547);
 
 	var _searchContainer2 = _interopRequireDefault(_searchContainer);
 
-	var _spellList = __webpack_require__(549);
+	var _spellList = __webpack_require__(550);
 
 	var _spellList2 = _interopRequireDefault(_spellList);
 
@@ -48089,6 +48089,8 @@
 
 	var _spellActions = __webpack_require__(540);
 
+	var _util = __webpack_require__(542);
+
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
@@ -48141,7 +48143,7 @@
 	      if (this.props.spells.isStoringSpellList) {
 	        storeButtonImageSrc = "loading.gif";
 	      }
-	      return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } }, 'Welcome to the DND 5e Spell List ', this.props.user.username), _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal }));
+	      return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } }, 'Welcome to the DND 5e Spell List ', (0, _util.initialCapsString)(this.props.user.username)), _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showFilterSettingsModal }));
 	    }
 	  }]);
 
@@ -48339,6 +48341,32 @@
 
 /***/ },
 /* 542 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var normalizeString = function normalizeString(string) {
+	  if (string) {
+	    return string.trim().toLowerCase();
+	  }
+	  return null;
+	};
+
+	var initialCapsString = function initialCapsString(string) {
+	  if (string) {
+	    return string.charAt(0).toUpperCase() + string.slice(1);
+	  }
+	  return null;
+	};
+
+	exports.normalizeString = normalizeString;
+	exports.initialCapsString = initialCapsString;
+
+/***/ },
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48365,13 +48393,13 @@
 
 	var _reactRedux = __webpack_require__(501);
 
-	var _filterActions = __webpack_require__(543);
+	var _filterActions = __webpack_require__(544);
 
-	var _filterToggleItem = __webpack_require__(544);
+	var _controlledToggleItem = __webpack_require__(545);
 
-	var _filterToggleItem2 = _interopRequireDefault(_filterToggleItem);
+	var _controlledToggleItem2 = _interopRequireDefault(_controlledToggleItem);
 
-	var _styledModal = __webpack_require__(545);
+	var _styledModal = __webpack_require__(546);
 
 	var _styledModal2 = _interopRequireDefault(_styledModal);
 
@@ -48432,7 +48460,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var modalTitle = "Filter Settings";
-	      var bodyContent = _react2.default.createElement('div', null, _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["desc"], toggleFilter: this.toggleFilter, value: 'desc', name: 'Description' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["level"], toggleFilter: this.toggleFilter, value: 'level', name: 'Level' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["class"], toggleFilter: this.toggleFilter, value: 'class', name: 'Class' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["range"], toggleFilter: this.toggleFilter, value: 'range', name: 'Range' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["casting_time"], toggleFilter: this.toggleFilter, value: 'casting_time', name: 'Casting Time' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["duration"], toggleFilter: this.toggleFilter, value: 'duration', name: 'Duration' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["concentration"], toggleFilter: this.toggleFilter, value: 'concentration', name: 'Concentration' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["school"], toggleFilter: this.toggleFilter, value: 'school', name: 'School' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["components"], toggleFilter: this.toggleFilter, value: 'components', name: 'Components' }), _react2.default.createElement(_filterToggleItem2.default, { isChecked: this.props.filters["ritual"], toggleFilter: this.toggleFilter, value: 'ritual', name: 'Ritual' }));
+	      var bodyContent = _react2.default.createElement('div', null, _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["desc"], handleChange: this.toggleFilter, value: 'desc', name: 'Description' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["level"], handleChange: this.toggleFilter, value: 'level', name: 'Level' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["class"], handleChange: this.toggleFilter, value: 'class', name: 'Class' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["range"], handleChange: this.toggleFilter, value: 'range', name: 'Range' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["casting_time"], handleChange: this.toggleFilter, value: 'casting_time', name: 'Casting Time' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["duration"], handleChange: this.toggleFilter, value: 'duration', name: 'Duration' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["concentration"], handleChange: this.toggleFilter, value: 'concentration', name: 'Concentration' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["school"], handleChange: this.toggleFilter, value: 'school', name: 'School' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["components"], handleChange: this.toggleFilter, value: 'components', name: 'Components' }), _react2.default.createElement(_controlledToggleItem2.default, { isChecked: this.props.filters["ritual"], handleChange: this.toggleFilter, value: 'ritual', name: 'Ritual' }));
 	      return _react2.default.createElement(_styledModal2.default, { handleHide: this.onHide, show: this.props.modals.filterSettingsModal, modalTitle: modalTitle, bodyContent: bodyContent });
 	    }
 	  }]);
@@ -48450,7 +48478,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(FilterSettingsModalContainer);
 
 /***/ },
-/* 543 */
+/* 544 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -48470,7 +48498,7 @@
 	exports.removeFilter = removeFilter;
 
 /***/ },
-/* 544 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48487,14 +48515,14 @@
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
-	function FilterToggleItem(props) {
-	  return _react2.default.createElement("div", null, _react2.default.createElement("input", { onChange: props.toggleFilter, type: "checkbox", value: props.value, checked: props.isChecked }), props.name);
+	function ControlledToggleItem(props) {
+	  return _react2.default.createElement("div", null, _react2.default.createElement("input", { onChange: props.handleChange, type: "checkbox", value: props.value, checked: props.isChecked }), props.name);
 	}
 
-	exports.default = FilterToggleItem;
+	exports.default = ControlledToggleItem;
 
 /***/ },
-/* 545 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48520,7 +48548,7 @@
 	exports.default = StyledModal;
 
 /***/ },
-/* 546 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48549,7 +48577,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _spellDiv = __webpack_require__(547);
+	var _spellDiv = __webpack_require__(548);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
@@ -48640,7 +48668,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SearchContainer);
 
 /***/ },
-/* 547 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48653,7 +48681,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _dataRow = __webpack_require__(548);
+	var _dataRow = __webpack_require__(549);
 
 	var _dataRow2 = _interopRequireDefault(_dataRow);
 
@@ -48686,7 +48714,7 @@
 	exports.default = SpellDiv;
 
 /***/ },
-/* 548 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48721,7 +48749,7 @@
 	exports.default = DataRow;
 
 /***/ },
-/* 549 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48746,11 +48774,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemContainer = __webpack_require__(550);
+	var _spellListItemContainer = __webpack_require__(551);
 
 	var _spellListItemContainer2 = _interopRequireDefault(_spellListItemContainer);
 
-	var _SpellListLevelItemGroup = __webpack_require__(553);
+	var _SpellListLevelItemGroup = __webpack_require__(554);
 
 	var _SpellListLevelItemGroup2 = _interopRequireDefault(_SpellListLevelItemGroup);
 
@@ -48825,7 +48853,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellList);
 
 /***/ },
-/* 550 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48850,7 +48878,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellListItemHeader = __webpack_require__(551);
+	var _spellListItemHeader = __webpack_require__(552);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -48858,7 +48886,7 @@
 
 	var _spellActions = __webpack_require__(540);
 
-	var _spellListItem = __webpack_require__(552);
+	var _spellListItem = __webpack_require__(553);
 
 	var _spellListItem2 = _interopRequireDefault(_spellListItem);
 
@@ -48935,7 +48963,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellListItemContainer);
 
 /***/ },
-/* 551 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48974,7 +49002,7 @@
 	exports.default = SpellListItemHeader;
 
 /***/ },
-/* 552 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48987,11 +49015,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _spellDiv = __webpack_require__(547);
+	var _spellDiv = __webpack_require__(548);
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _spellListItemHeader = __webpack_require__(551);
+	var _spellListItemHeader = __webpack_require__(552);
 
 	var _spellListItemHeader2 = _interopRequireDefault(_spellListItemHeader);
 
@@ -49006,7 +49034,7 @@
 	exports.default = SpellListItem;
 
 /***/ },
-/* 553 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49039,7 +49067,7 @@
 	exports.default = SpellListLevelItemGroup;
 
 /***/ },
-/* 554 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49064,15 +49092,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _startPage = __webpack_require__(555);
+	var _startPage = __webpack_require__(556);
 
 	var _startPage2 = _interopRequireDefault(_startPage);
 
 	var _reactRedux = __webpack_require__(501);
 
-	var _userActions = __webpack_require__(557);
+	var _userActions = __webpack_require__(558);
 
 	var _spellActions = __webpack_require__(540);
+
+	var _util = __webpack_require__(542);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -49116,7 +49146,7 @@
 	      var keycode = event.keyCode ? event.keyCode : event.which;
 	      if (keycode === 13 && event.target.value) {
 	        this.setState({ scrollHeight: -this.domNode.clientHeight });
-	        this.props.dispatch((0, _userActions.setUser)(event.target.value));
+	        this.props.dispatch((0, _userActions.setUser)((0, _util.normalizeString)(event.target.value)));
 	        this.props.dispatch((0, _spellActions.attemptRetrieveSpellList)(event.target.value));
 	      }
 	    }
@@ -49138,7 +49168,7 @@
 	exports.default = (0, _reactRedux.connect)(null)(StartPageContainer);
 
 /***/ },
-/* 555 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49157,7 +49187,7 @@
 
 	var _spellPage2 = _interopRequireDefault(_spellPage);
 
-	var _scrollDiv = __webpack_require__(556);
+	var _scrollDiv = __webpack_require__(557);
 
 	var _scrollDiv2 = _interopRequireDefault(_scrollDiv);
 
@@ -49173,7 +49203,7 @@
 	exports.default = StartPage;
 
 /***/ },
-/* 556 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49204,7 +49234,7 @@
 	exports.default = ScrollDiv;
 
 /***/ },
-/* 557 */
+/* 558 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -49219,7 +49249,7 @@
 	exports.setUser = setUser;
 
 /***/ },
-/* 558 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49231,15 +49261,15 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _index = __webpack_require__(559);
+	var _index = __webpack_require__(560);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _reduxImmutableStateInvariant = __webpack_require__(567);
+	var _reduxImmutableStateInvariant = __webpack_require__(568);
 
 	var _reduxImmutableStateInvariant2 = _interopRequireDefault(_reduxImmutableStateInvariant);
 
-	var _reduxThunk = __webpack_require__(571);
+	var _reduxThunk = __webpack_require__(572);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
@@ -49257,7 +49287,7 @@
 	exports.configureStore = configureStore;
 
 /***/ },
-/* 559 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49268,19 +49298,19 @@
 
 	var _redux = __webpack_require__(510);
 
-	var _spellReducer = __webpack_require__(560);
+	var _spellReducer = __webpack_require__(561);
 
 	var _spellReducer2 = _interopRequireDefault(_spellReducer);
 
-	var _filterReducer = __webpack_require__(564);
+	var _filterReducer = __webpack_require__(565);
 
 	var _filterReducer2 = _interopRequireDefault(_filterReducer);
 
-	var _userReducer = __webpack_require__(565);
+	var _userReducer = __webpack_require__(566);
 
 	var _userReducer2 = _interopRequireDefault(_userReducer);
 
-	var _modalReducer = __webpack_require__(566);
+	var _modalReducer = __webpack_require__(567);
 
 	var _modalReducer2 = _interopRequireDefault(_modalReducer);
 
@@ -49298,7 +49328,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 560 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49307,7 +49337,7 @@
 		value: true
 	});
 
-	var _spellSearcher = __webpack_require__(561);
+	var _spellSearcher = __webpack_require__(562);
 
 	function _toConsumableArray(arr) {
 		if (Array.isArray(arr)) {
@@ -49362,7 +49392,7 @@
 	exports.default = spells;
 
 /***/ },
-/* 561 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49372,11 +49402,11 @@
 	});
 	exports.searchSpell = undefined;
 
-	var _dndSpellList = __webpack_require__(562);
+	var _dndSpellList = __webpack_require__(563);
 
 	var _dndSpellList2 = _interopRequireDefault(_dndSpellList);
 
-	var _fuse = __webpack_require__(563);
+	var _fuse = __webpack_require__(564);
 
 	var _fuse2 = _interopRequireDefault(_fuse);
 
@@ -49400,7 +49430,7 @@
 	exports.searchSpell = searchSpell;
 
 /***/ },
-/* 562 */
+/* 563 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -55410,7 +55440,7 @@
 	exports.default = jsonSpellData;
 
 /***/ },
-/* 563 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56244,7 +56274,7 @@
 
 
 /***/ },
-/* 564 */
+/* 565 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56293,7 +56323,7 @@
 	exports.default = filters;
 
 /***/ },
-/* 565 */
+/* 566 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56317,7 +56347,7 @@
 	exports.default = user;
 
 /***/ },
-/* 566 */
+/* 567 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56357,7 +56387,7 @@
 	exports.default = modals;
 
 /***/ },
-/* 567 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56373,15 +56403,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _jsonStringifySafe = __webpack_require__(568);
+	var _jsonStringifySafe = __webpack_require__(569);
 
 	var _jsonStringifySafe2 = _interopRequireDefault(_jsonStringifySafe);
 
-	var _isImmutable = __webpack_require__(569);
+	var _isImmutable = __webpack_require__(570);
 
 	var _isImmutable2 = _interopRequireDefault(_isImmutable);
 
-	var _trackForMutations = __webpack_require__(570);
+	var _trackForMutations = __webpack_require__(571);
 
 	var _trackForMutations2 = _interopRequireDefault(_trackForMutations);
 
@@ -56429,7 +56459,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 568 */
+/* 569 */
 /***/ function(module, exports) {
 
 	exports = module.exports = stringify
@@ -56462,7 +56492,7 @@
 
 
 /***/ },
-/* 569 */
+/* 570 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56479,7 +56509,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 570 */
+/* 571 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56550,7 +56580,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 571 */
+/* 572 */
 /***/ function(module, exports) {
 
 	'use strict';
