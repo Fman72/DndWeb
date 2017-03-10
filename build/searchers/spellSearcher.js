@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _spellList = require("./spellList.js");
+var _spellList = require("../data/spellList.js");
 
 var _spellList2 = _interopRequireDefault(_spellList);
 

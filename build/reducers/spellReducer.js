@@ -4,7 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _spellSearcher = require("../spellSearcher");
+var _spellSearcher = require("../searchers/spellSearcher");
+
+var _spellSearcher2 = _interopRequireDefault(_spellSearcher);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -15,7 +19,7 @@ function spells() {
 
 	switch (action.type) {
 		case "SEARCH_SPELL":
-			var newSpell = (0, _spellSearcher.searchSpell)(action.spellName);
+			var newSpell = _spellSearcher2.default.search(action.spellName);
 			if (newSpell) {
 				return Object.assign({}, state, { currentSpell: newSpell });
 			} else {

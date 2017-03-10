@@ -6,7 +6,7 @@ import {attemptAddSpell, searchSpell} from "~/actions/spellActions"
 import ImageButton from '../presentational/imageButton';
 
 //Search container.
-class SearchContainer extends React.Component{
+class SpellSearchContainer extends React.Component{
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -54,4 +54,4 @@ function mapStateToProps(state, ownProps){
 	}
 }
 
-export default connect(mapStateToProps)(SearchContainer);
+export default connect(mapStateToProps)(SpellSearchContainer);

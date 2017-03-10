@@ -45922,9 +45922,9 @@
 
 	var _settingsModalContainer2 = _interopRequireDefault(_settingsModalContainer);
 
-	var _searchContainer = __webpack_require__(550);
+	var _spellSearchContainer = __webpack_require__(550);
 
-	var _searchContainer2 = _interopRequireDefault(_searchContainer);
+	var _spellSearchContainer2 = _interopRequireDefault(_spellSearchContainer);
 
 	var _spellList = __webpack_require__(553);
 
@@ -45935,7 +45935,7 @@
 	}
 
 	var SpellPage = function SpellPage(props) {
-	  return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Row, null, _react2.default.createElement(_reactBootstrap.Col, { className: 'title-background', xs: 12 }, _react2.default.createElement(_spellPageHeaderContainer2.default, null))), _react2.default.createElement(_settingsModalContainer2.default, null), _react2.default.createElement(_reactBootstrap.Row, { id: 'spell-page-div', className: 'boostrap-row-margin-override' }, _react2.default.createElement(_reactBootstrap.Col, { id: 'search-container', xs: 12, sm: 3 }, _react2.default.createElement(_searchContainer2.default, null)), _react2.default.createElement(_reactBootstrap.Col, { id: 'spell-list', xs: 12, sm: 9 }, _react2.default.createElement(_spellList2.default, null))), _react2.default.createElement('script', { src: 'bundle.js' }));
+	  return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Row, null, _react2.default.createElement(_reactBootstrap.Col, { className: 'title-background', xs: 12 }, _react2.default.createElement(_spellPageHeaderContainer2.default, null))), _react2.default.createElement(_settingsModalContainer2.default, null), _react2.default.createElement(_reactBootstrap.Row, { id: 'spell-page-div', className: 'boostrap-row-margin-override' }, _react2.default.createElement(_reactBootstrap.Col, { id: 'search-container', xs: 12, sm: 3 }, _react2.default.createElement(_spellSearchContainer2.default, null)), _react2.default.createElement(_reactBootstrap.Col, { id: 'spell-list', xs: 12, sm: 9 }, _react2.default.createElement(_spellList2.default, null))), _react2.default.createElement('script', { src: 'bundle.js' }));
 	};
 
 	exports.default = SpellPage;
@@ -48809,13 +48809,13 @@
 	}
 
 	//Search container.
-	var SearchContainer = function (_React$Component) {
-	    _inherits(SearchContainer, _React$Component);
+	var SpellSearchContainer = function (_React$Component) {
+	    _inherits(SpellSearchContainer, _React$Component);
 
-	    function SearchContainer(props) {
-	        _classCallCheck(this, SearchContainer);
+	    function SpellSearchContainer(props) {
+	        _classCallCheck(this, SpellSearchContainer);
 
-	        var _this = _possibleConstructorReturn(this, (SearchContainer.__proto__ || Object.getPrototypeOf(SearchContainer)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (SpellSearchContainer.__proto__ || Object.getPrototypeOf(SpellSearchContainer)).call(this, props));
 
 	        _this.handleChange = _this.handleChange.bind(_this);
 	        _this.addSpell = _this.addSpell.bind(_this);
@@ -48824,7 +48824,7 @@
 	        return _this;
 	    }
 
-	    _createClass(SearchContainer, [{
+	    _createClass(SpellSearchContainer, [{
 	        key: "handleChange",
 	        value: function handleChange(event) {
 	            this.setState({ currentText: event.target.value });
@@ -48851,7 +48851,7 @@
 	        }
 	    }]);
 
-	    return SearchContainer;
+	    return SpellSearchContainer;
 	}(_react2.default.Component);
 	//SearchContainer = Radium(SearchContainer);
 
@@ -48862,7 +48862,7 @@
 	    };
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SearchContainer);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellSearchContainer);
 
 /***/ },
 /* 551 */
@@ -49471,11 +49471,11 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _reduxImmutableStateInvariant = __webpack_require__(572);
+	var _reduxImmutableStateInvariant = __webpack_require__(573);
 
 	var _reduxImmutableStateInvariant2 = _interopRequireDefault(_reduxImmutableStateInvariant);
 
-	var _reduxThunk = __webpack_require__(576);
+	var _reduxThunk = __webpack_require__(577);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
@@ -49508,19 +49508,19 @@
 
 	var _spellReducer2 = _interopRequireDefault(_spellReducer);
 
-	var _filterReducer = __webpack_require__(568);
+	var _filterReducer = __webpack_require__(569);
 
 	var _filterReducer2 = _interopRequireDefault(_filterReducer);
 
-	var _userReducer = __webpack_require__(569);
+	var _userReducer = __webpack_require__(570);
 
 	var _userReducer2 = _interopRequireDefault(_userReducer);
 
-	var _modalReducer = __webpack_require__(570);
+	var _modalReducer = __webpack_require__(571);
 
 	var _modalReducer2 = _interopRequireDefault(_modalReducer);
 
-	var _settingReducer = __webpack_require__(571);
+	var _settingReducer = __webpack_require__(572);
 
 	var _settingReducer2 = _interopRequireDefault(_settingReducer);
 
@@ -49550,6 +49550,12 @@
 
 	var _spellSearcher = __webpack_require__(565);
 
+	var _spellSearcher2 = _interopRequireDefault(_spellSearcher);
+
+	function _interopRequireDefault(obj) {
+		return obj && obj.__esModule ? obj : { default: obj };
+	}
+
 	function _toConsumableArray(arr) {
 		if (Array.isArray(arr)) {
 			for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
@@ -49567,7 +49573,7 @@
 
 		switch (action.type) {
 			case "SEARCH_SPELL":
-				var newSpell = (0, _spellSearcher.searchSpell)(action.spellName);
+				var newSpell = _spellSearcher2.default.search(action.spellName);
 				if (newSpell) {
 					return Object.assign({}, state, { currentSpell: newSpell });
 				} else {
@@ -49612,36 +49618,24 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
-	exports.searchSpell = undefined;
 
-	var _dndSpellList = __webpack_require__(566);
+	var _spellList = __webpack_require__(566);
 
-	var _dndSpellList2 = _interopRequireDefault(_dndSpellList);
+	var _spellList2 = _interopRequireDefault(_spellList);
 
-	var _fuse = __webpack_require__(567);
+	var _searcher = __webpack_require__(567);
 
-	var _fuse2 = _interopRequireDefault(_fuse);
+	var _searcher2 = _interopRequireDefault(_searcher);
 
 	function _interopRequireDefault(obj) {
-	    return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
-	var searchSpell = function searchSpell(spellName) {
-	    var options = { shouldSort: true, keys: ["name"], maxPatternLength: 40 };
-	    var fuse = new _fuse2.default(_dndSpellList2.default, options);
-	    var results = fuse.search(spellName);
-	    if (results.length < 1) {
-	        return false;
-	    } else {
-	        var topSpell = results[0];
-	        console.log(topSpell.name);
-	        return topSpell;
-	    }
-	};
+	var spellSearcher = new _searcher2.default(_spellList2.default);
 
-	exports.searchSpell = searchSpell;
+	exports.default = spellSearcher;
 
 /***/ },
 /* 566 */
@@ -49652,7 +49646,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var jsonSpellData = [{
+	var spellList = [{
 	  "name": "Abi-Dalzim's Horrid Wilting",
 	  "desc": "You draw the moisture from every creature in a 30-foot cube centered on a point you choose within range. Each creature in that area must make a Constitution saving throw. Constructs and undead aren't affected, and plants and water elementals make this saving throw with disadvantage. A creature takes 10d8 necrotic damage on a failed save, or half as much damage on a successful one.You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage.This spells damage increases by 1d6 when you reach 5th Level (2d6), 11th level (3d6) and 17th level (4d6).",
 	  "page": "ee pc 15",
@@ -55651,10 +55645,75 @@
 	  "oaths": "Devotion"
 	}];
 
-	exports.default = jsonSpellData;
+	exports.default = spellList;
 
 /***/ },
 /* 567 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
+
+	var _fuse = __webpack_require__(568);
+
+	var _fuse2 = _interopRequireDefault(_fuse);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	var Searcher = function () {
+	  function Searcher(dataToSearch) {
+	    var searchCallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (topSpell) {
+	      return topSpell;
+	    };
+	    var fuseOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : { shouldSort: true, keys: ["name"], maxPatternLength: 40 };
+
+	    _classCallCheck(this, Searcher);
+
+	    this.dataToSearch = new _fuse2.default(dataToSearch, fuseOptions);
+	    this.searchCallback = searchCallback;
+	  }
+
+	  _createClass(Searcher, [{
+	    key: "search",
+	    value: function search(item) {
+	      var results = this.dataToSearch.search(item);
+	      if (results.length < 1) {
+	        return false;
+	      } else {
+	        var topSpell = results[0];
+	        return this.searchCallback(topSpell);
+	      }
+	    }
+	  }]);
+
+	  return Searcher;
+	}();
+
+	exports.default = Searcher;
+
+/***/ },
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -56488,7 +56547,7 @@
 
 
 /***/ },
-/* 568 */
+/* 569 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56533,7 +56592,7 @@
 	exports.default = filters;
 
 /***/ },
-/* 569 */
+/* 570 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56557,7 +56616,7 @@
 	exports.default = user;
 
 /***/ },
-/* 570 */
+/* 571 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56593,7 +56652,7 @@
 	exports.default = modals;
 
 /***/ },
-/* 571 */
+/* 572 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56629,7 +56688,7 @@
 	exports.default = settings;
 
 /***/ },
-/* 572 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56645,15 +56704,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _jsonStringifySafe = __webpack_require__(573);
+	var _jsonStringifySafe = __webpack_require__(574);
 
 	var _jsonStringifySafe2 = _interopRequireDefault(_jsonStringifySafe);
 
-	var _isImmutable = __webpack_require__(574);
+	var _isImmutable = __webpack_require__(575);
 
 	var _isImmutable2 = _interopRequireDefault(_isImmutable);
 
-	var _trackForMutations = __webpack_require__(575);
+	var _trackForMutations = __webpack_require__(576);
 
 	var _trackForMutations2 = _interopRequireDefault(_trackForMutations);
 
@@ -56701,7 +56760,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 573 */
+/* 574 */
 /***/ function(module, exports) {
 
 	exports = module.exports = stringify
@@ -56734,7 +56793,7 @@
 
 
 /***/ },
-/* 574 */
+/* 575 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56751,7 +56810,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 575 */
+/* 576 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56822,7 +56881,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 576 */
+/* 577 */
 /***/ function(module, exports) {
 
 	'use strict';

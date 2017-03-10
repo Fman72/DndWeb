@@ -20,9 +20,9 @@ var _settingsModalContainer = require('../container/settingsModalContainer');
 
 var _settingsModalContainer2 = _interopRequireDefault(_settingsModalContainer);
 
-var _searchContainer = require('../container/searchContainer');
+var _spellSearchContainer = require('../container/spellSearchContainer');
 
-var _searchContainer2 = _interopRequireDefault(_searchContainer);
+var _spellSearchContainer2 = _interopRequireDefault(_spellSearchContainer);
 
 var _spellList = require('../container/spellList');
 
@@ -50,7 +50,7 @@ var SpellPage = function SpellPage(props) {
       _react2.default.createElement(
         _reactBootstrap.Col,
         { id: 'search-container', xs: 12, sm: 3 },
-        _react2.default.createElement(_searchContainer2.default, null)
+        _react2.default.createElement(_spellSearchContainer2.default, null)
       ),
       _react2.default.createElement(
         _reactBootstrap.Col,
