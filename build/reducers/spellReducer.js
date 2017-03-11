@@ -29,7 +29,6 @@ function spells() {
 		case "ADD_SPELL":
 			var addedSpellList = [].concat(_toConsumableArray(state.spellList), [action.newSpell]);
 			return Object.assign({}, state, { spellList: addedSpellList });
-			return state;
 			break;
 		case "REMOVE_SPELL":
 			var removedSpellList = [].concat(_toConsumableArray(state.spellList.slice(0, action.spellIndex)), _toConsumableArray(state.spellList.slice(action.spellIndex + 1)));

@@ -18,13 +18,13 @@ var _spellDiv = require("../presentational/spellDiv");
 
 var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-var _reactRedux = require("react-redux");
-
-var _spellActions = require("../../actions/spellActions");
-
 var _imageButton = require("../presentational/imageButton");
 
 var _imageButton2 = _interopRequireDefault(_imageButton);
+
+var _dataDiv = require("../presentational/dataDiv");
+
+var _dataDiv2 = _interopRequireDefault(_dataDiv);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,31 +43,16 @@ var SearchContainer = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (SearchContainer.__proto__ || Object.getPrototypeOf(SearchContainer)).call(this, props));
 
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.addSpell = _this.addSpell.bind(_this);
-        _this.addSpellOnEnter = _this.addSpellOnEnter.bind(_this);
-        _this.state = { currentText: "" };
+        _this.onKeyUp = _this.onKeyUp.bind(_this);
         return _this;
     }
 
     _createClass(SearchContainer, [{
-        key: "handleChange",
-        value: function handleChange(event) {
-            this.setState({ currentText: event.target.value });
-            this.props.dispatch((0, _spellActions.searchSpell)(this.state.currentText));
-            console.log("Change");
-        }
-    }, {
-        key: "addSpell",
-        value: function addSpell(event) {
-            this.props.dispatch((0, _spellActions.attemptAddSpell)(this.props.currentSpell));
-        }
-    }, {
-        key: "addSpellOnEnter",
-        value: function addSpellOnEnter(event) {
+        key: "onKeyUp",
+        value: function onKeyUp(event) {
             var keycode = event.keyCode ? event.keyCode : event.which;
             if (keycode === 13) {
-                this.addSpell();
+                this.props.onFound();
             }
         }
     }, {
@@ -79,23 +64,15 @@ var SearchContainer = function (_React$Component) {
                 _react2.default.createElement(
                     "div",
                     { id: "search-input" },
-                    _react2.default.createElement("input", { className: "styled-input", type: "text", onKeyUp: this.addSpellOnEnter, value: this.state.currentText, onChange: this.handleChange }),
-                    this.props.currentSpell && _react2.default.createElement(_imageButton2.default, { imageSrc: "plus", handleClick: this.addSpell })
+                    _react2.default.createElement("input", { className: "styled-input", type: "text", onKeyUp: this.onKeyUp, value: this.props.currentText, onChange: this.props.handleChange }),
+                    this.props.foundItem && _react2.default.createElement(_imageButton2.default, { imageSrc: "plus", handleClick: this.props.onFound })
                 ),
-                this.props.currentSpell && _react2.default.createElement(_spellDiv2.default, { spell: this.props.currentSpell })
+                this.props.foundItem && _react2.default.createElement(_dataDiv2.default, { positionedProps: this.props.positionedProps, hiddenProps: this.props.hiddenProps, objectToDisplay: this.props.foundItem })
             );
         }
     }]);
 
     return SearchContainer;
 }(_react2.default.Component);
-//SearchContainer = Radium(SearchContainer);
 
-
-function mapStateToProps(state, ownProps) {
-    return {
-        currentSpell: state.spells.currentSpell
-    };
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(SearchContainer);
+exports.default = SearchContainer;

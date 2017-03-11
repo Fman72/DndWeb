@@ -16,7 +16,6 @@ function spells(state = {spellList: []}, action)
 		case "ADD_SPELL":
       let addedSpellList = [...state.spellList, action.newSpell];
 			return Object.assign({}, state, {spellList: addedSpellList});
-			return state;
 			break;
 		case "REMOVE_SPELL":
 			let removedSpellList = [...state.spellList.slice(0, action.spellIndex), ...state.spellList.slice(action.spellIndex + 1)];

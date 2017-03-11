@@ -3,7 +3,7 @@ import StartPage from '../presentational/startPage.js';
 import {connect} from 'react-redux';
 import {setUser} from '../../actions/userActions.js';
 import {attemptRetrieveSpellList} from '../../actions/spellActions';
-import {normalizeString} from '../../util';
+import {normalizeString} from '~/util';
 
 class StartPageContainer extends React.Component{
   constructor(props){

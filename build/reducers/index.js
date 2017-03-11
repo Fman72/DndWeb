@@ -26,10 +26,15 @@ var _settingReducer = require('./settingReducer');
 
 var _settingReducer2 = _interopRequireDefault(_settingReducer);
 
+var _monsterReducer = require('./monsterReducer');
+
+var _monsterReducer2 = _interopRequireDefault(_monsterReducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
 	spells: _spellReducer2.default,
+	monsters: _monsterReducer2.default,
 	filters: _filterReducer2.default,
 	user: _userReducer2.default,
 	modals: _modalReducer2.default,

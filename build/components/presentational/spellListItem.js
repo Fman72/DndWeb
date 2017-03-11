@@ -23,7 +23,7 @@ var SpellListItem = function SpellListItem(props) {
     'div',
     { className: 'spell-list-item', onDoubleClick: props.handleDoubleClick },
     _react2.default.createElement(_spellListItemHeader2.default, { removeSpell: props.removeSpell, toggleMinimization: props.toggleMinimization, name: props.spell.name }),
-    _react2.default.createElement(_spellDiv2.default, { spell: props.spell, filters: props.filters })
+    _react2.default.createElement(_spellDiv2.default, { objectToDisplay: props.spell, hiddenProps: props.filters })
   );
 };
 

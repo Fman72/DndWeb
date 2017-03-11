@@ -17,5 +17,12 @@ var initialCapsString = function initialCapsString(string) {
   return null;
 };
 
+var beautifyString = function beautifyString(string) {
+  return string.replace(/_|-/g, " ").replace(/\b\w/g, function (letter) {
+    return letter.toUpperCase();
+  });
+};
+
 exports.normalizeString = normalizeString;
 exports.initialCapsString = initialCapsString;
+exports.beautifyString = beautifyString;

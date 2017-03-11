@@ -33,7 +33,26 @@ router.get("/start", (req, res) => {
     });
 });
 
-router.get("/spell", (req, res) => {
+router.get("/spells", (req, res) => {
+    match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
+        if(error){
+            console.log(error.message);
+            res.status(500).send(error.message);
+        }
+        else if(renderProps){
+            const content = ReactDOMServer.renderToString(
+            	<Provider store = {store}>
+            		<RouterContext {...renderProps}/>
+				      </Provider>);
+            res.send(unmanagedMarkup + `<div id = 'page-wrapper'>${content}</div>`);
+        }
+        else{
+            res.status(404).send("Not Found");
+        }
+    });
+});
+
+router.get("/monsters", (req, res) => {
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
         if(error){
             console.log(error.message);

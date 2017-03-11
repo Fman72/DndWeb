@@ -1,9 +1,10 @@
 import React from "react";
+import {beautifyString} from '~/util';
 
 //Displays data
 function DataRow(props){
       return (
-          (props.name && props.value && <span className = {(props.name + "-cell").toLowerCase()}><b>{props.name}</b>: {props.value} {props.addBreak && <br/>}</span>)
+          (!props.value == "" && props.name && props.value && <span className = {(props.name + "-cell").toLowerCase()}><b>{beautifyString(props.name)}</b>: {props.value} {props.addBreak && <br/>}</span>)
       );
 };
 

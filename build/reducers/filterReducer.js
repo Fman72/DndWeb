@@ -4,27 +4,19 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function filters() {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { desc: true,
-		level: true,
-		class: true,
-		range: true,
-		casting_time: true,
-		duration: true,
-		concentration: true,
-		school: true,
-		components: true,
-		ritual: true };
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ["page", "material"];
 	var action = arguments[1];
 
 	switch (action.type) {
 		case "ADD_FILTER":
-			return Object.assign({}, state, _defineProperty({}, action.filterName, true));
+			return [].concat(_toConsumableArray(state), [action.filterName]);
 			break;
 		case "REMOVE_FILTER":
-			return Object.assign({}, state, _defineProperty({}, action.filterName, false));
+			var filterIndex = state.indexOf(action.filterName);
+			return [].concat(_toConsumableArray(state.slice(0, filterIndex)), _toConsumableArray(state.slice(filterIndex + 1)));
 			break;
 		default:
 			return state;

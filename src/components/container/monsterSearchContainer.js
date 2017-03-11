@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {connect} from "react-redux";
-import {attemptAddSpell, searchSpell} from "~/actions/spellActions"
+import {searchMonster, addMonster} from "~/actions/monsterActions"
 import ImageButton from '../presentational/imageButton';
 import SearchContainer from './searchContainer';
 
@@ -10,23 +10,22 @@ class SpellSearchContainer extends React.Component{
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.addSpell = this.addSpell.bind(this);
+        this.addMonster = this.addMonster.bind(this);
         this.state = {currentText: ""};
     }
 
     handleChange(event){
         this.setState({currentText: event.target.value});
-        this.props.dispatch(searchSpell(this.state.currentText));
-        console.log("Change");
+        this.props.dispatch(searchMonster(this.state.currentText));
     }
 
-    addSpell(event){
-      this.props.dispatch(attemptAddSpell(this.props.currentSpell));
+    addMonster(event){
+      this.props.dispatch(addMonster(this.props.currentMonster));
     }
 
     render () {
         return (
-          <SearchContainer positionedProps = {['name', 'description']} hiddenProps = {['page']} onFound = {this.addSpell} handleChange = {this.handleChange} currentText = {this.state.currentText} foundItem = {this.props.currentSpell}/>
+          <SearchContainer positionedProps = {['name']} onFound = {this.addMonster} handleChange = {this.handleChange} currentText = {this.state.currentText} foundItem = {this.props.currentMonster} hiddenProps = {['actions', 'special_abilities', 'legendary_actions']}/>
         );
     }
 }
@@ -36,7 +35,7 @@ class SpellSearchContainer extends React.Component{
 
 function mapStateToProps(state, ownProps){
 	return {
-    currentSpell: state.spells.currentSpell
+    currentMonster: state.monsters.currentMonster
 	}
 }
 

@@ -16,7 +16,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRedux = require("react-redux");
 
-var _spellActions = require("../../actions/spellActions");
+var _monsterActions = require("../../actions/monsterActions");
 
 var _imageButton = require("../presentational/imageButton");
 
@@ -44,7 +44,7 @@ var SpellSearchContainer = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (SpellSearchContainer.__proto__ || Object.getPrototypeOf(SpellSearchContainer)).call(this, props));
 
         _this.handleChange = _this.handleChange.bind(_this);
-        _this.addSpell = _this.addSpell.bind(_this);
+        _this.addMonster = _this.addMonster.bind(_this);
         _this.state = { currentText: "" };
         return _this;
     }
@@ -53,18 +53,17 @@ var SpellSearchContainer = function (_React$Component) {
         key: "handleChange",
         value: function handleChange(event) {
             this.setState({ currentText: event.target.value });
-            this.props.dispatch((0, _spellActions.searchSpell)(this.state.currentText));
-            console.log("Change");
+            this.props.dispatch((0, _monsterActions.searchMonster)(this.state.currentText));
         }
     }, {
-        key: "addSpell",
-        value: function addSpell(event) {
-            this.props.dispatch((0, _spellActions.attemptAddSpell)(this.props.currentSpell));
+        key: "addMonster",
+        value: function addMonster(event) {
+            this.props.dispatch((0, _monsterActions.addMonster)(this.props.currentMonster));
         }
     }, {
         key: "render",
         value: function render() {
-            return _react2.default.createElement(_searchContainer2.default, { positionedProps: ['name', 'description'], hiddenProps: ['page'], onFound: this.addSpell, handleChange: this.handleChange, currentText: this.state.currentText, foundItem: this.props.currentSpell });
+            return _react2.default.createElement(_searchContainer2.default, { positionedProps: ['name'], onFound: this.addMonster, handleChange: this.handleChange, currentText: this.state.currentText, foundItem: this.props.currentMonster, hiddenProps: ['actions', 'special_abilities', 'legendary_actions'] });
         }
     }]);
 
@@ -75,7 +74,7 @@ var SpellSearchContainer = function (_React$Component) {
 
 function mapStateToProps(state, ownProps) {
     return {
-        currentSpell: state.spells.currentSpell
+        currentMonster: state.monsters.currentMonster
     };
 }
 

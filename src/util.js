@@ -12,4 +12,8 @@ let initialCapsString = (string) => {
   return null;
 }
 
-export {normalizeString, initialCapsString};
+let beautifyString = (string) => {
+  return string.replace(/_|-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+export {normalizeString, initialCapsString, beautifyString};
