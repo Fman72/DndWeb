@@ -2,14 +2,11 @@ import React from 'react';
 import DataRow from './dataRow';
 
 let DataDiv = (props) => {
-  let mergedArray = Object.keys(props.objectToDisplay).concat(props.hiddenProps);
-  mergedArray.sort();
+  let objectToDisplayProps = Object.keys(props.objectToDisplay);
   let dataRows = [];
-  for (let i = 0; i < mergedArray.length; i++){
-    if(mergedArray[i] != mergedArray[i + 1]){
-      if(props.positionedProps.indexOf(mergedArray[i]) < 0){
-        dataRows.push(<DataRow key = {mergedArray[i]} name = {mergedArray[i]} value = {props.objectToDisplay[mergedArray[i]]}/>);
-      }
+  for (let i = 0; i < Object.keys(props.objectToDisplay).length; i++){
+    if(props.positionedProps.indexOf(objectToDisplayProps[i]) < 0 && props.hiddenProps.indexOf(objectToDisplayProps[i]) < 0){
+      dataRows.push(<DataRow key = {objectToDisplayProps[i]} name = {objectToDisplayProps[i]} value = {props.objectToDisplay[objectToDisplayProps[i]]}/>);
     }
     else{
       i++;
@@ -32,5 +29,11 @@ DataDiv.propTypes = {
   positionedProps: React.PropTypes.array,
   hiddenProps: React.PropTypes.array
 }
+
+DataRow.defaultProps = {
+  hiddenProps: [],
+  positionedProps: []
+}
+
 
 export default DataDiv;

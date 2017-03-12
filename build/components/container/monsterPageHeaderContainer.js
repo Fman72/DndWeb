@@ -24,8 +24,6 @@ var _imageButton = require('../presentational/imageButton');
 
 var _imageButton2 = _interopRequireDefault(_imageButton);
 
-var _util = require('../../util');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66,7 +64,7 @@ var SpellPageHeaderContainer = function (_React$Component) {
         _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }),
         _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showSettingsModal })
       );
-      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Spell List " + (0, _util.initialCapsString)(this.props.user.username), buttons: buttons });
+      return _react2.default.createElement(_pageHeader2.default, { username: this.props.user.username, buttons: buttons });
     }
   }]);
 

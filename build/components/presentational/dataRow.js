@@ -14,6 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //Displays data
 function DataRow(props) {
+  console.log(props.name + " " + props.value);
   return !props.value == "" && props.name && props.value && _react2.default.createElement(
     "span",
     { className: (props.name + "-cell").toLowerCase() },

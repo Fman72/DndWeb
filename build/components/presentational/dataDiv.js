@@ -15,14 +15,11 @@ var _dataRow2 = _interopRequireDefault(_dataRow);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DataDiv = function DataDiv(props) {
-  var mergedArray = Object.keys(props.objectToDisplay).concat(props.hiddenProps);
-  mergedArray.sort();
+  var objectToDisplayProps = Object.keys(props.objectToDisplay);
   var dataRows = [];
-  for (var i = 0; i < mergedArray.length; i++) {
-    if (mergedArray[i] != mergedArray[i + 1]) {
-      if (props.positionedProps.indexOf(mergedArray[i]) < 0) {
-        dataRows.push(_react2.default.createElement(_dataRow2.default, { key: mergedArray[i], name: mergedArray[i], value: props.objectToDisplay[mergedArray[i]] }));
-      }
+  for (var i = 0; i < Object.keys(props.objectToDisplay).length; i++) {
+    if (props.positionedProps.indexOf(objectToDisplayProps[i]) < 0 && props.hiddenProps.indexOf(objectToDisplayProps[i]) < 0) {
+      dataRows.push(_react2.default.createElement(_dataRow2.default, { key: objectToDisplayProps[i], name: objectToDisplayProps[i], value: props.objectToDisplay[objectToDisplayProps[i]] }));
     } else {
       i++;
     }
@@ -43,6 +40,11 @@ DataDiv.propTypes = {
   objectToDisplay: _react2.default.PropTypes.object.isRequired,
   positionedProps: _react2.default.PropTypes.array,
   hiddenProps: _react2.default.PropTypes.array
+};
+
+_dataRow2.default.defaultProps = {
+  hiddenProps: [],
+  positionedProps: []
 };
 
 exports.default = DataDiv;

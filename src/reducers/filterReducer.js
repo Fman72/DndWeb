@@ -1,4 +1,4 @@
-function filters(state = ["page", "material"], action){
+function filters(state = ["page", "material", "patrons", "archetype", "domains"], action){
 	switch (action.type){
 		case "ADD_FILTER":
 				return [...state, action.filterName];

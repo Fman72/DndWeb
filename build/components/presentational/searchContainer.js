@@ -14,17 +14,17 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRedux = require("react-redux");
+var _spellDiv = require("../presentational/spellDiv");
 
-var _monsterActions = require("../../actions/monsterActions");
+var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
 var _imageButton = require("../presentational/imageButton");
 
 var _imageButton2 = _interopRequireDefault(_imageButton);
 
-var _searchContainer = require("../presentational/searchContainer");
+var _dataDiv = require("../presentational/dataDiv");
 
-var _searchContainer2 = _interopRequireDefault(_searchContainer);
+var _dataDiv2 = _interopRequireDefault(_dataDiv);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,47 +35,44 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 //Search container.
-var SpellSearchContainer = function (_React$Component) {
-    _inherits(SpellSearchContainer, _React$Component);
+var SearchContainer = function (_React$Component) {
+    _inherits(SearchContainer, _React$Component);
 
-    function SpellSearchContainer(props) {
-        _classCallCheck(this, SpellSearchContainer);
+    function SearchContainer(props) {
+        _classCallCheck(this, SearchContainer);
 
-        var _this = _possibleConstructorReturn(this, (SpellSearchContainer.__proto__ || Object.getPrototypeOf(SpellSearchContainer)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (SearchContainer.__proto__ || Object.getPrototypeOf(SearchContainer)).call(this, props));
 
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.addMonster = _this.addMonster.bind(_this);
-        _this.state = { currentText: "" };
+        _this.onKeyUp = _this.onKeyUp.bind(_this);
         return _this;
     }
 
-    _createClass(SpellSearchContainer, [{
-        key: "handleChange",
-        value: function handleChange(event) {
-            this.setState({ currentText: event.target.value });
-            this.props.dispatch((0, _monsterActions.searchMonster)(this.state.currentText));
-        }
-    }, {
-        key: "addMonster",
-        value: function addMonster(event) {
-            this.props.dispatch((0, _monsterActions.addMonster)(this.props.currentMonster));
+    _createClass(SearchContainer, [{
+        key: "onKeyUp",
+        value: function onKeyUp(event) {
+            var keycode = event.keyCode ? event.keyCode : event.which;
+            if (keycode === 13) {
+                this.props.onFound();
+            }
         }
     }, {
         key: "render",
         value: function render() {
-            return _react2.default.createElement(_searchContainer2.default, { positionedProps: ['name'], onFound: this.addMonster, handleChange: this.handleChange, currentText: this.state.currentText, foundItem: this.props.currentMonster, hiddenProps: ['actions', 'special_abilities', 'legendary_actions'] });
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { id: "search-input" },
+                    _react2.default.createElement("input", { className: "styled-input", type: "text", onKeyUp: this.onKeyUp, value: this.props.currentText, onChange: this.props.handleChange }),
+                    this.props.foundItem && _react2.default.createElement(_imageButton2.default, { imageSrc: "plus", handleClick: this.props.onFound })
+                ),
+                this.props.foundItem && _react2.default.createElement(_dataDiv2.default, { positionedProps: this.props.positionedProps, hiddenProps: this.props.hiddenProps, objectToDisplay: this.props.foundItem })
+            );
         }
     }]);
 
-    return SpellSearchContainer;
+    return SearchContainer;
 }(_react2.default.Component);
-//SearchContainer = Radium(SearchContainer);
 
-
-function mapStateToProps(state, ownProps) {
-    return {
-        currentMonster: state.monsters.currentMonster
-    };
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellSearchContainer);
+exports.default = SearchContainer;

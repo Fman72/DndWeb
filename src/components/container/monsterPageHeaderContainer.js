@@ -4,7 +4,6 @@ import {showModal} from '~/actions/modalActions';
 import {attemptStoreSpellList} from '~/actions/spellActions';
 import PageHeader from '../presentational/pageHeader';
 import ImageButton from '../presentational/imageButton';
-import {initialCapsString} from '~/util';
 
 class SpellPageHeaderContainer extends React.Component{
   constructor(props){
@@ -26,7 +25,7 @@ class SpellPageHeaderContainer extends React.Component{
                      <ImageButton imageSrc = {"base_arrow"} handleClick = {this.storeSpellList}/>
                      <ImageButton imageSrc = {"cog"} handleClick = {this.showSettingsModal}/>
                    </div>);
-    return (<PageHeader titleText = {"Welcome to the DND 5e Spell List " + initialCapsString(this.props.user.username)} buttons = {buttons}></PageHeader>);
+    return (<PageHeader username = {this.props.user.username} buttons = {buttons}></PageHeader>);
   }
 }
 

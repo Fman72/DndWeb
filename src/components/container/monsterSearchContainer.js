@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {connect} from "react-redux";
 import {searchMonster, addMonster} from "~/actions/monsterActions"
 import ImageButton from '../presentational/imageButton';
-import SearchContainer from './searchContainer';
+import SearchContainer from '../presentational/searchContainer';
 
 //Search container.
 class SpellSearchContainer extends React.Component{
