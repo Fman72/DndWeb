@@ -48093,11 +48093,11 @@
 
 	var _pageHeader2 = _interopRequireDefault(_pageHeader);
 
-	var _imageButton = __webpack_require__(542);
+	var _imageButton = __webpack_require__(543);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
-	var _util = __webpack_require__(543);
+	var _util = __webpack_require__(542);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -48148,7 +48148,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var buttons = _react2.default.createElement('div', null, _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }), _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showSettingsModal }));
-	      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Spell List " + (0, _util.initialCapsString)(this.props.user.username), buttons: buttons });
+	      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Spell List ", user: this.props.user.username, buttons: buttons });
 	    }
 	  }]);
 
@@ -48247,8 +48247,10 @@
 			(0, _databaseConvenienceFunctions.storeSpellList)(spellList, user).then(function (response) {
 				dispatch(recieveStoreSpellList(user));
 				console.log(response);
-			}).catch(function (response) {
-				console.log(response);
+			}, function (response) {
+				console.log("ERROR ACCESSING DB");
+			}).catch(function (reason) {
+				console.log("ERROR RESOLVING PROMISE: " + reason);
 			});
 		};
 	}
@@ -48333,7 +48335,7 @@
 /* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -48342,6 +48344,8 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _util = __webpack_require__(542);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -48352,37 +48356,13 @@
 	  if (props.isStoringSpellList) {
 	    storeButtonImageSrc = "loading.gif";
 	  }
-	  return _react2.default.createElement("div", { id: "page-title" }, _react2.default.createElement("h1", { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } }, props.titleText), props.buttons);
+	  return _react2.default.createElement('div', { id: 'page-title' }, _react2.default.createElement('h1', { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } }, props.titleText, (0, _util.initialCapsString)(props.user)), props.buttons);
 	};
 
 	exports.default = PageHeader;
 
 /***/ },
 /* 542 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	var ImageButton = function ImageButton(props) {
-	  return _react2.default.createElement("input", { style: props.css, className: "image-button", type: "image", onClick: props.handleClick, src: "images/" + props.imageSrc + ".svg" });
-	};
-
-	exports.default = ImageButton;
-
-/***/ },
-/* 543 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -48413,6 +48393,30 @@
 	exports.normalizeString = normalizeString;
 	exports.initialCapsString = initialCapsString;
 	exports.beautifyString = beautifyString;
+
+/***/ },
+/* 543 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	var ImageButton = function ImageButton(props) {
+	  return _react2.default.createElement("input", { style: props.css, className: "image-button", type: "image", onClick: props.handleClick, src: "images/" + props.imageSrc + ".svg" });
+	};
+
+	exports.default = ImageButton;
 
 /***/ },
 /* 544 */
@@ -48818,7 +48822,7 @@
 
 	var _spellActions = __webpack_require__(539);
 
-	var _imageButton = __webpack_require__(542);
+	var _imageButton = __webpack_require__(543);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
@@ -48929,7 +48933,7 @@
 
 	var _spellDiv2 = _interopRequireDefault(_spellDiv);
 
-	var _imageButton = __webpack_require__(542);
+	var _imageButton = __webpack_require__(543);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
@@ -49091,7 +49095,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _util = __webpack_require__(543);
+	var _util = __webpack_require__(542);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -49352,7 +49356,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _imageButton = __webpack_require__(542);
+	var _imageButton = __webpack_require__(543);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
@@ -49478,7 +49482,7 @@
 
 	var _spellActions = __webpack_require__(539);
 
-	var _util = __webpack_require__(543);
+	var _util = __webpack_require__(542);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -49646,12 +49650,20 @@
 
 	var _monsterSearchContainer2 = _interopRequireDefault(_monsterSearchContainer);
 
+	var _monsterPageHeaderContainer = __webpack_require__(568);
+
+	var _monsterPageHeaderContainer2 = _interopRequireDefault(_monsterPageHeaderContainer);
+
+	var _settingsModalContainer = __webpack_require__(544);
+
+	var _settingsModalContainer2 = _interopRequireDefault(_settingsModalContainer);
+
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	var MonsterPage = function MonsterPage(props) {
-	  return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Row, { id: 'spell-page-div', className: 'boostrap-row-margin-override' }, _react2.default.createElement(_reactBootstrap.Col, { id: 'search-container', xs: 12, sm: 3 }, _react2.default.createElement(_monsterSearchContainer2.default, null))), _react2.default.createElement('script', { src: 'bundle.js' }));
+	  return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Row, null, _react2.default.createElement(_reactBootstrap.Col, { className: 'title-background', xs: 12 }, _react2.default.createElement(_monsterPageHeaderContainer2.default, null))), _react2.default.createElement(_settingsModalContainer2.default, null), _react2.default.createElement(_reactBootstrap.Row, { id: 'spell-page-div', className: 'boostrap-row-margin-override' }, _react2.default.createElement(_reactBootstrap.Col, { id: 'search-container', xs: 12, sm: 3 }, _react2.default.createElement(_monsterSearchContainer2.default, null))), _react2.default.createElement('script', { src: 'bundle.js' }));
 	};
 
 	exports.default = MonsterPage;
@@ -49690,11 +49702,11 @@
 
 	var _monsterActions = __webpack_require__(567);
 
-	var _imageButton = __webpack_require__(542);
+	var _imageButton = __webpack_require__(543);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
-	var _searchContainer = __webpack_require__(568);
+	var _searchContainer = __webpack_require__(552);
 
 	var _searchContainer2 = _interopRequireDefault(_searchContainer);
 
@@ -49860,98 +49872,100 @@
 /* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _createClass = function () {
-	    function defineProperties(target, props) {
-	        for (var i = 0; i < props.length; i++) {
-	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	        }
-	    }return function (Constructor, protoProps, staticProps) {
-	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	    };
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(32);
+	var _reactRedux = __webpack_require__(501);
 
-	var _reactDom2 = _interopRequireDefault(_reactDom);
+	var _modalActions = __webpack_require__(538);
 
-	var _spellDiv = __webpack_require__(553);
+	var _spellActions = __webpack_require__(539);
 
-	var _spellDiv2 = _interopRequireDefault(_spellDiv);
+	var _pageHeader = __webpack_require__(541);
 
-	var _imageButton = __webpack_require__(542);
+	var _pageHeader2 = _interopRequireDefault(_pageHeader);
+
+	var _imageButton = __webpack_require__(543);
 
 	var _imageButton2 = _interopRequireDefault(_imageButton);
 
-	var _dataDiv = __webpack_require__(554);
-
-	var _dataDiv2 = _interopRequireDefault(_dataDiv);
-
 	function _interopRequireDefault(obj) {
-	    return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function _classCallCheck(instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	        throw new TypeError("Cannot call a class as a function");
-	    }
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 
 	function _possibleConstructorReturn(self, call) {
-	    if (!self) {
-	        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	    }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 
 	function _inherits(subClass, superClass) {
-	    if (typeof superClass !== "function" && superClass !== null) {
-	        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
-	//Search container.
-	var SearchContainer = function (_React$Component) {
-	    _inherits(SearchContainer, _React$Component);
+	var MonsterPageHeaderContainer = function (_React$Component) {
+	  _inherits(MonsterPageHeaderContainer, _React$Component);
 
-	    function SearchContainer(props) {
-	        _classCallCheck(this, SearchContainer);
+	  function MonsterPageHeaderContainer(props) {
+	    _classCallCheck(this, MonsterPageHeaderContainer);
 
-	        var _this = _possibleConstructorReturn(this, (SearchContainer.__proto__ || Object.getPrototypeOf(SearchContainer)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (MonsterPageHeaderContainer.__proto__ || Object.getPrototypeOf(MonsterPageHeaderContainer)).call(this, props));
 
-	        _this.onKeyUp = _this.onKeyUp.bind(_this);
-	        return _this;
+	    _this.showSettingsModal = _this.showSettingsModal.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(MonsterPageHeaderContainer, [{
+	    key: 'showSettingsModal',
+	    value: function showSettingsModal() {
+	      this.props.dispatch((0, _modalActions.showModal)("settingsModal"));
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var buttons = _react2.default.createElement('div', null);
+	      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Monster Manager ", user: this.props.user.username, buttons: buttons });
+	    }
+	  }]);
 
-	    _createClass(SearchContainer, [{
-	        key: "onKeyUp",
-	        value: function onKeyUp(event) {
-	            var keycode = event.keyCode ? event.keyCode : event.which;
-	            if (keycode === 13) {
-	                this.props.onFound();
-	            }
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement("div", null, _react2.default.createElement("div", { id: "search-input" }, _react2.default.createElement("input", { className: "styled-input", type: "text", onKeyUp: this.onKeyUp, value: this.props.currentText, onChange: this.props.handleChange }), this.props.foundItem && _react2.default.createElement(_imageButton2.default, { imageSrc: "plus", handleClick: this.props.onFound })), this.props.foundItem && _react2.default.createElement(_dataDiv2.default, { positionedProps: this.props.positionedProps, hiddenProps: this.props.hiddenProps, objectToDisplay: this.props.foundItem }));
-	        }
-	    }]);
-
-	    return SearchContainer;
+	  return MonsterPageHeaderContainer;
 	}(_react2.default.Component);
 
-	exports.default = SearchContainer;
+	function mapStateToProps(state, ownProps) {
+	  return {
+	    user: state.user,
+	    spells: state.spells
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MonsterPageHeaderContainer);
 
 /***/ },
 /* 569 */

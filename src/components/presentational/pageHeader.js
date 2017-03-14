@@ -1,4 +1,5 @@
 import React from 'react';
+import {initialCapsString} from '~/util';
 
 let PageHeader = (props) =>{
   let storeButtonImageSrc = "";
@@ -7,7 +8,7 @@ let PageHeader = (props) =>{
   }
   return (
     <div id = "page-title">
-        <h1 style = {{display: "inline", marginRight: "auto", marginLeft: "15px"}}>{props.titleText}</h1>
+        <h1 style = {{display: "inline", marginRight: "auto", marginLeft: "15px"}}>{props.titleText}{initialCapsString(props.user)}</h1>
         {props.buttons}
     </div>
   );

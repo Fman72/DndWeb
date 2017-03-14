@@ -57,8 +57,10 @@ function attemptStoreSpellList(spellList, user) {
 		(0, _databaseConvenienceFunctions.storeSpellList)(spellList, user).then(function (response) {
 			dispatch(recieveStoreSpellList(user));
 			console.log(response);
-		}).catch(function (response) {
-			console.log(response);
+		}, function (response) {
+			console.log("ERROR ACCESSING DB");
+		}).catch(function (reason) {
+			console.log("ERROR RESOLVING PROMISE: " + reason);
 		});
 	};
 }

@@ -66,7 +66,7 @@ var SpellPageHeaderContainer = function (_React$Component) {
         _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }),
         _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showSettingsModal })
       );
-      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Spell List " + (0, _util.initialCapsString)(this.props.user.username), buttons: buttons });
+      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Spell List ", user: this.props.user.username, buttons: buttons });
     }
   }]);
 

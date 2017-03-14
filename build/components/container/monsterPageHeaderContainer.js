@@ -32,43 +32,32 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SpellPageHeaderContainer = function (_React$Component) {
-  _inherits(SpellPageHeaderContainer, _React$Component);
+var MonsterPageHeaderContainer = function (_React$Component) {
+  _inherits(MonsterPageHeaderContainer, _React$Component);
 
-  function SpellPageHeaderContainer(props) {
-    _classCallCheck(this, SpellPageHeaderContainer);
+  function MonsterPageHeaderContainer(props) {
+    _classCallCheck(this, MonsterPageHeaderContainer);
 
-    var _this = _possibleConstructorReturn(this, (SpellPageHeaderContainer.__proto__ || Object.getPrototypeOf(SpellPageHeaderContainer)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (MonsterPageHeaderContainer.__proto__ || Object.getPrototypeOf(MonsterPageHeaderContainer)).call(this, props));
 
     _this.showSettingsModal = _this.showSettingsModal.bind(_this);
-    _this.storeSpellList = _this.storeSpellList.bind(_this);
     return _this;
   }
 
-  _createClass(SpellPageHeaderContainer, [{
+  _createClass(MonsterPageHeaderContainer, [{
     key: 'showSettingsModal',
     value: function showSettingsModal() {
       this.props.dispatch((0, _modalActions.showModal)("settingsModal"));
     }
   }, {
-    key: 'storeSpellList',
-    value: function storeSpellList() {
-      this.props.dispatch((0, _spellActions.attemptStoreSpellList)(this.props.spells.spellList, this.props.user.username));
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var buttons = _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }),
-        _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showSettingsModal })
-      );
-      return _react2.default.createElement(_pageHeader2.default, { username: this.props.user.username, buttons: buttons });
+      var buttons = _react2.default.createElement('div', null);
+      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Monster Manager ", user: this.props.user.username, buttons: buttons });
     }
   }]);
 
-  return SpellPageHeaderContainer;
+  return MonsterPageHeaderContainer;
 }(_react2.default.Component);
 
 function mapStateToProps(state, ownProps) {
@@ -78,4 +67,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellPageHeaderContainer);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(MonsterPageHeaderContainer);

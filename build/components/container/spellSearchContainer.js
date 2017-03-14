@@ -22,7 +22,7 @@ var _imageButton = require("../presentational/imageButton");
 
 var _imageButton2 = _interopRequireDefault(_imageButton);
 
-var _searchContainer = require("./searchContainer");
+var _searchContainer = require("../presentational/searchContainer");
 
 var _searchContainer2 = _interopRequireDefault(_searchContainer);
 

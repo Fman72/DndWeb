@@ -5,27 +5,21 @@ import {attemptStoreSpellList} from '~/actions/spellActions';
 import PageHeader from '../presentational/pageHeader';
 import ImageButton from '../presentational/imageButton';
 
-class SpellPageHeaderContainer extends React.Component{
+
+class MonsterPageHeaderContainer extends React.Component{
   constructor(props){
     super(props);
     this.showSettingsModal = this.showSettingsModal.bind(this);
-    this.storeSpellList = this.storeSpellList.bind(this);
   }
 
   showSettingsModal(){
     this.props.dispatch(showModal("settingsModal"));
   }
 
-  storeSpellList(){
-    this.props.dispatch(attemptStoreSpellList(this.props.spells.spellList, this.props.user.username));
-  }
-
   render(){
     let buttons = (<div>
-                     <ImageButton imageSrc = {"base_arrow"} handleClick = {this.storeSpellList}/>
-                     <ImageButton imageSrc = {"cog"} handleClick = {this.showSettingsModal}/>
                    </div>);
-    return (<PageHeader username = {this.props.user.username} buttons = {buttons}></PageHeader>);
+    return (<PageHeader titleText = {"Welcome to the DND 5e Monster Manager "} user = {this.props.user.username} buttons = {buttons}></PageHeader>);
   }
 }
 
@@ -36,4 +30,4 @@ function mapStateToProps(state, ownProps){
   };
 }
 
-export default connect(mapStateToProps)(SpellPageHeaderContainer);
+export default connect(mapStateToProps)(MonsterPageHeaderContainer);

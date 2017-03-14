@@ -2,16 +2,18 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Row, Col} from 'react-bootstrap';
 import MonsterSearchContainer from '../container/monsterSearchContainer';
+import MonsterPageHeaderContainer from '../container/monsterPageHeaderContainer';
+import SettingsModalContainer from '../container/settingsModalContainer';
 
 let MonsterPage = (props) => {
   return (
       <div>
-        {/* <Row>
+        <Row>
            <Col className = "title-background" xs={12}>
-             <SpellPageHeaderContainer/>
+             <MonsterPageHeaderContainer/>
            </Col>
          </Row>
-        <SettingsModalContainer/>*/}
+        <SettingsModalContainer/>
         <Row id = "spell-page-div" className = "boostrap-row-margin-override">
           <Col id = 'search-container' xs = {12} sm = {3}>
             <MonsterSearchContainer/>
