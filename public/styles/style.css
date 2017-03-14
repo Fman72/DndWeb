@@ -6,10 +6,6 @@
   --minimized-list-item-button-edge: 2px;
 }
 
-body: {
-  background-color: red
-}
-
 .plus-image-button{
   vertical-align: top;
 }
@@ -35,6 +31,7 @@ body: {
 body{
   background-color: var(--main-color);
   color: var(--tint-one);
+  background-image: url("../images/background_parchment.jpg");
 }
 
 button {
