@@ -28,8 +28,8 @@ function monsters() {
       break;
     case "ADD_MONSTER":
       var addedMonsterList = [].concat(_toConsumableArray(state.monsterList), [action.newMonster]);
-      return Object.assign({}, state, { monsterList: addedMonsterList });
       console.log(JSON.stringify(state));
+      return Object.assign({}, state, { monsterList: addedMonsterList });
       break;
     case "REMOVE_MONSTER":
       var removedMonsterList = [].concat(_toConsumableArray(state.monsterList.slice(0, action.monsterIndex)), _toConsumableArray(state.monsterList.slice(action.monsterIndex + 1)));

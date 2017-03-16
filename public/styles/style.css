@@ -10,6 +10,21 @@
   vertical-align: top;
 }
 
+h2, h3, h4{
+  color: var(--tint-two);
+}
+
+h2, h3::after {
+    content: " ";
+    border-top: 1.5px solid var(--tint-two);
+    display: block;
+}
+
+hr{
+  color: var(--tint-two);
+}
+
+
 #search-container span{
   display: block;
 }
@@ -28,6 +43,7 @@
   display: block;
 }
 
+/* Credit for image to https://www.flickr.com/photos/sharonuk08/ */
 body{
   background-color: var(--main-color);
   color: var(--tint-one);
@@ -150,4 +166,15 @@ input[type="image"]{
     content: " ";
     border-top: 1.5px solid var(--tint-two);
     display: block;
+}
+
+.monster-box{
+  margin-bottom: 5px;
+  height: 250px;
+  background-color: #f1e7cd;
+}
+
+.monster-box-section{
+  display: flex;
+  justify-content: space-around;
 }

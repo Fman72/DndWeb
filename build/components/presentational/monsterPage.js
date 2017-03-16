@@ -24,6 +24,10 @@ var _settingsModalContainer = require('../container/settingsModalContainer');
 
 var _settingsModalContainer2 = _interopRequireDefault(_settingsModalContainer);
 
+var _monsterGrid = require('../container/monsterGrid');
+
+var _monsterGrid2 = _interopRequireDefault(_monsterGrid);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MonsterPage = function MonsterPage(props) {
@@ -42,11 +46,16 @@ var MonsterPage = function MonsterPage(props) {
     _react2.default.createElement(_settingsModalContainer2.default, null),
     _react2.default.createElement(
       _reactBootstrap.Row,
-      { id: 'spell-page-div', className: 'boostrap-row-margin-override' },
+      { id: 'monster-page-div', className: 'boostrap-row-margin-override' },
       _react2.default.createElement(
         _reactBootstrap.Col,
         { id: 'search-container', xs: 12, sm: 3 },
         _react2.default.createElement(_monsterSearchContainer2.default, null)
+      ),
+      _react2.default.createElement(
+        _reactBootstrap.Col,
+        { id: 'monster-grid', xs: 12, sm: 9 },
+        _react2.default.createElement(_monsterGrid2.default, null)
       )
     ),
     _react2.default.createElement('script', { src: 'bundle.js' })

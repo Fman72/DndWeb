@@ -15,8 +15,8 @@ function monsters(state = {monsterList: []}, action)
       break;
 		case "ADD_MONSTER":
       let addedMonsterList = [...state.monsterList, action.newMonster];
+			console.log(JSON.stringify(state));
       return Object.assign({}, state, {monsterList: addedMonsterList});
-      console.log(JSON.stringify(state));
       break;
 		case "REMOVE_MONSTER":
       let removedMonsterList = [...state.monsterList.slice(0, action.monsterIndex), ...state.monsterList.slice(action.monsterIndex + 1)];
