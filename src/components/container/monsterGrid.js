@@ -1,5 +1,5 @@
 import React from 'react';
-import MonsterBoxContainer from './MonsterBoxContainer';
+import MonsterBoxContainer from './monsterBoxContainer';
 import {connect} from "react-redux";
 
 

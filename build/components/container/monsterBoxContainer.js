@@ -16,6 +16,10 @@ var _dataRow = require('../presentational/dataRow');
 
 var _dataRow2 = _interopRequireDefault(_dataRow);
 
+var _ImageTextOverlay = require('../presentational/ImageTextOverlay');
+
+var _ImageTextOverlay2 = _interopRequireDefault(_ImageTextOverlay);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50,15 +54,39 @@ var MonsterBoxContainer = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'monster-box-section' },
-            _react2.default.createElement('hr', null),
-            _react2.default.createElement(_dataRow2.default, { name: "Str", value: this.props.monster.strength }),
-            _react2.default.createElement(_dataRow2.default, { name: "Dex", value: this.props.monster.dexterity }),
-            _react2.default.createElement(_dataRow2.default, { name: "Con", value: this.props.monster.constitution }),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(_dataRow2.default, { name: "Int", value: this.props.monster.intelligence }),
-            _react2.default.createElement(_dataRow2.default, { name: "Wis", value: this.props.monster.wisdom }),
-            _react2.default.createElement(_dataRow2.default, { name: "Cha", value: this.props.monster.charisma }),
-            _react2.default.createElement('hr', null)
+            _react2.default.createElement(
+              _reactBootstrap.Row,
+              null,
+              _react2.default.createElement(_reactBootstrap.Col, { xs: 4 }),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(_ImageTextOverlay2.default, { image: 'heart.svg', text: this.props.monster.hit_points })
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(_ImageTextOverlay2.default, { image: 'shield.svg', text: this.props.monster.armor_class })
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'monster-box-section' },
+            _react2.default.createElement(
+              'div',
+              { className: 'flex-div stat-div' },
+              _react2.default.createElement(_dataRow2.default, { name: "Str", value: this.props.monster.strength }),
+              _react2.default.createElement(_dataRow2.default, { name: "Dex", value: this.props.monster.dexterity }),
+              _react2.default.createElement(_dataRow2.default, { name: "Con", value: this.props.monster.constitution })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'flex-div stat-div' },
+              _react2.default.createElement(_dataRow2.default, { name: "Int", value: this.props.monster.intelligence }),
+              _react2.default.createElement(_dataRow2.default, { name: "Wis", value: this.props.monster.wisdom }),
+              _react2.default.createElement(_dataRow2.default, { name: "Cha", value: this.props.monster.charisma })
+            )
           )
         )
       );

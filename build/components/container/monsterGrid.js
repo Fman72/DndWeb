@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _MonsterBoxContainer = require('./MonsterBoxContainer');
+var _monsterBoxContainer = require('./monsterBoxContainer');
 
-var _MonsterBoxContainer2 = _interopRequireDefault(_MonsterBoxContainer);
+var _monsterBoxContainer2 = _interopRequireDefault(_monsterBoxContainer);
 
 var _reactRedux = require('react-redux');
 
@@ -39,7 +39,7 @@ var MonsterGrid = function (_React$Component) {
       if (this.props.monsterList.length > 0) {
         var monsterGridItems = [];
         for (var i = 0; i < this.props.monsterList.length; i++) {
-          monsterGridItems.push(_react2.default.createElement(_MonsterBoxContainer2.default, { monsterIndex: i, key: i, monster: this.props.monsterList[i] }));
+          monsterGridItems.push(_react2.default.createElement(_monsterBoxContainer2.default, { monsterIndex: i, key: i, monster: this.props.monsterList[i] }));
         }
         return _react2.default.createElement(
           'div',

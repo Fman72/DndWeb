@@ -174,7 +174,30 @@ input[type="image"]{
   background-color: #f1e7cd;
 }
 
-.monster-box-section{
+.flex-div{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.stat-div>span{
+  text-align: center;
+  flex-basis: 30%;
+  color: var(--tint-one);
+}
+
+.image-text-overlay{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-align: center;
+  color: var(--main-color)
+}
+
+.monster-box>h3{
+  text-align: center;
+}
+
+.monster-box-section::after{
+  content: '';
+  width: 80%;
+  color: var(--tint-two);
 }
