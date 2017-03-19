@@ -71,7 +71,7 @@ function attemptRetrieveSpellList(user) {
                 console.log(response);
             },
             (response) => {
-								console.log("ERROR ACCESSING DB");
+								console.log("ERROR ACCESSING DB: " + response);
 								dispatch(errorRetrieveSpellList());
             })
 						.catch((reason) =>{

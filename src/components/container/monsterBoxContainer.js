@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Row} from 'react-bootstrap';
 import DataRow from '../presentational/dataRow'
-import ImageTextOverlay from '../presentational/ImageTextOverlay';
+import ImageTextOverlay from '../presentational/imageTextOverlay';
 
 
 class MonsterBoxContainer extends React.Component{

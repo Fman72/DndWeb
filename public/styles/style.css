@@ -48,6 +48,7 @@ body{
   background-color: var(--main-color);
   color: var(--tint-one);
   background-image: url("../images/background_parchment.jpg");
+  background-size: 100%;
 }
 
 button {
@@ -102,7 +103,6 @@ input[type="image"]{
 
 #spell-list{
   height: calc();
-  overflow-y: scroll;
 }
 
 #filter-settings-button{

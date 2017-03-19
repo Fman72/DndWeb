@@ -16,9 +16,9 @@ var _dataRow = require('../presentational/dataRow');
 
 var _dataRow2 = _interopRequireDefault(_dataRow);
 
-var _ImageTextOverlay = require('../presentational/ImageTextOverlay');
+var _imageTextOverlay = require('../presentational/imageTextOverlay');
 
-var _ImageTextOverlay2 = _interopRequireDefault(_ImageTextOverlay);
+var _imageTextOverlay2 = _interopRequireDefault(_imageTextOverlay);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61,12 +61,12 @@ var MonsterBoxContainer = function (_React$Component) {
               _react2.default.createElement(
                 _reactBootstrap.Col,
                 { xs: 4 },
-                _react2.default.createElement(_ImageTextOverlay2.default, { image: 'heart.svg', text: this.props.monster.hit_points })
+                _react2.default.createElement(_imageTextOverlay2.default, { image: 'heart.svg', text: this.props.monster.hit_points })
               ),
               _react2.default.createElement(
                 _reactBootstrap.Col,
                 { xs: 4 },
-                _react2.default.createElement(_ImageTextOverlay2.default, { image: 'shield.svg', text: this.props.monster.armor_class })
+                _react2.default.createElement(_imageTextOverlay2.default, { image: 'shield.svg', text: this.props.monster.armor_class })
               )
             )
           ),

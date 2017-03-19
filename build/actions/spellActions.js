@@ -76,7 +76,7 @@ function attemptRetrieveSpellList(user) {
 				dispatch(recieveRetrieveSpellList(user, spellList));
 				console.log(response);
 			}, function (response) {
-				console.log("ERROR ACCESSING DB");
+				console.log("ERROR ACCESSING DB: " + response);
 				dispatch(errorRetrieveSpellList());
 			}).catch(function (reason) {
 				console.log("ERROR RESOLVING PROMISE: " + reason);
