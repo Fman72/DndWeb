@@ -18,7 +18,7 @@ class StartPageContainer extends React.Component{
     if(keycode === 13 && event.target.value){
       this.setState({scrollHeight: -(this.domNode.clientHeight)});
       this.props.dispatch(setUser(normalizeString(event.target.value)));
-      this.props.dispatch(attemptRetrieveSpellList(event.target.value));
+      this.props.dispatch(attemptRetrieveSpellList(normalizeString(event.target.value)));
     }
   }
 

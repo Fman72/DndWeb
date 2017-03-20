@@ -43,6 +43,23 @@ hr{
   display: block;
 }
 
+/* All requied for html standards mode????*/
+.container{
+  height: 100%;
+}
+
+.container-fluid{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+}
+
+html{
+  height: 100%;
+}
+
 /* Credit for image to https://www.flickr.com/photos/sharonuk08/ */
 body{
   background-color: var(--main-color);
@@ -146,6 +163,7 @@ input[type="image"]{
   -moz-transition: top 2.5s;
   position: relative;
   top: 0px;
+  height: 100%;
 }
 
 #loading-image{
@@ -200,4 +218,8 @@ input[type="image"]{
   content: '';
   width: 80%;
   color: var(--tint-two);
+}
+
+.full-height{
+  height: 100%;
 }

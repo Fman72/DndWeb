@@ -44,7 +44,7 @@ var SpellListItemContainer = function (_React$Component) {
 
     _this.removeSpell = _this.removeSpell.bind(_this);
     _this.toggleMinimization = _this.toggleMinimization.bind(_this);
-    _this.state = { minimized: false };
+    _this.state = { minimized: true };
     return _this;
   }
 

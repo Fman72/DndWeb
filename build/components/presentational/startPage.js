@@ -24,13 +24,13 @@ var StartPage = function StartPage(props) {
 
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'full-height' },
     _react2.default.createElement(
       _scrollDiv2.default,
       { scrollHeight: props.scrollHeight },
       _react2.default.createElement(
         'div',
-        { id: 'start-div', className: 'scroll-div', ref: props.getRef },
+        { id: 'start-div', ref: props.getRef },
         _react2.default.createElement(
           'h1',
           { id: 'start-heading' },

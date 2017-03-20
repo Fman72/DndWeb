@@ -3,18 +3,32 @@ import Express from "express";
 import ReactDOMServer from "react-dom/server";
 import AppRouter from "./router";
 
+
+import htmlBodyString from './htmlBodyString';
+
+import Helmet from 'react-helmet';
+
 import {store} from './store/configureStore';
 import {Provider} from 'react-redux';
 
 import {RouterContext, createRoutes, match} from "react-router";
 
+let head = Helmet.rewind();
+
+
+
 let router = Express.Router();
 
-let unmanagedMarkup = '<title>Spell List</title><link rel = "shortcut icon" href = "images/favicon.ico"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/><link rel = "stylesheet" type = "text/css" href = "styles/style.css"/><script>window.__INITIAL_STORE__ = ' + JSON.stringify(store) + '; </script>';
+let unmanagedMarkup = '<script>window.__INITIAL_STORE__ = ' + JSON.stringify(store) + '; </script>';
 
 const routes = createRoutes(AppRouter());
 
 router.get("/start", (req, res) => {
+
+    //Head customization for this route.
+    head.defaultTitle = "Spell List";
+    head.titleTemplate = "Spell List - %s";
+
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
         if(error){
             console.log(error.message);
@@ -25,7 +39,7 @@ router.get("/start", (req, res) => {
             	<Provider store = {store}>
             		<RouterContext {...renderProps}/>
 				      </Provider>);
-            res.send(unmanagedMarkup + `<div id = 'page-wrapper'>${content}</div>`);
+            res.send(htmlBodyString(head, content, store));
         }
         else{
             res.status(404).send("Not Found");
@@ -34,6 +48,11 @@ router.get("/start", (req, res) => {
 });
 
 router.get("/spells", (req, res) => {
+
+    //Head customization for this route.
+    head.defaultTitle = "Spell List";
+    head.titleTemplate = "Spell List - %s";
+
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
         if(error){
             console.log(error.message);
@@ -44,7 +63,7 @@ router.get("/spells", (req, res) => {
             	<Provider store = {store}>
             		<RouterContext {...renderProps}/>
 				      </Provider>);
-            res.send(unmanagedMarkup + `<div id = 'page-wrapper'>${content}</div>`);
+            res.send(htmlBodyString(head, content, store));
         }
         else{
             res.status(404).send("Not Found");
@@ -53,6 +72,10 @@ router.get("/spells", (req, res) => {
 });
 
 router.get("/monsters", (req, res) => {
+
+    //Head customization for this route.
+    head.defaultTitle = "Monster List";
+
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
         if(error){
             console.log(error.message);

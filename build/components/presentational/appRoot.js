@@ -1,14 +1,18 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = require("react-bootstrap");
+var _reactBootstrap = require('react-bootstrap');
+
+var _spellPageHelmet = require('../container/spellPageHelmet');
+
+var _spellPageHelmet2 = _interopRequireDefault(_spellPageHelmet);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

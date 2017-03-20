@@ -10,17 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _startPage = require('../presentational/startPage.js');
+var _reactHelmet = require('react-helmet');
 
-var _startPage2 = _interopRequireDefault(_startPage);
-
-var _reactRedux = require('react-redux');
-
-var _userActions = require('../../actions/userActions.js');
-
-var _spellActions = require('../../actions/spellActions');
-
-var _util = require('../../util');
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,43 +22,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var StartPageContainer = function (_React$Component) {
-  _inherits(StartPageContainer, _React$Component);
+var SpellPageHelmet = function (_Helmet) {
+  _inherits(SpellPageHelmet, _Helmet);
 
-  function StartPageContainer(props) {
-    _classCallCheck(this, StartPageContainer);
+  function SpellPageHelmet(props) {
+    _classCallCheck(this, SpellPageHelmet);
 
-    var _this = _possibleConstructorReturn(this, (StartPageContainer.__proto__ || Object.getPrototypeOf(StartPageContainer)).call(this, props));
-
-    _this.scrollUp = _this.scrollUp.bind(_this);
-    _this.getRef = _this.getRef.bind(_this);
-    _this.state = {};
-    return _this;
+    return _possibleConstructorReturn(this, (SpellPageHelmet.__proto__ || Object.getPrototypeOf(SpellPageHelmet)).call(this, props));
   }
 
-  _createClass(StartPageContainer, [{
-    key: 'scrollUp',
-    value: function scrollUp(event) {
-      var keycode = event.keyCode ? event.keyCode : event.which;
-      if (keycode === 13 && event.target.value) {
-        this.setState({ scrollHeight: -this.domNode.clientHeight });
-        this.props.dispatch((0, _userActions.setUser)((0, _util.normalizeString)(event.target.value)));
-        this.props.dispatch((0, _spellActions.attemptRetrieveSpellList)((0, _util.normalizeString)(event.target.value)));
-      }
-    }
-  }, {
-    key: 'getRef',
-    value: function getRef(domNode) {
-      this.domNode = domNode;
-    }
-  }, {
+  _createClass(SpellPageHelmet, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_startPage2.default, { scrollHeight: this.state.scrollHeight, getRef: this.getRef, handleKeyDown: this.scrollUp });
+      return _react2.default.createElement(_reactHelmet2.default, {
+        titleTemplate: 'Spell List %s',
+        link: [{ rel: "shortcut icon", href: "images/favicon.ico" }, { rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", integrity: "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin: "anonymous" }, { rel: "stylesheet", href: "styles/style.css", type: "text/css" }],
+        meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
+        script: [{ type: "text/javascript", content: "window.__INITIAL_STORE__ = ' + JSON.stringify(store) + '; " }]
+      });
     }
   }]);
 
-  return StartPageContainer;
-}(_react2.default.Component);
+  return SpellPageHelmet;
+}(_reactHelmet2.default);
 
-exports.default = (0, _reactRedux.connect)(null)(StartPageContainer);
+exports.default = SpellPageHelmet;
