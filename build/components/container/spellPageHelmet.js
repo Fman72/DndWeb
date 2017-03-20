@@ -14,6 +14,10 @@ var _reactHelmet = require('react-helmet');
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
+var _reactRedux = require('react-redux');
+
+var _util = require('../../util');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22,8 +26,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SpellPageHelmet = function (_Helmet) {
-  _inherits(SpellPageHelmet, _Helmet);
+var SpellPageHelmet = function (_React$Component) {
+  _inherits(SpellPageHelmet, _React$Component);
 
   function SpellPageHelmet(props) {
     _classCallCheck(this, SpellPageHelmet);
@@ -35,15 +39,20 @@ var SpellPageHelmet = function (_Helmet) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(_reactHelmet2.default, {
-        titleTemplate: 'Spell List %s',
-        link: [{ rel: "shortcut icon", href: "images/favicon.ico" }, { rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", integrity: "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin: "anonymous" }, { rel: "stylesheet", href: "styles/style.css", type: "text/css" }],
-        meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
-        script: [{ type: "text/javascript", content: "window.__INITIAL_STORE__ = ' + JSON.stringify(store) + '; " }]
+        titleTemplate: 'Spell List - %s',
+        defaultTitle: 'Spell List',
+        title: (0, _util.initialCapsString)(this.props.username)
       });
     }
   }]);
 
   return SpellPageHelmet;
-}(_reactHelmet2.default);
+}(_react2.default.Component);
 
-exports.default = SpellPageHelmet;
+function mapStateToProps(state, ownProps) {
+  return {
+    username: state.user.username
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(SpellPageHelmet);

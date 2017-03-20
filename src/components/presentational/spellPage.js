@@ -5,11 +5,12 @@ import SpellPageHeaderContainer from '../container/spellPageHeaderContainer';
 import SettingsModalContainer from '../container/settingsModalContainer'
 import SpellSearchContainer from '../container/spellSearchContainer';
 import SpellList from '../container/spellList';
-
+import SpellPageHelmet from '../container/spellPageHelmet';
 
 let SpellPage = (props) => {
   return (
       <div>
+        <SpellPageHelmet/>
         <Row>
           <Col className = "title-background" xs={12}>
             <SpellPageHeaderContainer/>

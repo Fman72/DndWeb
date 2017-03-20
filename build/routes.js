@@ -47,8 +47,7 @@ var routes = (0, _reactRouter.createRoutes)((0, _router2.default)());
 router.get("/start", function (req, res) {
 
     //Head customization for this route.
-    head.defaultTitle = "Spell List";
-    head.titleTemplate = "Spell List - %s";
+    head.title = "Spell List";
 
     (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
         if (error) {
@@ -70,8 +69,7 @@ router.get("/start", function (req, res) {
 router.get("/spells", function (req, res) {
 
     //Head customization for this route.
-    head.defaultTitle = "Spell List";
-    head.titleTemplate = "Spell List - %s";
+    head.title = "Spell List";
 
     (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
         if (error) {
@@ -93,7 +91,7 @@ router.get("/spells", function (req, res) {
 router.get("/monsters", function (req, res) {
 
     //Head customization for this route.
-    head.defaultTitle = "Monster List";
+    head.title = "Monster List";
 
     (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
         if (error) {

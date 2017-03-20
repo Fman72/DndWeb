@@ -26,8 +26,7 @@ const routes = createRoutes(AppRouter());
 router.get("/start", (req, res) => {
 
     //Head customization for this route.
-    head.defaultTitle = "Spell List";
-    head.titleTemplate = "Spell List - %s";
+    head.title = "Spell List";
 
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
         if(error){
@@ -50,8 +49,7 @@ router.get("/start", (req, res) => {
 router.get("/spells", (req, res) => {
 
     //Head customization for this route.
-    head.defaultTitle = "Spell List";
-    head.titleTemplate = "Spell List - %s";
+    head.title = "Spell List";
 
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
         if(error){
@@ -74,7 +72,7 @@ router.get("/spells", (req, res) => {
 router.get("/monsters", (req, res) => {
 
     //Head customization for this route.
-    head.defaultTitle = "Monster List";
+    head.title = "Monster List";
 
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
         if(error){

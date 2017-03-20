@@ -28,12 +28,17 @@ var _spellList = require('../container/spellList');
 
 var _spellList2 = _interopRequireDefault(_spellList);
 
+var _spellPageHelmet = require('../container/spellPageHelmet');
+
+var _spellPageHelmet2 = _interopRequireDefault(_spellPageHelmet);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SpellPage = function SpellPage(props) {
   return _react2.default.createElement(
     'div',
     null,
+    _react2.default.createElement(_spellPageHelmet2.default, null),
     _react2.default.createElement(
       _reactBootstrap.Row,
       null,

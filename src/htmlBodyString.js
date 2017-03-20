@@ -7,7 +7,7 @@ let getHTMLString = (head, content, store) =>{
       <script>window.__INITIAL_STORE__ = ${JSON.stringify(store)}; </script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
       <link rel = "stylesheet" type = "text/css" href = "styles/style.css"/>
-      ${head.title.toString()}
+      <title>${head.title.toString()}</title>
     </head>
     <body>
       <div id = "content" class = "full-height">${content}</div>
