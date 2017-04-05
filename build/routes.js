@@ -103,7 +103,7 @@ router.get("/monsters", function (req, res) {
                 { store: _configureStore.store },
                 _react2.default.createElement(_reactRouter.RouterContext, renderProps)
             ));
-            res.send(unmanagedMarkup + ("<div id = 'page-wrapper'>" + content + "</div>"));
+            res.send((0, _htmlBodyString2.default)(head, content, _configureStore.store));
         } else {
             res.status(404).send("Not Found");
         }

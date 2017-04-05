@@ -84,7 +84,7 @@ router.get("/monsters", (req, res) => {
             	<Provider store = {store}>
             		<RouterContext {...renderProps}/>
 				      </Provider>);
-            res.send(unmanagedMarkup + `<div id = 'page-wrapper'>${content}</div>`);
+            res.send(htmlBodyString(head, content, store));
         }
         else{
             res.status(404).send("Not Found");
