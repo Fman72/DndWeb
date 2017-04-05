@@ -14,8 +14,15 @@ var initialCapsString = function initialCapsString(string) {
   if (string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  return null;
+  return "";
+};
+
+var beautifyString = function beautifyString(string) {
+  return string.replace(/_|-/g, " ").replace(/\b\w/g, function (letter) {
+    return letter.toUpperCase();
+  });
 };
 
 exports.normalizeString = normalizeString;
 exports.initialCapsString = initialCapsString;
+exports.beautifyString = beautifyString;

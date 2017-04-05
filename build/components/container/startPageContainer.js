@@ -51,7 +51,7 @@ var StartPageContainer = function (_React$Component) {
       if (keycode === 13 && event.target.value) {
         this.setState({ scrollHeight: -this.domNode.clientHeight });
         this.props.dispatch((0, _userActions.setUser)((0, _util.normalizeString)(event.target.value)));
-        this.props.dispatch((0, _spellActions.attemptRetrieveSpellList)(event.target.value));
+        this.props.dispatch((0, _spellActions.attemptRetrieveSpellList)((0, _util.normalizeString)(event.target.value)));
       }
     }
   }, {

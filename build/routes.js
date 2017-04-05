@@ -20,6 +20,14 @@ var _router = require("./router");
 
 var _router2 = _interopRequireDefault(_router);
 
+var _htmlBodyString = require("./htmlBodyString");
+
+var _htmlBodyString2 = _interopRequireDefault(_htmlBodyString);
+
+var _reactHelmet = require("react-helmet");
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
 var _configureStore = require("./store/configureStore");
 
 var _reactRedux = require("react-redux");
@@ -28,13 +36,19 @@ var _reactRouter = require("react-router");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var head = _reactHelmet2.default.rewind();
+
 var router = _express2.default.Router();
 
-var unmanagedMarkup = '<title>Spell List</title><link rel = "shortcut icon" href = "images/favicon.ico"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/><link rel = "stylesheet" type = "text/css" href = "styles/style.css"/><script>window.__INITIAL_STORE__ = ' + JSON.stringify(_configureStore.store) + '; </script>';
+var unmanagedMarkup = '<script>window.__INITIAL_STORE__ = ' + JSON.stringify(_configureStore.store) + '; </script>';
 
 var routes = (0, _reactRouter.createRoutes)((0, _router2.default)());
 
 router.get("/start", function (req, res) {
+
+    //Head customization for this route.
+    head.title = "Spell List";
+
     (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
         if (error) {
             console.log(error.message);
@@ -45,14 +59,40 @@ router.get("/start", function (req, res) {
                 { store: _configureStore.store },
                 _react2.default.createElement(_reactRouter.RouterContext, renderProps)
             ));
-            res.send(unmanagedMarkup + ("<div id = 'page-wrapper'>" + content + "</div>"));
+            res.send((0, _htmlBodyString2.default)(head, content, _configureStore.store));
         } else {
             res.status(404).send("Not Found");
         }
     });
 });
 
-router.get("/spell", function (req, res) {
+router.get("/spells", function (req, res) {
+
+    //Head customization for this route.
+    head.title = "Spell List";
+
+    (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
+        if (error) {
+            console.log(error.message);
+            res.status(500).send(error.message);
+        } else if (renderProps) {
+            var content = _server2.default.renderToString(_react2.default.createElement(
+                _reactRedux.Provider,
+                { store: _configureStore.store },
+                _react2.default.createElement(_reactRouter.RouterContext, renderProps)
+            ));
+            res.send((0, _htmlBodyString2.default)(head, content, _configureStore.store));
+        } else {
+            res.status(404).send("Not Found");
+        }
+    });
+});
+
+router.get("/monsters", function (req, res) {
+
+    //Head customization for this route.
+    head.title = "Monster List";
+
     (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
         if (error) {
             console.log(error.message);

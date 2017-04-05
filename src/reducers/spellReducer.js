@@ -1,11 +1,11 @@
-import {searchSpell} from "~/spellSearcher";
+import spellSearcher from "~/searchers/spellSearcher";
 
 //Handles SEARCH_SPELL action by finding the correct spell.
 function spells(state = {spellList: []}, action)
 {
 	switch (action.type){
 		case "SEARCH_SPELL":
-			let newSpell = searchSpell(action.spellName);
+			let newSpell = spellSearcher.search(action.spellName);
 			if(newSpell){
 				return Object.assign({}, state, {currentSpell: newSpell});
 			}
@@ -16,7 +16,6 @@ function spells(state = {spellList: []}, action)
 		case "ADD_SPELL":
       let addedSpellList = [...state.spellList, action.newSpell];
 			return Object.assign({}, state, {spellList: addedSpellList});
-			return state;
 			break;
 		case "REMOVE_SPELL":
 			let removedSpellList = [...state.spellList.slice(0, action.spellIndex), ...state.spellList.slice(action.spellIndex + 1)];

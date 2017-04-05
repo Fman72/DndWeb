@@ -49,9 +49,12 @@ function attemptStoreSpellList(spellList, user) {
             .then((response) => {
                 dispatch(recieveStoreSpellList(user));
                 console.log(response);
+            },
+						(response) => {
+								console.log("ERROR ACCESSING DB");
             })
-            .catch((response) => {
-                console.log(response);
+            .catch((reason) => {
+							console.log(`ERROR RESOLVING PROMISE: ${reason}`);
             });
     });
 }
@@ -68,7 +71,7 @@ function attemptRetrieveSpellList(user) {
                 console.log(response);
             },
             (response) => {
-								console.log("ERROR ACCESSING DB");
+								console.log("ERROR ACCESSING DB: " + response);
 								dispatch(errorRetrieveSpellList());
             })
 						.catch((reason) =>{

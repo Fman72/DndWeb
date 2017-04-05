@@ -6,9 +6,9 @@ import ScrollDiv from './scrollDiv';
 let StartPage = (props) => {
 
   return (
-    <div>
+    <div className = "full-height">
       <ScrollDiv scrollHeight = {props.scrollHeight}>
-        <div id = "start-div" className = "scroll-div" ref = {props.getRef}>
+        <div id = "start-div" ref = {props.getRef}>
             <h1 id = "start-heading">What is your name?</h1>
             <input onKeyDown = {props.handleKeyDown} className = "styled-input" id = "start-input" type = "text"/>
         </div>

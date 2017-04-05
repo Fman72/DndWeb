@@ -13,7 +13,7 @@ class SpellListItemContainer extends React.Component{
     super(props);
     this.removeSpell = this.removeSpell.bind(this);
     this.toggleMinimization = this.toggleMinimization.bind(this);
-    this.state = {minimized: false};
+    this.state = {minimized: true};
   }
 
   removeSpell(event){

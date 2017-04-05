@@ -10,17 +10,19 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _imageButton = require('../presentational/imageButton');
-
-var _imageButton2 = _interopRequireDefault(_imageButton);
-
 var _reactRedux = require('react-redux');
 
 var _modalActions = require('../../actions/modalActions');
 
 var _spellActions = require('../../actions/spellActions');
 
-var _util = require('../../util');
+var _pageHeader = require('../presentational/pageHeader');
+
+var _pageHeader2 = _interopRequireDefault(_pageHeader);
+
+var _imageButton = require('../presentational/imageButton');
+
+var _imageButton2 = _interopRequireDefault(_imageButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56,22 +58,13 @@ var SpellPageHeaderContainer = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var storeButtonImageSrc = "";
-      if (this.props.spells.isStoringSpellList) {
-        storeButtonImageSrc = "loading.gif";
-      }
-      return _react2.default.createElement(
+      var buttons = _react2.default.createElement(
         'div',
-        { id: 'page-title' },
-        _react2.default.createElement(
-          'h1',
-          { style: { display: "inline", marginRight: "auto", marginLeft: "15px" } },
-          'Welcome to the DND 5e Spell List ',
-          (0, _util.initialCapsString)(this.props.user.username)
-        ),
+        null,
         _react2.default.createElement(_imageButton2.default, { imageSrc: "base_arrow", handleClick: this.storeSpellList }),
         _react2.default.createElement(_imageButton2.default, { imageSrc: "cog", handleClick: this.showSettingsModal })
       );
+      return _react2.default.createElement(_pageHeader2.default, { titleText: "Welcome to the DND 5e Spell List ", user: this.props.user.username, buttons: buttons });
     }
   }]);
 

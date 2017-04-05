@@ -1,21 +1,11 @@
-function filters(state = {desc:true,
-													level:true,
-													class:true,
-													range:true,
-													casting_time:true,
-													duration:true,
-													concentration:true,
-													school:true,
-													components:true,
-													ritual:true},
-													action)
-{
+function filters(state = ["page", "material", "patrons", "archetype", "domains"], action){
 	switch (action.type){
 		case "ADD_FILTER":
-				return Object.assign({}, state, {[action.filterName]: true});
+				return [...state, action.filterName];
 			break;
 		case "REMOVE_FILTER":
-        return Object.assign({}, state, {[action.filterName]: false});
+				let filterIndex = state.indexOf(action.filterName);
+				return [...state.slice(0, filterIndex), ...state.slice(filterIndex + 1)];
 			break;
 		default:
 			return state;

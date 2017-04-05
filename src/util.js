@@ -9,7 +9,11 @@ let initialCapsString = (string) => {
   if(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  return null;
+  return "";
 }
 
-export {normalizeString, initialCapsString};
+let beautifyString = (string) => {
+  return string.replace(/_|-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+export {normalizeString, initialCapsString, beautifyString};
