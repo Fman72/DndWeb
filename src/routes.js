@@ -39,7 +39,6 @@ router.get("/start", (req, res) => {
             		<RouterContext {...renderProps}/>
 				      </Provider>);
             res.send(htmlBodyString(head, content, store));
-<<<<<<< HEAD
         }
         else{
             res.status(404).send("Not Found");
@@ -63,8 +62,6 @@ router.get("/spells", (req, res) => {
             		<RouterContext {...renderProps}/>
 				      </Provider>);
             res.send(htmlBodyString(head, content, store));
-=======
->>>>>>> monster-search
         }
         else{
             res.status(404).send("Not Found");
@@ -72,32 +69,6 @@ router.get("/spells", (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-=======
-router.get("/spells", (req, res) => {
-
-    //Head customization for this route.
-    head.title = "Spell List";
-
-    match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
-        if(error){
-            console.log(error.message);
-            res.status(500).send(error.message);
-        }
-        else if(renderProps){
-            const content = ReactDOMServer.renderToString(
-            	<Provider store = {store}>
-            		<RouterContext {...renderProps}/>
-				      </Provider>);
-            res.send(htmlBodyString(head, content, store));
-        }
-        else{
-            res.status(404).send("Not Found");
-        }
-    });
-});
-
->>>>>>> monster-search
 router.get("/monsters", (req, res) => {
 
     //Head customization for this route.
