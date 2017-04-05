@@ -6,13 +6,24 @@
   --minimized-list-item-button-edge: 2px;
 }
 
-body: {
-  background-color: red
-}
-
 .plus-image-button{
   vertical-align: top;
 }
+
+h2, h3, h4{
+  color: var(--tint-two);
+}
+
+h2, h3::after {
+    content: " ";
+    border-top: 1.5px solid var(--tint-two);
+    display: block;
+}
+
+hr{
+  color: var(--tint-two);
+}
+
 
 #search-container span{
   display: block;
@@ -32,9 +43,12 @@ body: {
   display: block;
 }
 
+/* Credit for image to https://www.flickr.com/photos/sharonuk08/ */
 body{
   background-color: var(--main-color);
   color: var(--tint-one);
+  background-image: url("../images/background_parchment.jpg");
+  background-size: 100%;
 }
 
 button {
@@ -89,7 +103,6 @@ input[type="image"]{
 
 #spell-list{
   height: calc();
-  overflow-y: scroll;
 }
 
 #filter-settings-button{
@@ -153,4 +166,38 @@ input[type="image"]{
     content: " ";
     border-top: 1.5px solid var(--tint-two);
     display: block;
+}
+
+.monster-box{
+  margin-bottom: 5px;
+  height: 250px;
+  background-color: #f1e7cd;
+}
+
+.flex-div{
+  display: flex;
+  justify-content: center;
+}
+
+.stat-div>span{
+  text-align: center;
+  flex-basis: 30%;
+  color: var(--tint-one);
+}
+
+.image-text-overlay{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-align: center;
+  color: var(--main-color)
+}
+
+.monster-box>h3{
+  text-align: center;
+}
+
+.monster-box-section::after{
+  content: '';
+  width: 80%;
+  color: var(--tint-two);
 }

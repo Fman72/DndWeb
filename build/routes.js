@@ -60,6 +60,7 @@ router.get("/start", function (req, res) {
                 _react2.default.createElement(_reactRouter.RouterContext, renderProps)
             ));
             res.send((0, _htmlBodyString2.default)(head, content, _configureStore.store));
+<<<<<<< HEAD
         } else {
             res.status(404).send("Not Found");
         }
@@ -82,12 +83,39 @@ router.get("/spells", function (req, res) {
                 _react2.default.createElement(_reactRouter.RouterContext, renderProps)
             ));
             res.send((0, _htmlBodyString2.default)(head, content, _configureStore.store));
+=======
+>>>>>>> monster-search
         } else {
             res.status(404).send("Not Found");
         }
     });
 });
 
+<<<<<<< HEAD
+=======
+router.get("/spells", function (req, res) {
+
+    //Head customization for this route.
+    head.title = "Spell List";
+
+    (0, _reactRouter.match)({ routes: routes, location: req.url }, function (error, redirectLocation, renderProps) {
+        if (error) {
+            console.log(error.message);
+            res.status(500).send(error.message);
+        } else if (renderProps) {
+            var content = _server2.default.renderToString(_react2.default.createElement(
+                _reactRedux.Provider,
+                { store: _configureStore.store },
+                _react2.default.createElement(_reactRouter.RouterContext, renderProps)
+            ));
+            res.send((0, _htmlBodyString2.default)(head, content, _configureStore.store));
+        } else {
+            res.status(404).send("Not Found");
+        }
+    });
+});
+
+>>>>>>> monster-search
 router.get("/monsters", function (req, res) {
 
     //Head customization for this route.
@@ -103,7 +131,7 @@ router.get("/monsters", function (req, res) {
                 { store: _configureStore.store },
                 _react2.default.createElement(_reactRouter.RouterContext, renderProps)
             ));
-            res.send(unmanagedMarkup + ("<div id = 'page-wrapper'>" + content + "</div>"));
+            res.send((0, _htmlBodyString2.default)(head, content, _configureStore.store));
         } else {
             res.status(404).send("Not Found");
         }
