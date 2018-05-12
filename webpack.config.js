@@ -8,13 +8,13 @@ module.exports = {
         sourceMapFilename: "bundle.map"
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loader: "babel-loader"
+                use: ["babel-loader"]
             }
         ]
     },
-    resolve: ['', '.js'],
+    resolve: {extensions: ['.js']},
     node: {fs: "empty", net: "empty"}
 };

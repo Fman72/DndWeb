@@ -23,6 +23,6 @@ app.use(DatabaseRoutes);
 
 app.use(Express.static("public"))
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
     console.log("Running on port: " + port);
 });
