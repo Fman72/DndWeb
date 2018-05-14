@@ -1,10 +1,13 @@
 import Express from 'express';
 import AWSSDK from 'aws-sdk';
-
+import {dynamoDBEndpoint} from "./sensitiveStuff";
 
 if(process.env.DYNAMODB_ENDPOINT){
   console.log("LIVE ENV DETECTED");
-  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: process.env.DYNAMODB_ENDPOINT}); //, accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
+  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: process.env.DYNAMODB_ENDPOINT});
+}
+else if (dynamoDBEndpoint){
+  AWSSDK.config.update({region: 'ap-southeast-2', endpoint: dynamoDBEndpoint});
 }
 else{
   console.log("LOCAL ENV DETECTED");
