@@ -1,5 +1,7 @@
 import {Store} from 'redux';
 
+const BASE_ROUTE = '/dnd';
+
 let ajaxPost = (url, data) => {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
@@ -21,11 +23,11 @@ let ajaxPost = (url, data) => {
 }
 
 let storeSpellList = (spellList, user) => {
-  return ajaxPost("/storeSpellList", {spellList: spellList, user: user});
+  return ajaxPost(`${BASE_ROUTE}/storeSpellList`, {spellList: spellList, user: user});
 }
 
 let retrieveSpellList = (user) => {
-  return ajaxPost("/retrieveSpellList", {user: user});
+  return ajaxPost(`${BASE_ROUTE}/retrieveSpellList`, {user: user});
 }
 
 export {ajaxPost, storeSpellList, retrieveSpellList};
