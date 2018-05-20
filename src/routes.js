@@ -28,7 +28,7 @@ router.get("/start", (req, res) => {
     //Head customization for this route.
     head.title = "Spell List";
 
-    match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
+    match({routes, location: req.originalUrl}, (error, redirectLocation, renderProps) => {
         if(error){
             console.log(error.message);
             res.status(500).send(error.message);
@@ -51,20 +51,17 @@ router.get("/spells", (req, res) => {
     //Head customization for this route.
     head.title = "Spell List";
 
-    match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
+    match({routes, location: req.originalUrl}, (error, redirectLocation, renderProps) => {
         if(error){
             console.log(error.message);
             res.status(500).send(error.message);
         }
-        else if(renderProps){
+        else {
             const content = ReactDOMServer.renderToString(
             	<Provider store = {store}>
             		<RouterContext {...renderProps}/>
 				      </Provider>);
             res.send(htmlBodyString(head, content, store));
-        }
-        else{
-            res.status(404).send("Not Found");
         }
     });
 });
@@ -74,8 +71,8 @@ router.get("/monsters", (req, res) => {
     //Head customization for this route.
     head.title = "Monster List";
 
-    match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
-        if(error){
+    match({routes, location: req.originalUrl}, (error, redirectLocation, renderProps) => {
+	if(error){
             console.log(error.message);
             res.status(500).send(error.message);
         }

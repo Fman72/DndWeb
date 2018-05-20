@@ -11,7 +11,7 @@ const BASE_ROUTE = '/dnd';
 
 let app = Express();
 
-let port = process.env.PORT ? process.env.PORT : 8080;
+let port = process.env.PORT ? process.env.PORT : 30000;
 
 app.use(BASE_ROUTE, BodyParser.urlencoded({extended: false}));
 

@@ -10,10 +10,10 @@ import MonsterPage from './components/presentational/monsterPage';
 var AppRouter = () => {
     return(
 	    <Router history = {browserHistory}>
-	        <Route path="/dnd/" component = {AppRoot}>
+	        <Route path="/dnd" component = {AppRoot}>
 	            <Route path="spells" component = {SpellPage}/>
-              <Route path="start" component = {StartPageContainer}/>
-              <Route path="monsters" component = {MonsterPage}/>
+              	    <Route path="start" component = {StartPageContainer}/>
+                    <Route path="monsters" component = {MonsterPage}/>
 	        </Route>
 	    </Router>
     );
